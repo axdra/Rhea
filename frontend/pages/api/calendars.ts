@@ -21,10 +21,10 @@ export default function handler(
     }
       if (!Array.isArray(courseCode) && courseCode){
           supabase.from('Courses').select("*, Calendars(*)").limit(1).ilike('code', courseCode).single().then(data => {
-            res.status(200).json(data.data)
+              res.status(200).json(data.data)
         }
           )
-          }
+    }
     
  
 }
