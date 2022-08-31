@@ -27,7 +27,7 @@ export default function handler(
      
         //see if search query is a array
         if (!Array.isArray(searchQuary)) {
-            res.status(200).json(formattedData.filter(course => course.code.toLowerCase().includes(searchQuary) || course.name.toLowerCase().includes(searchQuary)))
+            res.status(200).json(formattedData.filter(course => course.code.toLowerCase().includes(searchQuary.toLowerCase()) || course.name.toLowerCase().includes(searchQuary.toLowerCase())))
         } else {
             res.status(400).json({ error: 'Missing search query' })
         }
