@@ -8,7 +8,7 @@ import SearchBar from '../components/searchBar'
 import { supabase } from '../utils/supabaseClient'
 const Home: NextPage = () => {
 
-
+  
   return (
     <div className='flex justify-center items-center flex-1'>
       <div className='w-full max-w-2xl'>

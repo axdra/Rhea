@@ -45,7 +45,7 @@ const Header: FC = () => {
 
     return (
         <>
-        <div className="sticky h-16 shadow-sm flex justify-between items-center px-10">
+        <div className="sticky top-0 bg-white h-16 shadow-sm flex justify-between items-center px-10">
                 <Link href="/"><a ><h1>MDU Schema</h1></a></Link>
             <div className="flex gap-4">
             <SearchBar/>
