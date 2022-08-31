@@ -24,7 +24,7 @@ const Search: NextPage = () => {
 
             <ul className="flex flex-col gap-5">
                 {courses.map(course => <li key={course.code}
-                    className="flex items-center justify-between border rounded-lg border-gray-200 bg-gray-50 py-5 px-4 shadow-sm gap-2">
+                    className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-lg border-gray-200 bg-gray-50 py-5 px-4 shadow-sm sm:gap-2">
                     <div>
                         <h2>
                             {course.name}

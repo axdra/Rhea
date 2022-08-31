@@ -45,9 +45,9 @@ const Header: FC = () => {
 
     return (
         <>
-        <div className="sticky top-0 bg-white h-16 shadow-sm flex justify-between items-center px-10">
+            <div className="sticky top-0 bg-white h-16 shadow-sm flex justify-between items-center px-10  ">
                 <Link href="/"><a ><h1>MDU Schema</h1></a></Link>
-            <div className="flex gap-4">
+                <div className=" gap-4  hidden md:flex ">
             <SearchBar/>
             <button className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors  " onClick={() => setSignInPrompt(true)}>Sign In</button>
             </div>
