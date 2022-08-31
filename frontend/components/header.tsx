@@ -4,43 +4,11 @@ import Link from "next/link";
 import { FC, FormEvent, Fragment, useEffect, useState } from "react";
 import { supabase } from "../utils/supabaseClient";
 import SearchBar from "./searchBar";
+import { FaApple, FaMicrosoft,FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Header: FC = () => {
-    const [user, setUser] = useState<User | null>(null)
     const [signInPrompt, setSignInPrompt] = useState(false)
-    const signIn = () => {
-        supabase.auth.signInWithOAuth({ provider: 'github' }).then(() => {
-            console.log('signed in')
-        }).catch(err => {
-            console.log(err)
-        }
-        )
-    }
 
-    const signOut = () => {
-        supabase.auth.signOut().then(() => {
-            console.log('signed out')
-            setUser(null)
-        }).catch(err => {
-            console.log(err)
-        }
-        )
-    }
-    const signInWithEmail = (e:FormEvent) => {
-        
-        e.preventDefault()
-        
-    }
-
-
-    useEffect(() => {
-        supabase.auth.getUser().then(user => {
-            setUser(user.data.user);
-        }).catch(err => {
-            console.log(err)
-        }
-        )
-    }, [])
     
 
     return (
@@ -54,7 +22,7 @@ const Header: FC = () => {
             </div>
 
             <Transition appear show={signInPrompt} as={Fragment}>
-                <Dialog as="div" className="relative z-10" onClose={setSignInPrompt}>
+                <Dialog as="div" className="relative z-10" onClose={setSignInPrompt} >
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -77,6 +45,7 @@ const Header: FC = () => {
                                 leave="ease-in duration-200"
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
+                                
                             >
                                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                                     <Dialog.Title
@@ -85,23 +54,29 @@ const Header: FC = () => {
                                     >
                                         Sign In
                                     </Dialog.Title>
+                                    <div className="absolute h-full w-full bg-neutral-900/95 top-0 left-0  items-center justify-center flex">
+                                        <h2 className="text-2xl px-4 text-center text-white">
+                                            Right now sign in is not implemented
+                                        </h2>
+                                    </div>
+
                                     <div className="mt-2">
                                         <h2 className="text-center mb-3 text-gray-700">Sign in via a provider</h2>
                                         <div className="flex justify-center gap-4">
                                             
-                                            <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer"><h1>A</h1></div>
-                                            <div className="h-16 w-16 bg-blue-500 text-white flex justify-center items-center rounded-2xl cursor-pointer"><h1>G</h1></div>
-                                            <div className="h-16 w-16 bg-green-500 text-white flex justify-center items-center rounded-2xl cursor-pointer"><h1>M</h1></div>
-                                            <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer" onClick={signIn}><h1>G</h1></div>
+                                            <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer"><FaApple className="h-6 w-6" /></div>
+                                            <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer"><h1><FaGoogle className="h-6 w-6" /></h1></div>
+                                            <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer"><h1><FaMicrosoft className="h-6 w-6" /></h1></div>
+                                            <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer" ><h1><FaGithub className="h-6 w-6" /></h1></div>
                                         </div>
                                         <div className="w-full h-px bg-gray-200 mt-10"></div>
                                         <h2 className="text-center mb-3 text-gray-700 mt-10">Or sign in via email</h2>
-                                        <form className="flex justify-center flex-col items-center gap-4" onSubmit={signInWithEmail}>
+                                        <form className="flex justify-center flex-col items-center gap-4" autoComplete="off" >
                                             <div className="flex flex-col ">
-                                                <input id="email" type={'email'} placeholder="Email" className="form-input block w-full transition ease-in-out duration-150 rounded-full" />
+                                                <input id="email" type={'email'} placeholder="Email" autoComplete="off" className="form-input block w-full transition ease-in-out duration-150 rounded-full" />
                                             </div>
                                             <div className="flex flex-col ">
-                                                <input id="password" type={'password'} placeholder="Password" className="form-input block w-full transition ease-in-out duration-150 rounded-full" />
+                                                <input id="password" type={'password'} placeholder="Password" autoComplete="off" className="form-input block w-full transition ease-in-out duration-150 rounded-full" />
                                             </div>
                                                 <input type={'submit'} className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors  " value="Sign In" />
                                         </form>
