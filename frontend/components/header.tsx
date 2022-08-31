@@ -54,10 +54,13 @@ const Header: FC = () => {
                                     >
                                         Sign In
                                     </Dialog.Title>
-                                    <div className="absolute h-full w-full bg-neutral-900/95 top-0 left-0  items-center justify-center flex">
-                                        <h2 className="text-2xl px-4 text-center text-white">
-                                            Right now sign in is not implemented
+                                    <div className="absolute h-full w-full bg-neutral-900/95 top-0 left-0  items-center justify-center flex flex-col">
+                                        <h2 className="text-2xl px-6 text-center text-white">
+                                            Right now users is not implemented
                                         </h2>
+                                        <h3 className="text-center text-white px-5">
+                                            Coming soon...
+                                        </h3>
                                     </div>
 
                                     <div className="mt-2">

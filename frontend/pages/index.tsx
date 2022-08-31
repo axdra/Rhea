@@ -19,13 +19,13 @@ const Home: NextPage = () => {
             <h1 className='text-2xl font font-medium'>
               MDU Schema
             </h1>
-            <p className='text-gray-700 text-base'>
+            <p className='text-gray-700 text-base mt-4'>
               You can search for any course by name or course code
             </p>
-            <p>
+            <p className='text-gray-700 text-base mt-4'>
               If you sign in you can can add courses to your schedule and subscribe to a custom schedule feed
             </p>
-            <p>
+            <p className='text-gray-700 text-base mt-4'>
               Of course you can view a single course and subscribe to it{"'"}s schedule feed. Contrariety to kronox this subscription does update regularly in your calendar automatically.  
             </p>
           </div>
