@@ -16,7 +16,7 @@ export default function handler(
         supabase.from('Calendars').select("*, Events(*)").limit(1).ilike('code', calendarCode).single().then(data => {
            
             const ics = require('ics');
-            const events = data.data.Events.map(event => {
+            const events = data.data.Events.map((event:any) => {
                 const start = moment(event.start_date).format('YYYY-M-D-H-m').split("-").map((item, index) => { return parseInt(item) });
                 const end = moment(event.end_date).format('YYYY-M-D-H-m').split("-").map((item, index) => { return parseInt(item) });
                 console.log(start)
