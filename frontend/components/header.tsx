@@ -76,12 +76,12 @@ const Header: FC = () => {
                                         <h2 className="text-center mb-3 text-gray-700 mt-10">Or sign in via email</h2>
                                         <form className="flex justify-center flex-col items-center gap-4" autoComplete="off" >
                                             <div className="flex flex-col ">
-                                                <input id="email" type={'email'} placeholder="Email" autoComplete="off" className="form-input block w-full transition ease-in-out duration-150 rounded-full" />
+                                                <input disabled id="email" type={'email'} placeholder="Email" autoComplete="off" className="form-input block w-full transition ease-in-out duration-150 rounded-full" />
                                             </div>
                                             <div className="flex flex-col ">
-                                                <input id="password" type={'password'} placeholder="Password" autoComplete="off" className="form-input block w-full transition ease-in-out duration-150 rounded-full" />
+                                                <input disabled id="password" type={'password'} placeholder="Password" autoComplete="off" className="form-input block w-full transition ease-in-out duration-150 rounded-full" />
                                             </div>
-                                                <input type={'submit'} className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors  " value="Sign In" />
+                                                <input disabled type={'submit'} className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors  " value="Sign In" />
                                         </form>
 
                                     </div>
