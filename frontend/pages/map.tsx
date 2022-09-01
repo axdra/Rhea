@@ -13,7 +13,7 @@ const Map: NextPage = () => {
     } , [q]);
     return (
         <div>
-            <TestMap selectedRoom={ q} />
+            {q && typeof(q) === 'string' && <TestMap selectedRoom={q} />}
         </div>
     );
 }
