@@ -34,9 +34,13 @@ const Home: NextPage = () => {
             <p className='text-gray-700 text-base mt-4'>
               Of course you can view a single course and subscribe to it{"'"}s schedule feed. Contrariety to kronox this subscription does update regularly in your calendar automatically.  
             </p>
+            <div className='flex justify-center items-center mt-4'>
+              <SearchBar />
+            </div>
             <h5 className='text-lg text-red-500 mt-4 font-bold flex items-center gap-2'   >
               <ExclamationTriangleIcon className='h-5 w-5 '/> Known issues 
             </h5>
+            
             <ul>
               <li> 
                 <span className='flex gap-2'>- 
@@ -52,9 +56,7 @@ const Home: NextPage = () => {
               </li>
             </ul>
           </div>
-          <div className='flex justify-center items-center'>
-            <SearchBar/>
-          </div>
+     
         </div>
         </div>
      

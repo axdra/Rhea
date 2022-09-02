@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="apple-mobile-web-app-status-bar" content="#fff" />
         <link rel="apple-touch-icon" href="/images/icons/192.png" />
-        <meta name="theme-color" content="#ea580c" />
+        <meta name="theme-color" content="#fff" />
 
         <link rel="manifest" href="/manifest.json" />
       </Head>
