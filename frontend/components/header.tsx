@@ -5,6 +5,7 @@ import { FC, FormEvent, Fragment, useEffect, useState } from "react";
 import { supabase } from "../utils/supabaseClient";
 import SearchBar from "./searchBar";
 import { FaApple, FaMicrosoft,FaGithub, FaGoogle } from 'react-icons/fa';
+import { MapIcon } from "@heroicons/react/24/solid";
 
 const Header: FC = () => {
     const [signInPrompt, setSignInPrompt] = useState(false)
@@ -15,9 +16,12 @@ const Header: FC = () => {
         <>
             <div className="sticky top-0 bg-white h-16 shadow-sm flex justify-between items-center px-10  ">
                 <Link href="/"><a ><h1>MDU Schema</h1></a></Link>
-                <div className=" gap-4  hidden md:flex ">
-            <SearchBar/>
-            <button className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors  " onClick={() => setSignInPrompt(true)}>Sign In</button>
+                <div className=" gap-4   md:flex ">
+<div className="hidden md:block">
+                    <SearchBar />
+                    </div>               <Link href={"/map"}><a className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors  flex items-center gap-2" ><span>Map</span> <MapIcon className="h-5 w-5" /> </a></Link>
+
+                    <button className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors hidden md:block  " onClick={() => setSignInPrompt(true)}>Sign In</button>
             </div>
             </div>
 

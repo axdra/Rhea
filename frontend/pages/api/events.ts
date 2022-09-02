@@ -18,15 +18,15 @@ export default function handler(
                   return {
                       
                         aid: event.aid,
-                        created_at: event.created_at.replace('T', 'Z'),
-                        end_date: event.end_date.replace('T', 'Z'),
+                        created_at: new Date(event.created_at.replace('T', 'Z')),
+                        end_date: new Date(event.end_date.replace('T', 'Z')),
                         group:  event.group,
                         id: event.id,
-                        last_update: event.last_update.replace('T', 'Z'),
+                        last_update: new Date(event.last_update.replace('T', 'Z')),
                         name:   event.name,
                         parent_calendar:    event.parent_calendar,
                         room: event.room,
-                        start_date: event.start_date.replace('T', 'Z'),
+                        start_date: new Date(event.start_date.replace('T', 'Z')),
                         teacher: event.teacher,
                   }
               }

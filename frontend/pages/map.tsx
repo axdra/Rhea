@@ -38,9 +38,16 @@ useEffect(() => {
     };
 
 
-    const [selectedLevel, setSelectedLevel] = useState<string>("");
+    const [selectedLevel, setSelectedLevel] = useState<string>("0");
     return (
         <div className="flex-1 flex flex-col relative">
+            <div className=" absolute z-50  top-20 flex justify-center w-full px-10">
+            <div className=" py-5 px-5 bg-white  rounded-lg shadow-md ">
+                <h1>
+                    This feature is still in development, right now it only shows a map of the campus with no functionality or rooms
+                </h1>
+                </div>
+            </div>
             {
                 map && (
                     <Map
@@ -65,9 +72,9 @@ useEffect(() => {
             </Map>
             )}
             <div className="absolute  h-full w-full pointer-events-none p-3">
-                <input type="text" className="bg-white border-0  text-orange pointer-events-auto rounded-full shadow-md shadow-neutral-400/10" placeholder="Search Room" />
+                <input type="text" className="bg-white border  text-orange pointer-events-auto rounded-full shadow-md shadow-neutral-400/10 px-5 focus:ring-orange-500  focus:border-orange-500 border-gray-200 " placeholder="Search Room" />
                 <div className="absolute  bottom-3">
-                    <LevelSelector levels={['2', '1', '0', 'K1']} currentLevel={selectedLevel} onLevelSelect={(level) => setSelectedLevel(level)}/>
+                    <LevelSelector levels={['2', '1', '0']} currentLevel={selectedLevel} onLevelSelect={(level) => setSelectedLevel(level)}/>
                 </div>
 
             </div>
