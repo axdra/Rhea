@@ -36,7 +36,7 @@ const Calendar: NextPage = () => {
                     setName(data.name);
                     setCode(data.code);
                     setUrl(data.URL);
-
+                    console.log(data);
                 }
                 ).finally(() => {
                     setLoading(false);
