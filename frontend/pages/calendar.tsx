@@ -36,7 +36,6 @@ const Calendar: NextPage = () => {
                     setName(data.name);
                     setCode(data.code);
                     setUrl(data.URL);
-                    console.log(data);
                 }
                 ).finally(() => {
                     setLoading(false);
@@ -58,7 +57,7 @@ const Calendar: NextPage = () => {
             <h1 className="text-xl font-medium mb-5  transition-all  ">{code}</h1>
                 </div>
                 <div className="flex-1 justify-end flex items-center">
-                    <div className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-all " onClick={subscribeToSchedule}>
+                    <div className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors " onClick={subscribeToSchedule}>
                     <p>Add to calendar</p>
                         <CalendarIcon className="h-8 w-8 text-orange-500" />
                     </div>
