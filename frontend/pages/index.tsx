@@ -1,11 +1,6 @@
-import { User } from '@supabase/supabase-js'
-import { Auth } from '@supabase/ui'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import SearchBar from '../components/searchBar'
-import { supabase } from '../utils/supabaseClient'
 const Home: NextPage = () => {
 
   
@@ -39,6 +34,17 @@ const Home: NextPage = () => {
             <p className='text-gray-700 text-base mt-4'>
               Of course you can view a single course and subscribe to it{"'"}s schedule feed. Contrariety to kronox this subscription does update regularly in your calendar automatically.  
             </p>
+            <h5 className='text-lg text-red-500 mt-4 font-bold flex items-center gap-2'   >
+              <ExclamationTriangleIcon className='h-5 w-5 '/> Known issues 
+            </h5>
+            <ul>
+              <li> 
+                <span className='flex gap-2'>- 
+                <p className='text-gray-700 text-base '>
+              Atleast DVA117 is totally broken, it{"'"}s schedule is not correct in this app. Most likely some other courses are also broken.
+                  </p></span>
+              </li>
+            </ul>
           </div>
           <div className='flex justify-center items-center'>
             <SearchBar/>

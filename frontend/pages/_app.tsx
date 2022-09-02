@@ -1,10 +1,18 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Layout from '../components/layout'
+import Head from 'next/head'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return(
-  <Layout>
+    <Layout>
+      <Head>
+        <meta name="apple-mobile-web-app-status-bar" content="#fff" />
+        <link rel="apple-touch-icon" href="/images/icons/192.png" />
+        <meta name="theme-color" content="#ea580c" />
+
+        <link rel="manifest" href="/manifest.json" />
+      </Head>
     <Component {...pageProps} />
     </Layout>
   )
