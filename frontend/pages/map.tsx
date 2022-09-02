@@ -33,7 +33,7 @@ const MapView: NextPage = () => {
             <div className="absolute  h-full w-full pointer-events-none p-3">
                 <input type="text" className="bg-white border-0  text-orange pointer-events-auto rounded-full shadow-md shadow-neutral-400/10" placeholder="Search Room" />
                 <div className="absolute  bottom-3">
-                    <LevelSelector levels={['2', '1', '0', 'K1']} currentLevel={selectedLevel} onSelect={(level) => setSelectedLevel(level)}/>
+                    <LevelSelector levels={['2', '1', '0', 'K1']} currentLevel={selectedLevel} onLevelSelect={(level) => setSelectedLevel(level)}/>
                 </div>
 
             </div>
