@@ -44,6 +44,12 @@ const Home: NextPage = () => {
               Atleast DVA117 is totally broken, it{"'"}s schedule is not correct in this app. Most likely some other courses are also broken.
                   </p></span>
               </li>
+              <li>
+                <span className='flex gap-2'>-
+                  <p className='text-gray-700 text-base '>
+                    The autoupdate of the schedule feed is not working right now. But you can still subscribe to a feed and it will update by itself when it is fixed.
+                  </p></span>
+              </li>
             </ul>
           </div>
           <div className='flex justify-center items-center'>
