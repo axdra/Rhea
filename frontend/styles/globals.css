@@ -2,3 +2,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.layout-container{
+    min-height: 100vh;
+    
+}
+
+@supports  (-webkit-touch-callout: none){
+    .layout-container{
+        min-height: -webkit-fill-available;
+    }
+}
