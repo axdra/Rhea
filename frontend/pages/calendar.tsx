@@ -42,11 +42,11 @@ const Calendar: NextPage = () => {
             <h1 className="text-4xl font-medium mb-5 transition-all max-w-full  " style={{
                 wordWrap: "break-word"
             }}>{name}</h1>
-            <div className=" flex justify-between flex-1 ">
+            <div className=" flex justify-between flex-1 items-center mb-4">
                 
-                <div className="flex-1 max-w-[50%]">
+                <div className="flex-1 max-w-[50%] ">
                 
-            <h1 className="text-xl font-medium mb-5  transition-all  ">{code}</h1>
+            <h1 className="text-xl font-medium   transition-all   ">{code}</h1>
                 </div>
                 <div className="flex-1 justify-end flex items-center">
                     {events.length !== 0 && !loading  &&   <div className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors " onClick={subscribeToSchedule}>
