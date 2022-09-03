@@ -22,7 +22,7 @@ export default function handler(
                 console.log(start)
                 console.log(end)
                 return {
-                    title: calendarCode,
+                    title: calendarCode.split('-')[0] + " - " + event.name,
                     start: start,
                     end: end,
                     description: event.name,
