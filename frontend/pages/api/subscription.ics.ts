@@ -23,7 +23,7 @@ export default function handler(
                     title: calendarCode.split('-')[0] + " - " + event.name,
                     start: start,
                     end: end,
-                    description: event.name + "\n Teacher:" + event.teacher,
+                    description: event.name,
                     location: event.room,
                     url: 'https://mdu.axeldraws.com/map?q=' + event.room.split(' ')[0],
                 }
