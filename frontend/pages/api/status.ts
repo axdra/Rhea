@@ -16,10 +16,8 @@ export default function handler(
         res.status(200).json({ issues: data.data, status: "ok" })
     }
               
-    ).then(() => {
-        res.status(500).json({ issues: [], status: "error" })
-    }
     )
+    
     }
     
  
