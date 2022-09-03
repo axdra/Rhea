@@ -49,10 +49,11 @@ const Calendar: NextPage = () => {
             <h1 className="text-xl font-medium mb-5  transition-all  ">{code}</h1>
                 </div>
                 <div className="flex-1 justify-end flex items-center">
-                    <div className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors " onClick={subscribeToSchedule}>
+                    {events.length !== 0 && !loading  &&   <div className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors " onClick={subscribeToSchedule}>
                     <p>Add to calendar</p>
                         <CalendarIcon className="h-8 w-8 text-orange-500" />
-                    </div>
+                </div>
+                } 
                 </div>
                 </div>
             {events.length === 0 && !loading && <div className="flex-1 min-h-full flex justify-center "><h2>No results found</h2></div>}

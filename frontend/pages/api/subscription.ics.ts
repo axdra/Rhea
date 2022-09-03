@@ -27,6 +27,7 @@ export default function handler(
                     end: end,
                     description: event.name,
                     location: event.room,
+                    url: 'https://mdu.axeldraws.com/map?q=' + event.room,
                 }
             });
             const icsCal = ics.createEvents(events)
