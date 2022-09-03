@@ -19,17 +19,17 @@ export default function handler(
             const events = data.data.Events.map((event:any) => {
                 const start = moment(event.start_date).format('YYYY-M-D-H-m').split("-").map((item, index) => { return parseInt(item) });
                 const end = moment(event.end_date).format('YYYY-M-D-H-m').split("-").map((item, index) => { return parseInt(item) });
-                console.log(start)
-                console.log(end)
                 return {
                     title: calendarCode.split('-')[0] + " - " + event.name,
                     start: start,
                     end: end,
                     description: event.name,
                     location: event.room,
-                    url: 'https://mdu.axeldraws.com/map?q=' + event.room,
+                    url: 'https://mdu.axeldraws.com/map?q=' + event.room.split(' ')[0],
                 }
             });
+            console.log(events)
+
             const icsCal = ics.createEvents(events)
             res.status(200)
             res.send(icsCal.value)
