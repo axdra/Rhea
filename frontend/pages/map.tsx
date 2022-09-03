@@ -10,7 +10,7 @@ const MapView: NextPage = () => {
     
     const { q } = router.query;
     const accessToken = "pk.eyJ1IjoiYXhkcmEiLCJhIjoiY2t6dmh2ZmltMDM1NTJvczk1MnI5c2UyMSJ9.HZh3hWr1hpzzdQieKwpKpw";
-    const mapRef = useCallback((node:HTMLElement) => {
+    const mapRef = useCallback((node:HTMLDivElement) => {
         if (!node) return;
         const map = new Map({
             accessToken,
