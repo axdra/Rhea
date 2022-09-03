@@ -15,34 +15,41 @@ interface IEvent {
     end_date: Date
 }
 
+function getWeeksFromNow(date: Date) {
+    const thisWeek = dayjs().startOf('week');
+    const event = dayjs(new Date( date.getFullYear(), date.getMonth(), date.getDate()-date.getDay() ));
+    return event.diff(thisWeek, 'week');
+}
+
 const Schema: React.FC<{ events: any[] }> = ({ events }) => {
-    let lastEventDate = new Date();
     let currWeek = 0;
+    let firstWeek = true;
     return <div className="flex flex-col gap-4">
         
         {events.length > 0 && events.map((event: IEvent) => {
-            const nextWeek = !dayjs(lastEventDate).isSame(event.start_date, 'week');
-            const thisWeek = dayjs(new Date()).isSame(event.start_date, 'week');
-            const futureWeek = dayjs(event.start_date).diff(new Date(), 'week');
-            const showFutureWeek = futureWeek > 1 && currWeek !== futureWeek;
-            currWeek  = futureWeek;
-            lastEventDate = event.start_date;
+            const weeksFromNow = getWeeksFromNow(new Date(event.start_date));
+            let newWeek = false;
+            if (weeksFromNow !== currWeek) {
+                currWeek = weeksFromNow;
+                newWeek = true;
+            }
             let date = new Date(event.start_date).toLocaleDateString('sv-SE', {
                 weekday: 'long',
             });
-            if (!thisWeek) {
-                 date = new Date(event.start_date).toLocaleDateString('sv-SE', {
-                     weekday: 'long',
-                     month: 'long',
-                     day: 'numeric'
-                    
+            if (currWeek !== 0) {
+                date = new Date(event.start_date).toLocaleDateString('sv-SE', {
+                    weekday: 'long',
+                    month: 'long',
+                    day: 'numeric'
+
                 });
             }
+            let showFirstWeek =  firstWeek;
+            firstWeek = false;
             return (<>
-                {futureWeek === 1 && nextWeek && <h2>Next week</h2>}
-                {thisWeek && <h2>This week</h2>}
-                {showFutureWeek && <h2>In {futureWeek} weeks</h2>}
-                
+                {weeksFromNow === 1 && newWeek && <h2>Next week</h2>}
+                {newWeek && weeksFromNow > 1 && <h2>In {weeksFromNow} weeks</h2>}
+                {showFirstWeek && weeksFromNow === 0 && <h2>This week</h2>}
                 <div
                     key={event.id}
                     className="flex flex-row gap-6 items-center justify-between border rounded-xl border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2 hover:shadow transition-all duration-300">
