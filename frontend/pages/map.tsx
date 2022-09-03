@@ -16,7 +16,7 @@ const MapView: NextPage = () => {
             accessToken,
             container: node,
             style: 'mapbox://styles/axdra/cl7lvw83y000c14nwrme20rel',
-            
+            attributionControl: false,
             
         }) as MapboxMapWithIndoor;
 
