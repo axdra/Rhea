@@ -1,52 +1,71 @@
-import { addIndoorTo, IndoorControl, IndoorMap, MapboxMapWithIndoor } from "map-gl-indoor";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Map } from 'mapbox-gl';
 import LevelSelector from "../components/map/levelSelector";
-
+import Map, { Source, Layer, PointLike } from "react-map-gl";
+import { useCallback, useEffect, useRef, useState } from "react";
 const MapView: NextPage = () => {
     const router = useRouter();
-    
+    const [selectedLevel, setSelectedLevel] = useState('0');
     const { q } = router.query;
     const accessToken = "pk.eyJ1IjoiYXhkcmEiLCJhIjoiY2t6dmh2ZmltMDM1NTJvczk1MnI5c2UyMSJ9.HZh3hWr1hpzzdQieKwpKpw";
-    const mapRef = useCallback((node:HTMLDivElement) => {
-        if (!node) return;
-        const map = new Map({
-            accessToken,
-            container: node,
-            style: 'mapbox://styles/axdra/cl7lvw83y000c14nwrme20rel',
-            attributionControl: false,
-            
-        }) as MapboxMapWithIndoor;
+ 
+    const [floorPlan, setFloorplan] = useState();
+    const [selectedRoom, setSelectedRoom] = useState<any>();
+    const [pois, setPois] = useState();
+    const [mapData, setMapData] = useState<any>();
+    const [roomList, setRoomList] = useState<string[]>();
+    const [searchList, setSearchList] = useState<string[]>();
+    useEffect(() => {
+        if (mapData) {
+            setFloorplan({ ...mapData, features: mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.level == selectedLevel) });
+            setPois({ ...mapData, features: mapData.features.filter((feature: any) => feature.properties?.indoor !== 'room') });
+            if (selectedRoom && selectedRoom.properties.tags.level !== selectedLevel) {
 
-        // Create the indoor logic behind the map.indoor property
-        addIndoorTo(map);
+                setSelectedRoom(undefined);
+            }
+        }
+    }, [selectedLevel, mapData]);
 
-        // Retrieve the geojson from the path and add the map
-        fetch('/test1.geojson').then(res => res.json()).then(data => {
-
-            const indoorMap = IndoorMap.fromGeojson(data);
-            map.indoor.addMap(indoorMap);
-
-            // Add the specific control
-            map.addControl(new IndoorControl());
-            map.on('indoor.map.clicked', (e) => {
-                console.log(e)
-            })
-        })
-    }
-, []);
     useEffect(() => {
         if (q) {
-            console.log(q);
+            if (mapData) {
+                mapData.features.filter((feature: any) => feature.properties?.indoor === 'room'  &&  feature.properties.tags.name?.toLowerCase() == (q as string).toLowerCase() ).forEach((feature: any) => {
+                    setSelectedRoom(feature);
+                    setSelectedLevel(feature.properties.tags.level);
+                });
+            }
         }
-    }, [q]);
+    }, [q, mapData]);
 
+        
+    
 
+    const mapRef = useCallback((map: any) => {
+        if (map) {
+            if (q) {
+                if (mapData) {
+                    console.log(mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.name?.toLowerCase() ==( q as string).toLowerCase()));
+                    mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.name?.toLowerCase() ==( q as string).toLowerCase() ).forEach((feature: any) => {
+                        console.log([feature.geometry.coordinates[0][0][0], feature.geometry.coordinates[0][1][1]], 18)
+                        map.flyTo({ center: [feature.geometry.coordinates[0][0][0], feature.geometry.coordinates[0][1][1]], zoom: 18});
+                    });
+                }
+            }
+        }
+    }, [mapData]);
 
+    useEffect(() => {
+        fetch('/test1.geojson').then((data) => {
+            data.json().then((data) => {
+                setRoomList(data.features.filter((feature: any) => feature.properties?.indoor === 'room').map((feature: any) => feature.properties.tags.name));
+                setFloorplan({ ...data, features: data.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.level == selectedLevel) });
+                setPois({ ...data, features: data.features.filter((feature: any) => feature.properties?.indoor !== 'room') });
+                setMapData(data);
 
-    const [selectedLevel, setSelectedLevel] = useState<string>("0");
+            })
+        })
+    }, [])
+
     return (
         <div className="flex-1 flex flex-col relative">
             <div className=" absolute z-50  top-20 flex justify-center w-full px-10">
@@ -56,13 +75,140 @@ const MapView: NextPage = () => {
                     </h1>
                 </div>
             </div>
-            {
-                <div ref={mapRef} className="h-full flex-1"></div>
-            }
+
+            <Map
+                ref={mapRef}
+                initialViewState={
+                    {
+                        latitude: 59.61861227,
+                        longitude: 16.54059559,
+                        zoom: 18,
+                    }
+                }
+                mapStyle={'mapbox://styles/axdra/cl7lvw83y000c14nwrme20rel'}
+                attributionControl={false}
+                mapboxAccessToken={accessToken}
+                style={{
+                    flexGrow: 1,
+                    display: 'block',
+                }}
+                onClick={(e) => {
+                    const bbox: PointLike = [e.point.x, e.point.y]
+
+                    // Find features intersecting the bounding box.
+                    const selectedFeatures = e.target.queryRenderedFeatures(bbox, {
+                        layers: ['rooms']
+                    });
+                    console.log(selectedFeatures)
+                    if (selectedFeatures.length > 0) {
+                        setSelectedRoom({
+                            type: "FeatureCollection",
+                            features: [selectedFeatures.filter((feature: any) => feature.properties?.indoor === 'room')[0]]
+                        });
+
+                    }
+                    else {
+                        setSelectedRoom(undefined);
+                    }
+                }}
+            >
+                <Source type="geojson" data={floorPlan}   >
+
+                    <Layer id="rooms" type="fill" paint={
+                        {
+                            'fill-color': 'rgb(249,115,22)',
+                            'fill-opacity': 0.2
+                        }
+                    } />
+                    <Layer id="rooms-outline" type="line" paint={
+                        {
+                            'line-color': 'rgb(249,115,22)',
+                            'line-width': 2,
+                            'line-opacity': 0.5
+                        }
+                    } />
+                    <Layer id="rooms-label" type="symbol" layout={
+
+                        {
+                            'text-field': '{name}',
+                            'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+                            'text-offset': [0, 0.6],
+
+                        }
+                    } paint={
+                        {
+                            'text-color': 'rgb(249,115,22)',
+                        }
+                    } />
+                </Source>
+                {selectedRoom &&
+                    <Source type="geojson" data={selectedRoom}   >
+
+                        <Layer id="selected-room" type="fill" paint={
+                            {
+                                'fill-color': 'rgb(255,5,22)',
+                                'fill-opacity': 0.2
+                            }
+                        } />
+                        <Layer id="rooms-outline" type="line" paint={
+                            {
+                                'line-color': 'rgb(249,115,22)',
+                                'line-width': 2,
+                                'line-opacity': 0.5
+                            }
+                        } />
+                        <Layer id="rooms-label" type="symbol" layout={
+
+                            {
+                                'text-field': '{name}',
+                                'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+                                'text-offset': [0, 0.6],
+
+                            }
+                        } paint={
+                            {
+                                'text-color': 'rgb(249,115,22)',
+                            }
+                        } />
+                    </Source>
+                }
+            </Map>
             <div className="absolute  h-full w-full pointer-events-none p-3">
-                <input type="text" className="bg-white border  text-orange pointer-events-auto rounded-full shadow-md shadow-neutral-400/10 px-5 focus:ring-orange-500  focus:border-orange-500 border-gray-200 " placeholder="Search Room" />
+                <div className="relative">
+                <input type="text" className="bg-white border  text-orange pointer-events-auto rounded-full shadow-md shadow-neutral-400/10 px-5 focus:ring-orange-500  focus:border-orange-500 border-gray-200 " autoComplete="off" placeholder="Search Room" onChange={
+                        (e) => {
+                        e.target.value.length > 0 ? setSearchList(roomList?.filter((room: string) => room.toLowerCase().includes(e.target.value.toLowerCase()))) : setSearchList(undefined);
+                    }
+                }
+                    onBlur={
+                        () => {
+                            setTimeout(() => {
+                                setSearchList(undefined);
+                            }, 250);
+                        }
+                    }
+                    />
+                    {searchList &&
+                        <div className="bg-white  absolute left-2 rounded mt-2 shadow p-2 pointer-events-auto
+                        ">
+                    {searchList  && searchList.map((room: string) => {
+                        return <div key={room} className="text-orange pointer-events-auto rounded mb-1 px-5 py-2 focus:ring-orange-500  focus:border-orange-500 border-gray-200 hover:bg-orange-500 hover:text-white cursor-pointer " onClick={
+                            () => {
+                                mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.name == room).forEach((feature: any) => {
+                                    setSelectedRoom(feature);
+                                    setSelectedLevel(feature.properties.tags.level);
+                                });
+                            }
+                        }>{room}</div>
+                    })}
+                            
+
+                        </div>
+                    }
+                </div>
                 <div className="absolute  bottom-3">
                     <LevelSelector levels={['2', '1', '0']} currentLevel={selectedLevel} onLevelSelect={(level) => setSelectedLevel(level)} />
+
                 </div>
 
             </div>

@@ -3,348 +3,5756 @@
     "features": [
         {
             "type": "Feature",
+            "id": "way/1091644831",
             "properties": {
+                "type": "way",
+                "id": 1091644831,
                 "tags": {
-                    "level": "0",
-                    "emergency": "defibrillator",
-                    "access": "yes",
-                    "name": "Defibrillator",
-                    "indoor": "yes",
-                    "operator": "MDU"
-                },
-                "own": {
-                    "new": true,
-                    "levels": [
-                        0
-                    ],
-                    "utilityNode": false,
-                    "fixed": true
-                },
-                "level": "0",
-                "emergency": "defibrillator",
-                "access": "yes",
-                "name": "Defibrillator",
-                "indoor": "yes",
-                "operator": "MDU"
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    16.54077128,
-                    59.61873842
-                ]
-            },
-            "id": "node/-3"
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "tags": {
-                    "level": "0",
-                    "tourism": "information",
-                    "information": "office",
-                    "name": "Information Desk"
-                },
-                "own": {
-                    "new": true,
-                    "levels": [
-                        0
-                    ],
-                    "utilityNode": false,
-                    "fixed": true
-                },
-                "level": "0",
-                "tourism": "information",
-                "information": "office",
-                "name": "Information Desk"
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    16.54113874,
-                    59.61876149
-                ]
-            },
-            "id": "node/-4"
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "tags": {
-                    "level": "0",
-                    "indoor": "room",
-                    "room": "lecture",
                     "access": "no",
-                    "name": "Alfa",
-                    "ref": "alfa"
-                },
-                "own": {
-                    "new": true,
-                    "levels": [
-                        0
-                    ]
-                },
-                "level": "0",
-                "indoor": "room",
-                "room": "lecture",
-                "access": "no",
-                "name": "Alfa",
-                "ref": "alfa"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            16.54051781,
-                            59.61890256
-                        ],
-                        [
-                            16.5407069,
-                            59.61894258
-                        ],
-                        [
-                            16.540723,
-                            59.61893512
-                        ],
-                        [
-                            16.54074177,
-                            59.6189202
-                        ],
-                        [
-                            16.5407525,
-                            59.61891003
-                        ],
-                        [
-                            16.54076993,
-                            59.61889307
-                        ],
-                        [
-                            16.54077396,
-                            59.61888289
-                        ],
-                        [
-                            16.54076323,
-                            59.61888086
-                        ],
-                        [
-                            16.54079944,
-                            59.61883609
-                        ],
-                        [
-                            16.5408209,
-                            59.61883881
-                        ],
-                        [
-                            16.5408276,
-                            59.61882524
-                        ],
-                        [
-                            16.54083431,
-                            59.61881371
-                        ],
-                        [
-                            16.54083967,
-                            59.61880015
-                        ],
-                        [
-                            16.54084101,
-                            59.61879133
-                        ],
-                        [
-                            16.54063417,
-                            59.61875371
-                        ],
-                        [
-                            16.54051781,
-                            59.61890256
-                        ],
-                        [
-                            16.54051781,
-                            59.61890256
-                        ]
-                    ]
-                ]
-            },
-            "id": "way/-5"
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "tags": {
+                    "indoor": "room",
                     "level": "0",
-                    "door": "yes",
-                    "width": "1.8",
-                    "wheelchair": "yes",
-                    "name": "Alfa Door"
+                    "name": "R1-205",
+                    "ref": "r1-205",
+                    "room": "laboratory"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:19:12Z",
+                    "version": "3",
+                    "changeset": "125779274",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
                 },
                 "own": {
-                    "new": true,
                     "levels": [
                         0
                     ],
-                    "utilityNode": false,
-                    "onBuildingContour": false,
-                    "fixed": true
-                },
-                "level": "0",
-                "door": "yes",
-                "width": "1.8",
-                "wheelchair": "yes",
-                "name": "Alfa Door"
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    16.54081643,
-                    59.61878686
-                ]
-            },
-            "id": "node/-6"
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "tags": {
-                    "level": "0",
-                    "indoor": "room",
-                    "room": "stairs",
-                    "access": "yes",
-                    "name": "0-1"
-                },
-                "own": {
-                    "new": true,
-                    "levels": [
-                        0
+                    "nodes": [
+                        "node/9999971234",
+                        "node/9999971236",
+                        "node/9999971236",
+                        "node/9999971236",
+                        "node/9997917625",
+                        "node/9999971423",
+                        "node/9999971235",
+                        "node/9999971234"
                     ]
                 },
-                "level": "0",
+                "access": "no",
                 "indoor": "room",
-                "room": "stairs",
-                "access": "yes",
-                "name": "0-1"
+                "level": "0",
+                "name": "R1-205",
+                "ref": "r1-205",
+                "room": "laboratory"
             },
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
                     [
                         [
-                            16.5408913,
-                            59.61873775
+                            16.5414609,
+                            59.6181694
                         ],
                         [
-                            16.54080413,
-                            59.61872113
+                            16.5416078,
+                            59.6182014
                         ],
                         [
-                            16.54079743,
-                            59.61871909
+                            16.5416078,
+                            59.6182014
                         ],
                         [
-                            16.5407934,
-                            59.6187157
+                            16.5416078,
+                            59.6182014
                         ],
                         [
-                            16.54079089,
-                            59.61871214
+                            16.541583,
+                            59.6182304
                         ],
                         [
-                            16.54078988,
-                            59.61870833
+                            16.5415478,
+                            59.6182718
                         ],
                         [
-                            16.54079089,
-                            59.61870392
+                            16.5414024,
+                            59.6182403
                         ],
                         [
-                            16.54079407,
-                            59.61870044
-                        ],
-                        [
-                            16.54080279,
-                            59.61869739
-                        ],
-                        [
-                            16.54081151,
-                            59.61869603
-                        ],
-                        [
-                            16.54082291,
-                            59.61869603
-                        ],
-                        [
-                            16.54087454,
-                            59.61870621
-                        ],
-                        [
-                            16.54086582,
-                            59.61871808
-                        ],
-                        [
-                            16.54090203,
-                            59.61872554
-                        ],
-                        [
-                            16.5408913,
-                            59.61873775
+                            16.5414609,
+                            59.6181694
                         ]
                     ]
                 ]
-            },
-            "id": "way/-7"
+            }
         },
         {
             "type": "Feature",
+            "id": "way/1091644832",
             "properties": {
+                "type": "way",
+                "id": 1091644832,
                 "tags": {
-                    "level": "0",
+                    "access": "no",
                     "indoor": "room",
-                    "room": "entrance",
-                    "access": "yes",
-                    "name": "Main Entrance",
-                    "ref": "entrance-rosenhill"
+                    "level": "0",
+                    "name": "R1-214",
+                    "ref": "r1-214",
+                    "room": "conference"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:19:12Z",
+                    "version": "3",
+                    "changeset": "125779274",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
                 },
                 "own": {
-                    "new": true,
                     "levels": [
                         0
+                    ],
+                    "nodes": [
+                        "node/9999971236",
+                        "node/9999971236",
+                        "node/9999971424",
+                        "node/9999971425",
+                        "node/9999971423",
+                        "node/9997917625",
+                        "node/9999971236"
                     ]
                 },
-                "level": "0",
+                "access": "no",
                 "indoor": "room",
-                "room": "entrance",
-                "access": "yes",
-                "name": "Main Entrance",
-                "ref": "entrance-rosenhill"
+                "level": "0",
+                "name": "R1-214",
+                "ref": "r1-214",
+                "room": "conference"
             },
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
                     [
                         [
-                            16.54059559,
-                            59.61861227
+                            16.5416078,
+                            59.6182014
                         ],
                         [
-                            16.5406841,
-                            59.61862922
+                            16.5416078,
+                            59.6182014
                         ],
                         [
-                            16.54071093,
-                            59.61859734
+                            16.5416653,
+                            59.6182131
                         ],
                         [
-                            16.54062644,
-                            59.61857768
+                            16.5416058,
+                            59.6182844
                         ],
                         [
-                            16.54059559,
-                            59.61861227
+                            16.5415478,
+                            59.6182718
+                        ],
+                        [
+                            16.541583,
+                            59.6182304
+                        ],
+                        [
+                            16.5416078,
+                            59.6182014
                         ]
                     ]
                 ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091644833",
+            "properties": {
+                "type": "way",
+                "id": 1091644833,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-218",
+                    "ref": "r1-218",
+                    "room": "conference"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:35Z",
+                    "version": "2",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971237",
+                        "node/9999971321",
+                        "node/9999971818",
+                        "node/9999972017",
+                        "node/9999971237"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-218",
+                "ref": "r1-218",
+                "room": "conference"
             },
-            "id": "way/-8"
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5417459,
+                            59.6183148
+                        ],
+                        [
+                            16.5418069,
+                            59.618244
+                        ],
+                        [
+                            16.5419303,
+                            59.6182708
+                        ],
+                        [
+                            16.5418681,
+                            59.6183412
+                        ],
+                        [
+                            16.5417459,
+                            59.6183148
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091644834",
+            "properties": {
+                "type": "way",
+                "id": 1091644834,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-121",
+                    "ref": "r1-121",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:36Z",
+                    "version": "2",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971426",
+                        "node/9999971819",
+                        "node/9999971620",
+                        "node/9999971820",
+                        "node/9999971718",
+                        "node/9999972117",
+                        "node/9999971322",
+                        "node/9999971323",
+                        "node/9999971324",
+                        "node/9999971426"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-121",
+                "ref": "r1-121",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.541608,
+                            59.6181833
+                        ],
+                        [
+                            16.5414899,
+                            59.6181584
+                        ],
+                        [
+                            16.5414935,
+                            59.6181472
+                        ],
+                        [
+                            16.5414987,
+                            59.6181363
+                        ],
+                        [
+                            16.5415057,
+                            59.6181226
+                        ],
+                        [
+                            16.5415144,
+                            59.6181092
+                        ],
+                        [
+                            16.541526,
+                            59.618093
+                        ],
+                        [
+                            16.5415373,
+                            59.6180786
+                        ],
+                        [
+                            16.5416742,
+                            59.6181097
+                        ],
+                        [
+                            16.541608,
+                            59.6181833
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091644835",
+            "properties": {
+                "type": "way",
+                "id": 1091644835,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-122",
+                    "ref": "r1-122",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:36Z",
+                    "version": "2",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971427",
+                        "node/9999971324",
+                        "node/9999971323",
+                        "node/9999971238",
+                        "node/9999971239",
+                        "node/9999971325",
+                        "node/9999971326",
+                        "node/9999971327",
+                        "node/9999971328",
+                        "node/9997909425",
+                        "node/9999971240",
+                        "node/9999971427"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-122",
+                "ref": "r1-122",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5417277,
+                            59.6180472
+                        ],
+                        [
+                            16.5416742,
+                            59.6181097
+                        ],
+                        [
+                            16.5415373,
+                            59.6180786
+                        ],
+                        [
+                            16.5415512,
+                            59.6180621
+                        ],
+                        [
+                            16.541564,
+                            59.6180502
+                        ],
+                        [
+                            16.5415754,
+                            59.6180394
+                        ],
+                        [
+                            16.5415888,
+                            59.6180285
+                        ],
+                        [
+                            16.5416025,
+                            59.6180177
+                        ],
+                        [
+                            16.5416158,
+                            59.6180078
+                        ],
+                        [
+                            16.541708,
+                            59.6180281
+                        ],
+                        [
+                            16.5417215,
+                            59.6180455
+                        ],
+                        [
+                            16.5417277,
+                            59.6180472
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091644836",
+            "properties": {
+                "type": "way",
+                "id": 1091644836,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "Delta",
+                    "ref": "delta",
+                    "room": "lecture"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:37Z",
+                    "version": "2",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971241",
+                        "node/9999971242",
+                        "node/9999971428",
+                        "node/9999971539",
+                        "node/9999971241"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "Delta",
+                "ref": "delta",
+                "room": "lecture"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5413406,
+                            59.6179489
+                        ],
+                        [
+                            16.5415221,
+                            59.6179879
+                        ],
+                        [
+                            16.5414616,
+                            59.6180532
+                        ],
+                        [
+                            16.5412832,
+                            59.6180148
+                        ],
+                        [
+                            16.5413406,
+                            59.6179489
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091644837",
+            "properties": {
+                "type": "way",
+                "id": 1091644837,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-306",
+                    "ref": "r1-306",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:37Z",
+                    "version": "2",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971621",
+                        "node/9999971622",
+                        "node/9999971540",
+                        "node/9999971541",
+                        "node/9999971621"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-306",
+                "ref": "r1-306",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5418753,
+                            59.6180668
+                        ],
+                        [
+                            16.5419302,
+                            59.6179993
+                        ],
+                        [
+                            16.5420794,
+                            59.6180312
+                        ],
+                        [
+                            16.5420229,
+                            59.6180976
+                        ],
+                        [
+                            16.5418753,
+                            59.6180668
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091644838",
+            "properties": {
+                "type": "way",
+                "id": 1091644838,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-302",
+                    "ref": "r1-302",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:37Z",
+                    "version": "2",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971621",
+                        "node/9999971542",
+                        "node/9999971543",
+                        "node/9999971429",
+                        "node/9999971622",
+                        "node/9999971621"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-302",
+                "ref": "r1-302",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5418753,
+                            59.6180668
+                        ],
+                        [
+                            16.5417513,
+                            59.6180412
+                        ],
+                        [
+                            16.5417375,
+                            59.6180225
+                        ],
+                        [
+                            16.5417831,
+                            59.6179671
+                        ],
+                        [
+                            16.5419302,
+                            59.6179993
+                        ],
+                        [
+                            16.5418753,
+                            59.6180668
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091644839",
+            "properties": {
+                "type": "way",
+                "id": 1091644839,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-131",
+                    "ref": "r1-131",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:38Z",
+                    "version": "2",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971430",
+                        "node/9999971243",
+                        "node/9999971623",
+                        "node/9999971544",
+                        "node/9999971624",
+                        "node/9999971821",
+                        "node/9999971545",
+                        "node/9999971430"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-131",
+                "ref": "r1-131",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5418053,
+                            59.6179539
+                        ],
+                        [
+                            16.5416842,
+                            59.6179283
+                        ],
+                        [
+                            16.5416948,
+                            59.6179024
+                        ],
+                        [
+                            16.5417045,
+                            59.6178857
+                        ],
+                        [
+                            16.5417166,
+                            59.6178668
+                        ],
+                        [
+                            16.5417302,
+                            59.6178514
+                        ],
+                        [
+                            16.5418693,
+                            59.6178789
+                        ],
+                        [
+                            16.5418053,
+                            59.6179539
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091644840",
+            "properties": {
+                "type": "way",
+                "id": 1091644840,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-132",
+                    "ref": "r1-132",
+                    "room": "laboratory"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:38Z",
+                    "version": "2",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971545",
+                        "node/9999971821",
+                        "node/9999971546",
+                        "node/9999971547",
+                        "node/9999971548",
+                        "node/9999971549",
+                        "node/9999971550",
+                        "node/9999971244",
+                        "node/9999971551",
+                        "node/9999971545"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-132",
+                "ref": "r1-132",
+                "room": "laboratory"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5418693,
+                            59.6178789
+                        ],
+                        [
+                            16.5417302,
+                            59.6178514
+                        ],
+                        [
+                            16.541746,
+                            59.6178319
+                        ],
+                        [
+                            16.5417632,
+                            59.6178153
+                        ],
+                        [
+                            16.54178,
+                            59.6178017
+                        ],
+                        [
+                            16.5417971,
+                            59.6177888
+                        ],
+                        [
+                            16.5418106,
+                            59.6177786
+                        ],
+                        [
+                            16.5419026,
+                            59.6177984
+                        ],
+                        [
+                            16.5419214,
+                            59.617818
+                        ],
+                        [
+                            16.5418693,
+                            59.6178789
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091644841",
+            "properties": {
+                "type": "way",
+                "id": 1091644841,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-030",
+                    "ref": "r1-030",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:19:13Z",
+                    "version": "3",
+                    "changeset": "125779274",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9997917636",
+                        "node/9997909441",
+                        "node/9999971431",
+                        "node/9999971552",
+                        "node/9999971552",
+                        "node/9997917636"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-030",
+                "ref": "r1-030",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.541664,
+                            59.6178739
+                        ],
+                        [
+                            16.5416108,
+                            59.6178632
+                        ],
+                        [
+                            16.5416356,
+                            59.6178324
+                        ],
+                        [
+                            16.5416903,
+                            59.6178432
+                        ],
+                        [
+                            16.5416903,
+                            59.6178432
+                        ],
+                        [
+                            16.541664,
+                            59.6178739
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091644842",
+            "properties": {
+                "type": "way",
+                "id": 1091644842,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-029",
+                    "ref": "r1-029",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:39Z",
+                    "version": "2",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971431",
+                        "node/9997917637",
+                        "node/9997909446",
+                        "node/9999971552",
+                        "node/9999971431"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-029",
+                "ref": "r1-029",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5416356,
+                            59.6178324
+                        ],
+                        [
+                            16.5416586,
+                            59.6178066
+                        ],
+                        [
+                            16.5417122,
+                            59.6178178
+                        ],
+                        [
+                            16.5416903,
+                            59.6178432
+                        ],
+                        [
+                            16.5416356,
+                            59.6178324
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091644843",
+            "properties": {
+                "type": "way",
+                "id": 1091644843,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-028",
+                    "ref": "r1-028",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:19:13Z",
+                    "version": "3",
+                    "changeset": "125779274",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9997909446",
+                        "node/9997909446",
+                        "node/9997917637",
+                        "node/9997917637",
+                        "node/9997940426",
+                        "node/9997909447",
+                        "node/9997909446"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-028",
+                "ref": "r1-028",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5417122,
+                            59.6178178
+                        ],
+                        [
+                            16.5417122,
+                            59.6178178
+                        ],
+                        [
+                            16.5416586,
+                            59.6178066
+                        ],
+                        [
+                            16.5416586,
+                            59.6178066
+                        ],
+                        [
+                            16.5416785,
+                            59.6177834
+                        ],
+                        [
+                            16.5417313,
+                            59.617795
+                        ],
+                        [
+                            16.5417122,
+                            59.6178178
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091644844",
+            "properties": {
+                "type": "way",
+                "id": 1091644844,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-013",
+                    "ref": "r1-013",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:40Z",
+                    "version": "2",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9997909448",
+                        "node/9999971432",
+                        "node/9997898337",
+                        "node/9999971822",
+                        "node/9997948217",
+                        "node/9997909448"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-013",
+                "ref": "r1-013",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5414542,
+                            59.6178565
+                        ],
+                        [
+                            16.541379,
+                            59.6178414
+                        ],
+                        [
+                            16.5413847,
+                            59.6178345
+                        ],
+                        [
+                            16.5413976,
+                            59.6178194
+                        ],
+                        [
+                            16.5414718,
+                            59.6178342
+                        ],
+                        [
+                            16.5414542,
+                            59.6178565
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884000",
+            "properties": {
+                "type": "way",
+                "id": 1091884000,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "room": "toilet"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:25Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971428",
+                        "node/9999971436",
+                        "node/9999971627",
+                        "node/9999971242",
+                        "node/9999971428"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "room": "toilet"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5414616,
+                            59.6180532
+                        ],
+                        [
+                            16.5415221,
+                            59.6179879
+                        ],
+                        [
+                            16.5415701,
+                            59.6179987
+                        ],
+                        [
+                            16.5415136,
+                            59.6180645
+                        ],
+                        [
+                            16.5414616,
+                            59.6180532
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884001",
+            "properties": {
+                "type": "way",
+                "id": 1091884001,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-014",
+                    "ref": "r1-014",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:25Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971822",
+                        "node/9999971823",
+                        "node/9999971629",
+                        "node/9999972018",
+                        "node/9999971824",
+                        "node/9997948217",
+                        "node/9999971822"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-014",
+                "ref": "r1-014",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5413976,
+                            59.6178194
+                        ],
+                        [
+                            16.5414177,
+                            59.6177959
+                        ],
+                        [
+                            16.5414822,
+                            59.6178095
+                        ],
+                        [
+                            16.5414823,
+                            59.6178095
+                        ],
+                        [
+                            16.5414931,
+                            59.6178118
+                        ],
+                        [
+                            16.5414718,
+                            59.6178342
+                        ],
+                        [
+                            16.5413976,
+                            59.6178194
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884006",
+            "properties": {
+                "type": "way",
+                "id": 1091884006,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-016",
+                    "ref": "r1-016",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:19:07Z",
+                    "version": "2",
+                    "changeset": "125779274",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971437",
+                        "node/9999971567",
+                        "node/9999971568",
+                        "node/9999971628",
+                        "node/9999971569",
+                        "node/9999972018",
+                        "node/9999971629",
+                        "node/9999972018",
+                        "node/9999971629",
+                        "node/9999971823",
+                        "node/9999971437"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-016",
+                "ref": "r1-016",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5414177,
+                            59.6177958
+                        ],
+                        [
+                            16.5414569,
+                            59.6177499
+                        ],
+                        [
+                            16.5415317,
+                            59.6177654
+                        ],
+                        [
+                            16.5415121,
+                            59.617788
+                        ],
+                        [
+                            16.5415018,
+                            59.6177852
+                        ],
+                        [
+                            16.5414823,
+                            59.6178095
+                        ],
+                        [
+                            16.5414822,
+                            59.6178095
+                        ],
+                        [
+                            16.5414823,
+                            59.6178095
+                        ],
+                        [
+                            16.5414822,
+                            59.6178095
+                        ],
+                        [
+                            16.5414177,
+                            59.6177959
+                        ],
+                        [
+                            16.5414177,
+                            59.6177958
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884007",
+            "properties": {
+                "type": "way",
+                "id": 1091884007,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-017",
+                    "ref": "r1-017",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:26Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971567",
+                        "node/9999971248",
+                        "node/9999971249",
+                        "node/9999971568",
+                        "node/9999971567"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-017",
+                "ref": "r1-017",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5414569,
+                            59.6177499
+                        ],
+                        [
+                            16.5414765,
+                            59.6177271
+                        ],
+                        [
+                            16.5415516,
+                            59.6177433
+                        ],
+                        [
+                            16.5415317,
+                            59.6177654
+                        ],
+                        [
+                            16.5414569,
+                            59.6177499
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884008",
+            "properties": {
+                "type": "way",
+                "id": 1091884008,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-018",
+                    "ref": "r1-018",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:19:08Z",
+                    "version": "2",
+                    "changeset": "125779274",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971438",
+                        "node/9999971570",
+                        "node/9999971250",
+                        "node/9999971249",
+                        "node/9999971248",
+                        "node/9999971438"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-018",
+                "ref": "r1-018",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5414765,
+                            59.617727
+                        ],
+                        [
+                            16.5414959,
+                            59.6177043
+                        ],
+                        [
+                            16.5415707,
+                            59.6177203
+                        ],
+                        [
+                            16.5415516,
+                            59.6177433
+                        ],
+                        [
+                            16.5414765,
+                            59.6177271
+                        ],
+                        [
+                            16.5414765,
+                            59.617727
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884010",
+            "properties": {
+                "type": "way",
+                "id": 1091884010,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-402",
+                    "ref": "r1-402",
+                    "room": "laboratory"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:27Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971575",
+                        "node/9999971576",
+                        "node/9999971825",
+                        "node/9999971330",
+                        "node/9999971826",
+                        "node/9999971575"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-402",
+                "ref": "r1-402",
+                "room": "laboratory"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5419333,
+                            59.6177931
+                        ],
+                        [
+                            16.5419793,
+                            59.6177403
+                        ],
+                        [
+                            16.5420554,
+                            59.617757
+                        ],
+                        [
+                            16.5420024,
+                            59.6178204
+                        ],
+                        [
+                            16.5419474,
+                            59.6178094
+                        ],
+                        [
+                            16.5419333,
+                            59.6177931
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884011",
+            "properties": {
+                "type": "way",
+                "id": 1091884011,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-406",
+                    "ref": "r1-406",
+                    "room": "laboratory"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:27Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971251",
+                        "node/9999971577",
+                        "node/9999971252",
+                        "node/9999971630",
+                        "node/9999971251"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-406",
+                "ref": "r1-406",
+                "room": "laboratory"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5420685,
+                            59.6178355
+                        ],
+                        [
+                            16.5421234,
+                            59.6177715
+                        ],
+                        [
+                            16.5422676,
+                            59.6178024
+                        ],
+                        [
+                            16.542214,
+                            59.6178663
+                        ],
+                        [
+                            16.5420685,
+                            59.6178355
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884012",
+            "properties": {
+                "type": "way",
+                "id": 1091884012,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "room": "toilet"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:52Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971439",
+                        "node/9999971440",
+                        "node/9999971441",
+                        "node/9999971578",
+                        "node/9999971439"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "room": "toilet"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5419836,
+                            59.6174482
+                        ],
+                        [
+                            16.5420316,
+                            59.6173919
+                        ],
+                        [
+                            16.5420748,
+                            59.6174004
+                        ],
+                        [
+                            16.5420255,
+                            59.617457
+                        ],
+                        [
+                            16.5419836,
+                            59.6174482
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884013",
+            "properties": {
+                "type": "way",
+                "id": 1091884013,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "room": "toilets"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:28Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9999971579",
+                        "node/9999971631",
+                        "node/9999971632",
+                        "node/9999971633",
+                        "node/9999971580",
+                        "node/9999971253",
+                        "node/9999971581",
+                        "node/9999971442",
+                        "node/9999971582",
+                        "node/9999971583",
+                        "node/9999971584",
+                        "node/9999971254",
+                        "node/9999971585",
+                        "node/9999971586",
+                        "node/9999971443",
+                        "node/9999971587",
+                        "node/9999971444",
+                        "node/9999971588",
+                        "node/9999971579"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "room": "toilets"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.541722,
+                            59.6176541
+                        ],
+                        [
+                            16.5417355,
+                            59.6176381
+                        ],
+                        [
+                            16.5417472,
+                            59.6176255
+                        ],
+                        [
+                            16.5417489,
+                            59.617626
+                        ],
+                        [
+                            16.5417607,
+                            59.6176119
+                        ],
+                        [
+                            16.5418069,
+                            59.6176213
+                        ],
+                        [
+                            16.5418319,
+                            59.6175926
+                        ],
+                        [
+                            16.5418914,
+                            59.617605
+                        ],
+                        [
+                            16.5418629,
+                            59.6176378
+                        ],
+                        [
+                            16.5418529,
+                            59.6176491
+                        ],
+                        [
+                            16.5418467,
+                            59.6176477
+                        ],
+                        [
+                            16.5418428,
+                            59.6176527
+                        ],
+                        [
+                            16.5418388,
+                            59.6176518
+                        ],
+                        [
+                            16.5418215,
+                            59.6176745
+                        ],
+                        [
+                            16.5418052,
+                            59.6176711
+                        ],
+                        [
+                            16.5418002,
+                            59.6176779
+                        ],
+                        [
+                            16.5417692,
+                            59.6176721
+                        ],
+                        [
+                            16.5417749,
+                            59.6176648
+                        ],
+                        [
+                            16.541722,
+                            59.6176541
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884014",
+            "properties": {
+                "type": "way",
+                "id": 1091884014,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-121",
+                    "ref": "r1-121",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:28Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9997947921",
+                        "node/9997947920",
+                        "node/9997947919",
+                        "node/9997947918",
+                        "node/9997947921"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-121",
+                "ref": "r1-121",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5421126,
+                            59.6177464
+                        ],
+                        [
+                            16.5421402,
+                            59.6177138
+                        ],
+                        [
+                            16.5422463,
+                            59.6177364
+                        ],
+                        [
+                            16.5422188,
+                            59.6177687
+                        ],
+                        [
+                            16.5421126,
+                            59.6177464
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884015",
+            "properties": {
+                "type": "way",
+                "id": 1091884015,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "Omega",
+                    "ref": "omega",
+                    "room": "lecture"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:28Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9997898339",
+                        "node/9997947917",
+                        "node/9997947825",
+                        "node/9997947824",
+                        "node/9997947823",
+                        "node/9997917237",
+                        "node/9997898437",
+                        "node/9997898436",
+                        "node/9997917619",
+                        "node/9997917325",
+                        "node/9997917235",
+                        "node/9997917234",
+                        "node/9997917618",
+                        "node/9997917617",
+                        "node/9997917517",
+                        "node/9997898342",
+                        "node/9997898341",
+                        "node/9997898340",
+                        "node/9997898339"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "Omega",
+                "ref": "omega",
+                "room": "lecture"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5414961,
+                            59.6176101
+                        ],
+                        [
+                            16.5414442,
+                            59.6176227
+                        ],
+                        [
+                            16.5413828,
+                            59.6176271
+                        ],
+                        [
+                            16.5413533,
+                            59.6176264
+                        ],
+                        [
+                            16.541304,
+                            59.6175981
+                        ],
+                        [
+                            16.5412775,
+                            59.6175657
+                        ],
+                        [
+                            16.5412732,
+                            59.6175224
+                        ],
+                        [
+                            16.541295,
+                            59.6174906
+                        ],
+                        [
+                            16.5413372,
+                            59.6174614
+                        ],
+                        [
+                            16.5413875,
+                            59.6174409
+                        ],
+                        [
+                            16.5414482,
+                            59.6174295
+                        ],
+                        [
+                            16.541522,
+                            59.617428
+                        ],
+                        [
+                            16.5415739,
+                            59.6174597
+                        ],
+                        [
+                            16.5415967,
+                            59.6174938
+                        ],
+                        [
+                            16.5416018,
+                            59.6175118
+                        ],
+                        [
+                            16.541593,
+                            59.6175481
+                        ],
+                        [
+                            16.5415655,
+                            59.6175769
+                        ],
+                        [
+                            16.5415337,
+                            59.6175949
+                        ],
+                        [
+                            16.5414961,
+                            59.6176101
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884018",
+            "properties": {
+                "type": "way",
+                "id": 1091884018,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-141",
+                    "ref": "r1-141",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:29Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9997917635",
+                        "node/9997917634",
+                        "node/9997917633",
+                        "node/9997917632",
+                        "node/9997917631",
+                        "node/9997917630",
+                        "node/9997917635"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-141",
+                "ref": "r1-141",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5418787,
+                            59.6176989
+                        ],
+                        [
+                            16.5418887,
+                            59.6176751
+                        ],
+                        [
+                            16.5419059,
+                            59.6176457
+                        ],
+                        [
+                            16.5419265,
+                            59.6176186
+                        ],
+                        [
+                            16.5420651,
+                            59.6176481
+                        ],
+                        [
+                            16.5419954,
+                            59.6177244
+                        ],
+                        [
+                            16.5418787,
+                            59.6176989
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884019",
+            "properties": {
+                "type": "way",
+                "id": 1091884019,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-142",
+                    "ref": "r1-142",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:30Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9997917632",
+                        "node/9997917629",
+                        "node/9997917628",
+                        "node/9997917627",
+                        "node/9997917626",
+                        "node/9997917624",
+                        "node/9997917633",
+                        "node/9997917632"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-142",
+                "ref": "r1-142",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5419265,
+                            59.6176186
+                        ],
+                        [
+                            16.5419551,
+                            59.6175877
+                        ],
+                        [
+                            16.541983,
+                            59.617566
+                        ],
+                        [
+                            16.5420048,
+                            59.6175501
+                        ],
+                        [
+                            16.542097,
+                            59.6175691
+                        ],
+                        [
+                            16.5421144,
+                            59.6175884
+                        ],
+                        [
+                            16.5420651,
+                            59.6176481
+                        ],
+                        [
+                            16.5419265,
+                            59.6176186
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884027",
+            "properties": {
+                "type": "way",
+                "id": 1091884027,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-502",
+                    "ref": "r1-502",
+                    "room": "computer"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:30Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9997917623",
+                        "node/9997917622",
+                        "node/9997917621",
+                        "node/9997909449",
+                        "node/9997909445",
+                        "node/9997917623"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-502",
+                "ref": "r1-502",
+                "room": "computer"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5421255,
+                            59.617564
+                        ],
+                        [
+                            16.5421734,
+                            59.6175091
+                        ],
+                        [
+                            16.5423196,
+                            59.6175416
+                        ],
+                        [
+                            16.5422606,
+                            59.6176106
+                        ],
+                        [
+                            16.5421416,
+                            59.6175854
+                        ],
+                        [
+                            16.5421255,
+                            59.617564
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884028",
+            "properties": {
+                "type": "way",
+                "id": 1091884028,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-506",
+                    "ref": "r1-506",
+                    "room": "computer"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:30Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9997917621",
+                        "node/9997909444",
+                        "node/9997909442",
+                        "node/9997909440",
+                        "node/9997909439",
+                        "node/9997909449",
+                        "node/9997917621"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-506",
+                "ref": "r1-506",
+                "room": "computer"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5422606,
+                            59.6176106
+                        ],
+                        [
+                            16.5423196,
+                            59.6175416
+                        ],
+                        [
+                            16.5424842,
+                            59.6175764
+                        ],
+                        [
+                            16.5424272,
+                            59.6176434
+                        ],
+                        [
+                            16.542409,
+                            59.6176392
+                        ],
+                        [
+                            16.5424061,
+                            59.6176423
+                        ],
+                        [
+                            16.5422606,
+                            59.6176106
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884029",
+            "properties": {
+                "type": "way",
+                "id": 1091884029,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "Pi",
+                    "ref": "pi",
+                    "room": "lecture"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:31Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9997909438",
+                        "node/9999971439",
+                        "node/9999971578",
+                        "node/9997909437",
+                        "node/9997909436",
+                        "node/9999971230",
+                        "node/9999971817",
+                        "node/9997909438"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "Pi",
+                "ref": "pi",
+                "room": "lecture"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5417973,
+                            59.6174096
+                        ],
+                        [
+                            16.5418541,
+                            59.6173426
+                        ],
+                        [
+                            16.5420339,
+                            59.6173819
+                        ],
+                        [
+                            16.5420294,
+                            59.6173876
+                        ],
+                        [
+                            16.5420344,
+                            59.6173886
+                        ],
+                        [
+                            16.5420316,
+                            59.6173919
+                        ],
+                        [
+                            16.5419836,
+                            59.6174482
+                        ],
+                        [
+                            16.5417973,
+                            59.6174096
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884030",
+            "properties": {
+                "type": "way",
+                "id": 1091884030,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-151",
+                    "ref": "r1-151",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:31Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9997909435",
+                        "node/9997909434",
+                        "node/9997909433",
+                        "node/9997909432",
+                        "node/9997909431",
+                        "node/9997909430",
+                        "node/9997909435"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-151",
+                "ref": "r1-151",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5420735,
+                            59.6174694
+                        ],
+                        [
+                            16.5420809,
+                            59.6174505
+                        ],
+                        [
+                            16.5420943,
+                            59.6174255
+                        ],
+                        [
+                            16.5421204,
+                            59.617391
+                        ],
+                        [
+                            16.5422599,
+                            59.6174187
+                        ],
+                        [
+                            16.5421908,
+                            59.6174946
+                        ],
+                        [
+                            16.5420735,
+                            59.6174694
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884034",
+            "properties": {
+                "type": "way",
+                "id": 1091884034,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-152",
+                    "ref": "r1-152",
+                    "room": "amphitheatre"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:32Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9997909432",
+                        "node/9997909429",
+                        "node/9997909428",
+                        "node/9997909427",
+                        "node/9997909426",
+                        "node/9997909431",
+                        "node/9997909432"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-152",
+                "ref": "r1-152",
+                "room": "amphitheatre"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5421204,
+                            59.617391
+                        ],
+                        [
+                            16.5421375,
+                            59.6173712
+                        ],
+                        [
+                            16.5421613,
+                            59.6173503
+                        ],
+                        [
+                            16.5421985,
+                            59.6173203
+                        ],
+                        [
+                            16.5423209,
+                            59.6173474
+                        ],
+                        [
+                            16.5422599,
+                            59.6174187
+                        ],
+                        [
+                            16.5421204,
+                            59.617391
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091884035",
+            "properties": {
+                "type": "way",
+                "id": 1091884035,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "0",
+                    "name": "R1-622",
+                    "ref": "r1-622",
+                    "room": "laboratory"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T16:07:32Z",
+                    "version": "1",
+                    "changeset": "125778783",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        0
+                    ],
+                    "nodes": [
+                        "node/9997909424",
+                        "node/9997909423",
+                        "node/9997909422",
+                        "node/9997909421",
+                        "node/9997909424"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "0",
+                "name": "R1-622",
+                "ref": "r1-622",
+                "room": "laboratory"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5423964,
+                            59.6173632
+                        ],
+                        [
+                            16.5425201,
+                            59.6173893
+                        ],
+                        [
+                            16.5424708,
+                            59.6174497
+                        ],
+                        [
+                            16.5423454,
+                            59.6174234
+                        ],
+                        [
+                            16.5423964,
+                            59.6173632
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091934583",
+            "properties": {
+                "type": "way",
+                "id": 1091934583,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-205",
+                    "ref": "r2-205",
+                    "room": "class"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:53Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000428717",
+                        "node/10000428928",
+                        "node/10000428722",
+                        "node/10000428926",
+                        "node/10000428927",
+                        "node/10000428717"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-205",
+                "ref": "r2-205",
+                "room": "class"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5413607,
+                            59.6182318
+                        ],
+                        [
+                            16.5414211,
+                            59.6181615
+                        ],
+                        [
+                            16.5416396,
+                            59.6182089
+                        ],
+                        [
+                            16.5415809,
+                            59.6182795
+                        ],
+                        [
+                            16.5415798,
+                            59.6182793
+                        ],
+                        [
+                            16.5413607,
+                            59.6182318
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091934584",
+            "properties": {
+                "type": "way",
+                "id": 1091934584,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-208",
+                    "ref": "r2-208",
+                    "room": "class"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:53Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000428928",
+                        "node/10000428722",
+                        "node/10000428723",
+                        "node/10000428724",
+                        "node/10000428926",
+                        "node/10000428928"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-208",
+                "ref": "r2-208",
+                "room": "class"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5415798,
+                            59.6182793
+                        ],
+                        [
+                            16.5416396,
+                            59.6182089
+                        ],
+                        [
+                            16.5418676,
+                            59.6182586
+                        ],
+                        [
+                            16.5418081,
+                            59.6183288
+                        ],
+                        [
+                            16.5415809,
+                            59.6182795
+                        ],
+                        [
+                            16.5415798,
+                            59.6182793
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091934585",
+            "properties": {
+                "type": "way",
+                "id": 1091934585,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-121",
+                    "ref": "r2-121",
+                    "room": "class"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:53Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000428725",
+                        "node/10000429120",
+                        "node/10000428726",
+                        "node/10000428929",
+                        "node/10000428727",
+                        "node/10000428728",
+                        "node/10000428729",
+                        "node/10000428730",
+                        "node/10000446217",
+                        "node/10000428731",
+                        "node/10000428732",
+                        "node/10000428725"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-121",
+                "ref": "r2-121",
+                "room": "class"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5416135,
+                            59.6181848
+                        ],
+                        [
+                            16.5414898,
+                            59.6181578
+                        ],
+                        [
+                            16.5414982,
+                            59.618138
+                        ],
+                        [
+                            16.5415243,
+                            59.6180964
+                        ],
+                        [
+                            16.5415545,
+                            59.6180613
+                        ],
+                        [
+                            16.541579,
+                            59.618039
+                        ],
+                        [
+                            16.5416065,
+                            59.6180167
+                        ],
+                        [
+                            16.5416175,
+                            59.6180084
+                        ],
+                        [
+                            16.5417101,
+                            59.6180283
+                        ],
+                        [
+                            16.5417238,
+                            59.6180469
+                        ],
+                        [
+                            16.5417285,
+                            59.6180508
+                        ],
+                        [
+                            16.5416135,
+                            59.6181848
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091934586",
+            "properties": {
+                "type": "way",
+                "id": 1091934586,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-302",
+                    "ref": "r2-302",
+                    "room": "class"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:54Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000428733",
+                        "node/10000428734",
+                        "node/10000428735",
+                        "node/10000428930",
+                        "node/10000428736",
+                        "node/10000428737",
+                        "node/10000428733"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-302",
+                "ref": "r2-302",
+                "room": "class"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5417406,
+                            59.618023
+                        ],
+                        [
+                            16.5417875,
+                            59.6179679
+                        ],
+                        [
+                            16.5419347,
+                            59.618
+                        ],
+                        [
+                            16.541875,
+                            59.6180702
+                        ],
+                        [
+                            16.5417577,
+                            59.6180452
+                        ],
+                        [
+                            16.5417533,
+                            59.6180393
+                        ],
+                        [
+                            16.5417406,
+                            59.618023
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091934587",
+            "properties": {
+                "type": "way",
+                "id": 1091934587,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-014",
+                    "ref": "r2-014",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:54Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/9999972022",
+                        "node/9999971539",
+                        "node/10000428740",
+                        "node/10000428931",
+                        "node/10000428932",
+                        "node/10000428738",
+                        "node/10000428739",
+                        "node/10000393055",
+                        "node/9999972022"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-014",
+                "ref": "r2-014",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5412832,
+                            59.6180149
+                        ],
+                        [
+                            16.5412832,
+                            59.6180148
+                        ],
+                        [
+                            16.5413254,
+                            59.6179642
+                        ],
+                        [
+                            16.5413258,
+                            59.6179638
+                        ],
+                        [
+                            16.541414,
+                            59.6179833
+                        ],
+                        [
+                            16.5415136,
+                            59.6180054
+                        ],
+                        [
+                            16.5414713,
+                            59.6180552
+                        ],
+                        [
+                            16.5414618,
+                            59.6180535
+                        ],
+                        [
+                            16.5412832,
+                            59.6180149
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091934588",
+            "properties": {
+                "type": "way",
+                "id": 1091934588,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-013",
+                    "ref": "r2-013",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:54Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000428740",
+                        "node/10000428931",
+                        "node/10000428741",
+                        "node/10000428742",
+                        "node/10000428932",
+                        "node/10000428740"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-013",
+                "ref": "r2-013",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5413254,
+                            59.6179642
+                        ],
+                        [
+                            16.5413258,
+                            59.6179638
+                        ],
+                        [
+                            16.5413447,
+                            59.617941
+                        ],
+                        [
+                            16.5414345,
+                            59.6179603
+                        ],
+                        [
+                            16.541414,
+                            59.6179833
+                        ],
+                        [
+                            16.5413254,
+                            59.6179642
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091934589",
+            "properties": {
+                "type": "way",
+                "id": 1091934589,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-012",
+                    "ref": "r2-012",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:55Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000428742",
+                        "node/10000428743",
+                        "node/10000428744",
+                        "node/10000428741",
+                        "node/10000428742"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-012",
+                "ref": "r2-012",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5414345,
+                            59.6179603
+                        ],
+                        [
+                            16.5413447,
+                            59.617941
+                        ],
+                        [
+                            16.5413667,
+                            59.6179184
+                        ],
+                        [
+                            16.5414542,
+                            59.6179377
+                        ],
+                        [
+                            16.5414345,
+                            59.6179603
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091934590",
+            "properties": {
+                "type": "way",
+                "id": 1091934590,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-001",
+                    "ref": "r2-001",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:55Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000428744",
+                        "node/10000428745",
+                        "node/10000403525",
+                        "node/10000428743",
+                        "node/10000428744"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-001",
+                "ref": "r2-001",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5413667,
+                            59.6179184
+                        ],
+                        [
+                            16.5413868,
+                            59.6178957
+                        ],
+                        [
+                            16.5414737,
+                            59.617915
+                        ],
+                        [
+                            16.5414542,
+                            59.6179377
+                        ],
+                        [
+                            16.5413667,
+                            59.6179184
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091934591",
+            "properties": {
+                "type": "way",
+                "id": 1091934591,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-003",
+                    "ref": "r2-003",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:56Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000403525",
+                        "node/10000428746",
+                        "node/10000446218",
+                        "node/10000428934",
+                        "node/10000428745",
+                        "node/10000403525"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-003",
+                "ref": "r2-003",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5414737,
+                            59.617915
+                        ],
+                        [
+                            16.5413868,
+                            59.6178957
+                        ],
+                        [
+                            16.5414048,
+                            59.6178783
+                        ],
+                        [
+                            16.54142,
+                            59.6178636
+                        ],
+                        [
+                            16.5415005,
+                            59.6178824
+                        ],
+                        [
+                            16.5414737,
+                            59.617915
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091934592",
+            "properties": {
+                "type": "way",
+                "id": 1091934592,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-025",
+                    "ref": "r2-025",
+                    "room": "class"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:56Z",
+                    "version": "3",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000429121",
+                        "node/10000429122",
+                        "node/10000505426",
+                        "node/10000428933",
+                        "node/10000428746",
+                        "node/10000446218",
+                        "node/10000428934",
+                        "node/10000393047",
+                        "node/10000429119",
+                        "node/10000429121"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-025",
+                "ref": "r2-025",
+                "room": "class"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5414185,
+                            59.6177933
+                        ],
+                        [
+                            16.5416075,
+                            59.617835
+                        ],
+                        [
+                            16.5415788,
+                            59.6178697
+                        ],
+                        [
+                            16.5415555,
+                            59.6178979
+                        ],
+                        [
+                            16.5415005,
+                            59.6178824
+                        ],
+                        [
+                            16.54142,
+                            59.6178636
+                        ],
+                        [
+                            16.5414048,
+                            59.6178783
+                        ],
+                        [
+                            16.5413981,
+                            59.6178772
+                        ],
+                        [
+                            16.5413548,
+                            59.6178679
+                        ],
+                        [
+                            16.5414185,
+                            59.6177933
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091934593",
+            "properties": {
+                "type": "way",
+                "id": 1091934593,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "Paros",
+                    "ref": "paros",
+                    "room": "lecture"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:56Z",
+                    "version": "3",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000429122",
+                        "node/10000505429",
+                        "node/10000428935",
+                        "node/10000428936",
+                        "node/10000429121",
+                        "node/10000429122"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "Paros",
+                "ref": "paros",
+                "room": "lecture"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5416075,
+                            59.617835
+                        ],
+                        [
+                            16.5414185,
+                            59.6177933
+                        ],
+                        [
+                            16.5414972,
+                            59.6177012
+                        ],
+                        [
+                            16.5416856,
+                            59.6177424
+                        ],
+                        [
+                            16.5416171,
+                            59.6178236
+                        ],
+                        [
+                            16.5416075,
+                            59.617835
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091934594",
+            "properties": {
+                "type": "way",
+                "id": 1091934594,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "Naxos",
+                    "ref": "naxos",
+                    "room": "lecture"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:57Z",
+                    "version": "3",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000428936",
+                        "node/10000428747",
+                        "node/10000403526",
+                        "node/10000506019",
+                        "node/10000428748",
+                        "node/10000428749",
+                        "node/10000428937",
+                        "node/10000428750",
+                        "node/10000428938",
+                        "node/10000428939",
+                        "node/10000446417",
+                        "node/10000446517",
+                        "node/10000403527",
+                        "node/10000428935",
+                        "node/10000428936"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "Naxos",
+                "ref": "naxos",
+                "room": "lecture"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5414972,
+                            59.6177012
+                        ],
+                        [
+                            16.5416008,
+                            59.6175871
+                        ],
+                        [
+                            16.5417831,
+                            59.6176271
+                        ],
+                        [
+                            16.5417731,
+                            59.6176386
+                        ],
+                        [
+                            16.5417436,
+                            59.6176725
+                        ],
+                        [
+                            16.5418234,
+                            59.6176885
+                        ],
+                        [
+                            16.5418147,
+                            59.6176993
+                        ],
+                        [
+                            16.5418308,
+                            59.6177027
+                        ],
+                        [
+                            16.5417852,
+                            59.6177556
+                        ],
+                        [
+                            16.5417684,
+                            59.6177512
+                        ],
+                        [
+                            16.541759,
+                            59.6177661
+                        ],
+                        [
+                            16.5417349,
+                            59.6177624
+                        ],
+                        [
+                            16.5417416,
+                            59.6177543
+                        ],
+                        [
+                            16.5416856,
+                            59.6177424
+                        ],
+                        [
+                            16.5414972,
+                            59.6177012
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091934595",
+            "properties": {
+                "type": "way",
+                "id": 1091934595,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "Milos",
+                    "ref": "milos",
+                    "room": "lecture"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:57Z",
+                    "version": "3",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000428747",
+                        "node/10000429024",
+                        "node/10000429023",
+                        "node/10000403528",
+                        "node/10000403529",
+                        "node/10000403530",
+                        "node/10000506117",
+                        "node/10000506018",
+                        "node/10000403526",
+                        "node/10000428747"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "Milos",
+                "ref": "milos",
+                "room": "lecture"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5416008,
+                            59.6175871
+                        ],
+                        [
+                            16.5416928,
+                            59.6174694
+                        ],
+                        [
+                            16.5417387,
+                            59.6174795
+                        ],
+                        [
+                            16.5417362,
+                            59.6174951
+                        ],
+                        [
+                            16.5418187,
+                            59.6175121
+                        ],
+                        [
+                            16.541873,
+                            59.6175213
+                        ],
+                        [
+                            16.5418122,
+                            59.6175929
+                        ],
+                        [
+                            16.541793,
+                            59.6176155
+                        ],
+                        [
+                            16.5417831,
+                            59.6176271
+                        ],
+                        [
+                            16.5416008,
+                            59.6175871
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091935054",
+            "properties": {
+                "type": "way",
+                "id": 1091935054,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "2",
+                    "name": "R3-121",
+                    "ref": "r3-121",
+                    "room": "class"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T20:50:15Z",
+                    "version": "2",
+                    "changeset": "125788157",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        2
+                    ],
+                    "nodes": [
+                        "node/10000446418",
+                        "node/10000403531",
+                        "node/10000428751",
+                        "node/10000403532",
+                        "node/10000428752",
+                        "node/10000403533",
+                        "node/10000446418"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "2",
+                "name": "R3-121",
+                "ref": "r3-121",
+                "room": "class"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5414854,
+                            59.6181575
+                        ],
+                        [
+                            16.5414948,
+                            59.6181358
+                        ],
+                        [
+                            16.5415122,
+                            59.6181059
+                        ],
+                        [
+                            16.5415344,
+                            59.6180778
+                        ],
+                        [
+                            16.5416725,
+                            59.6181083
+                        ],
+                        [
+                            16.5416041,
+                            59.6181843
+                        ],
+                        [
+                            16.5414854,
+                            59.6181575
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091935055",
+            "properties": {
+                "type": "way",
+                "id": 1091935055,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "2",
+                    "name": "R3-122",
+                    "ref": "r3-122",
+                    "room": "class"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T20:50:15Z",
+                    "version": "2",
+                    "changeset": "125788157",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        2
+                    ],
+                    "nodes": [
+                        "node/10000428751",
+                        "node/10000428753",
+                        "node/10000428754",
+                        "node/10000403534",
+                        "node/10000428940",
+                        "node/10000428941",
+                        "node/10000403532",
+                        "node/10000428751"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "2",
+                "name": "R3-122",
+                "ref": "r3-122",
+                "room": "class"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5416725,
+                            59.6181083
+                        ],
+                        [
+                            16.5415344,
+                            59.6180778
+                        ],
+                        [
+                            16.5415498,
+                            59.6180602
+                        ],
+                        [
+                            16.5415706,
+                            59.6180408
+                        ],
+                        [
+                            16.5415927,
+                            59.6180229
+                        ],
+                        [
+                            16.5416155,
+                            59.6180079
+                        ],
+                        [
+                            16.5417322,
+                            59.6180337
+                        ],
+                        [
+                            16.5416725,
+                            59.6181083
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940455",
+            "properties": {
+                "type": "way",
+                "id": 1091940455,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "2",
+                    "name": "R3-131",
+                    "ref": "r3-131",
+                    "room": "conference"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T20:50:09Z",
+                    "version": "1",
+                    "changeset": "125788157",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        2
+                    ],
+                    "nodes": [
+                        "node/10000505417",
+                        "node/10000505517",
+                        "node/10000505518",
+                        "node/10000505617",
+                        "node/10000505418",
+                        "node/10000505419",
+                        "node/10000505717",
+                        "node/10000505417"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "2",
+                "name": "R3-131",
+                "ref": "r3-131",
+                "room": "conference"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5418341,
+                            59.6178702
+                        ],
+                        [
+                            16.5417711,
+                            59.6179459
+                        ],
+                        [
+                            16.5416839,
+                            59.6179269
+                        ],
+                        [
+                            16.5416879,
+                            59.6179113
+                        ],
+                        [
+                            16.5416987,
+                            59.6178936
+                        ],
+                        [
+                            16.5417168,
+                            59.6178662
+                        ],
+                        [
+                            16.5417295,
+                            59.6178485
+                        ],
+                        [
+                            16.5418341,
+                            59.6178702
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940458",
+            "properties": {
+                "type": "way",
+                "id": 1091940458,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "2",
+                    "name": "R3-151",
+                    "ref": "r3-151"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T20:50:09Z",
+                    "version": "1",
+                    "changeset": "125788157",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        2
+                    ],
+                    "nodes": [
+                        "node/10000505420",
+                        "node/10000505421",
+                        "node/10000505422",
+                        "node/10000505817",
+                        "node/10000505818",
+                        "node/10000505423",
+                        "node/10000505420"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "2",
+                "name": "R3-151",
+                "ref": "r3-151"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5420768,
+                            59.617468
+                        ],
+                        [
+                            16.5420929,
+                            59.6174375
+                        ],
+                        [
+                            16.5421084,
+                            59.6174141
+                        ],
+                        [
+                            16.5421251,
+                            59.617391
+                        ],
+                        [
+                            16.5422586,
+                            59.6174195
+                        ],
+                        [
+                            16.5421955,
+                            59.6174924
+                        ],
+                        [
+                            16.5420768,
+                            59.617468
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940459",
+            "properties": {
+                "type": "way",
+                "id": 1091940459,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "2",
+                    "name": "R3-152",
+                    "ref": "r3-152"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T20:50:09Z",
+                    "version": "1",
+                    "changeset": "125788157",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        2
+                    ],
+                    "nodes": [
+                        "node/10000505422",
+                        "node/10000505817",
+                        "node/10000505819",
+                        "node/10000505424",
+                        "node/10000505718",
+                        "node/10000505425",
+                        "node/10000505422"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "2",
+                "name": "R3-152",
+                "ref": "r3-152"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5422586,
+                            59.6174195
+                        ],
+                        [
+                            16.5421251,
+                            59.617391
+                        ],
+                        [
+                            16.5421486,
+                            59.6173686
+                        ],
+                        [
+                            16.5421754,
+                            59.6173449
+                        ],
+                        [
+                            16.5422056,
+                            59.6173212
+                        ],
+                        [
+                            16.5423256,
+                            59.6173452
+                        ],
+                        [
+                            16.5422586,
+                            59.6174195
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940460",
+            "properties": {
+                "type": "way",
+                "id": 1091940460,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-032",
+                    "ref": "r2-032"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:58Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505426",
+                        "node/10000505427",
+                        "node/10000505428",
+                        "node/10000505429",
+                        "node/10000429122",
+                        "node/10000505426"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-032",
+                "ref": "r2-032"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5415788,
+                            59.6178697
+                        ],
+                        [
+                            16.5416075,
+                            59.617835
+                        ],
+                        [
+                            16.5416171,
+                            59.6178236
+                        ],
+                        [
+                            16.541698,
+                            59.6178402
+                        ],
+                        [
+                            16.5416588,
+                            59.617887
+                        ],
+                        [
+                            16.5415788,
+                            59.6178697
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940461",
+            "properties": {
+                "type": "way",
+                "id": 1091940461,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-132",
+                    "ref": "r2-132",
+                    "room": "class"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:58Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505430",
+                        "node/10000505431",
+                        "node/10000505432",
+                        "node/10000505433",
+                        "node/10000505434",
+                        "node/10000505435",
+                        "node/10000505519",
+                        "node/10000505820",
+                        "node/10000505430"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-132",
+                "ref": "r2-132",
+                "room": "class"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5417349,
+                            59.6178509
+                        ],
+                        [
+                            16.5417593,
+                            59.6178243
+                        ],
+                        [
+                            16.5417818,
+                            59.6178039
+                        ],
+                        [
+                            16.541814,
+                            59.6177783
+                        ],
+                        [
+                            16.5419082,
+                            59.6177985
+                        ],
+                        [
+                            16.5419209,
+                            59.617816
+                        ],
+                        [
+                            16.5419253,
+                            59.6178207
+                        ],
+                        [
+                            16.541874,
+                            59.6178801
+                        ],
+                        [
+                            16.5417349,
+                            59.6178509
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940462",
+            "properties": {
+                "type": "way",
+                "id": 1091940462,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-356",
+                    "ref": "r2-356"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:59Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505821",
+                        "node/10000505822",
+                        "node/10000505823",
+                        "node/10000505917",
+                        "node/10000505821"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-356",
+                "ref": "r2-356"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5421348,
+                            59.617955
+                        ],
+                        [
+                            16.5421617,
+                            59.6179248
+                        ],
+                        [
+                            16.5422609,
+                            59.6179462
+                        ],
+                        [
+                            16.5422341,
+                            59.6179771
+                        ],
+                        [
+                            16.5421348,
+                            59.617955
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940463",
+            "properties": {
+                "type": "way",
+                "id": 1091940463,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-402",
+                    "ref": "r2-402",
+                    "room": "laboratory"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:59Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505520",
+                        "node/10000505436",
+                        "node/10000505521",
+                        "node/10000505522",
+                        "node/10000505523",
+                        "node/10000505719",
+                        "node/10000505520"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-402",
+                "ref": "r2-402",
+                "room": "laboratory"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.541937,
+                            59.6177933
+                        ],
+                        [
+                            16.5419857,
+                            59.6177375
+                        ],
+                        [
+                            16.5421338,
+                            59.61777
+                        ],
+                        [
+                            16.5420725,
+                            59.6178404
+                        ],
+                        [
+                            16.5419548,
+                            59.6178146
+                        ],
+                        [
+                            16.5419501,
+                            59.6178092
+                        ],
+                        [
+                            16.541937,
+                            59.6177933
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940464",
+            "properties": {
+                "type": "way",
+                "id": 1091940464,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-408",
+                    "ref": "r2-408",
+                    "room": "laboratory"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:06:59Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505524",
+                        "node/10000505525",
+                        "node/10000505526",
+                        "node/10000505824",
+                        "node/10000505524"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-408",
+                "ref": "r2-408",
+                "room": "laboratory"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5421188,
+                            59.6178507
+                        ],
+                        [
+                            16.5421778,
+                            59.6177802
+                        ],
+                        [
+                            16.5422998,
+                            59.6178065
+                        ],
+                        [
+                            16.5422344,
+                            59.617875
+                        ],
+                        [
+                            16.5421188,
+                            59.6178507
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940465",
+            "properties": {
+                "type": "way",
+                "id": 1091940465,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-041",
+                    "ref": "r2-041",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:00Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505437",
+                        "node/10000506017",
+                        "node/10000506018",
+                        "node/10000403526",
+                        "node/10000506019",
+                        "node/10000505437"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-041",
+                "ref": "r2-041",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5418552,
+                            59.6176571
+                        ],
+                        [
+                            16.5417731,
+                            59.6176386
+                        ],
+                        [
+                            16.5417831,
+                            59.6176271
+                        ],
+                        [
+                            16.541793,
+                            59.6176155
+                        ],
+                        [
+                            16.5418753,
+                            59.6176335
+                        ],
+                        [
+                            16.5418552,
+                            59.6176571
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940466",
+            "properties": {
+                "type": "way",
+                "id": 1091940466,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-042",
+                    "ref": "r2-042",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:00Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000506017",
+                        "node/10000505720",
+                        "node/10000506117",
+                        "node/10000506018",
+                        "node/10000506017"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-042",
+                "ref": "r2-042",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5418753,
+                            59.6176335
+                        ],
+                        [
+                            16.541793,
+                            59.6176155
+                        ],
+                        [
+                            16.5418122,
+                            59.6175929
+                        ],
+                        [
+                            16.5418931,
+                            59.6176113
+                        ],
+                        [
+                            16.5418753,
+                            59.6176335
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940467",
+            "properties": {
+                "type": "way",
+                "id": 1091940467,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-043",
+                    "ref": "r2-043",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:01Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505720",
+                        "node/10000505438",
+                        "node/10000403530",
+                        "node/10000506117",
+                        "node/10000505720"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-043",
+                "ref": "r2-043",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5418931,
+                            59.6176113
+                        ],
+                        [
+                            16.5418122,
+                            59.6175929
+                        ],
+                        [
+                            16.541873,
+                            59.6175213
+                        ],
+                        [
+                            16.5419592,
+                            59.6175372
+                        ],
+                        [
+                            16.5418931,
+                            59.6176113
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940468",
+            "properties": {
+                "type": "way",
+                "id": 1091940468,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-141",
+                    "ref": "r2-141",
+                    "room": "class"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:01Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505439",
+                        "node/10000505527",
+                        "node/10000506217",
+                        "node/10000505825",
+                        "node/10000505826",
+                        "node/10000505827",
+                        "node/10000505439"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-141",
+                "ref": "r2-141",
+                "room": "class"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5418841,
+                            59.6176974
+                        ],
+                        [
+                            16.5418898,
+                            59.6176864
+                        ],
+                        [
+                            16.5418991,
+                            59.6176664
+                        ],
+                        [
+                            16.5419105,
+                            59.6176473
+                        ],
+                        [
+                            16.5420403,
+                            59.6176756
+                        ],
+                        [
+                            16.5419997,
+                            59.6177227
+                        ],
+                        [
+                            16.5418841,
+                            59.6176974
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940469",
+            "properties": {
+                "type": "way",
+                "id": 1091940469,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-142",
+                    "ref": "r2-142",
+                    "room": "class"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:01Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505825",
+                        "node/10000506317",
+                        "node/10000505721",
+                        "node/10000505440",
+                        "node/10000505441",
+                        "node/10000505442",
+                        "node/10000505528",
+                        "node/10000505529",
+                        "node/10000506217",
+                        "node/10000505825"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-142",
+                "ref": "r2-142",
+                "room": "class"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5419105,
+                            59.6176473
+                        ],
+                        [
+                            16.5419303,
+                            59.6176222
+                        ],
+                        [
+                            16.5419504,
+                            59.6175989
+                        ],
+                        [
+                            16.5419679,
+                            59.6175818
+                        ],
+                        [
+                            16.541991,
+                            59.617565
+                        ],
+                        [
+                            16.5420135,
+                            59.6175484
+                        ],
+                        [
+                            16.5421047,
+                            59.6175686
+                        ],
+                        [
+                            16.5421201,
+                            59.6175899
+                        ],
+                        [
+                            16.5420403,
+                            59.6176756
+                        ],
+                        [
+                            16.5419105,
+                            59.6176473
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940470",
+            "properties": {
+                "type": "way",
+                "id": 1091940470,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-502",
+                    "ref": "r2-502",
+                    "room": "computer"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:02Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505828",
+                        "node/10000505530",
+                        "node/10000505829",
+                        "node/10000505531",
+                        "node/10000505830",
+                        "node/10000505828"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-502",
+                "ref": "r2-502",
+                "room": "computer"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5421335,
+                            59.6175633
+                        ],
+                        [
+                            16.5421818,
+                            59.6175067
+                        ],
+                        [
+                            16.5423286,
+                            59.6175396
+                        ],
+                        [
+                            16.5422676,
+                            59.6176098
+                        ],
+                        [
+                            16.5421493,
+                            59.6175845
+                        ],
+                        [
+                            16.5421335,
+                            59.6175633
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940471",
+            "properties": {
+                "type": "way",
+                "id": 1091940471,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-506",
+                    "ref": "r2-506",
+                    "room": "computer"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:02Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505829",
+                        "node/10000505831",
+                        "node/10000505832",
+                        "node/10000505531",
+                        "node/10000505829"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-506",
+                "ref": "r2-506",
+                "room": "computer"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5422676,
+                            59.6176098
+                        ],
+                        [
+                            16.5423286,
+                            59.6175396
+                        ],
+                        [
+                            16.5424926,
+                            59.617576
+                        ],
+                        [
+                            16.5424329,
+                            59.6176437
+                        ],
+                        [
+                            16.5422676,
+                            59.6176098
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940472",
+            "properties": {
+                "type": "way",
+                "id": 1091940472,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-501",
+                    "ref": "r2-501"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:03Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505722",
+                        "node/10000505833",
+                        "node/10000505723",
+                        "node/10000505532",
+                        "node/10000505722"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-501",
+                "ref": "r2-501"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5424866,
+                            59.617556
+                        ],
+                        [
+                            16.5425117,
+                            59.6175257
+                        ],
+                        [
+                            16.5425848,
+                            59.6175408
+                        ],
+                        [
+                            16.5425573,
+                            59.6175715
+                        ],
+                        [
+                            16.5424866,
+                            59.617556
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940473",
+            "properties": {
+                "type": "way",
+                "id": 1091940473,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-151",
+                    "ref": "r2-151",
+                    "room": "class"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:03Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505533",
+                        "node/10000505443",
+                        "node/10000505444",
+                        "node/10000505534",
+                        "node/10000505535",
+                        "node/10000505445",
+                        "node/10000505834",
+                        "node/10000505835",
+                        "node/10000505536",
+                        "node/10000505724",
+                        "node/10000505533"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-151",
+                "ref": "r2-151",
+                "room": "class"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5420805,
+                            59.6174675
+                        ],
+                        [
+                            16.5420889,
+                            59.6174495
+                        ],
+                        [
+                            16.5421013,
+                            59.6174263
+                        ],
+                        [
+                            16.5421151,
+                            59.6174068
+                        ],
+                        [
+                            16.5421452,
+                            59.617371
+                        ],
+                        [
+                            16.5421701,
+                            59.6173486
+                        ],
+                        [
+                            16.5421975,
+                            59.6173278
+                        ],
+                        [
+                            16.5422089,
+                            59.617319
+                        ],
+                        [
+                            16.5423327,
+                            59.6173459
+                        ],
+                        [
+                            16.5422009,
+                            59.6174936
+                        ],
+                        [
+                            16.5420805,
+                            59.6174675
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940474",
+            "properties": {
+                "type": "way",
+                "id": 1091940474,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-092",
+                    "ref": "r2-092",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:03Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000429023",
+                        "node/10000505446",
+                        "node/10000505448",
+                        "node/10000505447",
+                        "node/10000403529",
+                        "node/10000403528",
+                        "node/10000429023"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-092",
+                "ref": "r2-092",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5417387,
+                            59.6174795
+                        ],
+                        [
+                            16.5417569,
+                            59.617458
+                        ],
+                        [
+                            16.5418293,
+                            59.6174727
+                        ],
+                        [
+                            16.5418495,
+                            59.6174768
+                        ],
+                        [
+                            16.5418187,
+                            59.6175121
+                        ],
+                        [
+                            16.5417362,
+                            59.6174951
+                        ],
+                        [
+                            16.5417387,
+                            59.6174795
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940475",
+            "properties": {
+                "type": "way",
+                "id": 1091940475,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-091",
+                    "ref": "r2-091",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:04Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505448",
+                        "node/10000505449",
+                        "node/10000506218",
+                        "node/10000505446",
+                        "node/10000505448"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-091",
+                "ref": "r2-091",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5418293,
+                            59.6174727
+                        ],
+                        [
+                            16.5417569,
+                            59.617458
+                        ],
+                        [
+                            16.5417763,
+                            59.6174351
+                        ],
+                        [
+                            16.5418485,
+                            59.6174504
+                        ],
+                        [
+                            16.5418293,
+                            59.6174727
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940476",
+            "properties": {
+                "type": "way",
+                "id": 1091940476,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-090",
+                    "ref": "r2-090",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:04Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505450",
+                        "node/10000505836",
+                        "node/10000505537",
+                        "node/10000505837",
+                        "node/10000505449",
+                        "node/10000505450"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-090",
+                "ref": "r2-090",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5417764,
+                            59.617435
+                        ],
+                        [
+                            16.5417957,
+                            59.6174123
+                        ],
+                        [
+                            16.5418881,
+                            59.6174316
+                        ],
+                        [
+                            16.541868,
+                            59.617455
+                        ],
+                        [
+                            16.5418485,
+                            59.6174504
+                        ],
+                        [
+                            16.5417764,
+                            59.617435
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940477",
+            "properties": {
+                "type": "way",
+                "id": 1091940477,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-089",
+                    "ref": "r2-089",
+                    "room": "meeting"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:04Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505537",
+                        "node/10000505451",
+                        "node/10000505725",
+                        "node/10000505836",
+                        "node/10000505537"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-089",
+                "ref": "r2-089",
+                "room": "meeting"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5418881,
+                            59.6174316
+                        ],
+                        [
+                            16.5417957,
+                            59.6174123
+                        ],
+                        [
+                            16.5418158,
+                            59.6173885
+                        ],
+                        [
+                            16.5419082,
+                            59.6174095
+                        ],
+                        [
+                            16.5418881,
+                            59.6174316
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940478",
+            "properties": {
+                "type": "way",
+                "id": 1091940478,
+                "tags": {
+                    "indoor": "room",
+                    "level": "1"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T20:50:14Z",
+                    "version": "1",
+                    "changeset": "125788157",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505451",
+                        "node/10000505918",
+                        "node/10000505538",
+                        "node/10000393035",
+                        "node/10000505838",
+                        "node/10000505725",
+                        "node/10000505838",
+                        "node/10000505451"
+                    ]
+                },
+                "indoor": "room",
+                "level": "1"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5419082,
+                            59.6174095
+                        ],
+                        [
+                            16.5418161,
+                            59.6173882
+                        ],
+                        [
+                            16.5418158,
+                            59.6173885
+                        ],
+                        [
+                            16.5418161,
+                            59.6173882
+                        ],
+                        [
+                            16.5418564,
+                            59.6173406
+                        ],
+                        [
+                            16.5419603,
+                            59.6173636
+                        ],
+                        [
+                            16.5419169,
+                            59.6174116
+                        ],
+                        [
+                            16.5419082,
+                            59.6174095
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940479",
+            "properties": {
+                "type": "way",
+                "id": 1091940479,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-605",
+                    "ref": "r2-605",
+                    "room": "laboratory"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:05Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505452",
+                        "node/10000505919",
+                        "node/10000505539",
+                        "node/10000505541",
+                        "node/10000505839",
+                        "node/10000505452"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-605",
+                "ref": "r2-605",
+                "room": "laboratory"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5422961,
+                            59.6173196
+                        ],
+                        [
+                            16.5423562,
+                            59.6172511
+                        ],
+                        [
+                            16.5425413,
+                            59.6172914
+                        ],
+                        [
+                            16.5425417,
+                            59.6172915
+                        ],
+                        [
+                            16.5424835,
+                            59.6173605
+                        ],
+                        [
+                            16.5422961,
+                            59.6173196
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/1091940480",
+            "properties": {
+                "type": "way",
+                "id": 1091940480,
+                "tags": {
+                    "access": "no",
+                    "indoor": "room",
+                    "level": "1",
+                    "name": "R2-606",
+                    "ref": "r2-606",
+                    "room": "class"
+                },
+                "relations": [],
+                "meta": {
+                    "timestamp": "2022-09-04T21:07:05Z",
+                    "version": "2",
+                    "changeset": "125788560",
+                    "user": "Oskar1818",
+                    "uid": "17022032"
+                },
+                "own": {
+                    "levels": [
+                        1
+                    ],
+                    "nodes": [
+                        "node/10000505919",
+                        "node/10000505540",
+                        "node/10000505840",
+                        "node/10000505539",
+                        "node/10000505541",
+                        "node/10000505919"
+                    ]
+                },
+                "access": "no",
+                "indoor": "room",
+                "level": "1",
+                "name": "R2-606",
+                "ref": "r2-606",
+                "room": "class"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            16.5424835,
+                            59.6173605
+                        ],
+                        [
+                            16.5425413,
+                            59.6172914
+                        ],
+                        [
+                            16.5425417,
+                            59.6172915
+                        ],
+                        [
+                            16.5427431,
+                            59.6173353
+                        ],
+                        [
+                            16.542685,
+                            59.6174037
+                        ],
+                        [
+                            16.5424835,
+                            59.6173605
+                        ]
+                    ]
+                ]
+            }
         }
     ]
 }
