@@ -91,8 +91,9 @@ const MapView: NextPage = () => {
     }, [])
     
     const requestLocation = () => {
-        if(GeoRef) 
-        GeoRef.trigger();
+        if(GeoRef) {
+            GeoRef.trigger();
+        }
     }
 
     return (
@@ -237,7 +238,7 @@ const MapView: NextPage = () => {
                 }
             </Map>
             <div className="absolute  h-full w-full pointer-events-none p-3 ">
-                <div className="fixed right-3 bottom-3 rounded-md shadow bg-white p-3 cursor-pointer" onClick={requestLocation} >
+                <div className="fixed right-3 bottom-3 rounded-md shadow bg-white p-3 cursor-pointer pointer-events-auto" onClick={requestLocation} >
                     <MapPinIcon className="h-6 w-6 text-orange-500"/>
                 </div>
                 <div className="relative inline-block">
