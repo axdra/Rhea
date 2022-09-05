@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import LevelSelector from "../components/map/levelSelector";
 import Map, { Source, Layer, PointLike } from "react-map-gl";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Transition } from "@headlessui/react";
+let MapRef: any = null;
 const MapView: NextPage = () => {
     const router = useRouter();
     const [selectedLevel, setSelectedLevel] = useState('0');
@@ -15,11 +17,14 @@ const MapView: NextPage = () => {
     const [mapData, setMapData] = useState<any>();
     const [roomList, setRoomList] = useState<string[]>();
     const [searchList, setSearchList] = useState<string[]>();
+    const [building, setBuilding] = useState<any>();
     useEffect(() => {
         if (mapData) {
+
             setFloorplan({ ...mapData, features: mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.level == selectedLevel) });
+            setBuilding({ ...mapData, features: mapData.features.filter((feature: any) => feature.properties?.indoor === 'level' && feature.properties.tags.level == selectedLevel) });
             setPois({ ...mapData, features: mapData.features.filter((feature: any) => feature.properties?.indoor !== 'room') });
-            if (selectedRoom && selectedRoom.properties.tags.level !== selectedLevel) {
+            if (selectedRoom && selectedRoom.properties?.tags?.level !== selectedLevel) {
 
                 setSelectedRoom(undefined);
             }
@@ -38,10 +43,11 @@ const MapView: NextPage = () => {
     }, [q, mapData]);
 
         
-    
+
 
     const mapRef = useCallback((map: any) => {
         if (map) {
+  
             if (q) {
                 if (mapData) {
                     console.log(mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.name?.toLowerCase() ==( q as string).toLowerCase()));
@@ -51,13 +57,18 @@ const MapView: NextPage = () => {
                     });
                 }
             }
+            if (!MapRef) {
+                console.log('e')
+                MapRef = map;
+            
+                }
         }
     }, [mapData]);
 
     useEffect(() => {
-        fetch('/test1.geojson').then((data) => {
+        fetch('/map.geojson').then((data) => {
             data.json().then((data) => {
-                setRoomList(data.features.filter((feature: any) => feature.properties?.indoor === 'room').map((feature: any) => feature.properties.tags.name));
+                setRoomList(data.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.name).map((feature: any) => feature.properties.tags.name));
                 setFloorplan({ ...data, features: data.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.level == selectedLevel) });
                 setPois({ ...data, features: data.features.filter((feature: any) => feature.properties?.indoor !== 'room') });
                 setMapData(data);
@@ -68,13 +79,7 @@ const MapView: NextPage = () => {
 
     return (
         <div className="flex-1 flex flex-col relative">
-            <div className=" absolute z-50  top-20 flex justify-center w-full px-10">
-                <div className=" py-5 px-5 bg-white  rounded-lg shadow-md ">
-                    <h1>
-                        This feature is still in development, right now it only shows a map of the campus with no functionality or rooms
-                    </h1>
-                </div>
-            </div>
+         
 
             <Map
                 ref={mapRef}
@@ -141,6 +146,35 @@ const MapView: NextPage = () => {
                         }
                     } />
                 </Source>
+                <Source type="geojson" data={building}   >
+
+                    <Layer id="building" type="fill" paint={
+                        {
+                            'fill-color': 'rgb(249,115,22)',
+                            'fill-opacity': 0.05
+                        }
+                    } />
+                    <Layer id="building-outline" type="line" paint={
+                        {
+                            'line-color': 'rgb(249,115,22)',
+                            'line-width': 2,
+                            'line-opacity': 0.5
+                        }
+                    } />
+                    <Layer id="building-label" type="symbol" layout={
+
+                        {
+                            'text-field': '{name}',
+                            'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+                            'text-offset': [0, 0.6],
+
+                        }
+                    } paint={
+                        {
+                            'text-color': 'rgb(249,115,22)',
+                        }
+                    } />
+                </Source>
                 {selectedRoom &&
                     <Source type="geojson" data={selectedRoom}   >
 
@@ -173,10 +207,11 @@ const MapView: NextPage = () => {
                     </Source>
                 }
             </Map>
-            <div className="absolute  h-full w-full pointer-events-none p-3">
-                <div className="relative">
+            <div className="absolute  h-full w-full pointer-events-none p-3 ">
+                <div className="relative inline-block">
                 <input type="text" className="bg-white border  text-orange pointer-events-auto rounded-full shadow-md shadow-neutral-400/10 px-5 focus:ring-orange-500  focus:border-orange-500 border-gray-200 " autoComplete="off" placeholder="Search Room" onChange={
                         (e) => {
+
                         e.target.value.length > 0 ? setSearchList(roomList?.filter((room: string) => room.toLowerCase().includes(e.target.value.toLowerCase()))) : setSearchList(undefined);
                     }
                 }
@@ -188,15 +223,25 @@ const MapView: NextPage = () => {
                         }
                     }
                     />
-                    {searchList &&
-                        <div className="bg-white  absolute left-2 rounded mt-2 shadow p-2 pointer-events-auto
+                    <Transition
+                        show={(searchList && searchList.length > 0) ? true : false}
+                        enter="transition ease-out duration-100"
+                        enterFrom="transform opacity-0 scale-95"
+                        enterTo="transform opacity-100 scale-100"
+                    >
+                        <div className="bg-white   rounded mt-2 shadow p-2 pointer-events-auto absolute w-full
                         ">
-                    {searchList  && searchList.map((room: string) => {
-                        return <div key={room} className="text-orange pointer-events-auto rounded mb-1 px-5 py-2 focus:ring-orange-500  focus:border-orange-500 border-gray-200 hover:bg-orange-500 hover:text-white cursor-pointer " onClick={
+                    {searchList  && searchList.slice(0,5).map((room: string) => {
+                        return <div key={room} className="text-orange  pointer-events-auto rounded mb-1 px-5 py-2 focus:ring-orange-500  focus:border-orange-500 border-gray-200 hover:bg-orange-500 hover:text-white cursor-pointer " onClick={
                             () => {
-                                mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.name == room).forEach((feature: any) => {
+                                mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags?.name == room).forEach((feature: any) => {
                                     setSelectedRoom(feature);
                                     setSelectedLevel(feature.properties.tags.level);
+                                    console.log(MapRef)
+                                    if (MapRef) {
+                                        MapRef.flyTo({ center: [feature.geometry.coordinates[0][0][0], feature.geometry.coordinates[0][1][1]], zoom: 18, speed: 0.3 });
+
+                                    }
                                 });
                             }
                         }>{room}</div>
@@ -204,13 +249,17 @@ const MapView: NextPage = () => {
                             
 
                         </div>
-                    }
+                    </Transition>
+                    
                 </div>
                 <div className="absolute  bottom-3">
                     <LevelSelector levels={['2', '1', '0']} currentLevel={selectedLevel} onLevelSelect={(level) => setSelectedLevel(level)} />
 
                 </div>
-
+                {selectedRoom && <div className="absolute  right-3 top-3 z-30 bg-white px-4 py-2 shadow rounded-lg">
+                    <h1> {selectedRoom.features[0].properties?.name}</h1>
+                    <h2>{selectedRoom.features[0].properties.room[0].toUpperCase() + selectedRoom.features[0].properties.room.slice(1,20)  }</h2>
+                    </div>}
             </div>
         </div>
     );
