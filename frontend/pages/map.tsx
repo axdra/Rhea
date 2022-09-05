@@ -4,6 +4,7 @@ import LevelSelector from "../components/map/levelSelector";
 import Map, { Source, Layer, PointLike } from "react-map-gl";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Transition } from "@headlessui/react";
+import mapboxgl from "mapbox-gl";
 let MapRef: any = null;
 const MapView: NextPage = () => {
     const router = useRouter();
@@ -47,7 +48,17 @@ const MapView: NextPage = () => {
 
     const mapRef = useCallback((map: any) => {
         if (map) {
-  
+            map.addControl(
+                new mapboxgl.GeolocateControl({
+                    positionOptions: {
+                        enableHighAccuracy: true
+                    },
+                    trackUserLocation: true,
+                    showUserHeading: true
+                })
+        
+    
+            )
             if (q) {
                 if (mapData) {
                     console.log(mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.name?.toLowerCase() ==( q as string).toLowerCase()));
@@ -83,6 +94,7 @@ const MapView: NextPage = () => {
 
             <Map
                 ref={mapRef}
+                
                 initialViewState={
                     {
                         latitude: 59.61861227,
