@@ -1,11 +1,13 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import LevelSelector from "../components/map/levelSelector";
-import Map, { Source, Layer, PointLike } from "react-map-gl";
+import Map, { Source, Layer, PointLike, GeolocateControl } from "react-map-gl";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Transition } from "@headlessui/react";
 import mapboxgl from "mapbox-gl";
+import { MapPinIcon } from "@heroicons/react/24/solid";
 let MapRef: any = null;
+let GeoRef: any = null;
 const MapView: NextPage = () => {
     const router = useRouter();
     const [selectedLevel, setSelectedLevel] = useState('0');
@@ -19,6 +21,16 @@ const MapView: NextPage = () => {
     const [roomList, setRoomList] = useState<string[]>();
     const [searchList, setSearchList] = useState<string[]>();
     const [building, setBuilding] = useState<any>();
+    
+    const geolocateControlRef = useCallback((ref:any) => {
+        if (ref) {
+            GeoRef = ref;
+            // Activate as soon as the control is loaded
+            ref.trigger();
+
+        }
+    }, []);
+
     useEffect(() => {
         if (mapData) {
 
@@ -48,17 +60,7 @@ const MapView: NextPage = () => {
 
     const mapRef = useCallback((map: any) => {
         if (map) {
-            map.addControl(
-                new mapboxgl.GeolocateControl({
-                    positionOptions: {
-                        enableHighAccuracy: true
-                    },
-                    trackUserLocation: true,
-                    showUserHeading: true
-                })
-        
-    
-            )
+           
             if (q) {
                 if (mapData) {
                     console.log(mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.name?.toLowerCase() ==( q as string).toLowerCase()));
@@ -87,6 +89,11 @@ const MapView: NextPage = () => {
             })
         })
     }, [])
+    
+    const requestLocation = () => {
+        if(GeoRef) 
+        GeoRef.trigger();
+    }
 
     return (
         <div className="flex-1 flex flex-col relative">
@@ -129,6 +136,16 @@ const MapView: NextPage = () => {
                     }
                 }}
             >
+                <GeolocateControl ref={geolocateControlRef} style={
+                    {
+                        position: 'fixed',
+                        zIndex: 100,
+                        top: 0,
+                        right:0,
+                        height: '0px',
+                        width: '0px'
+
+                }} />
                 <Source type="geojson" data={floorPlan}   >
 
                     <Layer id="rooms" type="fill" paint={
@@ -220,6 +237,9 @@ const MapView: NextPage = () => {
                 }
             </Map>
             <div className="absolute  h-full w-full pointer-events-none p-3 ">
+                <div className="fixed right-3 bottom-3 rounded-md shadow bg-white p-3 cursor-pointer" onClick={requestLocation} >
+                    <MapPinIcon className="h-6 w-6 text-orange-500"/>
+                </div>
                 <div className="relative inline-block">
                 <input type="text" className="bg-white border  text-orange pointer-events-auto rounded-full shadow-md shadow-neutral-400/10 px-5 focus:ring-orange-500  focus:border-orange-500 border-gray-200 " autoComplete="off" placeholder="Search Room" onChange={
                         (e) => {
