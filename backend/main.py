@@ -1,5 +1,4 @@
 from datetime import date
-import json
 from time import sleep
 import time
 from selenium import webdriver
