@@ -137,16 +137,9 @@ const MapView: NextPage = () => {
                     }
                 }}
             >
-                <GeolocateControl ref={geolocateControlRef} style={
-                    {
-                        position: 'fixed',
-                        zIndex: 100,
-                        top: 0,
-                        right:0,
-                        height: '0px',
-                        width: '0px'
-
-                }} />
+                <GeolocateControl ref={geolocateControlRef} positionOptions={{
+                    enableHighAccuracy: true,
+                }} trackUserLocation={true} showUserHeading={true} showUserLocation={true} style={{position:"fixed", left:'0', height:'0'}}  />
                 <Source type="geojson" data={floorPlan}   >
 
                     <Layer id="rooms" type="fill" paint={
@@ -240,7 +233,7 @@ const MapView: NextPage = () => {
             <div className="absolute  h-full w-full pointer-events-none p-3 ">
                 <div className="fixed right-3 bottom-3 rounded-md shadow bg-white p-3 cursor-pointer pointer-events-auto" onClick={requestLocation} >
                     <MapPinIcon className="h-6 w-6 text-orange-500"/>
-                </div>
+                </div> 
                 <div className="relative inline-block">
                 <input type="text" className="bg-white border  text-orange pointer-events-auto rounded-full shadow-md shadow-neutral-400/10 px-5 focus:ring-orange-500  focus:border-orange-500 border-gray-200 " autoComplete="off" placeholder="Search Room" onChange={
                         (e) => {
