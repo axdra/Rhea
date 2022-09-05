@@ -26,7 +26,7 @@ export default function handler(
                     description: event.name,
                     location: event.room,
                     url: 'https://mdu.axeldraws.com/map?q=' + event.room.split(' ')[0],
-                    uid: event.name.replace(' ','_') +"_"+ calendarCode +"_" +start +"_"+ event.room,
+                    uid: event.id,
                 }
             });
             console.log(events)
