@@ -256,7 +256,7 @@ const MapView: NextPage = () => {
                     <LevelSelector levels={['2', '1', '0']} currentLevel={selectedLevel} onLevelSelect={(level) => setSelectedLevel(level)} />
 
                 </div>
-                {selectedRoom && <div className="absolute  right-3 top-3 z-30 bg-white px-4 py-2 shadow rounded-lg">
+                {selectedRoom && selectedRoom.features  && <div className="absolute  right-3 top-3 z-30 bg-white px-4 py-2 shadow rounded-lg">
                     <h1> {selectedRoom.features[0].properties?.name}</h1>
                     <h2>{selectedRoom.features[0].properties.room[0].toUpperCase() + selectedRoom.features[0].properties.room.slice(1,20)  }</h2>
                     </div>}
