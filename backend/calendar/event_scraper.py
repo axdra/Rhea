@@ -82,6 +82,7 @@ if __name__ == '__main__':
                     "parent_calendar": course['id']
                 }
                 events.append(event)
+    sb_client.table('Events').delete().neq('id',0).execute()
     sb_client.table('Events').insert(events).execute()
 
 
