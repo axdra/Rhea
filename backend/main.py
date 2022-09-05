@@ -66,12 +66,12 @@ def get_calendars():
         if(totalreqs % 100 == 0):
             #for every 100 requests print the time it took to get the data
             print("Time taken: ", time.time() - timeNow)
-            print("Total requests: ", totalreqs)
-            
+            print(f"Total requests: {totalreqs} of {len(courses.data)}")
+            print("Total calendars: ", len(calendars))
         for item in items:
             name = item.text;
             if(name == "Visa undergrupper"):
-                break
+                continue
             
             code = item.text.split('(')[-1].split(')')[0]
             name = name.replace(f"({code})", "").replace('Visa undergrupper','').strip()
@@ -91,7 +91,7 @@ def get_events():
     courses = supabase.table('Calendars').select('code','id').execute()
     events = []
     timeNow = time.time()
-
+    totalreqs = 0
     for course in courses.data:
         url = "https://webbschema.mdu.se/setup/jsp/SchemaICAL.ics?startDatum=idag&intervallTyp=a&intervallAntal=1&sprak=SV&sokMedAND=true&forklaringar=true&resurser=k."+course['code']
         ical = requests.get(url).content
@@ -101,6 +101,9 @@ def get_events():
             #for every 100 requests print the time it took to get the data
             print("Time taken: ", time.time() - timeNow)
             print("Total requests: ", totalreqs)
+            print("Total events: ", len(events))
+            supabase.table('Events').insert(events).execute()
+            events = []
         #create a list of events
         for component in cal.walk():
             if(component.get('location') != None):
@@ -134,6 +137,7 @@ def get_events():
     supabase.table('Events').insert(events).execute()
 
 
+
 def clear_all_tables():
     supabase.table('Events').delete().neq('id',0).execute()
     supabase.table('Calendars').delete().neq('id',0).execute()
@@ -143,8 +147,10 @@ def clear_all_tables():
 def __main__():
     #clear_all_tables()
     #get_courses()
-   #get_calendars()
+    #get_calendars()
     get_events()
+
+
 
 if __name__ == "__main__":
     __main__();
