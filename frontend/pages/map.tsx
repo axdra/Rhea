@@ -231,9 +231,9 @@ const MapView: NextPage = () => {
                 }
             </Map>
             <div className="absolute  h-full w-full pointer-events-none p-3 ">
-                <div className="fixed right-3 bottom-3 rounded-md shadow bg-white p-3 cursor-pointer pointer-events-auto" onClick={requestLocation} >
-                    <MapPinIcon className="h-6 w-6 text-orange-500"/>
-                </div> 
+                <button disabled className="fixed right-3 bottom-3 rounded-md shadow bg-white p-3 cursor-pointer pointer-events-auto disabled:bg-neutral-200 group disabled:pointer-events-none" onClick={requestLocation} >
+                    <MapPinIcon className="h-6 w-6 text-orange-500 group-disabled:text-orange-200 "/>
+                </button> 
                 <div className="relative inline-block">
                 <input type="text" className="bg-white border  text-orange pointer-events-auto rounded-full shadow-md shadow-neutral-400/10 px-5 focus:ring-orange-500  focus:border-orange-500 border-gray-200 " autoComplete="off" placeholder="Search Room" onChange={
                         (e) => {
