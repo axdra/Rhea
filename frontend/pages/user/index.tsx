@@ -83,7 +83,7 @@ const UserIndex: NextPage = () => {
                                             <button className="bg-white text-black rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => setShowDeleteUserModal(false)}>
                                                 Cancel
                                             </button>
-</div>
+                                        </div>
 
                                     </div>
                                 </Dialog.Panel>
