@@ -4,8 +4,8 @@ import argparse
 from json import dumps
 import os
 import time
-
 import requests
+import logging
 
 from supabase import create_client, Client
 
@@ -13,6 +13,8 @@ from icalendar import Calendar
 import html
 
 from datetime import date, datetime
+# set log name as date and time
+logging.basicConfig(filename=f'/var/log/scraper/app-{":%Y-%m-%d".format(datetime.now()) }.log' , filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 
 
 def json_serial(obj):
@@ -46,12 +48,10 @@ if __name__ == '__main__':
         cal = Calendar.from_ical(ical)
         totalreqs += 1
         if(totalreqs % 100 == 0):
-            #for every 100 requests print the time it took to get the data
-            print("Time taken: ", time.time() - timeNow)
-            print("Total requests: ", totalreqs)
-            print("Total events: ", len(events))
-            sb_client.table('Events').insert(events).execute()
-            events = []
+            logging.info("Time taken: ", time.time() - timeNow)
+            logging.info("Total requests: ", totalreqs)
+            logging.info("Total events: ", len(events))
+
         #create a list of events
         for component in cal.walk():
             if(component.get('location') != None):
@@ -82,6 +82,9 @@ if __name__ == '__main__':
                     "parent_calendar": course['id']
                 }
                 events.append(event)
+    logging.info("Time taken: ", time.time() - timeNow)
+    logging.info("Total requests: ", totalreqs)
+    logging.info("Total events to insert: ", len(events))
     sb_client.table('Events').delete().neq('id',0).execute()
     sb_client.table('Events').insert(events).execute()
 
