@@ -20,27 +20,36 @@ export default function handler(
         console.log(data)
         if (data.data.user?.aud === 'authenticated') {
             if (req.method === 'GET') {
-                supabase.from('PersonalCalendars').select().eq('userid', data.data.user.id).single().then(data => {
-                    res.status(200).json(data.data)
+              
+                supabase.from('PersonalCalendars').select().eq('userid', data.data.user.id).then(cal => {
+                    res.status(200).json(cal.data)
                 })
             }
-            if (req.method === 'UPDATE') {
-                // get the calendar id from the request
-                // update the calendar
-                
-                supabase.from('PersonalCalendars').insert('calendars',req.body.id).eq('userid', data.data.user.id).then(data => {
-                    res.status(200).json(data.data)
-                })
+            if (req.method === 'POST') {
+             
+                supabase.from('PersonalCalendars').insert({ 'userid': data.data.user.id, 'calendar': req.body }).then(cal => {
+                    res.status(200).json(cal.data)
+                }
+                )
+           
+            }
           
         
-            }
+            
             if (req.method === 'DELETE') {
 
-    
+                supabase.from('PersonalCalendars').delete().eq('userid', data.data.user.id ).eq( 'calendar', req.body).then(cal => {
+                    res.status(200).json(cal.data)
+                })
     
             }
+
         }
-    })
+        else {
+            res.status(401).json({ error: 'Not Authorized' })
+        }
+    });
+    
     res.status(501)
  
 }
