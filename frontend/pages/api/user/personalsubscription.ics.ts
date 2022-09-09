@@ -22,9 +22,10 @@ export default async function handler(
     }
     const supabase = createClient(supabaseUrl, supabaseAnonKey)
         const Rooms = await supabase.from('Rooms').select('Name');
-        supabase.from('PersonalCalendars').select().eq('userid', calendarCode).single().then(userCalendarData => {
-            const allEvents = userCalendarData.data.calendars.map((calID:string) => {
-              const promise =   supabase.from('Calendars').select("*, Events(*)").ilike('code', calID).single().then((data:any) => {
+        supabase.from('PersonalCalendars').select().eq('userid', calendarCode).then(userCalendarData => {
+            console.log(userCalendarData)
+            const allEvents = userCalendarData.data?.map((calID:any) => {
+              const promise =   supabase.from('Calendars').select("*, Events(*)").ilike('code', calID.calendar).single().then((data:any) => {
                  const events = data.data.Events.map((event: any) => {
                   const start = moment(event.start_date).format('YYYY-M-D-H-m').split("-").map((item, index) => { return parseInt(item) });
                     const end = moment(event.end_date).format('YYYY-M-D-H-m').split("-").map((item, index) => { return parseInt(item) });
