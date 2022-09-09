@@ -4,13 +4,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
 
+//if in dev mode, use local api
+const api = process.env.NODE_ENV === "development" ? "http://localhost:3000/api" : "/api";
+
+
 const UserCalendar: NextPage = () => {
     const [subscribedCalendars, setSubscribedCalendars] = useState<string[]>([]);
     
     useEffect(() => {
 
-    supabase.auth.getSession().then((session) => {
-        fetch('https://mdu.axeldraws.com/api/calendar',
+        supabase.auth.getSession().then((session) => {
+        fetch(api+'/user/calendar',
             {
                 method: 'GET',
                 headers: {
@@ -18,9 +22,24 @@ const UserCalendar: NextPage = () => {
                     'Authorization': `${session.data.session?.access_token}`
                 }
             }
-        ).then((res) => res.json()).catch().then((data) => setSubscribedCalendars(data.calendars))
+        ).then((res) => res.json()).catch().then((data) => setSubscribedCalendars(data.map((calendar: any) => calendar.calendar)))
     });
     }, []);
+
+    const removeCalendar = (calendar: string) => {
+        supabase.auth.getSession().then((session) => {
+            fetch(api + '/user/calendar',
+                {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `${session.data.session?.access_token}`,
+                    },
+                    body: calendar,
+                }
+            
+            ).then().catch().then(() => setSubscribedCalendars(subscribedCalendars.filter((cal) => cal !== calendar)))
+        });
+    }
     
     const subscribeToSchedule = async () => {
         supabase.auth.getSession().then((session) => {
@@ -64,7 +83,7 @@ const UserCalendar: NextPage = () => {
                                     }}>
                                         <a className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap cursor-pointer ">Go to Calendar</a>
                                     </Link>
-                                    <div className="text-red-500 hover:text-red-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap cursor-pointer ">Remove</div>
+                                    <div className="text-red-500 hover:text-red-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap cursor-pointer " onClick={()=>removeCalendar(calendar)}>Remove</div>
                                         </div>
                             </div>
                         
