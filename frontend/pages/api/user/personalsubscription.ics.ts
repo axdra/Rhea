@@ -54,12 +54,14 @@ export default async function handler(
                 )
                 return promise;
             });
+            if(allEvents){
             Promise.all(allEvents).then((data: any[]) => {
                         const ics = require('ics');
                         const icsCal = ics.createEvents(data.flat())
                         res.send(icsCal.value)
                         res.status(200)
             })
+            }
       
         })
         
