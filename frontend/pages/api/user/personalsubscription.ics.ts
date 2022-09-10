@@ -34,7 +34,7 @@ export default async function handler(
                         url = 'https://mdu.axeldraws.com/map?q=' + event.room.split(' ')[0]
                     }
                     return {
-                        title: calendarCode.split('-')[0] + " - " + event.name,
+                        title: calID.calendar.split('-')[0] + " - " + event.name,
                         start: start,
                         end: end,
                         description: event.name,
