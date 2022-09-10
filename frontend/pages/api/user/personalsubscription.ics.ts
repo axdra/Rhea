@@ -44,11 +44,7 @@ export default async function handler(
                     }
                  });
                 return events;
-                // console.log(events)
 
-                // res.status(200)
-                // res.send(icsCal.value)
-                    
                 }
                     
                 )
@@ -66,6 +62,5 @@ export default async function handler(
         })
         
     }
-    res.status(500)
     
 }
