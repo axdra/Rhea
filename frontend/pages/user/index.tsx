@@ -2,11 +2,14 @@ import { Dialog, Transition } from "@headlessui/react";
 import { User } from "@supabase/supabase-js";
 import { NextPage } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
+import SignInModal from "../../components/signInModal";
 import { supabase } from "../../utils/supabaseClient";
 
 const UserIndex: NextPage = () => {
     const [user, setUser] = useState<User | null>(null);
+    const router = useRouter();
     const [loading, setLoading] = useState(true);
     const [showDeleteUserModal, setShowDeleteUserModal] = useState(false);
     useEffect(() => {
@@ -14,8 +17,10 @@ const UserIndex: NextPage = () => {
     }, []);
 
 
-    if (loading) return <div>Loading...</div>
-    if(loading === false && user === null) return <div>Not logged in</div>
+    if (loading) return <div></div>
+    if (loading === false && user === null) return <div>
+        <SignInModal isOpen setIsOpen={()=>router.push('/')}/>
+    </div>
     return (
         <div className="h-full flex flex-col justify-center items-center flex-1">
             <div className="px-4 py-5 md:rounded-lg md:shadow-lg md:py-20 md:px-12">
