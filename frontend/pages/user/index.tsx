@@ -34,7 +34,7 @@ const UserIndex: NextPage = () => {
         <div className="h-full flex flex-col justify-center items-center flex-1">
             <div className="px-4 py-5 md:rounded-lg md:shadow-lg md:py-20 md:px-12">
                 <h1 className="mb-2 text-lg text-orange-500 font-medium">User</h1>
-                <Link href={'/user/calendar'}><a>Go to personal calendar</a> </Link>
+                <Link href={'/user/calendar'}><a>Go to personal calendar</a></Link>
             <h2>Provider: {user?.app_metadata.provider}</h2>
             <h2>Email: {user?.email}</h2>
             <h2>User creation date: {new Date(user?.created_at!).toLocaleDateString('sv-SE',{
