@@ -13,7 +13,7 @@ const Layout: FC<ILayoutProps> = (props) => {
     const footer = !props.hideFooter && <Footer />;
     return (
         <div className="overflow-x-hidden">
-            <div className="flex flex-col h-full  layout-container selection:bg-orange-500 selection:text-white sm:pb-0 pb-16">
+            <div className="flex flex-col h-full   selection:bg-orange-500 selection:text-white sm:pb-0 pb-16 layout-container">
         <Header />
                 {children}
                 <MobileNav />

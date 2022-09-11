@@ -7,8 +7,8 @@ import SearchBar from "./searchBar";
 import { FaApple, FaMicrosoft, FaGithub, FaGoogle } from 'react-icons/fa';
 import SignInModal from "./signInModal";
 import UserProfileDropDown from "./userProfileDropDown";
-import { HomeIcon, MapIcon, UserIcon } from "@heroicons/react/24/outline";
-import { HomeIcon as HomeIconFilled, MapIcon as MapIconFilled , UserIcon as UserIconFilled  } from "@heroicons/react/24/solid";
+import { HomeIcon, MapIcon, UserIcon, QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
+import { HomeIcon as HomeIconFilled, MapIcon as MapIconFilled, UserIcon as UserIconFilled, QuestionMarkCircleIcon as QuestionMarkCircleIconFilled  } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
 
 const MobileNav: FC = () => {
@@ -16,7 +16,7 @@ const MobileNav: FC = () => {
 
     return (
         <>
-            <div className="fixed bottom-0 bg-white h-16 shadow-sm  justify-between items-center px-10 w-screen z-10 sm:hidden flex ">
+            <div className="fixed bottom-0 bg-white h-16 shadow-sm  justify-between items-center px-10 w-screen z-10 sm:hidden flex border-t border-t-gray-100 ">
                 <Link href="/">
                     <a>
                         {
@@ -45,6 +45,17 @@ const MobileNav: FC = () => {
                                 :
                                 <UserIcon className="h-6 w-6 stroke-2 group-active:fill-orange-500 text-orange-500" />
                         } 
+                    </a>
+                </Link>
+                <Link href="/about">
+                    <a>
+
+                        {
+                            router.pathname.startsWith("/about") ?
+                                <QuestionMarkCircleIconFilled className="h-6 w-6 stroke-2 group-active:fill-orange-500 text-orange-500" />
+                                :
+                                <QuestionMarkCircleIcon className="h-6 w-6 stroke-2 group-active:fill-orange-500 text-orange-500" />
+                        }
                     </a>
                 </Link>
             </div>
