@@ -2,24 +2,39 @@ import { Dialog, Transition } from "@headlessui/react";
 import { User } from "@supabase/supabase-js";
 import { NextPage } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
+import SignInModal from "../../components/signInModal";
 import { supabase } from "../../utils/supabaseClient";
 
 const UserIndex: NextPage = () => {
     const [user, setUser] = useState<User | null>(null);
+    const router = useRouter();
     const [loading, setLoading] = useState(true);
     const [showDeleteUserModal, setShowDeleteUserModal] = useState(false);
     useEffect(() => {
         supabase.auth.getUser().then((user) => setUser(user.data.user)).finally(() =>  setLoading(false));
     }, []);
+    const signOut = async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) console.log("error", error);
+        if (!error) {
+            //refresh window
+            router.push("/");
+            setUser(null);
+        }
 
+    };
 
-    if (loading) return <div>Loading...</div>
-    if(loading === false && user === null) return <div>Not logged in</div>
+    if (loading) return <div></div>
+    if (loading === false && user === null) return <div>
+        <SignInModal isOpen setIsOpen={()=>router.push('/')}/>
+    </div>
     return (
         <div className="h-full flex flex-col justify-center items-center flex-1">
             <div className="px-4 py-5 md:rounded-lg md:shadow-lg md:py-20 md:px-12">
-            <h1 className="mb-2 text-lg text-orange-500 font-medium">User</h1>
+                <h1 className="mb-2 text-lg text-orange-500 font-medium">User</h1>
+                <Link href={'/user/calendar'}><a>Go to personal calendar</a></Link>
             <h2>Provider: {user?.app_metadata.provider}</h2>
             <h2>Email: {user?.email}</h2>
             <h2>User creation date: {new Date(user?.created_at!).toLocaleDateString('sv-SE',{
@@ -27,8 +42,11 @@ const UserIndex: NextPage = () => {
                 month: "long",
                 day: "numeric",
             })}</h2>
-                <button className="bg-red-500 text-white rounded-full shadow-lg px-4 py-2 mt-4" onClick={()=>setShowDeleteUserModal(true)}>Delete my User</button>
-                <h2 className="mt-5 text-gray-300">User ID: {user?.id}</h2>
+                <div className="flex flex-col gap-2">
+                <button className="bg-red-500 text-white rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => setShowDeleteUserModal(true)}>Delete my User</button>
+                <button className="bg-white text-red-500 rounded-full shadow-lg px-4 py-2 mt-4" onClick={()=>signOut()}>Sign Out</button>
+                
+                </div><h2 className="mt-5 text-gray-300">User ID: {user?.id}</h2>
 
             </div>
             <Transition appear show={showDeleteUserModal} as={Fragment}>
@@ -83,7 +101,7 @@ const UserIndex: NextPage = () => {
                                             <button className="bg-white text-black rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => setShowDeleteUserModal(false)}>
                                                 Cancel
                                             </button>
-</div>
+                                        </div>
 
                                     </div>
                                 </Dialog.Panel>

@@ -7,6 +7,10 @@ import { useEffect, useState } from "react";
 import { supabase } from "../utils/supabaseClient";
 import { CalendarIcon } from "@heroicons/react/24/solid";
 import Schema from "../components/schema";
+import { UserIcon } from "@heroicons/react/24/outline";
+import { User } from "@supabase/supabase-js";
+const api = process.env.NODE_ENV === "development" ? "http://localhost:3000/api" : "/api";
+
 const Calendar: NextPage = () => {
     //get Course query from url
     const router = useRouter();
@@ -16,6 +20,12 @@ const Calendar: NextPage = () => {
     const [name, setName] = useState("");
     const [code, setCode] = useState("");
     const [url, setUrl] = useState("");
+    const [user, setUser] = useState<User | null>(null);
+    useEffect(() => {
+        supabase.auth.getUser().then((user) => setUser(user.data.user));
+
+    }, []);
+    const [subscribed, setSubscribed] = useState(false);
     useEffect(() => {
         if (calendar) {
             fetch('/api/events?q=' + calendar).then
@@ -33,26 +43,49 @@ const Calendar: NextPage = () => {
     }
         , [calendar]);
     
+    const addToPersonalCalendar = async () => {
+        supabase.auth.getSession().then((session) => {
+            fetch(api + '/user/calendar',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `${session.data.session?.access_token}`,
+                    },
+                    body: calendar,
+                }
+            ).then().catch().then(() => setSubscribed(true))
+        });
+    }
     const subscribeToSchedule = async () => {
         window.open('webcal://mdu.axeldraws.com/api/subscription.ics?q=' + calendar, '_blank');
     
+    }
+    const navigateToMyCalendar = async () => {
+        router.push('/user/calendar');
     }
     return (
         <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 w-full px-4 py-10 shadow rounded-lg mb-24 flex-1 flex-col    ">
             <h1 className="text-4xl font-medium mb-5 transition-all max-w-full  " style={{
                 wordWrap: "break-word"
             }}>{name}</h1>
-            <div className=" flex justify-between flex-1 items-center mb-4">
+            <div className=" flex justify-between flex-1 items-center mb-4 flex-col sm:flex-row">
                 
                 <div className="flex-1 max-w-[50%] ">
                 
             <h1 className="text-xl font-medium   transition-all   ">{code}</h1>
                 </div>
-                <div className="flex-1 justify-end flex items-center">
-                    {events.length !== 0 && !loading  &&   <div className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors " onClick={subscribeToSchedule}>
+                <div className="flex-1 justify-end flex items-center ">
+                    {events.length !== 0 && !loading &&
+                        <div className="flex gap-5 ">
+                        <div className="flex py-2 px-4 gap-2 items-center  justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors " onClick={subscribeToSchedule}>
                     <p>Add to calendar</p>
                         <CalendarIcon className="h-8 w-8 text-orange-500" />
-                </div>
+                            </div>
+                         {  user && <div className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors " onClick={subscribed ?  navigateToMyCalendar : addToPersonalCalendar }>
+                                {subscribed ? <p>Go to My Calendar</p> :< p > Add My Calendar</p>} 
+                                <UserIcon className="h-8 w-8 text-orange-500" />
+                            </div>}
+                            </div>
                 } 
                 </div>
                 </div>

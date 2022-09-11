@@ -11,5 +11,23 @@
 @supports  (-webkit-touch-callout: none){
     .layout-container{
         min-height: -webkit-fill-available;
+
+        
     }
+    @media (max-width:640px){
+        .layout-container{
+        min-height: -webkit-fill-available;
+        padding-bottom: 2rem;
+
+        
+    }
+    }
+}
+.mapboxgl-ctrl-logo{
+   opacity: 0.2;
+   filter: invert();
+   -webkit-filter: invert();
+   -moz-filter: invert();
+   -ms-filter: invert();
+   -o-filter: invert();
 }
