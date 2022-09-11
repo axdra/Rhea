@@ -21,7 +21,7 @@ const MapView: NextPage = () => {
     const [roomList, setRoomList] = useState<string[]>();
     const [searchList, setSearchList] = useState<string[]>();
     const [building, setBuilding] = useState<any>();
-    
+    const [zoomLevel, setZoomLevel] = useState(18);
     const geolocateControlRef = useCallback((ref:any) => {
         if (ref) {
             GeoRef = ref;
@@ -102,7 +102,9 @@ const MapView: NextPage = () => {
 
             <Map
                 ref={mapRef}
-                
+                onZoom={(e) => {
+                    setZoomLevel(e.target.getZoom());
+                }}
                 initialViewState={
                     {
                         latitude: 59.61861227,
@@ -141,23 +143,39 @@ const MapView: NextPage = () => {
                     enableHighAccuracy: true,
                 }} trackUserLocation={true} showUserHeading={true} showUserLocation={true} style={{position:"fixed", left:'0', height:'0'}}  /> */}
                 <Source type="geojson" data={floorPlan}   >
-
-                    <Layer id="rooms" type="fill" paint={
+                    <Layer id="rooms" type="fill" layout={
                         {
+                            visibility: zoomLevel > 16 ?  'visible' : 'none'
+                        }
+                    } paint={
+                        
+                        {
+                            
                             'fill-color': 'rgb(249,115,22)',
                             'fill-opacity': 0.2
                         }
-                    } />
-                    <Layer id="rooms-outline" type="line" paint={
+                    }
+                        
+                    />
+                    <Layer  id="rooms-outline" type="line"
+                        layout={
+                            {
+                                visibility: zoomLevel > 16 ? 'visible' : 'none'
+                            }
+                        }
+                        
+                        paint={
                         {
                             'line-color': 'rgb(249,115,22)',
                             'line-width': 2,
                             'line-opacity': 0.5
                         }
                     } />
-                    <Layer id="rooms-label" type="symbol" layout={
+                    <Layer  id="rooms-label" type="symbol" layout={
 
                         {
+                            visibility: zoomLevel > 16 ? 'visible' : 'none',
+
                             'text-field': '{name}',
                             'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
                             'text-offset': [0, 0.6],
@@ -168,6 +186,9 @@ const MapView: NextPage = () => {
                             'text-color': 'rgb(249,115,22)',
                         }
                     } />
+                    
+                    {/* Render image depending on type of room */}
+           
                 </Source>
                 <Source type="geojson" data={building}   >
 
