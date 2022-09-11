@@ -12,8 +12,8 @@ const MapView: NextPage = () => {
     const router = useRouter();
     const [selectedLevel, setSelectedLevel] = useState('0');
     const { q } = router.query;
-    const accessToken = "pk.eyJ1IjoiYXhkcmEiLCJhIjoiY2t6dmh2ZmltMDM1NTJvczk1MnI5c2UyMSJ9.HZh3hWr1hpzzdQieKwpKpw";
- 
+    const accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+
     const [floorPlan, setFloorplan] = useState();
     const [selectedRoom, setSelectedRoom] = useState<any>();
     const [pois, setPois] = useState();
