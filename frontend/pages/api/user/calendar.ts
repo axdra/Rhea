@@ -17,7 +17,6 @@ export default function handler(
     }
     const supabase = createClient(supabaseUrl, supabaseAnonKey)
     supabase.auth.getUser(req.headers.authorization).then(data => {
-        console.log(data)
         if (data.data.user?.aud === 'authenticated') {
             if (req.method === 'GET') {
               

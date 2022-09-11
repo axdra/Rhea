@@ -64,7 +64,6 @@ const MapView: NextPage = () => {
             if (q) {
                 if (mapData) {
                     mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.name?.toLowerCase() ==( q as string).toLowerCase() ).forEach((feature: any) => {
-                        console.log([feature.geometry.coordinates[0][0][0], feature.geometry.coordinates[0][1][1]], 18)
                         map.flyTo({ center: [feature.geometry.coordinates[0][0][0], feature.geometry.coordinates[0][1][1]], zoom: 18});
                     });
                 }
@@ -125,7 +124,7 @@ const MapView: NextPage = () => {
                     const selectedFeatures = e.target.queryRenderedFeatures(bbox, {
                         layers: ['rooms']
                     });
-                    console.log(selectedFeatures)
+                    (selectedFeatures)
                     if (selectedFeatures.length > 0) {
                         setSelectedRoom({
                             type: "FeatureCollection",

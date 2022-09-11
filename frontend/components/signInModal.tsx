@@ -14,13 +14,13 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
             provider: "google",
         });
 
-        if (error) console.log("error", error);
+        if (error) console.error(error);
     };
     const signInWithGithub = async () => {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: "github",
         });
-        if (error) console.log("error", error);
+        if (error) console.error(error);
     };
     
 

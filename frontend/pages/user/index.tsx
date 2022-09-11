@@ -17,7 +17,7 @@ const UserIndex: NextPage = () => {
     }, []);
     const signOut = async () => {
         const { error } = await supabase.auth.signOut();
-        if (error) console.log("error", error);
+        if (error) console.error(error);
         if (!error) {
             //refresh window
             router.push("/");

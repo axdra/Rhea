@@ -23,7 +23,6 @@ export default async function handler(
     const supabase = createClient(supabaseUrl, supabaseAnonKey)
         const Rooms = await supabase.from('Rooms').select('Name');
         supabase.from('PersonalCalendars').select().eq('userid', calendarCode).then(userCalendarData => {
-            console.log(userCalendarData)
             const allEvents = userCalendarData.data?.map((calID:any) => {
               const promise =   supabase.from('Calendars').select("*, Events(*)").ilike('code', calID.calendar).single().then((data:any) => {
                  const events = data.data.Events.map((event: any) => {

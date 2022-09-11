@@ -35,7 +35,6 @@ export default async function handler(
                     uid: event.id.toString(),
                 }
             });
-            console.log(events)
 
             const icsCal = ics.createEvents(events)
             res.status(200)

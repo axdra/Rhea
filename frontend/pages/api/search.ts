@@ -20,10 +20,8 @@ export default function handler(
         res.status(400).json({ error: 'Missing search query' })
         return
     }
-    console.log(searchQuary)
     supabase.from('Courses').select().limit(25000).then(data => {
         const formattedData  = data.data as ICourse[]
-    console.log(formattedData.length)
      
         //see if search query is a array
         if (!Array.isArray(searchQuary)) {
