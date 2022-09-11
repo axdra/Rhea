@@ -2,10 +2,10 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import LevelSelector from "../components/map/levelSelector";
 import Map, { Source, Layer, PointLike, GeolocateControl } from "react-map-gl";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Transition } from "@headlessui/react";
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { MapPinIcon } from "@heroicons/react/24/solid";
+
 let MapRef: any = null;
 let GeoRef: any = null;
 const MapView: NextPage = () => {
