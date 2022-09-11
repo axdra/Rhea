@@ -139,7 +139,7 @@ const MapView: NextPage = () => {
             >
                <GeolocateControl ref={geolocateControlRef} positionOptions={{
                     enableHighAccuracy: true,
-                }} trackUserLocation={true} showUserHeading={true} position={'bottom-right'} showUserLocation={true}   />
+                }} trackUserLocation={true} showUserHeading={true} position={'bottom-right'} showAccuracyCircle={false} showUserLocation={true}   />
                 <Source type="geojson" data={floorPlan}   >
                     <Layer id="rooms" type="fill" layout={
                         {
