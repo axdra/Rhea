@@ -23,3 +23,11 @@
     }
     }
 }
+.mapboxgl-ctrl-logo{
+   opacity: 0.2;
+   filter: invert();
+   -webkit-filter: invert();
+   -moz-filter: invert();
+   -ms-filter: invert();
+   -o-filter: invert();
+}

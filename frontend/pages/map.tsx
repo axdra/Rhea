@@ -4,7 +4,7 @@ import LevelSelector from "../components/map/levelSelector";
 import Map, { Source, Layer, PointLike, GeolocateControl } from "react-map-gl";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Transition } from "@headlessui/react";
-import mapboxgl from "mapbox-gl";
+import 'mapbox-gl/dist/mapbox-gl.css';
 import { MapPinIcon } from "@heroicons/react/24/solid";
 let MapRef: any = null;
 let GeoRef: any = null;
@@ -63,7 +63,6 @@ const MapView: NextPage = () => {
            
             if (q) {
                 if (mapData) {
-                    console.log(mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.name?.toLowerCase() ==( q as string).toLowerCase()));
                     mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags.name?.toLowerCase() ==( q as string).toLowerCase() ).forEach((feature: any) => {
                         console.log([feature.geometry.coordinates[0][0][0], feature.geometry.coordinates[0][1][1]], 18)
                         map.flyTo({ center: [feature.geometry.coordinates[0][0][0], feature.geometry.coordinates[0][1][1]], zoom: 18});
@@ -71,7 +70,6 @@ const MapView: NextPage = () => {
                 }
             }
             if (!MapRef) {
-                console.log('e')
                 MapRef = map;
             
                 }
@@ -105,6 +103,7 @@ const MapView: NextPage = () => {
                 onZoom={(e) => {
                     setZoomLevel(e.target.getZoom());
                 }}
+                logoPosition="top-right"
                 initialViewState={
                     {
                         latitude: 59.61861227,
@@ -139,9 +138,9 @@ const MapView: NextPage = () => {
                     }
                 }}
             >
-                {/* <GeolocateControl ref={geolocateControlRef} positionOptions={{
+               <GeolocateControl ref={geolocateControlRef} positionOptions={{
                     enableHighAccuracy: true,
-                }} trackUserLocation={true} showUserHeading={true} showUserLocation={true} style={{position:"fixed", left:'0', height:'0'}}  /> */}
+                }} trackUserLocation={true} showUserHeading={true} showUserLocation={true} style={{position:"fixed", right:'1rem', bottom: '5rem'}}  />
                 <Source type="geojson" data={floorPlan}   >
                     <Layer id="rooms" type="fill" layout={
                         {
@@ -252,9 +251,7 @@ const MapView: NextPage = () => {
                 }
             </Map>
             <div className="absolute  h-full w-full pointer-events-none p-3 ">
-                <button aria-label="Request location" disabled className="fixed right-3 bottom-3 rounded-md shadow bg-white p-3 cursor-pointer pointer-events-auto disabled:bg-neutral-200 group disabled:pointer-events-none" onClick={requestLocation} >
-                    <MapPinIcon className="h-6 w-6 text-orange-500 group-disabled:text-orange-200 "/>
-                </button> 
+          
                 <div className="relative inline-block">
                 <input type="text" className="bg-white border  text-orange pointer-events-auto rounded-full shadow-md shadow-neutral-400/10 px-5 focus:ring-orange-500  focus:border-orange-500 border-gray-200 " autoComplete="off" placeholder="Search Room" onChange={
                         (e) => {
@@ -284,7 +281,6 @@ const MapView: NextPage = () => {
                                 mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags?.name == room).forEach((feature: any) => {
                                     setSelectedRoom(feature);
                                     setSelectedLevel(feature.properties.tags.level);
-                                    console.log(MapRef)
                                     if (MapRef) {
                                         MapRef.flyTo({ center: [feature.geometry.coordinates[0][0][0], feature.geometry.coordinates[0][1][1]], zoom: 18, speed: 0.3 });
 
