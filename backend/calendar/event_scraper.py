@@ -14,7 +14,9 @@ import html
 
 from datetime import date, datetime
 # set log name as date and time
-logging.basicConfig(filename=f'/var/log/scraper/app-{":%Y-%m-%d".format(datetime.now()) }.log' , filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+
+print("Logger init at " + f"/var/log/scraper/app.log")
+logging.basicConfig(filename=f'/var/log/scraper/app.log' , filemode='a', format='%(name)s - %(levelname)s - %(message)s')
 logging.info("Starting scraper")
 
 
