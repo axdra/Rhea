@@ -252,7 +252,7 @@ const MapView: NextPage = () => {
                 }
             </Map>
             <div className="absolute  h-full w-full pointer-events-none p-3 ">
-                <button disabled className="fixed right-3 bottom-3 rounded-md shadow bg-white p-3 cursor-pointer pointer-events-auto disabled:bg-neutral-200 group disabled:pointer-events-none" onClick={requestLocation} >
+                <button aria-label="Request location" disabled className="fixed right-3 bottom-3 rounded-md shadow bg-white p-3 cursor-pointer pointer-events-auto disabled:bg-neutral-200 group disabled:pointer-events-none" onClick={requestLocation} >
                     <MapPinIcon className="h-6 w-6 text-orange-500 group-disabled:text-orange-200 "/>
                 </button> 
                 <div className="relative inline-block">
@@ -310,6 +310,9 @@ const MapView: NextPage = () => {
             </div>
         </div>
     );
+    
 }
+
+//use custom next layout to wrap the page in the layout component
 
 export default MapView;
