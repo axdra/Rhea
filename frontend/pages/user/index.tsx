@@ -42,9 +42,11 @@ const UserIndex: NextPage = () => {
                 month: "long",
                 day: "numeric",
             })}</h2>
+                <div className="flex flex-col gap-2">
                 <button className="bg-red-500 text-white rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => setShowDeleteUserModal(true)}>Delete my User</button>
                 <button className="bg-white text-red-500 rounded-full shadow-lg px-4 py-2 mt-4" onClick={()=>signOut()}>Sign Out</button>
-                <h2 className="mt-5 text-gray-300">User ID: {user?.id}</h2>
+                
+                </div><h2 className="mt-5 text-gray-300">User ID: {user?.id}</h2>
 
             </div>
             <Transition appear show={showDeleteUserModal} as={Fragment}>
