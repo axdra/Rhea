@@ -3,6 +3,9 @@
 import argparse
 import os
 from time import sleep
+from selenium import webdriver
+from bs4 import BeautifulSoup
+from supabase import create_client, Client
 
 
 if __name__ == '__main__':
@@ -21,11 +24,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # check if variables are set
-    if not supabase_url:
+    if not supabase_url or not args.supabase_url:
         raise TypeError( 'No supabase url set')
-    if not supabase_anon_key:
+    if not supabase_anon_key or not args.supabase_anon_key:
         raise TypeError('No supabase anon key set')
-    if not supabase_secret_key:
+    if not supabase_secret_key or not args.supabase_secret_key:
         raise TypeError('No supabase secret key set')
 
     #get webdriver
@@ -55,7 +58,9 @@ if __name__ == '__main__':
             "code":  course_code 
         }
         courses_list.append(course_obj)
-    supabase.table('Courses').insert(courses_list).execute()
+    sb_client:Client = create_client(args.supabase_url, args.supabase_secret_key)
+    sb_client.table('Courses').delete().neq('id',0).execute()
+    sb_client.table('Courses').insert(courses_list).execute()
     driver.close()
     driver.quit()
         
