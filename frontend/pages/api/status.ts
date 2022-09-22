@@ -12,7 +12,7 @@ export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<IStatus | any>
 ) {
-    supabase.from('Issues').select().then(data => {
+    supabase.from('issues').select().then(data => {
         res.status(200).json({ issues: data.data, status: "ok" })
     }
               

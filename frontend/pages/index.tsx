@@ -8,7 +8,9 @@ const Home: NextPage = () => {
     fetch('/api/status').then((data) => {
       data.json().then((data) => {
         setIssues(data.issues.map((issue: any) => issue.issue))
-      })
+      }).catch(()=>{
+	console.debug("No issues");
+	})
     })
   }, [])
 

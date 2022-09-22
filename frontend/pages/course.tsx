@@ -17,7 +17,7 @@ const Course: NextPage = () => {
         if (course) {
             fetch('/api/calendars?q=' + course).then
                 (res => res.json()).then(data => {
-                    setCalendars(data.Calendars);
+                    setCalendars(data.calendars);
                     setName(data.name);
                     setCode(data.code);
                     setUrl(data.URL);
@@ -35,7 +35,7 @@ const Course: NextPage = () => {
             <h1 className="text-4xl font-medium mb-5 xl:w-[72rem] transition-all  ">{name}</h1>
             <h1 className="text-xl font-medium mb-5 xl:w-[72rem] transition-all  ">{code}</h1>
 
-            {calendars.length === 0 && !loading && <div className="flex-1 min-h-full flex justify-center  "><h2>No results found</h2></div>}
+            {calendars?.length === 0 && !loading && <div className="flex-1 min-h-full flex justify-center  "><h2>No results found</h2></div>}
             {loading && <div className="flex-1 min-h-full flex justify-center ">
                 <svg className="animate-spin  h-6 w-6 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>

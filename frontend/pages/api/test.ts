@@ -14,10 +14,13 @@ export default async function handler(
     if (!Array.isArray(calendarCode) && calendarCode) {
         getSchema(calendarCode).then
             (schema => {
-                console.log(schema)
+              if(schema){
+	      res.status(200).json(schema)
+	      }else{
+	      res.status(501).json({Error:"Could not get an schema with provided code."})
+	      }
             })
     }
     
-    res.status(200)
     
 }

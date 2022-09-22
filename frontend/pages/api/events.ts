@@ -12,11 +12,11 @@ export default async function handler(
     if (!calendarCode) {
         res.status(400).json({ error: 'Missing course code' })
     }
-  const Rooms = await supabase.from('Rooms').select('Name');
+  const Rooms = await supabase.from('rooms').select('name');
   
       if (!Array.isArray(calendarCode) && calendarCode){
-          supabase.from('Calendars').select("*, Events(*)").limit(1).ilike('code', calendarCode).single().then(data => {
-            const events = data.data.Events.filter((ev:any)=>new Date(ev.end_date) > new Date()).map((event: any) => {
+          supabase.from('calendars').select("*, events(*)").limit(1).ilike('code', calendarCode).single().then(data => {
+            const events = data.data.events.filter((ev:any)=>new Date(ev.end_date) > new Date()).map((event: any) => {
                 
                 return {
                   
@@ -31,7 +31,7 @@ export default async function handler(
                   room: event.room,
                   start_date: new Date(event.start_date.replace('T', 'Z')),
                   teacher: event.teacher,
-                  hasMap: Rooms.data?.some((room:any)=>(room.Name as string).toLowerCase() === (event.room.split(' ')[0] as string).toLowerCase())
+                  hasMap: Rooms.data?.some((room:any)=>(room.name as string).toLowerCase() === (event.room.split(' ')[0] as string).toLowerCase())
                 }
               
             }
