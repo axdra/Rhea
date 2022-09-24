@@ -1,9 +1,9 @@
 import { useState } from "react";
 import dayjs from "dayjs";
 export interface IEvent {
-    id: number;
+    id?: number;
     created_at: Date,
-    parent_calendar: number,
+    parent_calendar: string,
     name: string,
     room: string,
     program?: string,
