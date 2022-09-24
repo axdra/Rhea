@@ -22,7 +22,19 @@ const UserCalendar: NextPage = () => {
                     'Authorization': `${session.data.session?.access_token}`
                 }
             }
-        ).then((res) => res.json()).catch().then((data) => setSubscribedCalendars(data.map((calendar: any) => calendar.calendar)))
+        ).then((res) => {
+            if (res.status === 200) {
+             return   res.json()
+            }
+            else {
+                return null;
+            }
+        }).then((data) => {
+            if (data) {
+                setSubscribedCalendars(data.map((calendar: any) => calendar.calendar))
+            }
+
+            })
     });
     }, []);
 
@@ -91,6 +103,13 @@ const UserCalendar: NextPage = () => {
                     )
                 }
                 )
+                }
+                {
+                    subscribedCalendars.length===0 && (
+                        <div className="flex flex-col flex-1 mt-20 items-center justify-center">
+                            <h1 className="text-xl ">You are not subscribed to any calendars</h1>
+                            </div>
+                    )
                 }
             </div>
         </div>

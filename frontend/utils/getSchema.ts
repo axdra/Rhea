@@ -31,32 +31,18 @@ const updateSchemaCache = async (code: string): Promise<ISchema | undefined> => 
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseAnonKey = process.env.SUPABASE_SECRET_KEY;
     
-     if (!supabaseUrl || !supabaseAnonKey) {
+    if (!supabaseUrl || !supabaseAnonKey) {
         throw new Error('Missing supabase environment variables')
     }
     const supabase = createClient(supabaseUrl, supabaseAnonKey)
-    return ical.fromURL(URLBase + code).then((cal: CalendarResponse) => {
-        const events: IEvent[] = Object.keys(cal).filter(key =>
-            cal[key].type === "VEVENT"
-        ).map((event) => {
-            const parsedEvent = getEventFromIcalEvent(cal[event], code);
-            return parsedEvent
-        })
-       
-        return supabase.from('events').delete().match({ parent_calendar: code }).then(() => {
-            const promises = events.map((ev) => {
-                return supabase.from('events').insert(ev)
-            })
-            Promise.all(promises)
-        }).then((e) => {
-          supabase.from('calendars').select("*").match({ code: code }).then((match) => {
-          })
-          supabase.from('calendars').update({ last_cache: new Date() }).match({ code: code }).then((e) => {
-            })
-          return { events: events, name: code }
-          })
-        
-    }); 
+    const calendar = await ical.fromURL(URLBase + code)
+    const events = Object.values(calendar).filter((event:any) => event.type === 'VEVENT').map((event) => getEventFromIcalEvent(event,code))
+    await supabase.from('events').delete().match({ parent_calendar: code })
+    await supabase.from('events').insert(events)
+    await supabase.from('calendars').update({ last_cache: dayjs().format() }).match({ code: code })
+    return {events:events,name:code}
+ 
+ 
 }
 
 const getSchema = async (code: string): Promise<ISchema | undefined> => {
@@ -69,27 +55,29 @@ const getSchema = async (code: string): Promise<ISchema | undefined> => {
     }
     const supabase = createClient(supabaseUrl, supabaseAnonKey)
     
-    return supabase.from('calendars').select("*, events(*)").limit(1).ilike('code', code).single().then(data => {
-        if (data?.data?.last_cache === undefined || dayjs(data.data.last_cache).add(2,'h').diff(dayjs(), 'hour') || data?.data?.last_cache === null) {
-            
-            return updateSchemaCache(code).then((data) => {
+    const calendar = await supabase.from('calendars').select("*, events(*)").limit(1).ilike('code', code).single()
+    if(calendar.data){
+    if (calendar?.data?.last_cache === undefined || calendar?.data?.last_cache === null || Math.abs(dayjs(calendar.data.last_cache).add(2, 'h').diff(dayjs(), 'hour')) > 1) {
+        console.log("Updating cache for calendar: " + code)
+             return updateSchemaCache(code).then((data) => {
                 return data
             }).catch((err) => {
                 throw err
             }
             )
-
+    } else {
+        console.log("Using cached data for calendar: " + code)
+        const events = await supabase.from('events').select('*').match({ parent_calendar: code })
+        if(events.data){
+            return { events: events.data, name: code }
         } else {
-            supabase.from('events').select('*').match({ parent_calendar: code }).then(data => {
-                return {events:data.data,name:code}
-            }).then(data => {
-                return console.log(data);
-            })
-            
+            return undefined
         }
-    }).then((data) => {
-        return data
-    })
+    }
+    } else {
+        return undefined
+    }
+
     
 
 }

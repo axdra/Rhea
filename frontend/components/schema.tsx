@@ -11,8 +11,8 @@ export interface IEvent {
     teacher?: string,
     aid?: string,
     last_update: Date,
-    start_date: Date,
-    end_date: Date
+    start_time: Date,
+    end_time: Date
 }
 
 function getWeeksFromNow(date: Date) {
@@ -27,17 +27,17 @@ const Schema: React.FC<{ events: any[] }> = ({ events }) => {
     return <div className="flex flex-col gap-4">
         
         {events.length > 0 && events.map((event: IEvent) => {
-            const weeksFromNow = getWeeksFromNow(new Date(event.start_date));
+            const weeksFromNow = getWeeksFromNow(new Date(event.start_time));
             let newWeek = false;
             if (weeksFromNow !== currWeek) {
                 currWeek = weeksFromNow;
                 newWeek = true;
             }
-            let date = new Date(event.start_date).toLocaleDateString('sv-SE', {
+            let date = new Date(event.start_time).toLocaleDateString('sv-SE', {
                 weekday: 'long',
             });
             if (currWeek !== 0) {
-                date = new Date(event.start_date).toLocaleDateString('sv-SE', {
+                date = new Date(event.start_time).toLocaleDateString('sv-SE', {
                     weekday: 'long',
                     month: 'long',
                     day: 'numeric'
@@ -70,11 +70,11 @@ const Schema: React.FC<{ events: any[] }> = ({ events }) => {
 
                     </div>
                     <div>
-                        <h3 className="text-right">{new Date(event.start_date).toLocaleTimeString('sv-SE', {
+                        <h3 className="text-right">{new Date(event.start_time).toLocaleTimeString('sv-SE', {
                             hour: 'numeric',
                             minute: 'numeric'
 
-                        })} - {new Date(event.end_date).toLocaleTimeString('sv-SE', {
+                        })} - {new Date(event.end_time).toLocaleTimeString('sv-SE', {
 
                             hour: 'numeric',
                             minute: 'numeric'

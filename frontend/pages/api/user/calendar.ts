@@ -20,13 +20,17 @@ export default function handler(
         if (data.data.user?.aud === 'authenticated') {
             if (req.method === 'GET') {
               
-                supabase.from('personalcalendars').select().eq('userid', data.data.user.id).then(cal => {
-                    res.status(200).json(cal.data)
+                supabase.from('personalcalendar').select().eq('userid', data.data.user.id).then(cal => {
+                    if (cal.data) {
+                        res.status(200).json(cal.data)
+                    } else {
+                        res.status(404).json({ error: 'No calendars found' })
+                    }
                 })
             }
             if (req.method === 'POST') {
              
-                supabase.from('personalcalendars').insert({ 'userid': data.data.user.id, 'calendar': req.body }).then(cal => {
+                supabase.from('personalcalendar').insert({ 'userid': data.data.user.id, 'calendar': req.body }).then(cal => {
                     res.status(200).json(cal.data)
                 }
                 )
@@ -37,7 +41,7 @@ export default function handler(
             
             if (req.method === 'DELETE') {
 
-                supabase.from('personalcalendars').delete().eq('userid', data.data.user.id ).eq( 'calendar', req.body).then(cal => {
+                supabase.from('personalcalendar').delete().eq('userid', data.data.user.id ).eq( 'calendar', req.body).then(cal => {
                     res.status(200).json(cal.data)
                 })
     
