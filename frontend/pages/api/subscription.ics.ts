@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import moment from 'moment';
 import type { NextApiRequest, NextApiResponse } from 'next'
+import getSchema from '../../utils/getSchema';
 import { supabase } from '../../utils/supabaseClient'
 
 
@@ -13,16 +14,15 @@ export default async function handler(
         res.status(400).json({ error: 'Missing course code' })
     }
     if (!Array.isArray(calendarCode) && calendarCode) {
-        const Rooms = await supabase.from('Rooms').select('Name');
-
-        supabase.from('Calendars').select("*, Events(*)").limit(1).ilike('code', calendarCode).single().then(data => {
+        const Rooms = await supabase.from('rooms').select('name');
+        const events = await getSchema(calendarCode)
            
             const ics = require('ics');
-            const events = data.data.Events.map((event:any) => {
+            const calEvents = events?.events.map((event:any) => {
                 const start = moment(event.start_date).format('YYYY-M-D-H-m').split("-").map((item, index) => { return parseInt(item) });
                 const end = moment(event.end_date).format('YYYY-M-D-H-m').split("-").map((item, index) => { return parseInt(item) });
                 let url = "";
-                if (Rooms.data?.some((room: any) => (room.Name as string).toLowerCase() === (event.room.split(' ')[0] as string).toLowerCase())) {
+                if (Rooms.data?.some((room: any) => (room.name as string).toLowerCase() === (event.room.split(' ')[0] as string).toLowerCase())) {
                     url = 'https://mdu.axeldraws.com/map?q=' + event.room.split(' ')[0]
                 }
                 return {
@@ -36,11 +36,10 @@ export default async function handler(
                 }
             });
 
-            const icsCal = ics.createEvents(events)
+            const icsCal = ics.createEvents(calEvents)
             res.status(200)
             res.send(icsCal.value)
-        }
-        )
+   
     }
     res.status(500)
     

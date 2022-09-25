@@ -29,8 +29,8 @@ if __name__ == '__main__':
                 rooms.append(feature)
 
     room_names_to_add =  set([room['properties']['name'] for room in rooms])
-    rooms_to_add = [{'Name': room} for room in room_names_to_add]
+    rooms_to_add = [{'name': room} for room in room_names_to_add]
 
     sb_client:Client = create_client(args.supabase_url, args.supabase_secret_key)
-    sb_client.table('Rooms').delete().neq('id',1000000).execute()
-    sb_client.table('Rooms').insert(rooms_to_add).execute()
+    sb_client.table('rooms').delete().neq('id',1000000).execute()
+    sb_client.table('rooms').insert(rooms_to_add).execute()

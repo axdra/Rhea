@@ -20,7 +20,7 @@ export default function handler(
         res.status(400).json({ error: 'Missing course code' })
     }
       if (!Array.isArray(courseCode) && courseCode){
-          supabase.from('Courses').select("*, Calendars(*)").limit(1).ilike('code', courseCode).single().then(data => {
+          supabase.from('courses').select("*, calendars(*)").limit(1).ilike('code', courseCode).single().then(data => {
               res.status(200).json(data.data)
         }
           )

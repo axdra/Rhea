@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
+import getSchema from '../../utils/getSchema';
 import { supabase } from '../../utils/supabaseClient'
 
 
@@ -12,33 +13,16 @@ export default async function handler(
     if (!calendarCode) {
         res.status(400).json({ error: 'Missing course code' })
     }
-  const Rooms = await supabase.from('Rooms').select('Name');
+  const Rooms = await supabase.from('rooms').select('name');
   
       if (!Array.isArray(calendarCode) && calendarCode){
-          supabase.from('Calendars').select("*, Events(*)").limit(1).ilike('code', calendarCode).single().then(data => {
-            const events = data.data.Events.filter((ev:any)=>new Date(ev.end_date) > new Date()).map((event: any) => {
-                
-                return {
-                  
-                  aid: event.aid,
-                  created_at: new Date(event.created_at.replace('T', 'Z')),
-                  end_date: new Date(event.end_date.replace('T', 'Z')),
-                  group: event.group,
-                  id: event.id,
-                  last_update: new Date(event.last_update.replace('T', 'Z')),
-                  name: event.name,
-                  parent_calendar: event.parent_calendar,
-                  room: event.room,
-                  start_date: new Date(event.start_date.replace('T', 'Z')),
-                  teacher: event.teacher,
-                  hasMap: Rooms.data?.some((room:any)=>(room.Name as string).toLowerCase() === (event.room.split(' ')[0] as string).toLowerCase())
-                }
-              
-            }
-                )
-              res.status(200).json({course: data.data.course, name: data.data.name, code: data.data.code, Events: events })
+        const parent = await supabase.from('calendars').select("*").limit(1).match({ code: calendarCode }).single()
+        const events = await getSchema(calendarCode)
+        if (parent.data) {
+          res.status(200).json({ course: parent?.data?.course, name: parent?.data?.name, code: parent?.data?.code, Events: events?.events })
+        } else {
+          res.status(404).json({ error: 'No course found' })
         }
-          )
     }
     
  
