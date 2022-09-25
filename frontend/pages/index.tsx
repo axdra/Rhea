@@ -34,7 +34,7 @@ const Home: NextPage = () => {
           </div>
           <div className='mb-4'>
             <h1 className='text-2xl font font-medium'>
-              MDU Schema
+              Rhea Schema
             </h1>
             <p className='text-gray-700 text-base mt-4'>
               You can search for any course by name or course code
