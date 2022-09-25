@@ -69,7 +69,8 @@ const getSchema = async (code: string): Promise<ISchema | undefined> => {
             )
     } else {
         console.log("Using cached data for calendar: " + code)
-        const events = await supabase.from('events').select('*').match({ parent_calendar: code })
+        const events = await supabase.from('events').select('*').ilike('parent_calendar', code)
+        console.log(events)
         if(events.data){
             return { events: events.data, name: code }
         } else {
