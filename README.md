@@ -1,3 +1,3 @@
-# MDUSchema
+# Rhea
 
 ## Development instructions
