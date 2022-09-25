@@ -6,7 +6,7 @@ import { supabase } from "../../utils/supabaseClient";
 
 //if in dev mode, use local api
 const api = process.env.NODE_ENV === "development" ? "http://localhost:3000/api" : "/api";
-
+const url = process.env.NODE_ENV === "development" ? "localhost:3000" : process.env.NEXT_PUBLIC_PROD_URL;
 
 const UserCalendar: NextPage = () => {
     const [subscribedCalendars, setSubscribedCalendars] = useState<string[]>([]);
@@ -56,7 +56,7 @@ const UserCalendar: NextPage = () => {
     const subscribeToSchedule = async () => {
         supabase.auth.getSession().then((session) => {
 
-            window.open('webcal://mdu.axeldraws.com/api/user/personalsubscription.ics?q=' +  session.data.session?.user.id , '_blank');
+            window.open('webcal://'+url+'/api/user/personalsubscription.ics?q=' +  session.data.session?.user.id , '_blank');
         });
 
     }
