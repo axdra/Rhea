@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import dayjs from "dayjs";
 import { IEvent } from "../components/schema";
+//@ts-ignore IDK ABOUT THIS, THIS IS SO WEIRD, IT WORKS BUT I DONT KNOW WHY IT WORKS DONT TOUCH IT BAD PRACTICE...
 import ical, { CalendarResponse }  from 'node-ical';
 
 interface ISchema {
@@ -14,7 +15,7 @@ const getEventFromIcalEvent = (event: any,parentCode:string): any => {
     const parsedEvent = {
         created_at: event.created,
         parent_calendar: parentCode,
-        name:  event.summary.split('Moment: ')[1].trim() || '',
+        name:  event.summary.split('Moment: ')[1].trim().replace(/&amp;/g, '&') || '',
         room: event.location,
         location: event.location,
         last_update: event.lastmodified,
@@ -22,7 +23,8 @@ const getEventFromIcalEvent = (event: any,parentCode:string): any => {
         end_time: event.end,
         aid: "",
         teacher: event.summary.split('Sign:')[1]?.split("Moment: ")[0].trim(),
-        group:""
+        group: "",
+        id: event.uid
         
     }
     return parsedEvent;
