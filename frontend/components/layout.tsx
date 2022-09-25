@@ -2,6 +2,7 @@ import { FC, HTMLProps } from "react";
 import Footer from "./footer";
 import Header from "./header";
 import MobileNav from "./mobileNav";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 interface ILayoutProps extends HTMLProps<FC> {
     hideFooter?: boolean;
@@ -25,4 +26,5 @@ const Layout: FC<ILayoutProps> = (props) => {
         </div>
     );
 }
+
 export default Layout;

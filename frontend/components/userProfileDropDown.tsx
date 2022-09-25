@@ -1,6 +1,7 @@
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, UserIcon } from "@heroicons/react/24/solid";
 import { User } from "@supabase/supabase-js";
+import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
@@ -10,6 +11,8 @@ import SignInModal from "./signInModal";
 const UserProfileDropDown = () => {
     const [user, setUser] = useState<User | null>(null);
     const router = useRouter();
+    const { t } = useTranslation();
+
     useEffect(() => {
         supabase.auth.getUser().then((user) => setUser(user.data.user));
 
@@ -31,7 +34,7 @@ const UserProfileDropDown = () => {
             <Menu as="div" className="relative h-full z-80">
                 <div>
                     <Menu.Button className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors flex items-center h-full">
-                        User
+                        {t('user')}
                         <ChevronDownIcon
                             className="ml-2 -mr-1 h-5 w-5 text-white"
                             aria-hidden="true"
@@ -57,7 +60,7 @@ const UserProfileDropDown = () => {
                                         className=" group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-orange-500 hover:text-white"
                                     >
                                      
-                                        Personal Calendar
+                                        {t('personalCalendar')}
                                     </a>
                                     </Link>
                                 )}
@@ -69,14 +72,14 @@ const UserProfileDropDown = () => {
                                         className=" group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-orange-500 hover:text-white"
                                     >
 
-                                        User Settings
+                                        {t('userSettings')}
                                     </a>
                                     </Link>
                                 )}
                             </Menu.Item>
                             <Menu.Item>
                                 <button className=" group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-orange-500 hover:text-white" onClick={signOut}>
-                                    Sign Out
+                                    {t('signOut')}
                                 </button>
                             </Menu.Item>
                         </div>
@@ -88,7 +91,7 @@ const UserProfileDropDown = () => {
     }
     return (
         <div>
-                <button className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors block  " onClick={() => setSignInPrompt(true)}>Sign In</button>
+            <button className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors block  " onClick={() => setSignInPrompt(true)}>{ t('signIn')}</button>
             <SignInModal isOpen={signInPrompt} setIsOpen={setSignInPrompt} />
 
         </div>

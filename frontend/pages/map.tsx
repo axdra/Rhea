@@ -5,6 +5,8 @@ import Map, { Source, Layer, PointLike, GeolocateControl } from "react-map-gl";
 import { useCallback, useEffect, useState } from "react";
 import { Transition } from "@headlessui/react";
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 let MapRef: any = null;
 let GeoRef: any = null;
@@ -13,7 +15,7 @@ const MapView: NextPage = () => {
     const [selectedLevel, setSelectedLevel] = useState('0');
     const { q } = router.query;
     const accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
-
+    const {t} = useTranslation();
     const [floorPlan, setFloorplan] = useState();
     const [selectedRoom, setSelectedRoom] = useState<any>();
     const [pois, setPois] = useState();
@@ -252,7 +254,7 @@ const MapView: NextPage = () => {
             <div className="absolute  h-full w-full pointer-events-none p-3 ">
           
                 <div className="relative inline-block">
-                <input type="text" className="bg-white border  text-orange pointer-events-auto rounded-full shadow-md shadow-neutral-400/10 px-5 focus:ring-orange-500  focus:border-orange-500 border-gray-200 " autoComplete="off" placeholder="Search Room" onChange={
+                <input type="text" className="bg-white border  text-orange pointer-events-auto rounded-full shadow-md shadow-neutral-400/10 px-5 focus:ring-orange-500  focus:border-orange-500 border-gray-200 " autoComplete="off" placeholder={t('searchRoom')}onChange={
                         (e) => {
 
                         e.target.value.length > 0 ? setSearchList(roomList?.filter((room: string) => room.toLowerCase().includes(e.target.value.toLowerCase()))) : setSearchList(undefined);
@@ -307,7 +309,13 @@ const MapView: NextPage = () => {
     );
     
 }
-
-//use custom next layout to wrap the page in the layout component
+export async function getStaticProps({ locale }: any) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['common'])),
+            // Will be passed to the page component as props
+        },
+    };
+}
 
 export default MapView;

@@ -1,9 +1,12 @@
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import type { NextPage } from 'next'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect, useState } from 'react'
 import SearchBar from '../components/searchBar'
 const Home: NextPage = () => {
   const [issues, setIssues] = useState<string[]>([])
+  const { t } = useTranslation()
   useEffect(() => {
     fetch('/api/status').then((data) => {
       data.json().then((data) => {
@@ -25,32 +28,35 @@ const Home: NextPage = () => {
           <div className='h-4 w-4  bg-orange-500 rounded-full left-4 md:left-auto  md:-right-2 -top-2 absolute group'>
             <div className='px-4 py-4 rounded-lg bg-white hidden  shadow absolute group-hover:block w-64 md:-left-32 top-3'>
               <h1 className='font-bold'>
-                Still in development
+                {t('stilInDevelopment')}
               </h1>
               <p>
-                This is a work in progress, there is for sure going to be some bugs.
+                {t('stilInDevelopmentMessage')}
+
               </p>
             </div>
           </div>
           <div className='mb-4'>
             <h1 className='text-2xl font font-medium'>
-              Rhea Schema
+              {t('title')}
             </h1>
             <p className='text-gray-700 text-base mt-4'>
-              You can search for any course by name or course code
+              {t('description1')}
+
             </p>
             <p className='text-gray-700 text-base mt-4'>
-              If you sign in you can can add courses to your schedule and subscribe to a custom schedule feed
+              {t('description2')}
+
             </p>
             <p className='text-gray-700 text-base mt-4'>
-              Of course you can view a single course and subscribe to it{"'"}s schedule feed. Contrariety to kronox this subscription does update regularly in your calendar automatically.
+              {t('description3')}
             </p>
             <div className='flex justify-center items-center mt-4'>
               <SearchBar />
             </div>
             {issues.length > 0 && (
               <><h5 className='text-lg text-red-500 mt-4 font-bold flex items-center gap-2'>
-                <ExclamationTriangleIcon className='h-5 w-5 ' /> Known issues
+                <ExclamationTriangleIcon className='h-5 w-5 ' /> {t('knownIssues')}
               </h5>
 
                 <ul>
@@ -72,6 +78,14 @@ const Home: NextPage = () => {
 
     </div>
   )
+}
+export async function getStaticProps({ locale }: any) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+      // Will be passed to the page component as props
+    },
+  };
 }
 
 export default Home

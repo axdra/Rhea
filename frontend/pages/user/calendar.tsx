@@ -1,5 +1,7 @@
 import { CalendarIcon } from "@heroicons/react/24/solid";
 import { NextPage } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
@@ -10,7 +12,8 @@ const url = process.env.NODE_ENV === "development" ? "localhost:3000" : process.
 
 const UserCalendar: NextPage = () => {
     const [subscribedCalendars, setSubscribedCalendars] = useState<string[]>([]);
-    
+    const { t } = useTranslation();
+
     useEffect(() => {
 
         supabase.auth.getSession().then((session) => {
@@ -63,9 +66,9 @@ const UserCalendar: NextPage = () => {
     return (
         <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 w-full px-4 py-10 shadow rounded-lg mb-24 flex-1 flex-col     ">
             <div className="flex  justify-between items-center mb-4">
-            <h1 className="text-2xl " >User Calendar</h1>
+            <h1 className="text-2xl " >{t('personalCalendar')}</h1>
             <div className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors " onClick={subscribeToSchedule}>
-                <p>Add to calendar</p>
+                    <p>{t('addToCalendar')}</p>
                 <CalendarIcon className="h-8 w-8 text-orange-500" />
                 </div>
             </div>
@@ -93,7 +96,7 @@ const UserCalendar: NextPage = () => {
                                             q: calendar
                                         }
                                     }}>
-                                        <a className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap cursor-pointer ">Go to Calendar</a>
+                                    <a className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap cursor-pointer ">{t('goToCalendar')}</a>
                                     </Link>
                                     <div className="text-red-500 hover:text-red-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap cursor-pointer " onClick={()=>removeCalendar(calendar)}>Remove</div>
                                         </div>
@@ -107,12 +110,20 @@ const UserCalendar: NextPage = () => {
                 {
                     subscribedCalendars.length===0 && (
                         <div className="flex flex-col flex-1 mt-20 items-center justify-center">
-                            <h1 className="text-xl ">You are not subscribed to any calendars</h1>
+                            <h1 className="text-xl ">{t('notSubscribedToAnyCalendar')}</h1>
                             </div>
                     )
                 }
             </div>
         </div>
     );
+}
+export async function getStaticProps({ locale }: any) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['common'])),
+            // Will be passed to the page component as props
+        },
+    };
 }
 export default UserCalendar;

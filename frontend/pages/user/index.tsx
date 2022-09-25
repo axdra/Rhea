@@ -1,6 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { User } from "@supabase/supabase-js";
 import { NextPage } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
@@ -11,6 +13,7 @@ const UserIndex: NextPage = () => {
     const [user, setUser] = useState<User | null>(null);
     const router = useRouter();
     const [loading, setLoading] = useState(true);
+    const {t} = useTranslation();
     const [showDeleteUserModal, setShowDeleteUserModal] = useState(false);
     useEffect(() => {
         supabase.auth.getUser().then((user) => setUser(user.data.user)).finally(() =>  setLoading(false));
@@ -33,18 +36,17 @@ const UserIndex: NextPage = () => {
     return (
         <div className="h-full flex flex-col justify-center items-center flex-1">
             <div className="px-4 py-5 md:rounded-lg md:shadow-lg md:py-20 md:px-12">
-                <h1 className="mb-2 text-lg text-orange-500 font-medium">User</h1>
-                <Link href={'/user/calendar'}><a>Go to personal calendar</a></Link>
-            <h2>Provider: {user?.app_metadata.provider}</h2>
-            <h2>Email: {user?.email}</h2>
-            <h2>User creation date: {new Date(user?.created_at!).toLocaleDateString('sv-SE',{
+                <h1 className="mb-2 text-lg text-orange-500 font-medium">{t('user')}</h1>
+            <h2>{t('provider')}: {user?.app_metadata.provider}</h2>
+                <h2>{t('email')}: {user?.email}</h2>
+                <h2>{t('userCreationDate')}: {new Date(user?.created_at!).toLocaleDateString('sv-SE',{
                 year: "numeric",
                 month: "long",
                 day: "numeric",
             })}</h2>
                 <div className="flex flex-col gap-2">
-                <button className="bg-red-500 text-white rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => setShowDeleteUserModal(true)}>Delete my User</button>
-                <button className="bg-white text-red-500 rounded-full shadow-lg px-4 py-2 mt-4" onClick={()=>signOut()}>Sign Out</button>
+                    <button className="bg-red-500 text-white rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => setShowDeleteUserModal(true)}>{t('deleteMyAccount')}</button>
+                    <button className="bg-white text-red-500 rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => signOut()}>{t('signOut')}</button>
                 
                 </div><h2 className="mt-5 text-gray-300">User ID: {user?.id}</h2>
 
@@ -80,7 +82,7 @@ const UserIndex: NextPage = () => {
                                         as="h3"
                                         className="text-lg font-medium leading-6 text-red-500"
                                     >
-                                        Delete User
+                                        {t('deleteMyAccount')}
                                     </Dialog.Title>
 
 
@@ -88,18 +90,20 @@ const UserIndex: NextPage = () => {
                                         {/* <h2 className="text-center mb-3 text-gray-700">Sign in via a provider</h2> */}
                                         <div className="flex flex-col gap-3">
                                             <p>
-                                                Are you sure you want to delete your user? All data will be deleted and you will not be able to recover it.
+                                                {t('deleteMyAccountMessage1')}
+
                                             </p>
                                             <p>
-                                                This action is permanent. After the user is deleted you can still login with same account, but a new user will be created.
+                                                {t('deleteMyAccountMessage2')}
                                             </p>
                                         </div>
                                         <div className="flex justify-end gap-4">
                                             <button className="bg-red-500 text-white rounded-full shadow-lg px-4 py-2 mt-4" >
-                                                Delete my User
+                                                {t('deleteMyAccount')}
+
                                             </button>
                                             <button className="bg-white text-black rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => setShowDeleteUserModal(false)}>
-                                                Cancel
+                                                {t('cancel')}
                                             </button>
                                         </div>
 
@@ -112,5 +116,13 @@ const UserIndex: NextPage = () => {
             </Transition>
         </div>
     );
+}
+export async function getStaticProps({ locale }: any) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['common'])),
+            // Will be passed to the page component as props
+        },
+    };
 }
 export default UserIndex;

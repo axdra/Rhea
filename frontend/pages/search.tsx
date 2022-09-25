@@ -1,4 +1,6 @@
 import { NextPage } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -9,6 +11,7 @@ const Search: NextPage = () => {
     const router = useRouter();
     const searchQuary = router.query.q as string;
     const [courses, setCourses] = useState<any[]>([]);
+    const { t } = useTranslation();
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         if (searchQuary) {
@@ -26,9 +29,9 @@ const Search: NextPage = () => {
         , [searchQuary]);
     return (
         <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 px-4 py-10 shadow rounded-lg mb-24 flex-1 flex flex-col    ">
-            <h1 className="text-4xl font-medium mb-5 xl:w-[72rem] transition-all  ">Search results for {searchQuary}</h1>
+            <h1 className="text-4xl font-medium mb-5 xl:w-[72rem] transition-all  ">{t('searchResultsFor', { name: searchQuary })}</h1>
 
-            {courses.length === 0 && !loading && <div className="flex-1 min-h-full flex justify-center "><h2>No results found</h2></div>}
+            {courses.length === 0 && !loading && <div className="flex-1 min-h-full flex justify-center "><h2>{t('noResults')}</h2></div>}
             {loading && <div className="flex-1 min-h-full flex justify-center ">
                 <svg className="animate-spin  h-6 w-6 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -58,7 +61,7 @@ const Search: NextPage = () => {
                                     </h3>
                                 </div>
                                 <div >
-                                    <div className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap ">Go to Course</div>
+                                    <div className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap ">{ t('goToCourse')}</div>
                                 </div>
                             </a>
                         </Link>)}
@@ -66,5 +69,13 @@ const Search: NextPage = () => {
             </div>
         </div>
     );
+}
+export async function getStaticProps({ locale }: any) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['common'])),
+            // Will be passed to the page component as props
+        },
+    };
 }
 export default Search;

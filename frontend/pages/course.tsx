@@ -1,4 +1,6 @@
 import { NextPage } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -6,6 +8,7 @@ import { supabase } from "../utils/supabaseClient";
 
 const Course: NextPage = () => {
     //get Course query from url
+    const {t} = useTranslation();
     const router = useRouter();
     const course = router.query.q as string;
     const [calendars, setCalendars] = useState<any[]>([]);
@@ -35,7 +38,7 @@ const Course: NextPage = () => {
             <h1 className="text-4xl font-medium mb-5 xl:w-[72rem] transition-all  ">{name}</h1>
             <h1 className="text-xl font-medium mb-5 xl:w-[72rem] transition-all  ">{code}</h1>
 
-            {calendars?.length === 0 && !loading && <div className="flex-1 min-h-full flex justify-center  "><h2>No results found</h2></div>}
+            {calendars?.length === 0 && !loading && <div className="flex-1 min-h-full flex justify-center  "><h2>{t('noResults')}</h2></div>}
             {loading && <div className="flex-1 min-h-full flex justify-center ">
                 <svg className="animate-spin  h-6 w-6 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -63,7 +66,7 @@ const Course: NextPage = () => {
                                 </h3>
                             </div>
                             <div >
-                                <div className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap ">Go to Calendar</div>
+                                <div className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap ">{t('goToCalendar')}</div>
                             </div>
                         </a>
                     </Link>)}
@@ -71,5 +74,13 @@ const Course: NextPage = () => {
             </div>
         </div>
     );
+}
+export async function getStaticProps({ locale }: any) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['common'])),
+            // Will be passed to the page component as props
+        },
+    };
 }
 export default Course;

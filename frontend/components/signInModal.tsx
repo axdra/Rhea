@@ -1,4 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
+import { useTranslation } from "next-i18next";
 import { FC, Fragment, useEffect } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { supabase } from "../utils/supabaseClient";
@@ -24,7 +25,8 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
     };
     
 
- 
+    const { t } = useTranslation();
+
     return (
     <Transition appear show={isOpen} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={setIsOpen} >
@@ -57,7 +59,7 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
                                 as="h3"
                                 className="text-lg font-medium leading-6 text-gray-900"
                             >
-                                Sign In
+                               {t('signIn')}
                             </Dialog.Title>
 
 
