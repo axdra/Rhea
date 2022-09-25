@@ -9,6 +9,8 @@ const fourOFour: NextPage = () => {
         <div className="h-full flex flex-col justify-center items-center flex-1 px-4 text-center gap-1">
             <p>{t('createdBy')} <a className="text-orange-500 hover:underline hover:text-orange-600" href="https://axeldraws.com">Axel Draws</a></p>
             <p>{t('withHelpFrom')} <a className="text-orange-500 hover:underline hover:text-orange-600" href="https://linkedin.com/in/oskar-sturebrand-aa73b7219">Oskar Sturebrand</a> {t('creatingMap')}.</p>
+            <p>{t('disclaimer')}</p>
+            <p><a href="https://github.com/axdra/Rhea" className="text-orange-500 hover:underline hover:text-orange-600">GitHub</a></p>
         </div>
     );
 }
