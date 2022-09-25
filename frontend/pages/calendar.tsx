@@ -12,7 +12,7 @@ import { User } from "@supabase/supabase-js";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 const api = process.env.NODE_ENV === "development" ? "http://localhost:3000/api" : "/api";
-const url = process.env.NODE_ENV === "development" ? "localhost:3000" : process.env.NEXT_PUBLIC_PROD_URL;
+const prodURL = process.env.NODE_ENV === "development" ? "localhost:3000" : process.env.NEXT_PUBLIC_PROD_URL;
 
 const Calendar: NextPage = () => {
     //get Course query from url
@@ -61,7 +61,7 @@ const Calendar: NextPage = () => {
         });
     }
     const subscribeToSchedule = async () => {
-        window.open('webcal://' + url +'/api/subscription.ics?q=' + calendar, '_blank');
+        window.open('webcal://' + prodURL +'/api/subscription.ics?q=' + calendar, '_blank');
     
     }
     const navigateToMyCalendar = async () => {
