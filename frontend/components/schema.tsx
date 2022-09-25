@@ -1,5 +1,6 @@
 import { useState } from "react";
 import dayjs from "dayjs";
+import { useTranslation } from "next-i18next";
 export interface IEvent {
     id?: number;
     created_at: Date,
@@ -22,6 +23,8 @@ function getWeeksFromNow(date: Date) {
 }
 
 const Schema: React.FC<{ events: any[] }> = ({ events }) => {
+    const { t } = useTranslation();
+
     let currWeek = 0;
     let firstWeek = true;
     return <div className="flex flex-col gap-4">
@@ -47,9 +50,9 @@ const Schema: React.FC<{ events: any[] }> = ({ events }) => {
             let showFirstWeek =  firstWeek;
             firstWeek = false;
             return (<>
-                {weeksFromNow === 1 && newWeek && <h2>Next week</h2>}
-                {newWeek && weeksFromNow > 1 && <h2>In {weeksFromNow} weeks</h2>}
-                {showFirstWeek && weeksFromNow === 0 && <h2>This week</h2>}
+                {weeksFromNow === 1 && newWeek && <h2>{t('nextWeek')}</h2>}
+                {newWeek && weeksFromNow > 1 && <h2>{t('inxWeek', { weeks: weeksFromNow.toString() })} </h2>}
+                {showFirstWeek && weeksFromNow === 0 && <h2>{t('thisWeek') }</h2>}
                 <div
                     key={event.id}
                     className="flex flex-row gap-6 items-center justify-between border rounded-xl border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2 hover:shadow transition-all duration-300">

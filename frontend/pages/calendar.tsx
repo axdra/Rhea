@@ -9,11 +9,14 @@ import { CalendarIcon } from "@heroicons/react/24/solid";
 import Schema from "../components/schema";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { User } from "@supabase/supabase-js";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 const api = process.env.NODE_ENV === "development" ? "http://localhost:3000/api" : "/api";
 const url = process.env.NODE_ENV === "development" ? "localhost:3000" : process.env.NEXT_PUBLIC_PROD_URL;
 
 const Calendar: NextPage = () => {
     //get Course query from url
+    const {t} = useTranslation();
     const router = useRouter();
     const calendar = router.query.q as string;
     const [events, setEvents] = useState<any[]>([]);
@@ -79,18 +82,18 @@ const Calendar: NextPage = () => {
                     {events.length !== 0 && !loading &&
                         <div className="flex gap-5 ">
                         <div className="flex py-2 px-4 gap-2 items-center  justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors " onClick={subscribeToSchedule}>
-                    <p>Add to calendar</p>
+                                <p>{ t('addToCalendar')}</p>
                         <CalendarIcon className="h-8 w-8 text-orange-500" />
                             </div>
                          {  user && <div className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors " onClick={subscribed ?  navigateToMyCalendar : addToPersonalCalendar }>
-                                {subscribed ? <p>Go to My Calendar</p> :< p > Add My Calendar</p>} 
+                                {subscribed ? <p>{t('goToPersonalCalendar')}</p> : < p > {t('addToPersonalCalendar')}</p>} 
                                 <UserIcon className="h-8 w-8 text-orange-500" />
                             </div>}
                             </div>
                 } 
                 </div>
                 </div>
-            {events.length === 0 && !loading && <div className="flex-1 min-h-full flex justify-center "><h2>No results found</h2></div>}
+            {events.length === 0 && !loading && <div className="flex-1 min-h-full flex justify-center "><h2>{t('noResults')}</h2></div>}
             {loading && <div className="flex-1 min-h-full flex justify-center ">
                 <svg className="animate-spin  h-6 w-6 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -101,5 +104,13 @@ const Calendar: NextPage = () => {
                 <Schema events={ events} />
         </div>
     );
+}
+export async function getStaticProps({ locale }: any) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['common'])),
+            // Will be passed to the page component as props
+        },
+    };
 }
 export default Calendar;
