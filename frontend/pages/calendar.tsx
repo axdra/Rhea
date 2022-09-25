@@ -10,6 +10,7 @@ import Schema from "../components/schema";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { User } from "@supabase/supabase-js";
 const api = process.env.NODE_ENV === "development" ? "http://localhost:3000/api" : "/api";
+const url = process.env.NODE_ENV === "development" ? "localhost:3000" : process.env.NEXT_PUBLIC_PROD_URL;
 
 const Calendar: NextPage = () => {
     //get Course query from url
@@ -57,7 +58,7 @@ const Calendar: NextPage = () => {
         });
     }
     const subscribeToSchedule = async () => {
-        window.open('webcal://mdu.axeldraws.com/api/subscription.ics?q=' + calendar, '_blank');
+        window.open('webcal://' + url +'/api/subscription.ics?q=' + calendar, '_blank');
     
     }
     const navigateToMyCalendar = async () => {

@@ -4,6 +4,7 @@ import moment from 'moment';
 import type { NextApiRequest, NextApiResponse } from 'next'
 import getSchema from '../../../utils/getSchema';
 
+const mapURL = process.env.NODE_ENV === "development" ? "localhost:3000" : process.env.NEXT_PUBLIC_PROD_URL;
 
 export default async function handler(
     req: NextApiRequest,
@@ -31,7 +32,7 @@ export default async function handler(
                         const end = moment(event.end_time).format('YYYY-M-D-H-m').split("-").map((item) => { return parseInt(item) });
                         let url = "";
                         if (Rooms.data?.some((room: any) => (room.name as string).toLowerCase() === (event.room?.split(' ')[0] as string).toLowerCase())) {
-                            url = 'https://mdu.axeldraws.com/map?q=' + event.room.split(' ')[0]
+                            url = 'https://'+mapURL+'/map?q=' + event.room.split(' ')[0]
                         }
                         return {
                             title: calID.calendar.split('-')[0] + " - " + event.name,
