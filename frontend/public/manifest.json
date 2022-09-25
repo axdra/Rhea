@@ -1,6 +1,6 @@
 {"$schema": "https://json.schemastore.org/web-manifest-combined.json",
-"name": "MDU Schema",
-"short_name": "MDU Schema",
+"name": "Rhea Schema",
+"short_name": "Rhea Schema",
 "start_url": "/",
 "display": "standalone",
 "background_color": "#fff",
