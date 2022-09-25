@@ -34,11 +34,13 @@ const UserProfileDropDown = () => {
             <Menu as="div" className="relative h-full z-80">
                 <div>
                     <Menu.Button className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors flex items-center h-full">
-                        {t('user')}
+                  <span className="flex items-center">  {t('user')}
                         <ChevronDownIcon
                             className="ml-2 -mr-1 h-5 w-5 text-white"
                             aria-hidden="true"
-                        />
+                            />
+                    </span>
+
                     </Menu.Button>
                 </div>
                 <Transition
