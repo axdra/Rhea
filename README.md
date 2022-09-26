@@ -1,4 +1,7 @@
 # Rhea
+<a href="https://hosted.weblate.org/engage/rhea/">
+<img src="https://hosted.weblate.org/widgets/rhea/-/svg-badge.svg" alt="Translation status" />
+</a>
 This is a project thats goal is to create a platform for actually use [KronoX](https://kronox.se/) Schedule. The goal is also to extend the functionality. This includes:
 - Subscribing to a Schedule
 - Creating a personal Schedule 
