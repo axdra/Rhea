@@ -45,7 +45,7 @@ const UserIndex: NextPage = () => {
                 day: "numeric",
             })}</h2>
                 <div className="flex flex-col gap-2">
-                    <Link href="/user/calendar"><a className="bg-orange-500 text-white rounded-full shadow-lg px-4 py-2 mt-4" >{t('deleteMyAccount')}</a></Link>
+                    <Link href="/user/calendar"><a className="bg-orange-500 text-white rounded-full shadow-lg px-4 py-2 mt-4 text-center" >{t('personalCalendar')}</a></Link>
                     <button className="bg-red-500 text-white rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => setShowDeleteUserModal(true)}>{t('deleteMyAccount')}</button>
                     <button className="bg-white text-red-500 rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => signOut()}>{t('signOut')}</button>
                 
