@@ -58,7 +58,8 @@ const getSchema = async (code: string): Promise<ISchema | undefined> => {
     const supabase = createClient(supabaseUrl, supabaseAnonKey)
     
     const calendar = await supabase.from('calendars').select("*, events(*)").limit(1).ilike('code', code).single()
-    if(calendar.data){
+    if (calendar.data) {
+        console.log(Math.abs(dayjs(calendar.data.last_cache).diff(dayjs(), 'hour')))
     if (calendar?.data?.last_cache === undefined || calendar?.data?.last_cache === null || Math.abs(dayjs(calendar.data.last_cache).add(2, 'h').diff(dayjs(), 'hour')) > 1) {
         console.log("Updating cache for calendar: " + code)
              return updateSchemaCache(code).then((data) => {
