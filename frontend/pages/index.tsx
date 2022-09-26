@@ -26,7 +26,7 @@ const Home: NextPage = () => {
         <div className='dark:bg-black dark:border dark:border-white dark:text-white bg-white md:shadow-md rounded px-8 pt-6 pb-8 mb-4 relative '>
           <div className='h-4 w-4 bg-orange-500 animate-ping rounded-full left-4  md:left-auto md:-right-2 -top-2 absolute '></div>
           <div className='h-4 w-4  bg-orange-500 rounded-full left-4 md:left-auto  md:-right-2 -top-2 absolute group'>
-            <div className='px-4 py-4 rounded-lg bg-white hidden  shadow absolute group-hover:block w-64 md:-left-32 top-3'>
+            <div className='px-4 py-4 rounded-lg dark:bg-black dark:border dark:border-white bg-white hidden  shadow absolute group-hover:block w-64 md:-left-32 top-3'>
               <h1 className='font-bold'>
                 {t('stilInDevelopment')}
               </h1>
