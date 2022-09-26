@@ -34,7 +34,7 @@ const Course: NextPage = () => {
     }
         , [course]);
     return (
-        <div className="max-w-6xl  w-full mx-auto md:mt-12 mt-4 md:px-24 px-4 py-10 shadow rounded-lg mb-24 flex-1 flex flex-col    ">
+        <div className="max-w-6xl  w-full mx-auto md:mt-12 mt-4 md:px-24 px-4 py-10 shadow rounded-lg mb-24 flex-1 flex flex-col  dark:border dark:border-white dark:text-white  ">
             <h1 className="text-4xl font-medium mb-5 xl:w-[72rem] transition-all  ">{name}</h1>
             <h1 className="text-xl font-medium mb-5 xl:w-[72rem] transition-all  ">{code}</h1>
 
@@ -56,7 +56,7 @@ const Course: NextPage = () => {
                             }
                         }}>
                         <a
-                            className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-xl border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2 hover:bg-gray-50 hover:shadow transition-all duration-300">
+                            className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-xl dark:bg-black dark:border-white dark:hover:bg-orange-700 border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2 hover:bg-gray-50 hover:shadow transition-all duration-300">
                             <div>
                                 <h2>
                                     {calendar.name}
@@ -66,7 +66,7 @@ const Course: NextPage = () => {
                                 </h3>
                             </div>
                             <div >
-                                <div className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap ">{t('goToCalendar')}</div>
+                                <div className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap dark:border dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-orange-700">{t('goToCalendar')}</div>
                             </div>
                         </a>
                     </Link>)}
