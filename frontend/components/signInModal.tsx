@@ -54,10 +54,10 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
                         leaveTo="opacity-0 scale-95"
 
                     >
-                        <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                        <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-black dark:text-white dark:border dark:border-white">
                             <Dialog.Title
                                 as="h3"
-                                className="text-lg font-medium leading-6 text-gray-900"
+                                className="text-lg font-medium leading-6 text-gray-900 dark:text-white"
                             >
                                {t('signIn')}
                             </Dialog.Title>
@@ -68,9 +68,9 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
                                 <div className="flex justify-center gap-4">
 
                                     {/* <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer"><FaApple className="h-6 w-6" /></div> */}
-                                    <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer" onClick={signInWithGoogle}><h1><FaGoogle className="h-6 w-6" /></h1></div>
+                                    <div className="h-16 w-16 bg-black dark:border-white dark:border dark:hover:text-black dark:hover:bg-white transition-colors duration-300 text-white flex justify-center items-center rounded-2xl cursor-pointer" onClick={signInWithGoogle}><h1><FaGoogle className="h-6 w-6" /></h1></div>
                                     {/* <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer"><h1><FaMicrosoft className="h-6 w-6" /></h1></div> */}
-                                        <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer" onClick={signInWithGithub} ><h1><FaGithub className="h-6 w-6" /></h1></div>
+                                        <div className="h-16 w-16 bg-black dark:border-white dark:border dark:hover:text-black dark:hover:bg-white transition-colors duration-300 text-white flex justify-center items-center rounded-2xl cursor-pointer" onClick={signInWithGithub} ><h1><FaGithub className="h-6 w-6" /></h1></div>
                                 </div>
                                
                                 {/*
