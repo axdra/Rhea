@@ -28,7 +28,7 @@ const Search: NextPage = () => {
     }
         , [searchQuary]);
     return (
-        <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 px-4 py-10 shadow rounded-lg mb-24 flex-1 flex flex-col    ">
+        <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 px-4 py-10 shadow rounded-lg mb-24 flex-1 flex flex-col dark:border dark:border-white dark:text-white     ">
             <h1 className="text-4xl font-medium mb-5 xl:w-[72rem] transition-all  ">{t('searchResultsFor', { name: searchQuary })}</h1>
 
             {courses.length === 0 && !loading && <div className="flex-1 min-h-full flex justify-center "><h2>{t('noResults')}</h2></div>}
@@ -51,7 +51,7 @@ const Search: NextPage = () => {
                             }
                         }}>
                             <a 
-                            className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-xl border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2 hover:bg-gray-50 hover:shadow transition-all duration-300">
+                            className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-xl dark:bg-black dark:border-white dark:hover:bg-orange-700 border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2 hover:bg-gray-50 hover:shadow transition-all duration-300">
                                 <div>
                                     <h2>
                                         {course.name}
@@ -61,7 +61,7 @@ const Search: NextPage = () => {
                                     </h3>
                                 </div>
                                 <div >
-                                    <div className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap ">{ t('goToCourse')}</div>
+                                    <div className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-orange-700 dark:border ">{ t('goToCourse')}</div>
                                 </div>
                             </a>
                         </Link>)}

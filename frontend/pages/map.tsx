@@ -88,6 +88,22 @@ const MapView: NextPage = () => {
             })
         })
     }, [])
+
+
+    const [darkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setDarkMode(true)
+        }
+        window.matchMedia('(prefers-color-scheme: dark)')
+            .addEventListener('change', event => {
+                const colorScheme = event.matches ? "dark" : "light";
+                setDarkMode(colorScheme === 'dark');
+                console.log(colorScheme);
+            })
+    }, [setDarkMode]);
+
     
     const requestLocation = () => {
         if(GeoRef) {
@@ -112,7 +128,7 @@ const MapView: NextPage = () => {
                         zoom: 18,
                     }
                 }
-                mapStyle={'mapbox://styles/axdra/cl7lvw83y000c14nwrme20rel'}
+                mapStyle={darkMode ?'mapbox://styles/mapbox/dark-v10' :'mapbox://styles/axdra/cl7lvw83y000c14nwrme20rel'}
                 attributionControl={false}
                 mapboxAccessToken={accessToken}
                 style={{

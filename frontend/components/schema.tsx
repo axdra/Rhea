@@ -55,7 +55,7 @@ const Schema: React.FC<{ events: any[] }> = ({ events }) => {
                 {showFirstWeek && weeksFromNow === 0 && <h2>{t('thisWeek') }</h2>}
                 <div
                     key={event.id}
-                    className="flex flex-row gap-6 items-center justify-between border rounded-xl border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2 hover:shadow transition-all duration-300">
+                    className="flex flex-row gap-6 items-center justify-between border rounded-xl border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2 hover:shadow transition-all duration-300 dark:border-white dark:bg-black">
                     <div>
 
                         <h2>

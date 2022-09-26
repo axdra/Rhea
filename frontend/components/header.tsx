@@ -15,7 +15,7 @@ const Header: FC = () => {
 
     return (
         <>
-            <div className="sticky top-0 bg-white h-16 shadow-sm  justify-between items-center px-10 w-screen z-10 sm:flex hidden ">
+            <div className="sticky top-0 dark:bg-black dark:text-white dark:border-b-white dark:border-b dark:shadow-none bg-white h-16 shadow-sm  justify-between items-center px-10 w-screen z-10 sm:flex hidden ">
                 <Link href="/"><a ><h1>{t('title')}</h1></a></Link>
                 <div className=" gap-4  flex ">
 <div className="hidden md:block">

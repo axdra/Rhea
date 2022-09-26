@@ -8,7 +8,7 @@ const fourOFour: NextPage = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="h-full flex flex-col justify-center items-center flex-1">
+        <div className="h-full flex flex-col justify-center items-center flex-1 dark:text-white">
             <h1>{ t('404message')}</h1>
             <Link href="/">
                 <a className="hover:underline text-orange-500">{t('404goBack')}</a>

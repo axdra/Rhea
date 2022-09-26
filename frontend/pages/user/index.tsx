@@ -34,8 +34,8 @@ const UserIndex: NextPage = () => {
         <SignInModal isOpen setIsOpen={()=>router.push('/')}/>
     </div>
     return (
-        <div className="h-full flex flex-col justify-center items-center flex-1">
-            <div className="px-4 py-5 md:rounded-lg md:shadow-lg md:py-20 md:px-12">
+        <div className="h-full flex flex-col justify-center items-center flex-1 dark:text-white">
+            <div className="px-4 py-5 md:rounded-lg md:shadow-lg md:py-20 md:px-12 dark:md:border dark:md:border-white">
                 <h1 className="mb-2 text-lg text-orange-500 font-medium">{t('user')}</h1>
             <h2>{t('provider')}: {user?.app_metadata.provider}</h2>
                 <h2>{t('email')}: {user?.email}</h2>
@@ -47,7 +47,7 @@ const UserIndex: NextPage = () => {
                 <div className="flex flex-col gap-2">
                     <Link href="/user/calendar"><a className="bg-orange-500 text-white rounded-full shadow-lg px-4 py-2 mt-4 text-center" >{t('personalCalendar')}</a></Link>
                     <button className="bg-red-500 text-white rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => setShowDeleteUserModal(true)}>{t('deleteMyAccount')}</button>
-                    <button className="bg-white text-red-500 rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => signOut()}>{t('signOut')}</button>
+                    <button className="bg-white text-red-500 rounded-full shadow-lg px-4 py-2 mt-4 dark:bg-black dark:border-white dark:border dark:hover:bg-white transition-colors " onClick={() => signOut()}>{t('signOut')}</button>
                 
                 </div><h2 className="mt-5 text-gray-300">User ID: {user?.id}</h2>
 

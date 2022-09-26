@@ -15,7 +15,7 @@ const SearchBar: FC = () => {
     const { t } = useTranslation();
 
     return <form onSubmit={search}>
-    <input type="text" value={searchQuary} onChange={(e)=>setSearchQuary(e.currentTarget.value)} name="searchquary" className="rounded-full border-gray-300 placeholder:text-gray-300 focus:ring-orange-500 focus:border-orange-500 shadow-sm" placeholder={t('search')} />
+    <input type="text" value={searchQuary} onChange={(e)=>setSearchQuary(e.currentTarget.value)} name="searchquary" className="dark:text-orange-500 rounded-full border-gray-300 placeholder:text-gray-300 focus:ring-orange-500 focus:border-orange-500 shadow-sm" placeholder={t('search')} />
     </form>
 }
 export default SearchBar;

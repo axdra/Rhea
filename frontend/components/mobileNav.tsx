@@ -16,7 +16,7 @@ const MobileNav: FC = () => {
 
     return (
         <>
-            <div className="fixed bottom-0 bg-white h-16 shadow-sm  justify-between items-center px-10 w-screen z-10 sm:hidden flex border-t border-t-gray-100 ">
+            <div className="fixed bottom-0 bg-white h-16 shadow-sm  justify-between items-center px-10 w-screen z-10 sm:hidden flex border-t border-t-gray-100 dark:bg-black dark:text-white ">
                 <Link href="/">
                     <a>
                         {

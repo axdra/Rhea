@@ -68,7 +68,7 @@ const Calendar: NextPage = () => {
         router.push('/user/calendar');
     }
     return (
-        <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 w-full px-4 py-10 shadow rounded-lg mb-24 flex-1 flex-col    ">
+        <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 w-full px-4 py-10 shadow rounded-lg mb-24 flex-1 flex-col  dark:text-white dark:border dark:border-white   ">
             <h1 className="text-4xl font-medium mb-5 transition-all max-w-full  " style={{
                 wordWrap: "break-word"
             }}>{name}</h1>
@@ -81,11 +81,11 @@ const Calendar: NextPage = () => {
                 <div className="flex-1 justify-end flex items-center ">
                     {events.length !== 0 && !loading &&
                         <div className="flex gap-5 ">
-                        <div className="flex py-2 px-4 gap-2 items-center  justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors " onClick={subscribeToSchedule}>
+                            <div className="flex py-2 px-4 gap-2 items-center  justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-orange-700 dark:border" onClick={subscribeToSchedule}>
                                 <p>{ t('addToCalendar')}</p>
                         <CalendarIcon className="h-8 w-8 text-orange-500" />
                             </div>
-                         {  user && <div className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors " onClick={subscribed ?  navigateToMyCalendar : addToPersonalCalendar }>
+                            {user && <div className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-orange-700 dark:border" onClick={subscribed ?  navigateToMyCalendar : addToPersonalCalendar }>
                                 {subscribed ? <p>{t('goToPersonalCalendar')}</p> : < p > {t('addToPersonalCalendar')}</p>} 
                                 <UserIcon className="h-8 w-8 text-orange-500" />
                             </div>}
