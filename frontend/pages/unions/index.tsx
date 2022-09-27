@@ -37,20 +37,22 @@ const UnionsList: NextPage = () => {
                 unions?.map((union) => {
                     return (
                         <Link href={`/unions/${union.name.toLowerCase()}`} key={union.id}>
-                            <a className="flex flex-col justify-center items-center gap-2 bg-white shadow rounded-md overflow-hidden hover:shadow-lg transition-all duration-300 group ">
+                            <a className="flex flex-col justify-center items-center gap-2 bg-white shadow rounded-md overflow-hidden hover:shadow-lg transition-all duration-300 group">
                                 <div
-                                    className="w-full flex justify-center items-center py-2 relative overflow-hidden"
+                                    className="w-full flex justify-center items-center py-2 relative overflow-hidden "
                                     style={{
                                         backgroundColor: union.color,
                                     }} >
+                                    {
+                                        union.cover_image ? <img src={union.cover_image} alt="union cover image" className="h-40 w-64   object-contain group-hover:scale-105 transition-all duration-300" /> : <div className="h-40 w-64 bg-black"></div>
+                                }
                                     
-                                    <img src={union.cover_image} alt="union cover image" className="h-40 w-64   object-contain group-hover:scale-105 transition-all duration-300" />
                                     <div className="absolute h-16 bg-gradient-to-t from-black/40 to-transparent w-full bottom-0 z-0"/>
                                     <h1 className="text-bold text-xl absolute left-2 bottom-2 text-white z-10">{union.name}</h1>
 
                                 </div>
-                                <div className="flex gap-2 flex-col text-center px-4 pb-6 pt-2">
-                                    <p>{union.description}</p>
+                                <div className="flex gap-2 flex-col text-center px-4  pt-2 h-24">
+                                    <p className="line-clamp-3">{union.description}</p>
                                 </div>
                             </a>
                         </Link>

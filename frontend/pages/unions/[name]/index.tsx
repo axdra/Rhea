@@ -80,14 +80,14 @@ const Union: NextPage = () => {
 
     if (loading) {
         return <div className="h-full flex flex-1 items-center justify-center">
-            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-l-2 border-r-2 border-gray-900"></div>
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-l-2 border-r-2 border-gray-900 "></div>
 
         </div>
     }
     return (
         <div className="h-full flex flex-1 sm:flex-row flex-col  justify-center dark:text-white mt-10 gap-5">
-            <div className="prose max-w-6xl px-10 w-full relative">
-                <img src={union?.cover_image} alt={union?.name} className="select-none absolute  -z-50 -left-20 -top-32 opacity-5" />
+            <div className=" prose max-w-6xl px-10 w-full relative dark:prose-invert ">
+                <img src={union?.cover_image} alt={union?.name} className="select-none absolute  -z-50 -left-20 -top-32 opacity-5 " />
 
                 <div className="flex items-center gap-4 mb-4"><h1 className="mb-0">{union?.name}</h1>
                 {isAdmin && (<Link href="/unions/[name]/edit" as={`/unions/${union?.name.toLowerCase()}/edit`}>
@@ -118,9 +118,9 @@ const Union: NextPage = () => {
                     {union?.unionevents.map((event) => {
                         return (
                                 <Link key={event.id} href={`/unions/${union.name.toLowerCase()}/${event.url_slug}`}>
-                                <a className="aspect-square w-full shadow-lg relative overflow-hidden rounded-lg">
+                                <a className="aspect-square w-full shadow-lg relative overflow-hidden rounded-lg transition-all hover:shadow-lg group">
                                     <img className="absolute  w-full  aspect-square object-cover top-0 mt-0" src={event.cover_image} alt={event.title} />
-                                    <div className="absolute top-2 left-2  bg-white text-black rounded px-2 py-1">
+                                    <div className="absolute top-2 left-2  bg-white text-black rounded px-2 py-1 group-hover:-top-24 transition-all duration-700 ease-in-out  ">
                                         <div >{new Date(event.start_time).toLocaleDateString()}</div>
 
                                         <div >{new Date(event.start_time).toLocaleTimeString(
@@ -132,12 +132,12 @@ const Union: NextPage = () => {
                                         )}</div>
 
                                     </div>
-                                    <div className="top-2 right-2 absolute">
+                                    <div className="top-2 right-2 absolute group-hover:-top-24 transition-all duration-700 ease-in-out ">
                                         {event.cost > 0 ? <div className=" text-green-600 px-3  border-2  rounded-full border-green-400 bg-green-200 ">{event.cost} kr</div> : <div className="text-green-600 px-3  border-2  rounded-full border-green-400 bg-green-200 ">Free</div>}
                                     </div>
-                                    <div className="absolute bottom-0 w-full bg-black bg-opacity-50 px-2 py-3">
+                                    <div className="absolute bottom-0 w-full bg-black bg-opacity-70 px-2 py-3 h-2/5 group-hover:h-full transition-all duration-500 ease-in-out ">
                                     
-                                        <h3 className="text-white mt-0">{event.title}</h3>
+                                        <h3 className="text-white mt-0 mb-1">{event.title}</h3>
                                         <p className="text-white mb-1 line-clamp-2">{event.short_description}</p>
                                
                                     </div>

@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+//@ts-ignore
 import ReactMarkdown from 'react-markdown'
 import { IUnionEvent } from ".";
 
@@ -42,7 +43,7 @@ const Union: NextPage = () => {
 
             <div className="max-w-6xl px-10 w-full flex gap-10 flex-col-reverse md:flex-row  ">
 
-                <div className="prose flex-1 relative">
+                <div className="prose flex-1 relative dark:prose-invert">
                 <h1>{event?.title}</h1>  
                 <ReactMarkdown >
                     {event?.description || ''}
@@ -51,25 +52,31 @@ const Union: NextPage = () => {
                 <div>
             <div className="shadow-md rounded-md flex flex-col w-full md:w-72 px-4 py-6 prose bg-white ">
                         <h3 >Event Info</h3>
-                        <p className="mt-1 mb-1"><>When: {new Date(event?.start_time).toLocaleDateString('sv-SE', {
+                        {
+                            event?.start_time && <p className="mt-1 mb-1"><>When: {new Date(event?.start_time).toLocaleDateString('sv-SE', {
                             weekday: 'long',
                             month: 'long',
                             day: 'numeric'
-                        })}</></p>
-                        <p className="mt-1 mb-1"><>Start: {new Date(event?.start_time).toLocaleTimeString('sv-SE', {
+                        })}</></p>}
+                        {
+
+                        event?.start_time && <p className="mt-1 mb-1"><>Start: {new Date(event?.start_time).toLocaleTimeString('sv-SE', {
                             hour: '2-digit',
                             minute: '2-digit'
                         })}</></p>
-                        <p className="mt-1 mb-1"><>End: {new Date(event?.end_time).toLocaleTimeString('sv-SE', {
+                        }
+                        {
+                         event?.end_time && <p className="mt-1 mb-1"><>End: {new Date(event?.end_time).toLocaleTimeString('sv-SE', {
                             hour: '2-digit',
                             minute: '2-digit'
                         })}</></p>
+                        }
                         {
                             event?.coordinates ? <p className="mt-2 mb-2">Location: <a href={`https://www.google.com/maps/search/?api=1&query=${event?.coordinates}`}>{event?.location}</a></p>:
                         <p className="mt-2 mb-2">Location: {event?.location}</p>
                 }
 
-                        <p className="mt-2 mb-2">Cost: <span className="font-bold">{event?.cost}</span> kr</p>
+                        {event?.cost && <p className="mt-2 mb-2">Cost: <span className="font-bold">{event?.cost}</span> kr</p>}
 
                 </div>
                 </div>
