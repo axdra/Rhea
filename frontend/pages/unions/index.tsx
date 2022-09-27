@@ -20,7 +20,7 @@ const UnionsList: NextPage = () => {
             .then((res) => res.json())
             .then((data) => {
                 
-                setUnions([data.unions[0], data.unions[0], data.unions[0], data.unions[0]]);
+                setUnions(data.unions);
             });
     }, []);
 
