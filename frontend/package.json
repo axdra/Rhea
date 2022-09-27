@@ -14,6 +14,7 @@
     "@supabase/supabase-js": "^2.0.0-rc.8",
     "@supabase/ui": "^0.36.5",
     "@tailwindcss/forms": "^0.5.2",
+    "@tailwindcss/typography": "^0.5.7",
     "dayjs": "^1.11.5",
     "ics": "^2.40.0",
     "map-gl-indoor": "^0.5.0",
@@ -25,7 +26,9 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
-    "react-map-gl": "^7.0.19"
+    "react-map-gl": "^7.0.19",
+    "rich-markdown-editor": "^11.21.3",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@types/node": "18.7.14",
@@ -37,5 +40,8 @@
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8",
     "typescript": "4.8.2"
+  },
+  "resolutions": {
+    "prosemirror-model": "1.16.0"
   }
 }

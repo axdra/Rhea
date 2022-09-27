@@ -1,5 +1,3 @@
-import { Dialog, Transition } from "@headlessui/react";
-import { User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { FC, FormEvent, Fragment, useEffect, useState } from "react";
 import { supabase } from "../utils/supabaseClient";
@@ -22,6 +20,7 @@ const Header: FC = () => {
                     <SearchBar />
                     </div>
                     <Link href={"/map"}><a className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors  flex items-center gap-2" ><span className="sm:block hidden">{t('map')}</span> <MapIcon className="h-5 w-5" /> </a></Link>
+                    <Link href={"/unions"}><a className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors  flex items-center gap-2" ><span className="sm:block hidden">{t('unions')}</span>  </a></Link>
                    <UserProfileDropDown/>
             </div>
             </div>
