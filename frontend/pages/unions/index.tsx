@@ -26,7 +26,7 @@ const UnionsList: NextPage = () => {
     }, []);
     if (loading) {
         return <div className="h-full flex flex-1 items-center justify-center">
-            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-l-2 border-r-2 border-gray-900"></div>
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-l-2 border-r-2 border-gray-900 dark:border-white"></div>
 
         </div>
     }
@@ -37,7 +37,7 @@ const UnionsList: NextPage = () => {
                 unions?.map((union) => {
                     return (
                         <Link href={`/unions/${union.name.toLowerCase()}`} key={union.id}>
-                            <a className="flex flex-col justify-center items-center gap-2 bg-white shadow rounded-md overflow-hidden hover:shadow-lg transition-all duration-300 group">
+                            <a className="flex flex-col justify-center items-center gap-2 dark:bg-black dark:border dark:border-white bg-white shadow rounded-md overflow-hidden hover:shadow-lg transition-all duration-300 group">
                                 <div
                                     className="w-full flex justify-center items-center py-2 relative overflow-hidden "
                                     style={{
