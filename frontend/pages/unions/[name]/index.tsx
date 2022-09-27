@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { supabase } from "../../../utils/supabaseClient";
 
     export interface IUnionSideBar {
         items: {
@@ -52,27 +53,68 @@ const Union: NextPage = () => {
     const name = router.query.name as string
     const [loading, setLoading] = useState(true);
     const [union, setUnion] = useState<IUnion>();
+    const [isAdmin, setIsAdmin] = useState(false);
     const { t } = useTranslation();
 
     useEffect(() => {
         if (name) {
-            fetch('/api/unions/page?q=' + name).then(res => res.json()).then(data => {
+            supabase.auth.getSession().then(session => {
+            fetch('/api/unions/page?q=' + name, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${session.data.session?.access_token}`
+                },
+
+            }).then(res => res.json()).then(data => {
                 setUnion(data.union);
+                setIsAdmin(data.admin);
             }
             ).finally(() => {
                 setLoading(false);
             })
+            }
+            )
         }
     }, [name]);
-    return (
-        <div className="h-full flex flex-1 justify-center dark:text-white mt-10 gap-5">
-            <div className="prose max-w-6xl px-10 w-full relative">
-                <img src={union?.cover_image} alt={union?.name} className="absolute  -z-50 -left-20 -top-32 opacity-5" />
 
-                <h1>{union?.name}</h1>
+    if (loading) {
+        return <div className="h-full flex flex-1 items-center justify-center">
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-l-2 border-r-2 border-gray-900"></div>
+
+        </div>
+    }
+    return (
+        <div className="h-full flex flex-1 sm:flex-row flex-col  justify-center dark:text-white mt-10 gap-5">
+            <div className="prose max-w-6xl px-10 w-full relative">
+                <img src={union?.cover_image} alt={union?.name} className="select-none absolute  -z-50 -left-20 -top-32 opacity-5" />
+
+                <div className="flex items-center gap-4 mb-4"><h1 className="mb-0">{union?.name}</h1>
+                {isAdmin && (<Link href="/unions/[name]/edit" as={`/unions/${union?.name.toLowerCase()}/edit`}>
+                        <a className="no-underline rounded-md px-6 py-1 border hover:opacity-80" style={{
+                            backgroundColor: union?.color + "30",
+                            borderColor: union?.color,
+                            
+                    }}>
+                            Edit
+                    </a>
+                    </Link>)
+                    }
+                </div>
                 <p>{union?.description}</p>
-                <h2>{t('unionEvents')}</h2>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="flex items-center gap-4 mb-10 mt-10"><h2 className="mb-0 mt-0">{t('unionEvents')}</h2>
+                    {isAdmin && (<Link href="/unions/[name]/new-event" as={`/unions/${union?.name.toLowerCase()}/new-event`}>
+                        <a className="no-underline rounded-md px-6 py-1 border  hover:opacity-80" style={{
+                            backgroundColor: union?.color + "30",
+                            borderColor: union?.color,
+
+                        }}>
+                            New Event
+                        </a>
+                    </Link>)
+                    }
+                </div>
+                <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2">
                     {union?.unionevents.map((event) => {
                         return (
                                 <Link key={event.id} href={`/unions/${union.name.toLowerCase()}/${event.url_slug}`}>
@@ -96,7 +138,7 @@ const Union: NextPage = () => {
                                     <div className="absolute bottom-0 w-full bg-black bg-opacity-50 px-2 py-3">
                                     
                                         <h3 className="text-white mt-0">{event.title}</h3>
-                                        <p className="text-white mb-1">{event.short_description}</p>
+                                        <p className="text-white mb-1 line-clamp-2">{event.short_description}</p>
                                
                                     </div>
 
@@ -111,7 +153,7 @@ const Union: NextPage = () => {
             </div>
             <div className="w-64">
                 <h2 className="text-lg text-bold">{t('unionSidebar')}</h2>
-                {union?.unionpage[0].sidebar.items.map((page) => { 
+                {union?.unionpage[0]?.sidebar.items.map((page) => { 
                     return (
                         <Link key={page.name} href={`${page.url}`}>
                             <a>

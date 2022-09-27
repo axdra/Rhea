@@ -15,15 +15,21 @@ const UnionsList: NextPage = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { t } = useTranslation();
     const [unions, setUnions] = useState<IUnions[]>([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         fetch("/api/unions")
             .then((res) => res.json())
             .then((data) => {
                 
                 setUnions(data.unions);
-            });
+            }).finally(() => setLoading(false));
     }, []);
+    if (loading) {
+        return <div className="h-full flex flex-1 items-center justify-center">
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-l-2 border-r-2 border-gray-900"></div>
 
+        </div>
+    }
     return (
         <div className="h-full flex flex-col items-center mt-24 flex-1 dark:text-white">
             <div className="grid gird-cols-1 sm:grid-cols-2 xl:grid-cols-3 flex-wrap max-w-5xl w-full gap-5 px-4">
