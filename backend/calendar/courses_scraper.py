@@ -47,7 +47,6 @@ if __name__ == '__main__':
                 "name": course_name,
                 "url": course_URL,
                 "code":  course_code,
-                "org": "MDU"
             }
             courses[course_code] = course_obj
 
@@ -55,7 +54,6 @@ if __name__ == '__main__':
                 "code": course_instance,
                 "url": course_instance_URL,
                 "name": course_name,
-                "org": "MDU",
                 "parent_course": course_code # Store temporary course code, replace with id after we insert course
             }
             course_instances[course_instance] = course_instance_obj
