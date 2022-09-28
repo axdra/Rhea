@@ -2,12 +2,10 @@
 #handle args
 import argparse
 import os
-from time import sleep
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+import requests
+
 from bs4 import BeautifulSoup
 from supabase import create_client, Client
-
 
 if __name__ == '__main__':
     # get env variables
@@ -17,9 +15,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--supabase-url', help='Supabase project URL, defaults to env variable', default=supabase_url )
     parser.add_argument('--supabase-secret-key', help='Supabase secret key, defaults to env variable', default=supabase_secret_key )
-    parser.add_argument('--webdriver-path', help='Path to the webdriver for scraper' )
-    parser.add_argument('--webdriver', help='Type of webdriver', default='edge' )
-    parser.add_argument('--course-url', help='URL to the page of courses', default="https://webbschema.mdu.se/allaKurser.jsp" )
+    parser.add_argument('--course-url', help='URL to the page of courses', default="https://webbschema.mdh.se/ajax/ajax_resurser.jsp?op=hamtaResursDialog&resurstyp=UTB_KURSINSTANS_GRUPPER" )
     args = parser.parse_args()
 
     # check if variables are set
@@ -28,38 +24,53 @@ if __name__ == '__main__':
     if not supabase_secret_key and not args.supabase_secret_key:
         raise TypeError('No supabase secret key set')
 
-    #get webdriver
-    if args.webdriver == 'edge':
-        driver = webdriver.Edge(args.webdriver_path)
-    elif args.webdriver == 'chrome':
-        driver = webdriver.Chrome(args.webdriver_path)
-    elif args.webdriver == 'firefox':
-        driver = webdriver.Firefox(args.webdriver_path)
-    else:
-        raise TypeError('Invalid webdriver')
-    
-    courses_list = []
+    courses = {}
+    course_instances = {}
 
-    driver.get(args.course_url)
-    sleep(2)
-    elems = driver.find_element(By.CSS_SELECTOR, "#resultatdiv")
-    soup = BeautifulSoup(elems.get_attribute('innerHTML'), 'html.parser')
-
-    for course in soup.find_all('li'):
-        course_URL = "https://webbschema.mdu.se/"+course.find('a', href=True)['href']
-        course_name = course.find('a', href=True).text.strip()
-        course_code = course.text.split('(')[1].split(')')[0] 
-        course_obj = {
-            "name": course_name,
-            "url": course_URL,
-            "code":  course_code 
-        }
-        courses_list.append(course_obj)
     sb_client:Client = create_client(args.supabase_url, args.supabase_secret_key)
-    sb_client.table('courses').delete().neq('id',0).execute()
-    sb_client.table('courses').insert(courses_list).execute()
-    driver.close()
-    driver.quit()
-        
 
+    res = sb_client.table('calendars').delete().neq('id',0).execute()
+    res = sb_client.table('courses').delete().neq('id',0).execute()
 
+    soup = BeautifulSoup(requests.get(args.course_url).content, "html.parser")
+    for row in soup.find_all('tr'):
+        tds = row.find_all('td')
+        if len(tds):
+            course_instance = tds[1].string
+            course_name = tds[2].string
+            if course_name is None:
+                course_name = ""
+            course_code = tds[5].string
+            course_URL = "https://webbschema.mdu.se/kurs.jsp?id=" + course_code
+            course_instance_URL = "https://webbschema.mdu.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=a&intervallAntal=1&sprak=SV&sokMedAND=true&forklaringar=true&resurser=k." + course_instance
+            course_obj = {
+                "name": course_name,
+                "url": course_URL,
+                "code":  course_code,
+            }
+            courses[course_code] = course_obj
+
+            course_instance_obj = {
+                "code": course_instance,
+                "url": course_instance_URL,
+                "name": course_name,
+                "parent_course": course_code # Store temporary course code, replace with id after we insert course
+            }
+            course_instances[course_instance] = course_instance_obj
+
+    courses_list = list(courses.values())
+    course_instances_list = list(course_instances.values())
+
+    res = sb_client.table('courses').insert(courses_list).execute()
+
+    # Replace all courses with the new courses from db, so we can get the id
+    for course in res.data:
+        courses[course['code']] = course
+    
+    # Replace course code with the fk
+    for instance in course_instances_list:
+        course_code = instance['parent_course']
+        course_id = courses[course_code]['id']
+        instance['parent_course'] = course_id
+    res = sb_client.table('calendars').insert(course_instances_list).execute()
+    
