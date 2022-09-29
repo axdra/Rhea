@@ -66,10 +66,10 @@ const UserCalendar: NextPage = () => {
 
     }
     return (
-        <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 w-full px-4 py-10 shadow rounded-lg mb-24 flex-1 flex-col     ">
+        <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 w-full px-4 py-10 shadow rounded-lg mb-24 flex-1 flex-col  dark:text-white xl:dark:border dark:border-white    ">
             <div className="flex  justify-between items-center mb-4">
             <h1 className="text-2xl " >{t('personalCalendar')}</h1>
-            <div className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors " onClick={subscribeToSchedule}>
+                <div className="flex py-2 px-4 gap-2 items-center  justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-orange-700 dark:border" onClick={subscribeToSchedule}>
                     <p>{t('addToCalendar')}</p>
                 <CalendarIcon className="h-8 w-8 text-orange-500" />
                 </div>
@@ -80,7 +80,7 @@ const UserCalendar: NextPage = () => {
                     return (
                         <div
                             key={calendar}
-                                    className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-xl border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2  transition-all duration-300">
+                            className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-xl dark:bg-black dark:border-white dark:hover:bg-orange-900/10 border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2 hover:bg-gray-50 hover:shadow transition-all duration-300">
                                     <div>
                                         <h2>
                                             {calendar}
@@ -97,10 +97,10 @@ const UserCalendar: NextPage = () => {
                                             q: calendar
                                         }
                                     }}
-                                    className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap cursor-pointer ">
+                            className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-orange-700 dark:border ">
                                 {t('goToCalendar')}
                                 </Link>
-                                <div className="text-red-500 hover:text-red-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap cursor-pointer " onClick={()=>removeCalendar(calendar)}>Remove</div>
+                                <div className="text-red-500 hover:text-red-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap cursor-pointer   dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-red-700 dark:border" onClick={()=>removeCalendar(calendar)}>Remove</div>
                                     </div>
                         </div>
                     );
