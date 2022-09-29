@@ -45,5 +45,12 @@
     "free": "Free",
     "edit": "Edit",
     "newEvent": "New event",
-    "unions" : "Unions"
+    "unions" : "Unions",
+    "going": "Going",
+    "interested": "Interested",
+    "when": "When",
+    "where": "Where",
+    "eventInfo": "Event info",
+    "start": "Start",
+    "end": "End"
 }

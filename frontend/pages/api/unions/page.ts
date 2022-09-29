@@ -17,8 +17,11 @@ export default async function handler(
     }
 
     supabase.from('unions').select('*, unionpage(*), unionevents(*)').ilike('name', name).single().then((data: any) => {
-        console.log(data)
-        res.status(200).json({ union: data.data, admin: data.data.admins.includes(userID)  })
+        const events = data.data.unionevents.sort((a: any, b: any) => {
+            return new Date(b.start_time).getTime() - new Date(a.start_time).getTime();
+        }
+         ).reverse();
+        res.status(200).json({ union: { ...data.data, events: events }, admin: data.data.admins.includes(userID)  })
     }
               
     )

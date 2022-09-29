@@ -39,5 +39,18 @@
     "about": "Om",
     "disclaimer": "Detta projekt har ingen koppling till varken Mälardalens Universitet eller Kronox. Detta projekt är helt ideellt och skapades för att underlätta för studenter att hitta kurser och lägga till dem i sina personliga scheman. Detta projekt är helt öppen källkod och kan hittas på GitHub.",
     "knownIssues": "Kända problem",
-    "searchRoom": "Sök rum"
+    "searchRoom": "Sök rum",
+        "unionSidebar": "Länkar",
+        "unionEvents": "Evenemang",
+        "free": "Gratis",
+        "edit": "Redigera",
+        "newEvent": "Nytt evenemang",
+        "unions": "Föreningar",
+        "going": "Ska gå",
+        "interested": "Intresserad",
+        "when": "När",
+        "where": "Var",
+        "eventInfo": "Evenemangsinformation",
+        "start": "Börjar",
+        "end": "Slutar"
 }

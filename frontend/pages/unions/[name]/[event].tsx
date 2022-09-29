@@ -68,34 +68,38 @@ const Union: NextPage = () => {
                 </div>
                 <div>
             <div className="shadow-md rounded-md flex flex-col w-full md:w-72 px-4 py-6 prose bg-white ">
-                        <h3 >Event Info</h3>
+                        <h3 >{t('eventInfo')}</h3>
                         {
-                            event?.start_time && <p className="mt-1 mb-1"><>When: {new Date(event?.start_time).toLocaleDateString('sv-SE', {
+                            event?.start_time && <p className="mt-1 mb-1"><>{t('when')}: {new Date(event?.start_time).toLocaleDateString('sv-SE', {
                             weekday: 'long',
                             month: 'long',
                             day: 'numeric'
                         })}</></p>}
                         {
 
-                        event?.start_time && <p className="mt-1 mb-1"><>Start: {new Date(event?.start_time).toLocaleTimeString('sv-SE', {
+                            event?.start_time && <p className="mt-1 mb-1"><>{t('start')}: {new Date(event?.start_time).toLocaleTimeString('sv-SE', {
                             hour: '2-digit',
                             minute: '2-digit'
                         })}</></p>
                         }
                         {
-                         event?.end_time && <p className="mt-1 mb-1"><>End: {new Date(event?.end_time).toLocaleTimeString('sv-SE', {
+                         event?.end_time && <p className="mt-1 mb-1"><>{t('end')}: {new Date(event?.end_time).toLocaleTimeString('sv-SE', {
                             hour: '2-digit',
                             minute: '2-digit'
                         })}</></p>
                         }
                         {
-                            event?.coordinates ? <p className="mt-2 mb-2">Location: <a href={`https://www.google.com/maps/search/?api=1&query=${event?.coordinates}`}>{event?.location}</a></p>:
-                        <p className="mt-2 mb-2">Location: {event?.location}</p>
+                            event?.coordinates ? <p className="mt-2 mb-2">{t('where')}: <a href={`https://www.google.com/maps/search/?api=1&query=${event?.coordinates}`}>{event?.location}</a></p>:
+                                <p className="mt-2 mb-2">{t('where')}: {event?.location}</p>
                 }
 
                         {event?.cost && <p className="mt-2 mb-2">Cost: <span className="font-bold">{event?.cost}</span> kr</p>}
-
-                </div>
+                        <div className="flex gap-2 justify-between">
+                            <div className="text-center flex-1 border border-green-500 bg-green-100  rounded-md px-4 py-2 text-green-900 font-bold hover:bg-green-200 transition-colors cursor-pointer duration-100">{t('interested')}</div>
+                            <div className="text-center flex-1 border border-blue-500 bg-blue-100  rounded-md px-4 py-2 text-blue-900 font-bold hover:bg-blue-200 transition-colors cursor-pointer duration-100">{t('going')}</div>
+                        </div>
+                    </div>
+                  
                 </div>
             </div>
         </div>
