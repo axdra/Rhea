@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 //@ts-ignore
 import ReactMarkdown from 'react-markdown'
-import { IUnionEvent } from ".";
+import { IUnion, IUnionEvent } from ".";
 
 
 
@@ -16,13 +16,17 @@ const Union: NextPage = () => {
     const eventName = router.query.event as string
     const name = router.query.name as string
     const [event, setEvent] = useState<IUnionEvent>()
+    const [union, setUnion] = useState<IUnion>()
     const [loading, setLoading] = useState(true);
     const { t } = useTranslation();
     useEffect(() => {
+
         if (eventName) {
             fetch(`/api/unions/event?unionName=${name}&eventName=${eventName}`).then
                 (res => res.json()).then(data => {
                     setEvent(data.event)
+                    setUnion(data.union)
+
                 }
             ).finally(() => setLoading(false))
                 
@@ -34,6 +38,16 @@ const Union: NextPage = () => {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
+
+        </div>
+    }
+    if(!event && !loading) {
+        return <div className="h-full flex flex-col flex-1 items-center justify-center text-orange-500">
+            <h1 className="text-4xl font-bold">Event not found</h1>
+          <Link href={`/unions/${name}`}>
+              <a className="text-orange-500 hover:text-orange-600">Go back to {name}</a>
+            </Link>
+
 
         </div>
     }
