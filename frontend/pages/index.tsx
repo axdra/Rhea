@@ -1,4 +1,5 @@
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import { useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react'
 import type { NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -7,6 +8,7 @@ import SearchBar from '../components/searchBar'
 const Home: NextPage = () => {
   const [issues, setIssues] = useState<string[]>([])
   const { t } = useTranslation()
+
   useEffect(() => {
     fetch('/api/status').then((data) => {
       data.json().then((data) => {

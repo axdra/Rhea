@@ -1,18 +1,19 @@
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import { withPageAuth } from "@supabase/auth-helpers-nextjs";
-import { useSessionContext } from "@supabase/auth-helpers-react";
+import { withPageAuth, User } from "@supabase/auth-helpers-nextjs";
+import { useSessionContext, useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 import SignInModal from "./signInModal";
 
-export default function UserProfileDropDown({ user }) {
+export default function UserProfileDropDown() {
     const { t } = useTranslation();
 
-    const { supabaseClient } = useSessionContext()
-
     const [signInPrompt, setSignInPrompt] = useState(false)
+
+    const user = useUser()
+    const supabaseClient = useSupabaseClient()
 
     const signOut = async () => {
         await supabaseClient.auth.signOut();
@@ -45,7 +46,6 @@ export default function UserProfileDropDown({ user }) {
                     <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y dark:bg-black dark:border dark:border-white divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  z-80">
                         <div className="px-1 py-1 z-80">
                             <Menu.Item>
-
                                 {({ active }) => (
                                     (<Link
                                         href={'/user/calendar'}
@@ -75,7 +75,7 @@ export default function UserProfileDropDown({ user }) {
 
                     </Menu.Items>
                 </Transition>
-            </Menu>
+            </Menu >
         );
     }
     return (
@@ -87,5 +87,3 @@ export default function UserProfileDropDown({ user }) {
 
     )
 }
-
-export const getServerSideProps = withPageAuth({ redirectTo: '/login' });

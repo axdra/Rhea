@@ -14,8 +14,6 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
     const [password, setPassword] = useState("")
 
     const { supabaseClient } = useSessionContext();
-    const s = useSupabaseClient();
-    console.log(s)
 
     const signInWithGoogle = async () => {
         const { error } = await supabaseClient.auth.signInWithOAuth({
