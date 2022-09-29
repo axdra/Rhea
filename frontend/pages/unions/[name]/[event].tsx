@@ -67,7 +67,7 @@ const Union: NextPage = () => {
                 </ReactMarkdown>
                 </div>
                 <div>
-            <div className="shadow-md rounded-md flex flex-col w-full md:w-72 px-4 py-6 prose bg-white ">
+            <div className="shadow-md rounded-md flex flex-col w-full md:w-72 px-4 py-6 prose bg-white dark:bg-black  dark:border dark:border-white dark:prose-invert ">
                         <h3 >{t('eventInfo')}</h3>
                         {
                             event?.start_time && <p className="mt-1 mb-1"><>{t('when')}: {new Date(event?.start_time).toLocaleDateString('sv-SE', {
@@ -95,8 +95,8 @@ const Union: NextPage = () => {
 
                         {event?.cost && <p className="mt-2 mb-2">Cost: <span className="font-bold">{event?.cost}</span> kr</p>}
                         <div className="flex gap-2 justify-between">
-                            <div className="text-center flex-1 border border-green-500 bg-green-100  rounded-md px-4 py-2 text-green-900 font-bold hover:bg-green-200 transition-colors cursor-pointer duration-100">{t('interested')}</div>
-                            <div className="text-center flex-1 border border-blue-500 bg-blue-100  rounded-md px-4 py-2 text-blue-900 font-bold hover:bg-blue-200 transition-colors cursor-pointer duration-100">{t('going')}</div>
+                            <div className="text-center flex-1 border border-green-500 bg-green-500/10  rounded-md px-4 py-2 text-green-900 dark:text-green-500 font-bold hover:bg-green-500/50 transition-colors cursor-pointer duration-100">{t('interested')}</div>
+                            <div className="text-center flex-1 border border-blue-500 bg-blue-500/10  rounded-md px-4 py-2 text-blue-900 dark:text-blue-500 font-bold hover:bg-blue-500/50 transition-colors cursor-pointer duration-100">{t('going')}</div>
                         </div>
                     </div>
                   
