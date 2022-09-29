@@ -1,16 +1,13 @@
 
-import dayjs from "dayjs";
+import { UserIcon } from "@heroicons/react/24/outline";
+import { CalendarIcon } from "@heroicons/react/24/solid";
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import { NextPage } from "next";
-import Link from "next/link";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { supabase } from "../utils/supabaseClient";
-import { CalendarIcon } from "@heroicons/react/24/solid";
 import Schema from "../components/schema";
-import { UserIcon } from "@heroicons/react/24/outline";
-import { User } from "@supabase/supabase-js";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
 const api = process.env.NODE_ENV === "development" ? "http://localhost:3000/api" : "/api";
 const prodURL = process.env.NODE_ENV === "development" ? "localhost:3000" : process.env.NEXT_PUBLIC_PROD_URL;
 
@@ -24,11 +21,10 @@ const Calendar: NextPage = () => {
     const [name, setName] = useState("");
     const [code, setCode] = useState("");
     const [url, setUrl] = useState("");
-    const [user, setUser] = useState<User | null>(null);
-    useEffect(() => {
-        supabase.auth.getUser().then((user) => setUser(user.data.user));
 
-    }, []);
+    const supabaseClient = useSupabaseClient()
+    const user = useUser()
+
     const [subscribed, setSubscribed] = useState(false);
     useEffect(() => {
         if (calendar) {
@@ -48,7 +44,7 @@ const Calendar: NextPage = () => {
         , [calendar]);
     
     const addToPersonalCalendar = async () => {
-        supabase.auth.getSession().then((session) => {
+        supabaseClient.auth.getSession().then((session) => {
             fetch(api + '/user/calendar',
                 {
                     method: 'POST',

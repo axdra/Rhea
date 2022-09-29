@@ -1,10 +1,10 @@
 import { CalendarIcon } from "@heroicons/react/24/solid";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { supabase } from "../../utils/supabaseClient";
 
 //if in dev mode, use local api
 const api = process.env.NODE_ENV === "development" ? "http://localhost:3000/api" : "/api";
@@ -14,9 +14,11 @@ const UserCalendar: NextPage = () => {
     const [subscribedCalendars, setSubscribedCalendars] = useState<string[]>([]);
     const { t } = useTranslation();
 
+    const supabaseClient = useSupabaseClient()
+
     useEffect(() => {
 
-        supabase.auth.getSession().then((session) => {
+        supabaseClient.auth.getSession().then((session) => {
         fetch(api+'/user/calendar',
             {
                 method: 'GET',
@@ -42,7 +44,7 @@ const UserCalendar: NextPage = () => {
     }, []);
 
     const removeCalendar = (calendar: string) => {
-        supabase.auth.getSession().then((session) => {
+        supabaseClient.auth.getSession().then((session) => {
             fetch(api + '/user/calendar',
                 {
                     method: 'DELETE',
@@ -57,7 +59,7 @@ const UserCalendar: NextPage = () => {
     }
     
     const subscribeToSchedule = async () => {
-        supabase.auth.getSession().then((session) => {
+        supabaseClient.auth.getSession().then((session) => {
 
             window.open('webcal://'+url+'/api/user/personalsubscription.ics?q=' +  session.data.session?.user.id , '_blank');
         });
@@ -76,34 +78,32 @@ const UserCalendar: NextPage = () => {
             {
                 subscribedCalendars.map((calendar) => {
                     return (
-                      
-                            
-                            <div
-                                key={calendar}
-                                        className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-xl border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2  transition-all duration-300">
-                                        <div>
-                                            <h2>
-                                                {calendar}
-                                            </h2>
-                                            <h3 className="font-medium">
-                                                {calendar}
-                                            </h3>
-                                        </div>
-                                <div className="flex gap-2" >
-                                    <Link href={{
+                        <div
+                            key={calendar}
+                                    className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-xl border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2  transition-all duration-300">
+                                    <div>
+                                        <h2>
+                                            {calendar}
+                                        </h2>
+                                        <h3 className="font-medium">
+                                            {calendar}
+                                        </h3>
+                                    </div>
+                            <div className="flex gap-2" >
+                                <Link
+                                    href={{
                                         pathname: "/calendar",
                                         query: {
                                             q: calendar
                                         }
-                                    }}>
-                                    <a className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap cursor-pointer ">{t('goToCalendar')}</a>
-                                    </Link>
-                                    <div className="text-red-500 hover:text-red-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap cursor-pointer " onClick={()=>removeCalendar(calendar)}>Remove</div>
-                                        </div>
-                            </div>
-                        
-
-                    )
+                                    }}
+                                    className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap cursor-pointer ">
+                                {t('goToCalendar')}
+                                </Link>
+                                <div className="text-red-500 hover:text-red-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap cursor-pointer " onClick={()=>removeCalendar(calendar)}>Remove</div>
+                                    </div>
+                        </div>
+                    );
                 }
                 )
                 }
