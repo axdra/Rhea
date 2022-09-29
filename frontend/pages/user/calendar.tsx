@@ -1,10 +1,10 @@
 import { CalendarIcon } from "@heroicons/react/24/solid";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { supabase } from "../../utils/supabaseClient";
 
 //if in dev mode, use local api
 const api = process.env.NODE_ENV === "development" ? "http://localhost:3000/api" : "/api";
@@ -14,9 +14,11 @@ const UserCalendar: NextPage = () => {
     const [subscribedCalendars, setSubscribedCalendars] = useState<string[]>([]);
     const { t } = useTranslation();
 
+    const supabaseClient = useSupabaseClient()
+
     useEffect(() => {
 
-        supabase.auth.getSession().then((session) => {
+        supabaseClient.auth.getSession().then((session) => {
         fetch(api+'/user/calendar',
             {
                 method: 'GET',
@@ -42,7 +44,7 @@ const UserCalendar: NextPage = () => {
     }, []);
 
     const removeCalendar = (calendar: string) => {
-        supabase.auth.getSession().then((session) => {
+        supabaseClient.auth.getSession().then((session) => {
             fetch(api + '/user/calendar',
                 {
                     method: 'DELETE',
@@ -57,7 +59,7 @@ const UserCalendar: NextPage = () => {
     }
     
     const subscribeToSchedule = async () => {
-        supabase.auth.getSession().then((session) => {
+        supabaseClient.auth.getSession().then((session) => {
 
             window.open('webcal://'+url+'/api/user/personalsubscription.ics?q=' +  session.data.session?.user.id , '_blank');
         });

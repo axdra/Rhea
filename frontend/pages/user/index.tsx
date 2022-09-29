@@ -1,4 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import { User } from "@supabase/supabase-js";
 import { NextPage } from "next";
 import { useTranslation } from "next-i18next";
@@ -7,24 +8,22 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
 import SignInModal from "../../components/signInModal";
-import { supabase } from "../../utils/supabaseClient";
 
 const UserIndex: NextPage = () => {
-    const [user, setUser] = useState<User | null>(null);
     const router = useRouter();
     const [loading, setLoading] = useState(true);
     const {t} = useTranslation();
     const [showDeleteUserModal, setShowDeleteUserModal] = useState(false);
-    useEffect(() => {
-        supabase.auth.getUser().then((user) => setUser(user.data.user)).finally(() =>  setLoading(false));
-    }, []);
+
+    const supabaseClient = useSupabaseClient()
+    const user = useUser()
+
     const signOut = async () => {
-        const { error } = await supabase.auth.signOut();
+        const { error } = await supabaseClient.auth.signOut();
         if (error) console.error(error);
         if (!error) {
             //refresh window
             router.push("/");
-            setUser(null);
         }
 
     };

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { FC, FormEvent, Fragment, useEffect, useState } from "react";
-import { supabase } from "../utils/supabaseClient";
 import SearchBar from "./searchBar";
 import { FaApple, FaMicrosoft, FaGithub, FaGoogle } from "react-icons/fa";
 import { MapIcon } from "@heroicons/react/24/solid";

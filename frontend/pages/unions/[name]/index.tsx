@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { supabase } from "../../../utils/supabaseClient";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
     export interface IUnionSideBar {
         items: {
@@ -56,9 +56,11 @@ const Union: NextPage = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const { t } = useTranslation();
 
+    const supabaseClient = useSupabaseClient()
+
     useEffect(() => {
         if (name) {
-            supabase.auth.getSession().then(session => {
+            supabaseClient.auth.getSession().then(session => {
             fetch('/api/unions/page?q=' + name, {
                 method: 'GET',
                 headers: {

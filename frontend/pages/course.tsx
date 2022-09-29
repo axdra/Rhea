@@ -4,7 +4,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { supabase } from "../utils/supabaseClient";
 
 const Course: NextPage = () => {
     //get Course query from url
