@@ -2,7 +2,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../utils/supabaseClient'
 
-
 interface ICourse{
     id: number;
     name: string;

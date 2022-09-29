@@ -4,7 +4,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { supabase } from "../utils/supabaseClient";
 
 const Search: NextPage = () => {
     //get search query from url
@@ -49,21 +48,21 @@ const Search: NextPage = () => {
                             query: {
                                 q: course.code
                             }
-                        }}>
-                            <a 
+                        }}
                             className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-xl dark:bg-black dark:border-white dark:hover:bg-orange-700 border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2 hover:bg-gray-50 hover:shadow transition-all duration-300">
-                                <div>
-                                    <h2>
-                                        {course.name}
-                                    </h2>
-                                    <h3 className="font-medium">
-                                        {course.code}
-                                    </h3>
-                                </div>
-                                <div >
-                                    <div className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-orange-700 dark:border ">{ t('goToCourse')}</div>
-                                </div>
-                            </a>
+
+                            <div>
+                                <h2>
+                                    {course.name}
+                                </h2>
+                                <h3 className="font-medium">
+                                    {course.code}
+                                </h3>
+                            </div>
+                            <div >
+                                <div className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-orange-700 dark:border ">{ t('goToCourse')}</div>
+                            </div>
+
                         </Link>)}
                 </ul>
             </div>
