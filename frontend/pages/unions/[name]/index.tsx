@@ -80,7 +80,10 @@ const Union: NextPage = () => {
 
     if (loading) {
         return <div className="h-full flex flex-1 items-center justify-center">
-            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-l-2 border-r-2 border-gray-900 "></div>
+            <svg className="animate-spin  h-6 w-6 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
 
         </div>
     }
@@ -96,7 +99,7 @@ const Union: NextPage = () => {
                             borderColor: union?.color,
                             
                     }}>
-                            Edit
+                            {t('edit')}
                     </a>
                     </Link>)
                     }
@@ -109,7 +112,7 @@ const Union: NextPage = () => {
                             borderColor: union?.color,
 
                         }}>
-                            New Event
+                            {t('newEvent')}
                         </a>
                     </Link>)
                     }
@@ -133,7 +136,7 @@ const Union: NextPage = () => {
 
                                     </div>
                                     <div className="top-2 right-2 absolute group-hover:-top-24 transition-all duration-700 ease-in-out ">
-                                        {event.cost > 0 ? <div className=" text-green-600 px-3  border-2  rounded-full border-green-400 bg-green-200 ">{event.cost} kr</div> : <div className="text-green-600 px-3  border-2  rounded-full border-green-400 bg-green-200 ">Free</div>}
+                                        {event.cost > 0 ? <div className=" text-green-600 px-3  border-2  rounded-full border-green-400 bg-green-200 ">{event.cost} kr</div> : <div className="text-green-600 px-3  border-2  rounded-full border-green-400 bg-green-200 ">{ t('free')}</div>}
                                     </div>
                                     <div className="absolute bottom-0 w-full bg-black bg-opacity-70 px-2 py-3 h-2/5 group-hover:h-full transition-all duration-500 ease-in-out ">
                                     
@@ -168,6 +171,17 @@ const Union: NextPage = () => {
         </div>
     );
 }
+export const getStaticProps = async ({ locale }:any) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ["common"])),
+    },
+});
 
+export const getStaticPaths = async () => {
+    return {
+        paths: ["/unions/name"],
+        fallback: true,
+    };
+};
 
 export default Union;

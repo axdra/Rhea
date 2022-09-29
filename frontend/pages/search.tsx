@@ -28,7 +28,7 @@ const Search: NextPage = () => {
     }
         , [searchQuary]);
     return (
-        <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 px-4 py-10 shadow rounded-lg mb-24 flex-1 flex flex-col dark:border dark:border-white dark:text-white     ">
+        <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 px-4 py-10 shadow rounded-lg mb-24 flex-1 flex flex-col xl:dark:border dark:border-white dark:text-white     ">
             <h1 className="text-4xl font-medium mb-5 xl:w-[72rem] transition-all  ">{t('searchResultsFor', { name: searchQuary })}</h1>
 
             {courses.length === 0 && !loading && <div className="flex-1 min-h-full flex justify-center "><h2>{t('noResults')}</h2></div>}

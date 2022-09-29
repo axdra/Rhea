@@ -39,5 +39,11 @@
     "about": "About",
     "disclaimer": "This project does not have any affiliation with Mälardalens university or Kronox. This project is entirely created for making it easier for students to find courses and subscribe to them. The project is open source and can be found on GitHub.",
     "knownIssues": "Known issues",
-    "searchRoom": "Search room"
+    "searchRoom": "Search room",
+    "unionSidebar": "Links",
+    "unionEvents": "Events",
+    "free": "Free",
+    "edit": "Edit",
+    "newEvent": "New event",
+    "unions" : "Unions"
 }

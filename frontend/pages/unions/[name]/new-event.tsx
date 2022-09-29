@@ -13,7 +13,7 @@ const NewEvent: NextPage = () => {
 
     return (
         <div className="h-full flex flex-col  items-center flex-1 dark:text-white">
-        <PostEditor className="h-full max-w-7xl w-full"/>
+        <PostEditor className="h-full max-w-7xl w-full" defaultValue={''}/>
         </div>
     );
 }
