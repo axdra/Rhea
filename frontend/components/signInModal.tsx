@@ -23,7 +23,7 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
         });
         if (error) console.error(error);
     };
-    
+
 
     const { t } = useTranslation();
 

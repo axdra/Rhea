@@ -34,7 +34,7 @@ const Course: NextPage = () => {
     }
         , [course]);
     return (
-        <div className="max-w-6xl  w-full mx-auto md:mt-12 mt-4 md:px-24 px-4 py-10 shadow rounded-lg mb-24 flex-1 flex flex-col  dark:border dark:border-white dark:text-white  ">
+        <div className="max-w-6xl  w-full mx-auto md:mt-12 mt-4 md:px-24 px-4 py-10 shadow rounded-lg mb-24 flex-1 flex flex-col  xl:dark:border dark:border-white dark:text-white  ">
             <h1 className="text-4xl font-medium mb-5 xl:w-[72rem] transition-all  ">{name}</h1>
             <h1 className="text-xl font-medium mb-5 xl:w-[72rem] transition-all  ">{code}</h1>
 

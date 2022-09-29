@@ -68,7 +68,7 @@ const Calendar: NextPage = () => {
         router.push('/user/calendar');
     }
     return (
-        <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 w-full px-4 py-10 shadow rounded-lg mb-24 flex-1 flex-col  dark:text-white dark:border dark:border-white   ">
+        <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 w-full px-4 py-10 shadow rounded-lg mb-24 flex-1 flex-col  dark:text-white xl:dark:border dark:border-white    ">
             <h1 className="text-4xl font-medium mb-5 transition-all max-w-full  " style={{
                 wordWrap: "break-word"
             }}>{name}</h1>
