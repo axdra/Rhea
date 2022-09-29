@@ -1,7 +1,7 @@
 {
     "404message": "Not Found",
     "404goBack": "Go back home",
-    "title": "Rhea Schema",
+    "title": "Rhea",
     "description1": "You can search for any course by name or course code",
     "description2": "If you sign in you can can add courses to your schedule and subscribe to a custom schedule feed",
     "description3": "Of course you can view a single course and subscribe to it's schedule feed. Contrariety to kronox this subscription does update regularly in your calendar automatically.",
