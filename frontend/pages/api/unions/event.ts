@@ -23,8 +23,12 @@ export default function handler(
             } else {
                 res.status(404).json({ error: 'Event not found' })
             }
-        }            
-        res.status(200).json({ union: data.data })
+        } else
+            {
+                res.status(404).json({ error: 'Event not found' })
+                                                
+            }
+        
     })
     
     }
