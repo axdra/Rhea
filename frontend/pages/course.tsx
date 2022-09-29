@@ -54,21 +54,21 @@ const Course: NextPage = () => {
                             query: {
                                 q: calendar.code
                             }
-                        }}>
-                        <a
-                            className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-xl dark:bg-black dark:border-white dark:hover:bg-orange-700 border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2 hover:bg-gray-50 hover:shadow transition-all duration-300">
-                            <div>
-                                <h2>
-                                    {calendar.name}
-                                </h2>
-                                <h3 className="font-medium">
-                                    {calendar.code}
-                                </h3>
-                            </div>
-                            <div >
-                                <div className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap dark:border dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-orange-700">{t('goToCalendar')}</div>
-                            </div>
-                        </a>
+                        }}
+                        className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-xl dark:bg-black dark:border-white dark:hover:bg-orange-700 border-gray-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2 hover:bg-gray-50 hover:shadow transition-all duration-300">
+
+                        <div>
+                            <h2>
+                                {calendar.name}
+                            </h2>
+                            <h3 className="font-medium">
+                                {calendar.code}
+                            </h3>
+                        </div>
+                        <div >
+                            <div className="text-orange-500 hover:text-orange-700 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap dark:border dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-orange-700">{t('goToCalendar')}</div>
+                        </div>
+
                     </Link>)}
 
             </div>

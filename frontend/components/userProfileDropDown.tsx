@@ -47,25 +47,23 @@ export default function UserProfileDropDown({ user }) {
                             <Menu.Item>
 
                                 {({ active }) => (
-                                    <Link href={'/user/calendar'}><a
-                                        className=" group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-orange-500 hover:text-white"
-                                    >
-
+                                    (<Link
+                                        href={'/user/calendar'}
+                                        className=" group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-orange-500 hover:text-white">
                                         {t('personalCalendar')}
-                                    </a>
-                                    </Link>
+
+                                    </Link>)
                                 )}
                             </Menu.Item>
 
                             <Menu.Item>
                                 {({ active }) => (
-                                    <Link href={'/user'}><a
-                                        className=" group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-orange-500 hover:text-white"
-                                    >
-
+                                    (<Link
+                                        href={'/user'}
+                                        className=" group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-orange-500 hover:text-white">
                                         {t('userSettings')}
-                                    </a>
-                                    </Link>
+
+                                    </Link>)
                                 )}
                             </Menu.Item>
                             <Menu.Item>
