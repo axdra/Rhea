@@ -1,2 +1,3 @@
 backend/map/rooms.geojson
 backend/map/input.geojson
+supabase/.*
