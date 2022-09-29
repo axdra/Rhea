@@ -435,6 +435,27 @@
   resolved "https://registry.yarnpkg.com/@sapphire/snowflake/-/snowflake-3.2.2.tgz#faacdc1b5f7c43145a71eddba917de2b707ef780"
   integrity sha512-ula2O0kpSZtX9rKXNeQMrHwNd7E4jPDJYUXmEGTFdMRfyfMw+FPyh04oKMjAiDuOi64bYgVkOV3MjK+loImFhQ==
 
+"@supabase/auth-helpers-nextjs@^0.4.0-next.3":
+  version "0.4.0-next.3"
+  resolved "https://registry.yarnpkg.com/@supabase/auth-helpers-nextjs/-/auth-helpers-nextjs-0.4.0-next.3.tgz#4a532d9eb5dbc3c6fe47d7a2b139843379e3e6a5"
+  integrity sha512-WfYHNTPK3SNfotaYXNxrrn39nmKrbyt0yzp+sAr+VA1PEpNQKutilIqvGSFDq+6laaYUVtMSLsoAcuTPI62WYQ==
+  dependencies:
+    "@supabase/auth-helpers-shared" "0.2.0-next.2"
+
+"@supabase/auth-helpers-react@^0.3.0-next.2":
+  version "0.3.0-next.2"
+  resolved "https://registry.yarnpkg.com/@supabase/auth-helpers-react/-/auth-helpers-react-0.3.0-next.2.tgz#94b149a91571523742d418dc3ceb6065a5ccffcd"
+  integrity sha512-V3VaeMjLQFz+uK9KmBWC8/YIcI+CJf+zgAxd8/+/kstyCs2CYMH/hEIE5O8ciTBnfWvlzznttQTasoRxqecCNA==
+  dependencies:
+    "@supabase/auth-helpers-shared" "0.2.0-next.2"
+
+"@supabase/auth-helpers-shared@0.2.0-next.2":
+  version "0.2.0-next.2"
+  resolved "https://registry.yarnpkg.com/@supabase/auth-helpers-shared/-/auth-helpers-shared-0.2.0-next.2.tgz#e4f7a06c342e47ef563c1ee67307cd451c1b6da9"
+  integrity sha512-e+u5EuMgQoLVP4cHXdv22V4L7seSKObZVCtkkBT+eqOuHVuJlc/VDM7PYoJVX57gZoUl1Gi1TuZ+ZO70CYgG6A==
+  dependencies:
+    cookie "^0.5.0"
+
 "@supabase/functions-js@^2.0.0-rc.1":
   version "2.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/@supabase/functions-js/-/functions-js-2.0.0-rc.2.tgz#659051bea8e83088138cb71e50f3af5f15c0a6c4"
@@ -1073,17 +1094,15 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
 
-copy-to-clipboard@^3.0.8:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.3.2.tgz#5b263ec2366224b100181dded7ce0579b340c107"
-  integrity sha512-Vme1Z6RUDzrb6xAI7EZlVZ5uvOk2F//GaxKUxajDqm9LhOVM1inxNAD2vy+UZDYsd0uyA9s7b3/FVZPSxqrCfg==
-  dependencies:
-    toggle-selection "^1.0.6"
+cookie@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.5.0.tgz#d1f5d71adec6558c58f389987c366aa47e994f8b"
+  integrity sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==
 
-core-js-pure@^3.25.1:
-  version "3.25.3"
-  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.25.3.tgz#66ac5bfa5754b47fdfd14f3841c5ed21c46db608"
-  integrity sha512-T/7qvgv70MEvRkZ8p6BasLZmOVYKzOaWNBEHAU8FmveCJkl4nko2quqPQOmy6AJIp5MBanhz9no3A94NoRb0XA==
+core-js-pure@^3.20.2:
+  version "3.25.0"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.25.0.tgz#f8d1f176ff29abbfeb610110de891d5ae5a361d4"
+  integrity sha512-IeHpLwk3uoci37yoI2Laty59+YqH9x5uR65/yiA0ARAJrTrN4YU0rmauLWfvqOuk77SlNJXj2rM6oT/dBD87+A==
 
 core-js@^3:
   version "3.25.3"

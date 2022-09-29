@@ -1,45 +1,34 @@
 import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon, UserIcon } from "@heroicons/react/24/solid";
-import { User } from "@supabase/supabase-js";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import { withPageAuth } from "@supabase/auth-helpers-nextjs";
+import { useSessionContext } from "@supabase/auth-helpers-react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { Fragment, useEffect, useState } from "react";
-import { supabase } from "../utils/supabaseClient";
+import { Fragment, useState } from "react";
 import SignInModal from "./signInModal";
 
-const UserProfileDropDown = () => {
-    const [user, setUser] = useState<User | null>(null);
-    const router = useRouter();
+export default function UserProfileDropDown({ user }) {
     const { t } = useTranslation();
 
-    useEffect(() => {
-        supabase.auth.getUser().then((user) => setUser(user.data.user));
+    const { supabaseClient } = useSessionContext()
 
-    }, []);
     const [signInPrompt, setSignInPrompt] = useState(false)
 
     const signOut = async () => {
-        const { error } = await supabase.auth.signOut();
-        if (error) console.error(error);
-        if (!error) {
-            //refresh window
-            router.push("/");
-            setUser(null);
-        }
-
+        await supabaseClient.auth.signOut();
     };
+
     if (user) {
         return (
             <Menu as="div" className="relative h-full z-80">
                 <div>
                     <Menu.Button className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors flex items-center h-full">
-                  <span className="flex items-center">  {t('user')}
-                        <ChevronDownIcon
-                            className="ml-2 -mr-1 h-5 w-5 text-white"
-                            aria-hidden="true"
+                        <span className="flex items-center">  {t('user')}
+                            <ChevronDownIcon
+                                className="ml-2 -mr-1 h-5 w-5 text-white"
+                                aria-hidden="true"
                             />
-                    </span>
+                        </span>
 
                     </Menu.Button>
                 </div>
@@ -61,13 +50,13 @@ const UserProfileDropDown = () => {
                                     <Link href={'/user/calendar'}><a
                                         className=" group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-orange-500 hover:text-white"
                                     >
-                                     
+
                                         {t('personalCalendar')}
                                     </a>
                                     </Link>
                                 )}
                             </Menu.Item>
-            
+
                             <Menu.Item>
                                 {({ active }) => (
                                     <Link href={'/user'}><a
@@ -85,7 +74,7 @@ const UserProfileDropDown = () => {
                                 </button>
                             </Menu.Item>
                         </div>
-        
+
                     </Menu.Items>
                 </Transition>
             </Menu>
@@ -93,11 +82,12 @@ const UserProfileDropDown = () => {
     }
     return (
         <div>
-            <button className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors block  " onClick={() => setSignInPrompt(true)}>{ t('signIn')}</button>
+            <button className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors block  " onClick={() => setSignInPrompt(true)}>{t('signIn')}</button>
             <SignInModal isOpen={signInPrompt} setIsOpen={setSignInPrompt} />
 
         </div>
 
     )
 }
-export default UserProfileDropDown
+
+export const getServerSideProps = withPageAuth({ redirectTo: '/login' });
