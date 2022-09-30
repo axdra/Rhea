@@ -1,3 +1,4 @@
+const path = require('path')
 /** @type {import('next-i18next').UserConfig} */
 
 const userConfig = {
