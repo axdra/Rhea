@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import SearchBar from '../components/searchBar'
 import CallToAction from '../components/splash/callToAction'
 import Mock from '../components/splash/mock'
+import BookedRooms from '../components/userSplash/bookedRooms'
 import TodaysSchedule from '../components/userSplash/todaysSchedule'
 import Greet from '../utils/greeting'
 const Home: NextPage = () => {
@@ -32,6 +33,7 @@ const Home: NextPage = () => {
             <TodaysSchedule/>
           </div>
           <div className='col-span-1 border-black border-2 bg-white h-96 rounded-xl'>
+            <BookedRooms/>
           </div>
           <div className='col-span-3 border-black border-2 bg-white h-96 rounded-xl'>
 

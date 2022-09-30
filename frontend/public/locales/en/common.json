@@ -65,6 +65,7 @@
     "goodEvening": "Good evening, {{name}}",
     "goodNight": "Good night, {{name}} 😴",
     "todaysSchedule": "Today's schedule",
-    "nothingToday": "Nothing today!"
+    "nothingToday": "Nothing today!",
+    "bookedRooms": "Booked rooms"
 
 }
