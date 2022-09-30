@@ -47,8 +47,8 @@ const fourOFour: NextPage = () => {
                             <a href="https://github.com/axdra/Rhea">
                                 <FaGithubSquare className="h-12 w-12 text-black dark:text-white mx-auto" />
                             </a>
-                            <label>
-                                Commit: {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA}
+                            <label className="text-neutral-300 dark:text-neutral-700">
+                                Commit: <a className="text-neutral-400 dark:text-neutral-600" href={`https://github.com/axdra/Rhea/commit/${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA || ''}`} >{process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA || "master"}</a>
                             </label>
                     </section>
                     </div>
