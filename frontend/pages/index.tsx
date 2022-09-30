@@ -2,6 +2,7 @@ import { createServerSupabaseClient, withPageAuth } from "@supabase/auth-helpers
 import { useUser } from "@supabase/auth-helpers-react";
 import type { GetServerSideProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import CallToAction from "../components/splash/callToAction";
 import Mock from "../components/splash/mock";
 import BookedRooms from "../components/userSplash/bookedRooms";
@@ -55,12 +56,13 @@ const Home: NextPage<PageProps> = ({ issues }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async (context) => {
+export const getServerSideProps: GetServerSideProps<PageProps> = async ({ locale, ...context }) => {
   const { data: issues } = await createServerSupabaseClient(context).from("issues").select("*");
 
   return {
     props: {
       issues,
+      ...(await serverSideTranslations(locale as string, ['common'])),
     },
   };
 };
