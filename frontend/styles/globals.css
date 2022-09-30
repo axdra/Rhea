@@ -30,3 +30,7 @@
    -ms-filter: invert();
    -o-filter: invert();
 }
+
+*{
+    scroll-behavior: smooth;
+}

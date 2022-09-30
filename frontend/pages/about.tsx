@@ -16,10 +16,10 @@ const fourOFour: NextPage = () => {
                 </a>
         </div>
             <div className="fixed top-0 max-h-screen w-screen z-0 overflow-y-auto px-4">
-                <div className="h-screen z-0"></div>
+                <a href="#about" className="h-screen z-0 block" />
                 <div className="min-h-screen bg-white z-20 md:pt-16 dark:bg-black dark:text-white flex justify-center">
                     <div className="flex flex-col  max-w-7xl w-full mt-32 prose dark:prose-invert">
-                        <h1 id="about" >{t('about')}</h1>
+                        <h1 id="about" className="scroll-pt-96" >{t('about')}</h1>
                         <p>{t('aboutText')}</p>
                         <section>
                             <h2>{t('contributors')}</h2>
