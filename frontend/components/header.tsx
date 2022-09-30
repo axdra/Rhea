@@ -73,19 +73,23 @@ const Header: FC = () => {
           className="fixed w-full bg-white dark:bg-black dark:text-white shadow-lg z-50 top-0 "
         >
             <div className="flex flex-col h-full">
-              <div className="flex flex-col justify-between h-full">
+            <div className="flex flex-col justify-between h-full">
+              
                 <div className="flex flex-col gap-4 p-4">
-                  <Link href={"/unions"} className="font-medium hover:underline focus:underline select-none">
+                <Link href="/" className="text-3xl font-medium select-none mr-16">
+                  Rhea.
+                </Link>
+                  <Link onClick={()=>setShowSmallScreenMenu(false)} href={"/unions"} className="font-medium hover:underline focus:underline select-none">
                     {t("unions")}
                   </Link>
-                  <Link href={"/map"} className="font-medium hover:underline focus:underline select-none">
+                  <Link onClick={()=>setShowSmallScreenMenu(false)} href={"/map"} className="font-medium hover:underline focus:underline select-none">
                     {t("map")}
                   </Link>
-                  <Link href={"/schedule"} className="font-medium hover:underline focus:underline select-none">
+                  <Link onClick={()=>setShowSmallScreenMenu(false)} href={"/schedule"} className="font-medium hover:underline focus:underline select-none">
                     {t("schedule")}
                   </Link>
 
-                  <Link href={"/about"} className="font-medium hover:underline focus:underline select-none">
+                  <Link onClick={()=>setShowSmallScreenMenu(false)} href={"/about"} className="font-medium hover:underline focus:underline select-none">
                     {t("about")}
                   </Link>
                 </div>
