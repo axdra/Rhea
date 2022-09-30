@@ -17,7 +17,6 @@
     @media (max-width:640px){
         .layout-container{
         min-height: -webkit-fill-available;
-        padding-bottom: 2rem;
 
         
     }
