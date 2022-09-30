@@ -23,7 +23,7 @@ const Home: NextPage = () => {
   }, [])
 
   if (user) {
-    return <div className='flex justify-center pt-24 flex-1 bg-splash dark:bg-splash-dark pb-20 '>
+    return <div className='flex justify-center pt-24 flex-1 bg-splash dark:bg-splash-dark pb-20  '>
       <div className='max-w-[100rem] w-full flex  px-4 flex-col gap-10 ' >
         <h1 className='text-5xl font-medium'>{Greet(user.email!, t)}</h1>
         <div className='grid grid-cols-5 w-full flex-1 gap-5'>
