@@ -1,26 +1,24 @@
 import { FC, HTMLProps, useEffect, useState } from "react";
-import Editor from "rich-markdown-editor";
+import 'remirror/styles/all.css';
 
+import { BoldExtension } from 'remirror/extensions';
+import { Remirror, useRemirror } from '@remirror/react';
 interface IPostEditorProps extends HTMLProps<HTMLDivElement> {
 }
 
 const PostEditor: FC<IPostEditorProps> = (props:IPostEditorProps) => {
-    const [mdValue, setValue] = useState<string>('');
-    useEffect(() => {
-        console.log(mdValue);
-    }, [mdValue]);
-    
-    return (<div {...props}>
-        <div data-testid="editor" className="h-full">
-            <Editor className="prose"
-                defaultValue={""}
-                onChange={(value) => {
-                    setValue(value());
-                }}
-                uploadImage={async (file: File) => {return ""}}
+    const { manager, state } = useRemirror({
+        extensions: () => [new BoldExtension()],
+        content: '# Hello',
+        selection: 'start',
+        stringHandler: 'markdown',
 
-            />
+    });
+
+    return (
+        <div  className="min-h-full max-w-7xl w-full flex-1 prose">
+            <Remirror manager={manager} initialContent={state}  />
         </div>
-    </div>)
+    );
 }
 export default PostEditor;

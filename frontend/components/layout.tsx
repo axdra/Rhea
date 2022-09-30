@@ -11,18 +11,15 @@ interface ILayoutProps extends HTMLProps<FC> {
 
 const Layout: FC<ILayoutProps> = (props) => {
     const { children } = props;
-    const footer = !props.hideFooter && <Footer />;
     return (
         <div className="overflow-x-hidden dark:bg-black">
-            <div className="flex flex-col h-full    selection:bg-orange-500 selection:text-white sm:pb-0 pb-16 layout-container">
+            <div className="flex flex-col h-full    selection:bg-black selection:text-white sm:pb-0 pb-16 layout-container">
         <Header />
                 {children}
                 <MobileNav />
 
             </div>
-            {
-                footer
-            }
+        
         </div>
     );
 }

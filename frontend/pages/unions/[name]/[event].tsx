@@ -18,6 +18,8 @@ const Union: NextPage = () => {
     const [event, setEvent] = useState<IUnionEvent>()
     const [union, setUnion] = useState<IUnion>()
     const [loading, setLoading] = useState(true);
+    const [going, setGoing] = useState(false);
+    const [interested, setInterested] = useState(false);
     const { t } = useTranslation();
     useEffect(() => {
 
@@ -95,8 +97,8 @@ const Union: NextPage = () => {
 
                         {event?.cost && <p className="mt-2 mb-2">Cost: <span className="font-bold">{event?.cost}</span> kr</p>}
                         <div className="flex gap-2 justify-between">
-                            <div className="text-center flex-1 border border-green-500 bg-green-500/10  rounded-md px-4 py-2 text-green-900 dark:text-green-500 font-bold hover:bg-green-500/50 transition-colors cursor-pointer duration-100">{t('interested')}</div>
-                            <div className="text-center flex-1 border border-blue-500 bg-blue-500/10  rounded-md px-4 py-2 text-blue-900 dark:text-blue-500 font-bold hover:bg-blue-500/50 transition-colors cursor-pointer duration-100">{t('going')}</div>
+                            <div className={`text-center flex-1 border select-none border-green-500 bg-green-500/10  rounded-md px-4 py-2 text-green-900 dark:text-green-500 font-bold hover:bg-green-500/50 transition-all cursor-pointer duration-500 ${interested && "bg-green-500 text-white/100 dark:text-white/100"}`} onClick={()=> setInterested(!interested)} >{t('interested')}</div>
+                            <div className={`text-center flex-1 border select-none border-blue-500 bg-blue-500/10  rounded-md px-4 py-2 text-blue-900 dark:text-blue-500 font-bold hover:bg-blue-500/50 transition-all cursor-pointer duration-500 ${going && "bg-blue-500 text-white/100 dark:text-white/100" }`} onClick={()=> setGoing(!going)}>{t('going')}</div>
                         </div>
                     </div>
                   

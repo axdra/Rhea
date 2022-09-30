@@ -11,6 +11,8 @@
   "dependencies": {
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^2.0.10",
+    "@remirror/pm": "^2.0.0",
+    "@remirror/react": "^2.0.9",
     "@supabase/auth-helpers-nextjs": "^0.4.0-next.3",
     "@supabase/auth-helpers-react": "^0.3.0-next.2",
     "@supabase/supabase-js": "^2.0.0-rc.8",
@@ -32,6 +34,7 @@
     "react-icons": "^4.4.0",
     "react-map-gl": "^7.0.19",
     "react-markdown": "^8.0.3",
+    "remirror": "^2.0.9",
     "rich-markdown-editor": "^11.21.3",
     "styled-components": "^5.3.5"
   },

@@ -52,5 +52,11 @@
     "where": "Where",
     "eventInfo": "Event info",
     "start": "Start",
-    "end": "End"
+    "end": "End",
+    "schedule": "Schedule",
+    "findCourses": "Find courses",         
+    "callToActionh1": "A platform for students by students",
+    "callToActionp1":"Manage your schedule",
+    "callToActionp2":"Find on campus",
+    "callToActionp3":"Discover Union Events"
 }
