@@ -63,14 +63,14 @@ const Header: FC = () => {
           <div className="fixed inset-0 bg-black/25 z-10" />
         </Transition.Child>
         <Transition.Child
-          enter="transition-all ease-out duration-300 transform"
+          enter="transition-all duration-500 transform"
           enterFrom="-translate-y-72"
           enterTo="translate-y-0"
-          leave="transition-all ease-in duration-300 transform"
+          leave="transition-all duration-500 transform"
           leaveFrom="translate-y-0"
           leaveTo="-translate-y-72"
           as="div"
-          className="fixed w-full bg-white dark:bg-black dark:text-white shadow-lg z-50 top-0 "
+          className="fixed w-full ease-in-out bg-white dark:bg-black dark:text-white z-50 top-0 "
         >
             <div className="flex flex-col h-full">
             <div className="flex flex-col justify-between h-full">
