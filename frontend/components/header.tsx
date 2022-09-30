@@ -52,8 +52,8 @@ const Header: FC = () => {
             </Button>
         )    }
         </div>
-        <div className="flex lg:hidden">
-          <Bars3Icon onClick={()=>setShowSmallScreenMenu(true)}  className="h-8 w-8" />
+        <div className="flex lg:hidden hover:bg-black hover:text-white rounded-xl px-2 py-2 cursor-pointer duration-300">
+          <Bars3Icon onClick={()=>setShowSmallScreenMenu(true)}  className="h-8 w-8 " />
         </div>
       </nav>
       <Transition.Root show={showSmallScreenMenu} className="md:hidden flex" >

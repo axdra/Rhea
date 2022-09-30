@@ -67,6 +67,8 @@
     "todaysSchedule": "Today's schedule",
     "nothingToday": "Nothing today!",
     "bookedRooms": "Booked rooms",
-    "noBookedRooms": "No booked rooms"
+    "noBookedRooms": "No booked rooms",
+    "cotributors": "Contributors",
+    "aboutText": ""
 
 }

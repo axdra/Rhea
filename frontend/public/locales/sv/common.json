@@ -67,5 +67,7 @@
     "todaysSchedule": "Dagens schema",
     "nothingToday": "Inget planerat idag!",
     "bookedRooms": "Bokade rum",
-    "noBookedRooms": "Inga bokade rum"
+    "noBookedRooms": "Inga bokade rum",
+    "cotributors": "Skapade av",
+    "aboutText":""
 }

@@ -2,6 +2,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { FaGithubSquare } from "react-icons/fa";
 
 const fourOFour: NextPage = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -14,9 +15,9 @@ const fourOFour: NextPage = () => {
                     <ChevronDownIcon className="h-8 w-8 animate-bounce" />
                 </a>
         </div>
-            <div className="fixed top-0 max-h-screen w-screen z-0 overflow-y-auto">
+            <div className="fixed top-0 max-h-screen w-screen z-0 overflow-y-auto px-4">
                 <div className="h-screen z-0"></div>
-                <div className="min-h-screen bg-white z-20 pt-16 dark:bg-black dark:text-white flex justify-center">
+                <div className="min-h-screen bg-white z-20 md:pt-16 dark:bg-black dark:text-white flex justify-center">
                     <div className="flex flex-col  max-w-7xl w-full mt-32 prose dark:prose-invert">
                         <h1 id="about" >{t('about')}</h1>
                         <p>{t('aboutText')}</p>
@@ -41,7 +42,15 @@ const fourOFour: NextPage = () => {
                             </ul>
                             
                         </section>
-
+                        <section>
+                            <p className="text-sm text-neutral-500">{t('disclaimer')}</p>
+                            <a href="https://github.com/axdra/Rhea">
+                                <FaGithubSquare className="h-12 w-12 text-black dark:text-white mx-auto" />
+                            </a>
+                            <label>
+                                Commit: {process.env.NEXT_PUBLIC_SHA}
+                            </label>
+                    </section>
                     </div>
                 </div>
     </div>
