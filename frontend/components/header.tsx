@@ -24,7 +24,7 @@ const Header: FC = () => {
           <Link href="/" className="text-3xl font-medium select-none mr-16">
             Rhea.
           </Link>
-          <div className="w-px bg-black/25 my-1  hidden lg:flex   " />
+          <div className="w-px bg-black/25 my-1 dark:bg-white/50  hidden lg:flex   " />
           <div className=" items-center gap-8 ml-16 hidden lg:flex">
           <Link href={"/unions"} className="font-medium hover:underline focus:underline select-none">
             {t("unions")}
