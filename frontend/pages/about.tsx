@@ -48,7 +48,7 @@ const fourOFour: NextPage = () => {
                                 <FaGithubSquare className="h-12 w-12 text-black dark:text-white mx-auto" />
                             </a>
                             <label>
-                                Commit: {process.env.NEXT_PUBLIC_SHA}
+                                Commit: {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA}
                             </label>
                     </section>
                     </div>
