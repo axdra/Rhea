@@ -76,8 +76,8 @@ const Mock: FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex-1 flex flex-col gap-4">
-                    <div className="border-black border-2 rounded-xl flex-1 w-80 bg-white  overflow-hidden flex flex-col py-3 px-3">
+                <div className="flex-1 flex flex-col gap-4 h-full">
+                    <div className="border-black border-2 rounded-xl flex-1 w-80 bg-white  overflow-hidden flex flex-col py-3 px-3 ">
                         <h1 className=" text-lg font-bold ">
                             {t("unions")}
                         </h1>
