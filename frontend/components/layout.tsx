@@ -12,7 +12,7 @@ const Layout: FC<ILayoutProps> = (props) => {
     const { children } = props;
     return (
         <div className="overflow-x-hidden dark:bg-black">
-            <div className="flex flex-col h-full    selection:bg-black selection:text-white sm:pb-0 pb-16 layout-container">
+            <div className="flex flex-col h-full    selection:bg-black selection:text-white layout-container">
         <Header />
                 {children}
 

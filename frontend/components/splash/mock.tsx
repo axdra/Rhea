@@ -56,7 +56,7 @@ const Mock: FC = () => {
     ]
     return (
         <div className="flex flex-col items-end justify-center h-full flex-1 select-none ">
-            <div className="flex h-[26rem] gap-4 lg:flex-row flex-col">
+            <div className="flex lg:h-[26rem] gap-4 lg:flex-row flex-col">
                 <div className="flex-1 flex flex-col gap-4 ">
                     <Link href="/map" className="border-black border-2  rounded-xl flex-1 lg:w-64 w-full  bg-white hover:bg-black  duration-300 group relative overflow-hidden">
                         
