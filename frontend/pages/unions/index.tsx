@@ -1,4 +1,3 @@
-import { UnionCard } from './unionCard';
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { GetServerSidePropsContext, NextPage } from "next";
 import { useTranslation, WithTranslation } from "next-i18next";
