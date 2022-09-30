@@ -11,25 +11,23 @@ import SignInModal from "../../components/signInModal";
 
 const UserIndex: NextPage = () => {
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
     const {t} = useTranslation();
     const [showDeleteUserModal, setShowDeleteUserModal] = useState(false);
-
+    const [signOutInProgress, setSignOutInProgress] = useState(false);
     const supabaseClient = useSupabaseClient()
     const user = useUser()
 
     const signOut = async () => {
+        setSignOutInProgress(true);
         const { error } = await supabaseClient.auth.signOut();
         if (error) console.error(error);
         if (!error) {
-            //refresh window
             router.push("/");
         }
 
     };
 
-    if (loading) return <div></div>
-    if (loading === false && user === null) return <div>
+    if (user === null && !signOutInProgress) return <div>
         <SignInModal isOpen setIsOpen={()=>router.push('/')}/>
     </div>
     return (

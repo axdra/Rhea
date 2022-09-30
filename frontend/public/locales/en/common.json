@@ -58,5 +58,11 @@
     "callToActionh1": "A platform for students by students",
     "callToActionp1":"Manage your schedule",
     "callToActionp2":"Find on campus",
-    "callToActionp3":"Discover Union Events"
+    "callToActionp3":"Discover Union Events",
+    "profile": "Profile",
+    "goodMorning": "Good morning, {{name}}!",
+    "goodAfternoon": "Good afternoon, {{name}}",
+    "goodEvening": "Good evening, {{name}}",
+    "goodNight": "Good night, {{name}} 😴"
+
 }

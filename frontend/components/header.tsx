@@ -9,18 +9,22 @@ import { useTranslation } from "next-i18next";
 import Button from "./Button";
 import LinkButton from "./LinkButton";
 import { Transition } from "@headlessui/react";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const Header: FC = () => {
   const { t } = useTranslation();
   const [showSmallScreenMenu, setShowSmallScreenMenu] = useState(false);
+  const user = useUser();
+  const [showSignInModal, setShowSignInModal] = useState(false);
   return (
     <>
+      <SignInModal isOpen={showSignInModal} setIsOpen={setShowSignInModal} />
       <nav className="sticky top-0 dark:bg-black dark:text-white dark:border-b-white dark:border-b dark:shadow-none bg-white h-16 shadow-sm  justify-between items-center px-10 w-screen z-10 flex  ">
         <div className="flex">
           <Link href="/" className="text-3xl font-medium select-none mr-16">
             Rhea.
           </Link>
-          <div className="w-px bg-black/25 my-1  " />
+          <div className="w-px bg-black/25 my-1  hidden lg:flex   " />
           <div className=" items-center gap-8 ml-16 hidden lg:flex">
           <Link href={"/unions"} className="font-medium hover:underline focus:underline select-none">
             {t("unions")}
@@ -40,9 +44,13 @@ const Header: FC = () => {
           <LinkButton buttonStyle="outlined" href="/courses" >
             {t("findCourses")}
           </LinkButton>
-          <Button buttonStyle="filled"  >
+          {user ? <LinkButton buttonStyle="outlined" href="/user" >
+            {t("profile")}
+          </LinkButton> :(
+              <Button onClick={() => setShowSignInModal(true)} buttonStyle="filled"  >
             {t("signIn")}
-          </Button>
+            </Button>
+        )    }
         </div>
         <div className="flex lg:hidden">
           <Bars3Icon onClick={()=>setShowSmallScreenMenu(true)}  className="h-8 w-8" />

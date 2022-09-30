@@ -58,5 +58,10 @@
     "callToActionh1": "En platform för studenter av studenter",
     "callToActionp1": "Hantera ditt schema",
     "callToActionp2": "Hitta på kampus",
-    "callToActionp3": "Upptäck föreningsevenemang"
+    "callToActionp3": "Upptäck föreningsevenemang",
+    "profile": "Profil",
+    "goodMorning": "God morgon, {{name}}!",
+    "goodAfternoon": "God eftermiddag, {{name}}",
+    "goodEvening": "God kväll, {{name}}",
+    "goodNight": "God natt, {{name}} 😴"
 }
