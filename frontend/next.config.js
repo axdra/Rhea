@@ -6,10 +6,10 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     newNextLinkBehavior: true
-  }
+  },
+  i18n
 }
 
 module.exports = {
-  i18n,
-  ...nextConfig,
+  nextConfig,
 }
