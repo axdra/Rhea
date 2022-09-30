@@ -63,6 +63,8 @@
     "goodMorning": "Good morning, {{name}}!",
     "goodAfternoon": "Good afternoon, {{name}}",
     "goodEvening": "Good evening, {{name}}",
-    "goodNight": "Good night, {{name}} 😴"
+    "goodNight": "Good night, {{name}} 😴",
+    "todaysSchedule": "Today's schedule",
+    "nothingToday": "Nothing today!"
 
 }
