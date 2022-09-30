@@ -6,6 +6,8 @@ import type { GetServerSideProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import CallToAction from "../components/splash/callToAction";
 import Mock from "../components/splash/mock";
+import BookedRooms from "../components/userSplash/bookedRooms";
+import TodaysSchedule from "../components/userSplash/todaysSchedule";
 import Greet from "../utils/greeting";
 
 type PageProps = {
@@ -22,8 +24,12 @@ const Home: NextPage<PageProps> = ({ issues }) => {
         <div className="max-w-[100rem] w-full flex  px-4 flex-col gap-10 ">
           <h1 className="text-5xl font-medium">{Greet(user.email!, t)}</h1>
           <div className="grid grid-cols-5 w-full flex-1 gap-5">
-            <div className="col-span-1 border-black border-2 bg-white h-96 rounded-xl"></div>
-            <div className="col-span-1 border-black border-2 bg-white h-96 rounded-xl"></div>
+            <div className="col-span-1 border-black border-2 bg-white h-96 rounded-xl">
+              <TodaysSchedule />
+            </div>
+            <div className="col-span-1 border-black border-2 bg-white h-96 rounded-xl">
+              <BookedRooms />
+            </div>
             <div className="col-span-3 border-black border-2 bg-white h-96 rounded-xl"></div>
           </div>
         </div>

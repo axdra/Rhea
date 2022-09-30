@@ -63,5 +63,8 @@
     "goodMorning": "God morgon, {{name}}!",
     "goodAfternoon": "God eftermiddag, {{name}}",
     "goodEvening": "God kväll, {{name}}",
-    "goodNight": "God natt, {{name}} 😴"
+    "goodNight": "God natt, {{name}} 😴",
+    "todaysSchedule": "Dagens schema",
+    "nothingToday": "Inget planerat idag!",
+    "bookedRooms": "Bokade rum"
 }
