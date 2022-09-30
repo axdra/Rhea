@@ -1,23 +1,22 @@
-import { PropsOf } from "@headlessui/react/dist/types";
-import { useTranslation } from "next-i18next";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { FC, FormEvent, FormEventHandler, HTMLProps, useState } from "react";
-interface ILinkButtonProps extends HTMLProps<HTMLDivElement> {
-    buttonStyle: 'filled' | 'outlined' | 'ghost' | 'link';
-}
-const Button: FC<ILinkButtonProps> = (props) => {
+import { FC, HTMLAttributes, PropsWithChildren } from "react";
+
+type Props = {
+    buttonStyle: "filled" | "outlined" | "ghost" | "link";
+  } & HTMLAttributes<HTMLButtonElement>;
+
+const Button: FC<PropsWithChildren<Props>> = (props) => {
+    const { buttonStyle, ...rest } = props
     let className = "";
-    if (props.buttonStyle === 'filled') {
+    if (buttonStyle === 'filled') {
         className = " select-none bg-black border-black border-2 px-6 py-2 text-white rounded-xl";
-    } else if (props.buttonStyle === 'outlined') {
+    } else if (buttonStyle === 'outlined') {
         className = " select-none bg-white border-black border-2 px-6 py-2 text-black rounded-xl hover:bg-black hover:text-white";
-    } else if (props.buttonStyle === 'ghost') {
+    } else if (buttonStyle === 'ghost') {
         className = " select-none bg-white border-white border-2 px-6 py-2 text-black rounded-xl";
-    } else if (props.buttonStyle === 'link') {
+    } else if (buttonStyle === 'link') {
         className = " select-none text-black hover:underline";
     }
 
-    return <div  {...props}  className={`cursor-pointer ${className} ${props.className}`} >{ props.children}</div>
+    return <button {...rest} type="button" className={`cursor-pointer ${className} ${rest.className}`} >{ rest.children }</button>
 }
 export default Button;
