@@ -19,6 +19,6 @@ const LinkButton: FC<ILinkButtonProps> = (props) => {
     }
 
 
-    return <Link className={`${className}  ${props.className}`} {...props} />
+    return <Link {...props} className={`${className}  ${props.className}`} />
 }
 export default LinkButton;

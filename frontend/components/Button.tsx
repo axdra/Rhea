@@ -18,6 +18,6 @@ const Button: FC<ILinkButtonProps> = (props) => {
         className = " select-none text-black hover:underline";
     }
 
-    return <div className={`cursor-pointer ${className} ${props.className}`} {...props} >{ props.children}</div>
+    return <div  {...props}  className={`cursor-pointer ${className} ${props.className}`} >{ props.children}</div>
 }
 export default Button;

@@ -56,16 +56,16 @@ const Mock: FC = () => {
     ]
     return (
         <div className="flex flex-col items-end justify-center h-full flex-1 select-none ">
-            <div className="flex h-[26rem] gap-4">
-                <div className="flex-1 flex flex-col gap-4">
-                    <Link href="/map" className="border-black border-2  rounded-xl flex-1 w-64 bg-white hover:bg-black  duration-300 group relative overflow-hidden">
+            <div className="flex h-[26rem] gap-4 lg:flex-row flex-col">
+                <div className="flex-1 flex flex-col gap-4 ">
+                    <Link href="/map" className="border-black border-2  rounded-xl flex-1 lg:w-64 w-full  bg-white hover:bg-black  duration-300 group relative overflow-hidden">
                         
                         <Image src="/images/map.jpg" height={130} width={"252"}  quality={"100"} className="absolute z-0 group-hover:opacity-0 transition-opacity duration-300 antialiased" />
                         <h1 className="absolute top-3 left-5 text-lg font-bold group-hover:text-white duration-300">
                             {t("map")}
                         </h1>
                     </Link>
-                    <div className="border-black border-2 rounded-xl h-4/6 w-64 bg-white overflow-hidden flex flex-col py-3 px-3">
+                    <div className="border-black border-2 rounded-xl h-4/6  lg:w-64 w-full bg-white overflow-hidden flex flex-col py-3 px-3">
                         <h1 className=" text-lg font-bold ">
                             {t("schedule")}
                         </h1>

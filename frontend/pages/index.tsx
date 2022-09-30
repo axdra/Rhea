@@ -26,7 +26,7 @@ const Home: NextPage = () => {
 
 
     <div className='flex justify-center items-center flex-1 bg-splash dark:bg-splash-dark '>
-    <div className='max-w-7xl w-full flex items-center'>
+    <div className='max-w-7xl w-full flex items-center px-4 flex-col lg:flex-row' >
       <CallToAction />
         <Mock />
       </div>

@@ -1,7 +1,6 @@
 import { FC, HTMLProps } from "react";
 import Footer from "./footer";
 import Header from "./header";
-import MobileNav from "./mobileNav";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 interface ILayoutProps extends HTMLProps<FC> {
@@ -16,7 +15,6 @@ const Layout: FC<ILayoutProps> = (props) => {
             <div className="flex flex-col h-full    selection:bg-black selection:text-white sm:pb-0 pb-16 layout-container">
         <Header />
                 {children}
-                <MobileNav />
 
             </div>
         
