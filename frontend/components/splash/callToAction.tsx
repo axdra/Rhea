@@ -8,7 +8,7 @@ const CallToAction: FC = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="flex flex-col justify-center lg:h-full lg:flex-1 h-screen ">
+        <div className="flex flex-col justify-center lg:h-full lg:flex-1 h-[calc(100vh-4rem)] ">
             <h1 className="text-6xl font-medium">
                 Rhea.
             </h1>
