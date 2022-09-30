@@ -12,20 +12,20 @@ const SchedulePreview: FC<ISchedulePreviewProps> = (props) => {
     const {name, room, end, start} = props;
     const { t } = useTranslation();
     return (
-        <div className="flex justify-between bg-neutral-100 px-4 py-2 rounded-xl text-sm">
+        <div className="flex justify-between bg-neutral-100 hover:bg-neutral-200 duration-1000 px-4 py-2 rounded-xl text-sm">
             <div className="flex flex-col">
                 <h1 className=" font-medium">
                     {name}
                 </h1>
-                <h3 className="text-sm font-medium mt-2">
+                <h3 className=" font-medium mt-2">
                     {room}
                 </h3>
             </div>
             <div className="flex flex-col">
-                <h3>
+                <h3 className=" font-medium">
                     {start}
                 </h3>
-                <h3 className="text-sm font-medium mt-2">
+                <h3 className="font-medium mt-2">
                     {end}
                 </h3>
             </div>
