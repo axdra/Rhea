@@ -48,7 +48,7 @@ const Header: FC = () => {
           <Bars3Icon onClick={()=>setShowSmallScreenMenu(true)}  className="h-8 w-8" />
         </div>
       </nav>
-      <Transition.Root show={showSmallScreenMenu} >
+      <Transition.Root show={showSmallScreenMenu} className="md:hidden flex" >
 
         <Transition.Child
           enter="transition-opacity duration-300"
