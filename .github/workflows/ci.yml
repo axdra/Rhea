@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: supabase/setup-cli@v1
         with:
-          version: 1.0.0
+          version: 1.5.3
 
       - run: supabase start
       - name: Verify generated types match Postgres schema

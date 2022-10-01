@@ -982,6 +982,14 @@ GRANT ALL ON FUNCTION "graphql_public"."graphql"("operationName" "text", "query"
 GRANT ALL ON FUNCTION "graphql_public"."graphql"("operationName" "text", "query" "text", "variables" "jsonb", "extensions" "jsonb") TO "authenticated";
 GRANT ALL ON FUNCTION "graphql_public"."graphql"("operationName" "text", "query" "text", "variables" "jsonb", "extensions" "jsonb") TO "service_role";
 
+
+--
+-- Name: SEQUENCE "key_key_id_seq"; Type: ACL; Schema: pgsodium; Owner: supabase_admin
+--
+
+GRANT ALL ON SEQUENCE "pgsodium"."key_key_id_seq" TO "pgsodium_keyiduser";
+
+
 --
 -- Name: TABLE "pg_stat_statements"; Type: ACL; Schema: extensions; Owner: postgres
 --
@@ -1017,7 +1025,7 @@ GRANT ALL ON SEQUENCE "graphql"."seq_schema_version" TO "service_role";
 
 
 --
--- Name: TABLE "valid_key"; Type: ACL; Schema: pgsodium; Owner: postgres
+-- Name: TABLE "valid_key"; Type: ACL; Schema: pgsodium; Owner: supabase_admin
 --
 
 GRANT ALL ON TABLE "pgsodium"."valid_key" TO "pgsodium_keyiduser";
