@@ -14,17 +14,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
       - uses: supabase/setup-cli@v1
         with:
           version: 1.0.0
 
+      - run: supabase init
       - run: supabase start
-
-      # - run: supabase db lint
-      # - run: supabase db test
-
-      - name: Verify generated types are checked in
+      - name: Verify generated types match Postgres schema
         run: |
           supabase gen types typescript --local > types.gen.ts
           if [ "$(git diff --ignore-space-at-eol types.gen.ts | wc -l)" -gt "0" ]; then
