@@ -20,7 +20,7 @@ export default function handler(
         if (data.data.user?.aud === 'authenticated') {
             if (req.method === 'GET') {
               
-                supabase.from('personalcalendar').select().eq('userid', data.data.user.id).then(cal => {
+                supabase.from('personalcalendar').select().eq('user_id', data.data.user.id).then(cal => {
                     if (cal.data) {
                         res.status(200).json(cal.data)
                     } else {
@@ -30,7 +30,7 @@ export default function handler(
             }
             if (req.method === 'POST') {
              
-                supabase.from('personalcalendar').insert({ 'userid': data.data.user.id, 'calendar': req.body }).then(cal => {
+                supabase.from('personalcalendar').insert({ 'user_id': data.data.user.id, 'calendar': req.body }).then(cal => {
                     res.status(200).json(cal.data)
                 }
                 )
@@ -41,7 +41,7 @@ export default function handler(
             
             if (req.method === 'DELETE') {
 
-                supabase.from('personalcalendar').delete().eq('userid', data.data.user.id ).eq( 'calendar', req.body).then(cal => {
+                supabase.from('personalcalendar').delete().eq('user_id', data.data.user.id ).eq( 'calendar', req.body).then(cal => {
                     res.status(200).json(cal.data)
                 })
     

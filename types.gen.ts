@@ -128,47 +128,21 @@ export interface Database {
       personalcalendar: {
         Row: {
           id: number;
-          userid: string;
+          user_id: string;
           created_at: string | null;
           calendar: string | null;
         };
         Insert: {
           id?: number;
-          userid: string;
+          user_id: string;
           created_at?: string | null;
           calendar?: string | null;
         };
         Update: {
           id?: number;
-          userid?: string;
+          user_id?: string;
           created_at?: string | null;
           calendar?: string | null;
-        };
-      };
-      unions: {
-        Row: {
-          name: string;
-          id: string;
-          cover_image: string | null;
-          description: string | null;
-          color: string | null;
-          admins: string[];
-        };
-        Insert: {
-          name: string;
-          id?: string;
-          cover_image?: string | null;
-          description?: string | null;
-          color?: string | null;
-          admins: string[];
-        };
-        Update: {
-          name?: string;
-          id?: string;
-          cover_image?: string | null;
-          description?: string | null;
-          color?: string | null;
-          admins?: string[];
         };
       };
       rooms: {
@@ -259,6 +233,32 @@ export interface Database {
         Update: {
           sidebar?: Json | null;
           id?: string;
+        };
+      };
+      unions: {
+        Row: {
+          name: string;
+          id: string;
+          cover_image: string | null;
+          description: string | null;
+          color: string | null;
+          admins: string[];
+        };
+        Insert: {
+          name: string;
+          id?: string;
+          cover_image?: string | null;
+          description?: string | null;
+          color?: string | null;
+          admins: string[];
+        };
+        Update: {
+          name?: string;
+          id?: string;
+          cover_image?: string | null;
+          description?: string | null;
+          color?: string | null;
+          admins?: string[];
         };
       };
     };

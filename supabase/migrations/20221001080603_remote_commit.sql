@@ -224,7 +224,7 @@ ALTER SEQUENCE "public"."issues_id_seq" OWNED BY "public"."issues"."id";
 
 CREATE TABLE "public"."personalcalendar" (
     "id" integer NOT NULL,
-    "userid" "text" NOT NULL,
+    "user_id" "uuid" NOT NULL,
     "created_at" timestamp with time zone,
     "calendar" "text"
 );
@@ -495,6 +495,14 @@ ALTER TABLE ONLY "public"."calendars"
 
 ALTER TABLE ONLY "public"."events"
     ADD CONSTRAINT "events_parent_calendar_fkey" FOREIGN KEY ("parent_calendar") REFERENCES "public"."calendars"("code");
+
+
+--
+-- Name: personalcalendar personalcalendar_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: supabase_admin
+--
+
+ALTER TABLE ONLY "public"."personalcalendar"
+    ADD CONSTRAINT "personalcalendar_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id");
 
 
 --
