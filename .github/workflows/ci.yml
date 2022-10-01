@@ -18,7 +18,6 @@ jobs:
         with:
           version: 1.0.0
 
-      - run: supabase init
       - run: supabase start
       - name: Verify generated types match Postgres schema
         run: |
