@@ -66,7 +66,7 @@ const Union: NextPage<Props> = ({ union, unionPage, events }) => {
 
   const isAdmin = user?.id && union?.admins.includes(user?.id);
 
-  const sidebar = (unionPage?.sidebar as { [key: string]: Json })
+  const sidebar = unionPage?.sidebar as { [key: string]: Json };
 
   return (
     <div className="h-full flex flex-1 sm:flex-row flex-col  justify-center dark:text-white mt-10 gap-5">
@@ -161,7 +161,12 @@ const Union: NextPage<Props> = ({ union, unionPage, events }) => {
       </div>
       <div className="w-64">
         <h2 className="text-lg text-bold">{t("unionSidebar")}</h2>
-        {sidebar?.items?.map((page) => {
+        {(
+          sidebar?.items as {
+            name: string;
+            url: string;
+          }[]
+        )?.map((page) => {
           return (
             <Link key={page.name} href={`${page.url}`}>
               <h3>{page.name}</h3>
