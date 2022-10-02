@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 //@ts-ignore
 import ReactMarkdown from 'react-markdown'
 import { IUnion, IUnionEvent } from ".";
+import Image from "next/image";
 
 
 
@@ -56,7 +57,7 @@ const Union: NextPage = () => {
     return (
         <div className="h-full flex  flex-1 justify-center dark:text-white pt-10 gap-5 relative">
             
-            <img src={event?.cover_image} alt="background image" className="select-none absolute top-0 left-0 w-full opacity-10 h-full cover  object-cover -z-20" />
+            <Image src={event?.cover_image ?? ""} alt="background image" className="select-none absolute top-0 left-0 w-full opacity-10 h-full cover  object-cover -z-20" />
             <div className="absolute top-0 left-0 h-full w-full  bg-gradient-to-t  to-white/50 from-white -z-10" />
 
 

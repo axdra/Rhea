@@ -2,6 +2,7 @@ import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { GetServerSidePropsContext, NextPage } from "next";
 import { useTranslation, WithTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Image from "next/image";
 import Link from "next/link";
 interface IUnions {
   name: string;
@@ -33,10 +34,10 @@ const UnionsList: NextPage<Props & WithTranslation> = ({ unions }) => {
                 }}
               >
                 {union.cover_image ? (
-                  <img
+                  <Image
                     src={union.cover_image}
                     alt="union cover image"
-                    className="h-40 w-64   object-contain group-hover:scale-105 transition-all duration-300"
+                    className="h-40 w-64 object-contain group-hover:scale-105 transition-all duration-300"
                   />
                 ) : (
                   <div className="h-40 w-64 bg-black"></div>
