@@ -14,7 +14,7 @@ const UnionEventPreview: FC<IUnionEventPreviewProps> = (props) => {
 const {name, location, creator, color, start, image, cost} = props;
     const { t } = useTranslation();
     return (
-        <div className="flex justify-between bg-neutral-100 hover:bg-neutral-200 duration-1000 px-4 py-2 rounded-xl text-sm flex-1  items-center">
+        <div className="flex justify-between bg-neutral-100 hover:bg-neutral-200 duration-1000 px-4 py-2 rounded-xl text-sm flex-1  items-center dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800">
             <div className="flex flex-col flex-1 justify-between">
                 <div className="mr-2">
                 <div className="flex justify-between ">
@@ -43,7 +43,7 @@ const {name, location, creator, color, start, image, cost} = props;
                     </h3>
             </div>
             </div>
-            <img src={image} className="h-20  aspect-square flex-shrink rounded-xl border-black border-2 overflow-hidden object-cover antialiased" />
+            <img src={image} className="h-20  aspect-square flex-shrink rounded-xl border-black border-2 overflow-hidden object-cover antialiased dark:border-white" />
 
         </div>
     );

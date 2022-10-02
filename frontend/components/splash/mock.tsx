@@ -58,15 +58,15 @@ const Mock: FC = () => {
         <div className="flex flex-col items-end justify-center h-full flex-1 select-none ">
             <div className="flex lg:h-[26rem] gap-4 lg:flex-row flex-col">
                 <div className="flex-1 flex flex-col gap-4 ">
-                    <Link href="/map" className="border-black border-2  rounded-xl flex-1 lg:w-64 w-full  bg-white hover:bg-black  duration-300 group relative overflow-hidden lg:min-h-0 h-full min-h-[10rem]">
+                    <Link href="/map" className="border-black border-2  rounded-xl flex-1 lg:w-64 w-full  bg-white hover:bg-black dark:bg-black dark:hover:bg-white  duration-300 group relative overflow-hidden lg:min-h-0 h-full min-h-[10rem] dark:border-white dark:border-2">
                         
-                        <Image src="/images/map.jpg" layout="fill" quality={"100"} className="absolute z-0 group-hover:opacity-0 transition-opacity duration-300 antialiased w-full " />
-                        <h1 className="absolute top-3 left-5 text-lg font-bold group-hover:text-white duration-300">
+                        <Image src="/images/map.jpg" layout="fill" quality={"100"} className="absolute z-0 group-hover:opacity-0 transition-opacity duration-300 antialiased w-full dark:filter invert " />
+                        <h1 className="absolute top-3 left-5 text-lg font-bold group-hover:text-white duration-300 dark:text-white dark:group-hover:text-black">
                             {t("map")}
                         </h1>
                     </Link>
-                    <div className="border-black border-2 rounded-xl h-4/6  lg:w-64 w-full bg-white overflow-hidden flex flex-col py-3 px-3">
-                        <h1 className=" text-lg font-bold ">
+                    <div className="border-black border-2 rounded-xl h-4/6  lg:w-64 w-full bg-white overflow-hidden flex flex-col py-3 px-3 dark:bg-black dark:border-white dark:border-2">
+                        <h1 className=" text-lg font-bold  dark:text-white">
                             {t("schedule")}
                         </h1>
                         <div className="flex flex-col gap-3 flex-1 ">
@@ -77,8 +77,8 @@ const Mock: FC = () => {
                     </div>
                 </div>
                 <div className="flex-1 flex flex-col gap-4 h-full">
-                    <div className="border-black border-2 rounded-xl flex-1 w-80 bg-white  overflow-hidden flex flex-col py-3 px-3 ">
-                        <h1 className=" text-lg font-bold ">
+                    <div className="border-black border-2 rounded-xl flex-1 w-80 bg-white  overflow-hidden flex flex-col py-3 px-3 dark:bg-black dark:border-white dark:border-2 ">
+                        <h1 className=" text-lg font-bold  dark:text-white">
                             {t("unions")}
                         </h1>
                         <div className="flex flex-col gap-3 flex-1 ">
