@@ -19,7 +19,7 @@ const Header: FC = () => {
   return (
     <>
       <SignInModal isOpen={showSignInModal} setIsOpen={setShowSignInModal} />
-      <nav className="sticky top-0 dark:bg-black dark:text-white  dark:shadow-none bg-white h-16 shadow-sm  justify-between items-center px-10 w-screen z-10 flex  ">
+      <nav className="sticky top-0 dark:bg-black dark:text-white border-b border-b-neutral-100 dark:shadow-none bg-white h-16  justify-between items-center px-10 w-screen z-10 flex  ">
         <div className="flex">
           <Link href="/" className="text-3xl font-medium select-none mr-16">
             Rhea.
