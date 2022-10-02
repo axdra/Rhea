@@ -195,12 +195,12 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
     .eq("id", union?.id)
     .single();
   const events = union?.unionevents;
-  
 
+ 
   return {
     props: {
       union,
-      unionPage,
+      unionPage: unionPage || null,
       events,
       ...(await serverSideTranslations(locale as string, ["common"])),
     },
