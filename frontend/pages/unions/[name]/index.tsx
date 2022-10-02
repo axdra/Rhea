@@ -186,7 +186,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 
   const { data: union } = await supabaseClient
     .from("unions")
-    .select("*")
+    .select("*, unionevents(*)")
     .ilike("name", query.name as string)
     .single();
   const { data: unionPage } = await supabaseClient
@@ -194,8 +194,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
     .select("*")
     .eq("id", union?.id)
     .single();
-
-  const { data: events } = await supabaseClient.from("unionevents").select("*");
+  const events = union?.unionevents;
+  
 
   return {
     props: {
