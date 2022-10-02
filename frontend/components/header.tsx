@@ -105,7 +105,7 @@ const Header: FC = () => {
                   <LinkButton className="flex-1 text-center" buttonStyle="outlined" href="/courses" >
                     {t("findCourses")}
                   </LinkButton>
-                  <Button buttonStyle="filled" className="flex-1 text-center"  >
+                  <Button onClick={() => setShowSignInModal(true)} buttonStyle="filled" className="flex-1 text-center"  >
                     {t("signIn")}
                   </Button>
                 </div>
