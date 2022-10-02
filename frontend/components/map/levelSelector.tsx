@@ -9,10 +9,10 @@ interface ILevelSelectorProps extends HTMLProps<HTMLDivElement> {
 const LevelSelector: FC<ILevelSelectorProps> = (props) => {
     const { levels, onLevelSelect, currentLevel } = props;
     return (
-        <div className="flex flex-col  bg-white  dark:bg-black dark:text-white rounded-lg shadow border border-neutral-3  overflow-hidden">
+        <div className="flex flex-col  bg-white  dark:bg-black gap-1 dark:text-white rounded-xl border-2 border-black shadow  px-1 py-2  overflow-hidden dark:border-white">
             {levels.map((level, index) => {
                 return (
-                    <div key={level} className={`text-center py-2 px-4 cursor-pointer hover:bg-orange-500/10 dark:hover:bg-orange-500/50 pointer-events-auto transition-colors  ${currentLevel === level && "bg-orange-500 text-white hover:bg-orange-400"} `} onClick={() => onLevelSelect(level)} >
+                    <div key={level} className={`text-center py-2  px-3 text-sm font-extrabold cursor-pointer hover:text-white dark:hover:text-black hover:bg-black dark:hover:bg-white pointer-events-auto transition-colors  rounded-xl  ${currentLevel === level && "bg-black text-white dark:bg-white dark:text-black "} `} onClick={() => onLevelSelect(level)} >
                         {level}
                     </div>
                 );

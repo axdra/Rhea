@@ -7,6 +7,8 @@ import { Transition } from "@headlessui/react";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import RoomInformation from "../components/map/roomInformation";
 
 let MapRef: any = null;
 let GeoRef: any = null;
@@ -21,6 +23,7 @@ const MapView: NextPage = () => {
     const [pois, setPois] = useState();
     const [mapData, setMapData] = useState<any>();
     const [roomList, setRoomList] = useState<string[]>();
+    const [openSearchBar, setOpenSearchBar] = useState(false);
     const [searchList, setSearchList] = useState<string[]>();
     const [building, setBuilding] = useState<any>();
     const [zoomLevel, setZoomLevel] = useState(18);
@@ -269,57 +272,22 @@ const MapView: NextPage = () => {
             </Map>
             <div className="absolute  h-full w-full pointer-events-none p-3 ">
           
-                <div className="relative inline-block">
-                <input type="text" className="bg-white border  text-orange pointer-events-auto rounded-full shadow-md shadow-neutral-400/10 px-5 focus:ring-orange-500  focus:border-orange-500 border-gray-200 " autoComplete="off" placeholder={t('searchRoom')}onChange={
-                        (e) => {
-
-                        e.target.value.length > 0 ? setSearchList(roomList?.filter((room: string) => room.toLowerCase().includes(e.target.value.toLowerCase()))) : setSearchList(undefined);
-                    }
-                }
-                    onBlur={
-                        () => {
-                            setTimeout(() => {
-                                setSearchList(undefined);
-                            }, 250);
-                        }
-                    }
-                    />
-                    <Transition
-                        show={(searchList && searchList.length > 0) ? true : false}
-                        enter="transition ease-out duration-100"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                    >
-                        <div className="bg-white   rounded mt-2 shadow p-2 pointer-events-auto absolute w-full
-                        ">
-                    {searchList  && searchList.slice(0,5).map((room: string) => {
-                        return <div key={room} className="text-orange  pointer-events-auto rounded mb-1 px-5 py-2 focus:ring-orange-500  focus:border-orange-500 border-gray-200 hover:bg-orange-500 hover:text-white cursor-pointer " onClick={
-                            () => {
-                                mapData.features.filter((feature: any) => feature.properties?.indoor === 'room' && feature.properties.tags?.name == room).forEach((feature: any) => {
-                                    setSelectedRoom(feature);
-                                    setSelectedLevel(feature.properties.tags.level);
-                                    if (MapRef) {
-                                        MapRef.flyTo({ center: [feature.geometry.coordinates[0][0][0], feature.geometry.coordinates[0][1][1]], zoom: 18, speed: 0.3 });
-
-                                    }
-                                });
-                            }
-                        }>{room}</div>
-                    })}
-                            
-
-                        </div>
-                    </Transition>
-                    
+                <div  className={`h-12  w-12 border-2 border-black bg-white rounded-xl flex items-center px-2 ${openSearchBar && "w-64"} transition-all duration-500`}>
+                    <MagnifyingGlassIcon onClick={() => setOpenSearchBar(!openSearchBar)} className={`h-6 flex-1 pointer-events-auto cursor-pointer stroke-4 trasntio ${openSearchBar ? " w-0 hidden" : "w-6"}`}   />
+                    <input className={`bg-transparent outline-none pointer-events-auto ${openSearchBar ? "block w-full " : "w-0"} transition-all duration-500`} placeholder="Search" />
+                    <XMarkIcon className={`h-5 pointer-events-auto ${!openSearchBar ? " w-0 " : "w-5" }`} onClick={() => setOpenSearchBar(!openSearchBar)} />
                 </div>
+           
                 <div className="absolute  bottom-3">
                     <LevelSelector levels={['2', '1', '0']} currentLevel={selectedLevel} onLevelSelect={(level) => setSelectedLevel(level)} />
 
                 </div>
-                {selectedRoom && selectedRoom.features  && <div className="absolute  right-3 top-3 z-30 bg-white px-4 py-2 shadow rounded-lg">
-                    <h1> {selectedRoom.features[0].properties?.name}</h1>
-                    <h2>{selectedRoom.features[0].properties.room[0].toUpperCase() + selectedRoom.features[0].properties.room.slice(1,20)  }</h2>
-                    </div>}
+                {selectedRoom && selectedRoom.features &&
+                    <div className="md:absolute fixed w-screen h-screen md:left-auto left-0 top-16    md:w-1/3 md:h-full md:min-w-[24rem] md:max-w-3xl   md:right-12 flex   md:py-12 z-0">
+                            <div className="w-full flex-1 bg-white md:rounded-xl md:border-2 md:border-black  pointer-events-auto"><RoomInformation roomName={selectedRoom.features[0].properties.name} />
+                            </div>
+                    </div>
+                    }
             </div>
         </div>
     );

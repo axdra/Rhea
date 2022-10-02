@@ -9,8 +9,8 @@ const fourOFour: NextPage = () => {
 
     return (
         <div className="h-full flex flex-col justify-center items-center flex-1 dark:text-white">
-            <h1 className="bg-black text-white px-2 py-0.5">{ t('404message')}</h1>
-            <Link href="/" className="hover:underline text-black mt-4">
+            <h1 className="bg-black text-white px-2 py-0.5 dark:bg-white dark:text-black">{ t('404message')}</h1>
+            <Link href="/" className="hover:underline text-black mt-4 dark:text-white">
                 {t('404goBack')}
             </Link>
         </div>
