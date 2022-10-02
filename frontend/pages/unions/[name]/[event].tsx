@@ -132,7 +132,7 @@ const Union: NextPage<Props> = ({ union, event }) => {
   );
 };
 
-export const getStaticProps: GetServerSideProps<Props> = async ({
+export const getServerSideProps: GetServerSideProps<Props> = async ({
   locale,
   query,
 }: GetServerSidePropsContext) => {
