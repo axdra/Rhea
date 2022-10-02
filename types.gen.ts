@@ -168,19 +168,19 @@ export interface Database {
       unionevents: {
         Row: {
           id: number;
-          created_at: string | null;
+          created_at: Date | null;
           creator: string | null;
           title: string | null;
           cover_image: string | null;
           description: string | null;
           short_description: string | null;
           url_slug: string | null;
-          start_time: string | null;
-          end_time: string | null;
+          start_time: Date | null;
+          end_time: Date | null;
           location: string | null;
           coordinates: string | null;
-          interested: string[] | null;
-          going: string[] | null;
+          interested?: string[] | null;
+          going?: string[] | null;
           cost: number | null;
           union: string | null;
         };

@@ -194,13 +194,13 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
     .select("*")
     .eq("id", union?.id)
     .single();
-  const events = union?.unionevents;
+  const events:IUnionEvent[] = union?.unionevents as IUnionEvent[];
 
  
   return {
     props: {
       union,
-      unionPage: unionPage || null,
+      unionPage: unionPage ,
       events,
       ...(await serverSideTranslations(locale as string, ["common"])),
     },
