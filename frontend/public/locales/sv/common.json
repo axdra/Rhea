@@ -69,5 +69,9 @@
     "bookedRooms": "Bokade rum",
     "noBookedRooms": "Inga bokade rum",
     "contributors": "Skapade av",
-    "aboutText":"Rhea är en plattform för studenter av studenter. Det är ett projekt som skapades för att underlätta för studenter att hitta kurser och lägga till dem i sina personliga scheman. Det finns även funktionalitet för att hitta på kampus och upptäcka föreningsevenemang. All utveckling sker helt ideellt, vid frågor eller förslag, skriv gärna på GitHub!"
+    "aboutText":"Rhea är en plattform för studenter av studenter. Det är ett projekt som skapades för att underlätta för studenter att hitta kurser och lägga till dem i sina personliga scheman. Det finns även funktionalitet för att hitta på kampus och upptäcka föreningsevenemang. All utveckling sker helt ideellt, vid frågor eller förslag, skriv gärna på GitHub!",
+    "name": "Namn",
+    "description": "Beskrivning",
+    "cover-image": "Omslagsbild",
+    "update": "Uppdatera"
 }

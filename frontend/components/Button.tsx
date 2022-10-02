@@ -1,11 +1,11 @@
-import { FC, HTMLAttributes, PropsWithChildren } from "react";
+import { ButtonHTMLAttributes, FC, HTMLAttributes, PropsWithChildren } from "react";
 
 type Props = {
     buttonStyle: "filled" | "outlined" | "ghost" | "link";
-  } & HTMLAttributes<HTMLButtonElement>;
+  } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button: FC<PropsWithChildren<Props>> = (props) => {
-    const { buttonStyle, ...rest } = props
+    const { buttonStyle, type, ...rest } = props
     let className = "";
     if (buttonStyle === 'filled') {
         className = " select-none bg-black border-black border-2 px-6 py-2 text-white rounded-xl dark:bg-white dark:border-white dark:text-black ";
@@ -17,6 +17,6 @@ const Button: FC<PropsWithChildren<Props>> = (props) => {
         className = " select-none text-black hover:underline";
     }
 
-    return <button {...rest} type="button" className={`cursor-pointer ${className} ${rest.className}`} >{ rest.children }</button>
+    return <button {...rest} type={type ?? "button"} className={`cursor-pointer ${className} ${rest.className}`} >{ rest.children }</button>
 }
 export default Button;
