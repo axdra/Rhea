@@ -43,7 +43,7 @@ const {name, location, creator, color, start, image, cost} = props;
                     </h3>
             </div>
             </div>
-            <Image src={image} className="h-20  aspect-square flex-shrink rounded-xl border-black border-2 overflow-hidden object-cover antialiased" />
+            <img src={image} className="h-20  aspect-square flex-shrink rounded-xl border-black border-2 overflow-hidden object-cover antialiased" />
 
         </div>
     );

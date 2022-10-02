@@ -5,7 +5,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
-import Image from "next/image";
 
     export interface IUnionSideBar {
         items: {
@@ -93,7 +92,7 @@ const Union: NextPage = () => {
     return (
         <div className="h-full flex flex-1 sm:flex-row flex-col  justify-center dark:text-white mt-10 gap-5">
             <div className=" prose max-w-6xl px-10 w-full relative dark:prose-invert ">
-                <Image src={union?.cover_image ?? ""} alt={union?.name} className="select-none absolute  -z-50 -left-20 -top-32 opacity-5 " />
+                <img src={union?.cover_image} alt={union?.name} className="select-none absolute  -z-50 -left-20 -top-32 opacity-5 " />
 
                 <div className="flex items-center gap-4 mb-4"><h1 className="mb-0">{union?.name}</h1>
                 {isAdmin && ((<Link
@@ -136,7 +135,7 @@ const Union: NextPage = () => {
                                 href={`/unions/${union.name.toLowerCase()}/${event.url_slug}`}
                                 className="aspect-square w-full shadow-lg relative overflow-hidden rounded-lg transition-all hover:shadow-lg group">
 
-                                <Image className="absolute  w-full  aspect-square object-cover top-0 mt-0" src={event.cover_image} alt={event.title} />
+                                <img className="absolute  w-full  aspect-square object-cover top-0 mt-0" src={event.cover_image} alt={event.title} />
                                 <div className="absolute top-2 left-2  bg-white text-black rounded px-2 py-1 group-hover:-top-24 transition-all duration-700 ease-in-out  ">
                                     <div >{new Date(event.start_time).toLocaleDateString()}</div>
 
