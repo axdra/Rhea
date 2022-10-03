@@ -32,7 +32,7 @@ const TodaysSchedule: FC = () => {
             {schedule.filter((x:any) => new Date(x.end_time) > new Date()).length > 0 ?
                 schedule.sort((z:any, y:any) => { return (new Date(z.start_time).getTime() - new Date(y.start_time).getTime()) }).filter((x:any) => new Date(x.end_time) > new Date()).map((item: any) => {
                         return (
-                            <div key={item.id} className='flex flex-row gap-2 bg-neutral-50 px-3 py-3 w-full rounded-xl'>
+                            <div key={item.id} className='flex flex-row gap-2 bg-neutral-50 dark:bg-neutral-900 px-3 py-3 w-full rounded-xl'>
                                 <div className='flex flex-col gap-2 w-full'>
                                     <div className='grid grid-cols-4 gap-2 w-full'>
                                         <div className='flex flex-col col-span-3'>

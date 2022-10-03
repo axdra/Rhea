@@ -60,7 +60,7 @@ const Mock: FC = () => {
                 <div className="flex-1 flex flex-col gap-4 ">
                     <Link href="/map" className="border-black border-2  rounded-xl flex-1 lg:w-64 w-full  bg-white hover:bg-black dark:bg-black dark:hover:bg-white  duration-300 group relative overflow-hidden lg:min-h-0 h-full min-h-[10rem] dark:border-white dark:border-2">
                         
-                        <Image src="/images/map.jpg" layout="fill" quality={"100"} className="absolute z-0 group-hover:opacity-0 transition-opacity duration-300 antialiased w-full dark:filter invert " />
+                        <Image src="/images/map.jpg" layout="fill" quality={"100"} className="absolute z-0 group-hover:opacity-0 transition-opacity duration-300 antialiased w-full dark:filter dark:invert " />
                         <h1 className="absolute top-3 left-5 text-lg font-bold group-hover:text-white duration-300 dark:text-white dark:group-hover:text-black">
                             {t("map")}
                         </h1>
