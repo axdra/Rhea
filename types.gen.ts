@@ -131,18 +131,21 @@ export interface Database {
           user_id: string;
           created_at: string | null;
           calendar: string | null;
+          calendar_id: number | null;
         };
         Insert: {
           id?: number;
           user_id: string;
           created_at?: string | null;
           calendar?: string | null;
+          calendar_id?: number | null;
         };
         Update: {
           id?: number;
           user_id?: string;
           created_at?: string | null;
           calendar?: string | null;
+          calendar_id?: number | null;
         };
       };
       rooms: {
