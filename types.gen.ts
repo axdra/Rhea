@@ -9,6 +9,79 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      issues: {
+        Row: {
+          id: number;
+          issue: string;
+          created_at: string | null;
+        };
+        Insert: {
+          id?: number;
+          issue: string;
+          created_at?: string | null;
+        };
+        Update: {
+          id?: number;
+          issue?: string;
+          created_at?: string | null;
+        };
+      };
+      unionevents: {
+        Row: {
+          id: number;
+          created_at: string | null;
+          creator: string | null;
+          title: string | null;
+          cover_image: string | null;
+          description: string | null;
+          short_description: string | null;
+          url_slug: string | null;
+          start_time: string | null;
+          end_time: string | null;
+          location: string | null;
+          coordinates: string | null;
+          interested: string[] | null;
+          going: string[] | null;
+          cost: number | null;
+          union: string | null;
+        };
+        Insert: {
+          id?: number;
+          created_at?: string | null;
+          creator?: string | null;
+          title?: string | null;
+          cover_image?: string | null;
+          description?: string | null;
+          short_description?: string | null;
+          url_slug?: string | null;
+          start_time?: string | null;
+          end_time?: string | null;
+          location?: string | null;
+          coordinates?: string | null;
+          interested?: string[] | null;
+          going?: string[] | null;
+          cost?: number | null;
+          union?: string | null;
+        };
+        Update: {
+          id?: number;
+          created_at?: string | null;
+          creator?: string | null;
+          title?: string | null;
+          cover_image?: string | null;
+          description?: string | null;
+          short_description?: string | null;
+          url_slug?: string | null;
+          start_time?: string | null;
+          end_time?: string | null;
+          location?: string | null;
+          coordinates?: string | null;
+          interested?: string[] | null;
+          going?: string[] | null;
+          cost?: number | null;
+          union?: string | null;
+        };
+      };
       calendars: {
         Row: {
           id: number;
@@ -39,6 +112,20 @@ export interface Database {
           parent_course?: number | null;
           last_update?: string | null;
           last_cache?: string | null;
+        };
+      };
+      unionpage: {
+        Row: {
+          sidebar: Json | null;
+          id: string;
+        };
+        Insert: {
+          sidebar?: Json | null;
+          id: string;
+        };
+        Update: {
+          sidebar?: Json | null;
+          id?: string;
         };
       };
       courses: {
@@ -108,46 +195,6 @@ export interface Database {
           parent_calendar?: string | null;
         };
       };
-      issues: {
-        Row: {
-          id: number;
-          issue: string;
-          created_at: string | null;
-        };
-        Insert: {
-          id?: number;
-          issue: string;
-          created_at?: string | null;
-        };
-        Update: {
-          id?: number;
-          issue?: string;
-          created_at?: string | null;
-        };
-      };
-      personalcalendar: {
-        Row: {
-          id: number;
-          user_id: string;
-          created_at: string | null;
-          calendar: string | null;
-          calendar_id: number | null;
-        };
-        Insert: {
-          id?: number;
-          user_id: string;
-          created_at?: string | null;
-          calendar?: string | null;
-          calendar_id?: number | null;
-        };
-        Update: {
-          id?: number;
-          user_id?: string;
-          created_at?: string | null;
-          calendar?: string | null;
-          calendar_id?: number | null;
-        };
-      };
       rooms: {
         Row: {
           id: number;
@@ -166,76 +213,6 @@ export interface Database {
           name?: string;
           created_at?: string | null;
           location?: string | null;
-        };
-      };
-      unionevents: {
-        Row: {
-          id: number;
-          created_at: Date | null;
-          creator: string | null;
-          title: string | null;
-          cover_image: string | null;
-          description: string | null;
-          short_description: string | null;
-          url_slug: string | null;
-          start_time: Date | null;
-          end_time: Date | null;
-          location: string | null;
-          coordinates: string | null;
-          interested?: string[] | null;
-          going?: string[] | null;
-          cost: number | null;
-          union: string | null;
-        };
-        Insert: {
-          id?: number;
-          created_at?: string | null;
-          creator?: string | null;
-          title?: string | null;
-          cover_image?: string | null;
-          description?: string | null;
-          short_description?: string | null;
-          url_slug?: string | null;
-          start_time?: string | null;
-          end_time?: string | null;
-          location?: string | null;
-          coordinates?: string | null;
-          interested?: string[] | null;
-          going?: string[] | null;
-          cost?: number | null;
-          union?: string | null;
-        };
-        Update: {
-          id?: number;
-          created_at?: string | null;
-          creator?: string | null;
-          title?: string | null;
-          cover_image?: string | null;
-          description?: string | null;
-          short_description?: string | null;
-          url_slug?: string | null;
-          start_time?: string | null;
-          end_time?: string | null;
-          location?: string | null;
-          coordinates?: string | null;
-          interested?: string[] | null;
-          going?: string[] | null;
-          cost?: number | null;
-          union?: string | null;
-        };
-      };
-      unionpage: {
-        Row: {
-          sidebar: Json | null;
-          id: string;
-        };
-        Insert: {
-          sidebar?: Json | null;
-          id: string;
-        };
-        Update: {
-          sidebar?: Json | null;
-          id?: string;
         };
       };
       unions: {
@@ -262,6 +239,29 @@ export interface Database {
           description?: string | null;
           color?: string | null;
           admins?: string[];
+        };
+      };
+      personalcalendar: {
+        Row: {
+          id: number;
+          user_id: string;
+          created_at: string | null;
+          calendar: string | null;
+          calendar_id: number | null;
+        };
+        Insert: {
+          id?: number;
+          user_id: string;
+          created_at?: string | null;
+          calendar?: string | null;
+          calendar_id?: number | null;
+        };
+        Update: {
+          id?: number;
+          user_id?: string;
+          created_at?: string | null;
+          calendar?: string | null;
+          calendar_id?: number | null;
         };
       };
     };

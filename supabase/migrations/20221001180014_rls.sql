@@ -22,10 +22,10 @@ CREATE POLICY "Only union admins can update"
     FOR UPDATE
     TO public
     USING ((( SELECT unions.admins
-   FROM unions
+   FROM public.unions
   WHERE (unions.id = unionevents."union")) && ARRAY[auth.uid()]))
     WITH CHECK ((( SELECT unions.admins
-   FROM unions
+   FROM public.unions
   WHERE (unions.id = unionevents."union")) && ARRAY[auth.uid()]));
 
 
@@ -65,10 +65,10 @@ CREATE POLICY "Only union admins can update"
     FOR UPDATE
     TO public
     USING ((( SELECT unions.admins
-   FROM unions
+   FROM public.unions
   WHERE (unions.id = unions.id)) && ARRAY[auth.uid()]))
     WITH CHECK ((( SELECT unions.admins
-   FROM unions
+   FROM public.unions
   WHERE (unions.id = unions.id)) && ARRAY[auth.uid()]));
 
 
