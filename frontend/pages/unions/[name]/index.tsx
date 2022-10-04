@@ -194,7 +194,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
     .select("*")
     .eq("id", union?.id)
     .single();
-  const events:IUnionEvent[] = union?.unionevents as IUnionEvent[];
+  const events = union?.unionevents as UnionEvent[]
 
  
   return {

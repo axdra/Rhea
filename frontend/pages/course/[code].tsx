@@ -9,10 +9,11 @@ type Course = Database["public"]["Tables"]["courses"]["Row"];
 type Calendar = Database["public"]["Tables"]["calendars"]["Row"];
 
 type Props = {
-  course?: Course & { calendars: Calendar[] };
+  course?: Course;
+  calendars?: Calendar[];
 };
 
-const Course: NextPage<Props> = ({ course }) => {
+const Course: NextPage<Props> = ({ course, calendars }) => {
   const { t } = useTranslation();
 
   return (
@@ -24,14 +25,14 @@ const Course: NextPage<Props> = ({ course }) => {
         {course?.code}
       </h1>
 
-      {course?.calendars?.length === 0 && (
+      {calendars?.length === 0 && (
         <div className="flex-1 min-h-full flex justify-center  ">
           <h2>{t("noResults")}</h2>
         </div>
       )}
 
       <div className="flex flex-col  gap-5">
-        {course?.calendars?.map((calendar) => (
+        {calendars?.map((calendar) => (
           <Link
             key={calendar.code}
             href={`/calendar/${calendar.code}`}
@@ -60,9 +61,12 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     .ilike("code", ctx.query.code as string)
     .single();
 
+  const calendars = course?.calendars as Calendar[];
+
   return {
     props: {
       course: course ?? null,
+      calendars: calendars.sort((a, b) => a.code.localeCompare(b.code)) ?? [],
       ...(await serverSideTranslations(ctx.locale as string, ["common"])),
       // Will be passed to the page component as props
     },
