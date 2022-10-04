@@ -269,7 +269,10 @@ export interface Database {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      search_courses: {
+        Args: { keyword: string };
+        Returns: Record<string, unknown>[];
+      };
     };
     Enums: {
       [_ in never]: never;
