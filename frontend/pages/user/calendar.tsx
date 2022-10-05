@@ -109,14 +109,10 @@ export const getServerSideProps = withPageAuth({
   ) {
     const { data: user } = await supabaseClient.auth.getUser();
 
-    const code = ctx.query.code as string;
     const { data: personalCalendars } = await supabaseClient
       .from("personalcalendar")
       .select("*, calendar:calendar_id(*)")
       .eq("user_id", user.user?.id);
-
-    console.log(personalCalendars);
-    const events = await getSchema(code);
 
     return {
       props: {
