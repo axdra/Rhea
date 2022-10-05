@@ -84,8 +84,8 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
                                 </Dialog.Title>
 
 
-                                <div className="mt-2">
-                                    <h2 className="text-center mb-3 text-gray-700">Sign in via a provider</h2>
+                                <div className="mt-2 text-gray-700 dark:text-gray-100">
+                                    <h2 className="text-center mb-3">Sign in via a provider</h2>
                                     <div className="flex justify-center gap-4">
 
                                         {/* <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer"><FaApple className="h-6 w-6" /></div> */}
@@ -94,13 +94,12 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
                                         <div className="h-16 w-16 bg-black dark:border-white dark:border dark:hover:text-black dark:hover:bg-white transition-colors duration-300 text-white flex justify-center items-center rounded-2xl cursor-pointer" onClick={signInWithGithub} ><h1><FaGithub className="h-6 w-6" /></h1></div>
                                     </div>
 
-                                    <div className="w-full h-px bg-gray-200 my-4" />
-
-                                    <h2 className="text-center mb-3 text-gray-700">Or sign in via email</h2>
+                                    <div className="h-px bg-gray-300 dark:bg-gray-700/50 my-5 w-24 mx-auto" />
+                                    <h2 className="text-center mb-3">Or sign in via email</h2>
                                     <div>
                                         <div className="space-y-2">
-                                            <input value={email} onChange={(e) => setEmail(e.target.value)} id="email" type={'email'} placeholder="Email" autoComplete="off" className="form-input block w-full transition ease-in-out duration-150 rounded-full" />
-                                            <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" type={'password'} placeholder="Password" autoComplete="off" className="form-input block w-full transition ease-in-out duration-150 rounded-full" />
+                                            <input value={email} onChange={(e) => setEmail(e.target.value)} id="email" type={'email'} placeholder="Email" autoComplete="off" className="form-input dark:bg-slate-800 dark:text-white block w-full transition ease-in-out duration-150 rounded-full" />
+                                            <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" type={'password'} placeholder="Password" autoComplete="off" className="form-input dark:bg-slate-800 dark:text-white block w-full transition ease-in-out duration-150 rounded-full" />
                                         </div>
                                         <div className="mt-4 space-y-2">
                                             <button onClick={signInWithEmail} className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors w-full text-center">Sign In</button>
