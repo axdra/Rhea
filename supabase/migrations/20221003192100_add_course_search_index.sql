@@ -7,16 +7,17 @@
 
 -- DROP EXTENSION pg_trgm;
 
+DROP EXTENSION IF EXISTS pg_trgm CASCADE;
 CREATE EXTENSION IF NOT EXISTS pg_trgm
     SCHEMA extensions
     VERSION "1.6";
 
-CREATE INDEX IF NOT EXISTS course_name_index
-    ON public.courses USING gin
-    (name COLLATE pg_catalog."default" gin_trgm_ops)
-    TABLESPACE pg_default;
+-- CREATE INDEX IF NOT EXISTS course_name_index
+--     ON public.courses USING gin
+--     (name COLLATE pg_catalog."default" gin_trgm_ops)
+--     TABLESPACE pg_default;
 
-CREATE INDEX IF NOT EXISTS course_code_index
-    ON public.courses USING gin
-    (code COLLATE pg_catalog."default" gin_trgm_ops)
-    TABLESPACE pg_default;
+-- CREATE INDEX IF NOT EXISTS course_code_index
+--     ON public.courses USING gin
+--     (code COLLATE pg_catalog."default" gin_trgm_ops)
+--     TABLESPACE pg_default;
