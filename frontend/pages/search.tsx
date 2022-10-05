@@ -21,7 +21,7 @@ const Search: NextPage<Props> = ({ courses }) => {
   const router = useRouter();
 
   const query = router.query.q as string;
-  const [search, setSearch] = useState(query);
+  const [search, setSearch] = useState(query ?? "");
 
   const debouncedHandler = () => {
     router.push({
@@ -34,12 +34,12 @@ const Search: NextPage<Props> = ({ courses }) => {
   useEffect(debouncedHandler, [debouncedValue])
 
   return (
-    <div className="max-w-6xl mx-auto md:mt-12 mt-4 md:px-24 px-4 py-10 shadow-md rounded-lg mb-24 flex-1 flex flex-col dark:text-white xl:border border-slate-200 dark:border-white">
+    <div className="container mx-auto md:mt-12 mt-4 md:px-24 px-4 py-10 shadow-md rounded-lg mb-24 flex-1 dark:text-white xl:border border-slate-200 dark:border-white">
       <input
         autoComplete="off"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="form-input rounded-xl shadow-sm border-slate-200 dark:bg-gray-900"
+        className="form-input w-full rounded-xl shadow-sm border-slate-200 dark:bg-gray-900"
       />
 
       <h1 className="mt-4 text-2xl font-medium mb-5 xl:w-[72rem] transition-all  ">
