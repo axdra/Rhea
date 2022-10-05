@@ -14,9 +14,10 @@ type Course = Database["public"]["Tables"]["courses"]["Row"];
 
 type Props = {
   courses?: Course[];
+  recentCourses?: Course[];
 };
 
-const Search: NextPage<Props> = ({ courses }) => {
+const Courses: NextPage<Props> = ({ courses,recentCourses }) => {
   const { t } = useTranslation();
   const router = useRouter();
 
@@ -34,23 +35,35 @@ const Search: NextPage<Props> = ({ courses }) => {
   useEffect(debouncedHandler, [debouncedValue])
 
   return (
-    <div className="container mx-auto md:mt-12 mt-4 md:px-24 px-4 py-10 shadow-md rounded-lg mb-24 flex-1 dark:text-white xl:border border-slate-200 dark:border-white">
+    <div className="container mx-auto md:mt-12 mt-4 md:px-24 px-8 py-10 shadow-md rounded-lg mb-24 flex-1 dark:text-white ">
       <input
         autoComplete="off"
         value={search}
+        placeholder={t('search')}
         onChange={(e) => setSearch(e.target.value)}
-        className="form-input w-full rounded-xl shadow-sm border-slate-200 dark:bg-gray-900"
+        className=" form-input w-full md:w-auto rounded-xl shadow-sm border-2 border-black dark:border-white dark:bg-black bg-white text-black dark:text-white"
       />
 
-      <h1 className="mt-4 text-2xl font-medium mb-5 xl:w-[72rem] transition-all  ">
-        {t("searchResultsFor", { name: router.query.q })}
-      </h1>
+     
 
-      {courses?.length === 0 && (
-        <div className="flex-1 min-h-full flex justify-center ">
-          <h2>{t("noResults")}</h2>
+      {courses?.length === 0 ? (
+        <>
+        <h1 className="mt-4 text-2xl font-medium mb-5 xl:w-[72rem] transition-all  ">
+        {t("recentSearched")}
+      </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 flex-wrap">
+        {recentCourses?.map(e=>{
+          return <Link href={'/course/'+e.code} className="  rounded-xl dark:border-white border-black border-2 px-5 py-4 hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white duration-300 ">
+            <h1 className="line-clamp-1">{e.name}</h1>
+            <h2>{e.code}</h2>
+          </Link>
+        })
+        }
         </div>
-      )}
+      
+        </>): <h1 className="mt-4 text-2xl font-medium mb-5 xl:w-[72rem] transition-all  ">
+      {t("searchResultsFor", { name: router.query.q })}
+    </h1>}
       <div>
         <ul className="flex flex-col gap-5">
           {courses?.map((course) => (
@@ -97,6 +110,16 @@ const Search: NextPage<Props> = ({ courses }) => {
 export async function getServerSideProps(ctx: GetServerSidePropsContext): Promise<GetServerSidePropsResult<Props>> {
   const q = ctx.query.q as string;
 
+  const data = await createServerSupabaseClient<Database>(ctx).from('courses').select('*, calendars(*)')
+  let latestsCourses = data.data?.filter(c =>{
+    const cals = (c.calendars as any[]).filter(cal => {
+      if(cal.last_cache){
+      return true
+    }})
+    if(cals.length > 0){
+      return true
+    }
+  })
   const { data: courses } = await createServerSupabaseClient<Database>(ctx).rpc(
     "search_courses",
     { keyword: q }
@@ -105,10 +128,11 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext): Promis
   return {
     props: {
       courses: (courses as Course[]) ?? [],
+      recentCourses: (latestsCourses as Course[]) ?? [], 
       ...(await serverSideTranslations(ctx.locale as string, ["common"])),
       // Will be passed to the page component as props
     },
   };
 }
 
-export default Search;
+export default Courses;

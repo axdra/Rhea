@@ -73,5 +73,6 @@
     "name": "Name",
     "description": "Description",
     "cover-image": "Cover image",
-    "update": "Update"
+    "update": "Update",
+    "recentSearched": "Last searched courses"
 }

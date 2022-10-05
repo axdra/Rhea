@@ -73,5 +73,7 @@
     "name": "Namn",
     "description": "Beskrivning",
     "cover-image": "Omslagsbild",
-    "update": "Uppdatera"
+    "update": "Uppdatera",
+    "recentSearched": "Senaste sökta kurserna"
+
 }

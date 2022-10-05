@@ -32,7 +32,7 @@ const Header: FC = () => {
           <Link href={"/map"} className="font-medium hover:underline focus:underline select-none">
             {t("map")}
           </Link>
-          <Link href={"/schedule"} className="font-medium hover:underline focus:underline select-none">
+          <Link href={"/courses"} className="font-medium hover:underline focus:underline select-none">
             {t("schedule")}
           </Link>
           <Link href={"/about"} className="font-medium hover:underline focus:underline select-none">
@@ -93,7 +93,7 @@ const Header: FC = () => {
                   <Link onClick={()=>setShowSmallScreenMenu(false)} href={"/map"} className="font-medium hover:underline focus:underline select-none">
                     {t("map")}
                   </Link>
-                  <Link onClick={()=>setShowSmallScreenMenu(false)} href={"/schedule"} className="font-medium hover:underline focus:underline select-none">
+                  <Link onClick={()=>setShowSmallScreenMenu(false)} href={"/courses"} className="font-medium hover:underline focus:underline select-none">
                     {t("schedule")}
                   </Link>
 
@@ -102,10 +102,15 @@ const Header: FC = () => {
                   </Link>
                 </div>
                 <div className="flex  gap-4 p-4">
-                  <LinkButton className="flex-1 text-center" buttonStyle="outlined" href="/courses" >
+                  <LinkButton onClick={() => {
+                    setShowSmallScreenMenu(false)
+                  }}
+                  className="flex-1 text-center" buttonStyle="outlined" href="/courses" >
                     {t("findCourses")}
                   </LinkButton>
-                  <Button onClick={() => setShowSignInModal(true)} buttonStyle="filled" className="flex-1 text-center"  >
+                  <Button onClick={() => {
+                    setShowSmallScreenMenu(false)
+                    setShowSignInModal(true)}} buttonStyle="filled" className="flex-1 text-center"  >
                     {t("signIn")}
                   </Button>
                 </div>

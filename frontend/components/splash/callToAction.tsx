@@ -1,13 +1,16 @@
 import { useTranslation } from "next-i18next";
-import { FC } from "react";
+import { FC, useState } from "react";
 import Button from "../Button";
 import LinkButton from "../LinkButton";
+import SignInModal from "../signInModal";
 
 const CallToAction: FC = () => {
 
     const { t } = useTranslation();
-
+    const [signInModalOpen,setSignInModalOpen ] = useState(false);
     return (
+        <>
+        <SignInModal isOpen={signInModalOpen} setIsOpen={setSignInModalOpen}/>
         <div className="flex flex-col justify-center lg:h-full lg:flex-1 h-[calc(100vh-4rem)] dark:text-white ">
             <h1 className="text-6xl font-medium">
                 Rhea.
@@ -31,11 +34,12 @@ const CallToAction: FC = () => {
                 <LinkButton  buttonStyle="outlined" href="/courses" >
                     {t("findCourses")}
                 </LinkButton>
-                <Button  buttonStyle="filled"  >
+                <Button  onClick={()=>setSignInModalOpen(true)} buttonStyle="filled"  >
                     {t("signIn")}
                 </Button>
             </div>
         </div>
+        </>
     );
 }
     

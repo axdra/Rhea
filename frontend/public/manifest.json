@@ -1,6 +1,6 @@
 {"$schema": "https://json.schemastore.org/web-manifest-combined.json",
-"name": "Rhea Schema",
-"short_name": "Rhea Schema",
+"name": "Rhea",
+"short_name": "Rhea",
 "start_url": "/",
 "display": "standalone",
 "background_color": "#fff",
