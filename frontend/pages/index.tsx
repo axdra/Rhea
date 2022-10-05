@@ -11,7 +11,7 @@ import WeatherWidget from "../components/weatherWidget";
 import Greet from "../utils/greeting";
 
 type PageProps = {
-  issues?: any[];
+  issues: any[] | null;
   weather_code: number;
   temp: number;
 };
@@ -73,7 +73,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> =
     const weather_code = data?.weather_code || 0;
   return {
     props: {
-      issues,
+      issues: issues ?? null,
       temp,
       weather_code,
       ...(await serverSideTranslations(locale as string, ['common'])),
