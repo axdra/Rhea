@@ -53,7 +53,7 @@ const Courses: NextPage<Props> = ({ courses,recentCourses }) => {
       </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 flex-wrap">
         {recentCourses?.map(e=>{
-          return <Link href={'/course/'+e.code} className="  rounded-xl dark:border-white border-black border-2 px-5 py-4 hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white duration-300 ">
+          return <Link key={e.code} href={'/course/'+e.code} className="  rounded-xl dark:border-white border-black border-2 px-5 py-4 hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white duration-300 ">
             <h1 className="line-clamp-1">{e.name}</h1>
             <h2>{e.code}</h2>
           </Link>
