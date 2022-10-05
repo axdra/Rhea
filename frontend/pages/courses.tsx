@@ -111,7 +111,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext): Promis
   const q = ctx.query.q as string;
 
   const data = await createServerSupabaseClient<Database>(ctx).from('courses').select('*, calendars(*)')
-  let latestsCourses = data.data?.filter(c =>{
+  /* let latestsCourses = data.data?.filter(c =>{
     const cals = (c.calendars as any[]).filter(cal => {
       if(cal.last_cache){
       return true
@@ -119,7 +119,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext): Promis
     if(cals.length > 0){
       return true
     }
-  })
+  }) */
   const { data: courses } = await createServerSupabaseClient<Database>(ctx).rpc(
     "search_courses",
     { keyword: q }
@@ -128,7 +128,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext): Promis
   return {
     props: {
       courses: (courses as Course[]) ?? [],
-      recentCourses: (latestsCourses as Course[]) ?? [], 
+      recentCourses:  [], 
       ...(await serverSideTranslations(ctx.locale as string, ["common"])),
       // Will be passed to the page component as props
     },
