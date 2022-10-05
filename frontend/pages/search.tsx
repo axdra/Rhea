@@ -96,23 +96,11 @@ const Search: NextPage<Props> = ({ courses }) => {
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const q = ctx.query.q as string;
-  const searchTerm = q?.split(" "); /*.map(w => `'${w}'`).join(' | ');*/
-  //   let sbq = createServerSupabaseClient<Database>(ctx)
-  //     .from("courses")
-  //     .select(searchTerm ? `*, ${!!searchTerm && searchTerm?.map(w => `word_similarity(name, '${w}') as name_${w}_score`)}` : '*');
 
-  //     console.log(await sbq)
-
-  //   searchTerm?.forEach((w) => {
-  //     sbq = sbq.or(`name.ilike.%${w}%,code.ilike.%${w}%`);
-  //   });
-
-  //   const { data: courses } = await sbq;
   const { data: courses } = await createServerSupabaseClient<Database>(ctx).rpc(
     "search_courses",
     { keyword: q }
   );
-  console.log(courses);
 
   return {
     props: {
