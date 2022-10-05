@@ -1,5 +1,5 @@
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { GetServerSidePropsContext, NextPage } from "next";
+import { GetServerSidePropsContext, GetServerSidePropsResult, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
@@ -94,7 +94,7 @@ const Search: NextPage<Props> = ({ courses }) => {
   );
 };
 
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+export async function getServerSideProps(ctx: GetServerSidePropsContext): Promise<GetServerSidePropsResult<Props>> {
   const q = ctx.query.q as string;
 
   const { data: courses } = await createServerSupabaseClient<Database>(ctx).rpc(
@@ -104,7 +104,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
 
   return {
     props: {
-      courses: courses ?? [],
+      courses: (courses as Course[]) ?? [],
       ...(await serverSideTranslations(ctx.locale as string, ["common"])),
       // Will be passed to the page component as props
     },

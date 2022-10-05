@@ -271,7 +271,7 @@ export interface Database {
     Functions: {
       search_courses: {
         Args: { keyword: string };
-        Returns: Record<string, unknown>[];
+        Returns: unknown;
       };
     };
     Enums: {
