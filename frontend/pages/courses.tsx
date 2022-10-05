@@ -110,8 +110,8 @@ const Courses: NextPage<Props> = ({ courses,recentCourses }) => {
 export async function getServerSideProps(ctx: GetServerSidePropsContext): Promise<GetServerSidePropsResult<Props>> {
   const q = ctx.query.q as string;
 
-  const data = await createServerSupabaseClient<Database>(ctx).from('courses').select('*, calendars(*)')
-  /* let latestsCourses = data.data?.filter(c =>{
+ /*  const data = await createServerSupabaseClient<Database>(ctx).from('courses').select('*, calendars(*)')
+  let latestsCourses = data.data?.filter(c =>{
     const cals = (c.calendars as any[]).filter(cal => {
       if(cal.last_cache){
       return true
