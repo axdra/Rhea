@@ -108,18 +108,16 @@ const Union: NextPage<Props> = ({ union, event }) => {
             )}
             <div className="flex gap-2 justify-between">
               <div
-                className={`text-center flex-1 border select-none border-green-500 bg-green-500/10  rounded-md px-4 py-2 text-green-900 dark:text-green-500 font-bold hover:bg-green-500/50 transition-all cursor-pointer duration-500 ${
-                  interested &&
+                className={`text-center flex-1 border select-none border-green-500 bg-green-500/10  rounded-md px-4 py-2 text-green-900 dark:text-green-500 font-bold hover:bg-green-500/50 transition-all cursor-pointer duration-500 ${interested &&
                   "bg-green-500 text-white/100 dark:text-white/100"
-                }`}
+                  }`}
                 onClick={() => setInterested(!interested)}
               >
                 {t("interested")}
               </div>
               <div
-                className={`text-center flex-1 border select-none border-blue-500 bg-blue-500/10  rounded-md px-4 py-2 text-blue-900 dark:text-blue-500 font-bold hover:bg-blue-500/50 transition-all cursor-pointer duration-500 ${
-                  going && "bg-blue-500 text-white/100 dark:text-white/100"
-                }`}
+                className={`text-center flex-1 border select-none border-blue-500 bg-blue-500/10  rounded-md px-4 py-2 text-blue-900 dark:text-blue-500 font-bold hover:bg-blue-500/50 transition-all cursor-pointer duration-500 ${going && "bg-blue-500 text-white/100 dark:text-white/100"
+                  }`}
                 onClick={() => setGoing(!going)}
               >
                 {t("going")}
@@ -131,8 +129,8 @@ const Union: NextPage<Props> = ({ union, event }) => {
     </div>
   );
 };
-
-export const getServerSideProps: GetServerSideProps<Props> = async ({
+//For some reason this breaks Vercel build atm after migration to turbo repo
+/* export const getServerSideProps: GetServerSideProps<Props> = async ({
   locale,
   query,
 }: GetServerSidePropsContext) => {
@@ -157,5 +155,5 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
     },
   };
 };
-
+ */
 export default Union;
