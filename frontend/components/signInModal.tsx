@@ -85,7 +85,7 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
 
 
                                 <div className="mt-2 text-gray-700 dark:text-gray-100">
-                                    <h2 className="text-center mb-3">Sign in via a provider</h2>
+                                {!process.env.NEXT_PUBLIC_PROD_URL && <h2 className="text-center mb-3">Sign in via a provider</h2>}
                                     <div className="flex justify-center gap-4">
 
                                         {/* <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer"><FaApple className="h-6 w-6" /></div> */}
@@ -95,7 +95,7 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
                                     </div>
 
                                     <div className="h-px bg-gray-300 dark:bg-gray-700/50 my-5 w-24 mx-auto" />
-                                    <h2 className="text-center mb-3">Or sign in via email</h2>
+                                   {!process.env.NEXT_PUBLIC_PROD_URL && <> <h2 className="text-center mb-3">Or sign in via email</h2>
                                     <div>
                                         <div className="space-y-2">
                                             <input value={email} onChange={(e) => setEmail(e.target.value)} id="email" type={'email'} placeholder="Email" autoComplete="off" className="form-input dark:bg-slate-800 dark:text-white block w-full transition ease-in-out duration-150 rounded-full" />
@@ -106,6 +106,7 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
                                             <button onClick={signUpWithEmail} className="rounded-full py-2 px-6 bg-gray-500 text-white shadow cursor-pointer hover:bg-gray-600 transition-colors w-full text-center">Sign Up</button>
                                         </div>
                                     </div>
+                                    </>}
 
                                 </div>
                             </Dialog.Panel>
