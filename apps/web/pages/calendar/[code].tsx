@@ -11,7 +11,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Database } from "../../../types.gen";
+import { Database } from "../../../../types.gen";
 import getSchema from "../../utils/getSchema";
 import Schema from "../../components/schema";
 import Link from "next/link";

@@ -4,7 +4,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Database } from "../../types.gen";
+import { Database } from "../../../types.gen";
 import Highlighter from "react-highlight-words";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import debounce from "lodash.debounce";

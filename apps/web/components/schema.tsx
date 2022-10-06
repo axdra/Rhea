@@ -1,7 +1,7 @@
 import { useState } from "react";
 import dayjs from "dayjs";
 import { useTranslation } from "next-i18next";
-import { Database } from "../../types.gen";
+import { Database } from "../../../types.gen";
 export interface IEvent {
   id?: number;
   created_at: Date;

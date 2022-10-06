@@ -4,7 +4,7 @@ import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useState } from 'react';
-import { Database } from '../../types.gen';
+import { Database } from '../../../types.gen';
 import Layout from '../components/layout';
 import '../styles/globals.css';
 

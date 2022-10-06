@@ -3,7 +3,7 @@ import { GetServerSidePropsContext, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
-import { Database } from "../../../types.gen";
+import { Database } from "../../../../types.gen";
 
 type Course = Database["public"]["Tables"]["courses"]["Row"];
 type Calendar = Database["public"]["Tables"]["calendars"]["Row"];

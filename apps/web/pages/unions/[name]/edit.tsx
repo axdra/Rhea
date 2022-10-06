@@ -7,7 +7,7 @@ import {
   createServerSupabaseClient,
   withPageAuth,
 } from "@supabase/auth-helpers-nextjs";
-import { Database } from "../../../../types.gen";
+import { Database } from "../../../../../types.gen";
 import { useForm } from "react-hook-form";
 import Button from "../../../components/Button";
 import {

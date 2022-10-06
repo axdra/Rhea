@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { Database, Json } from "../../../../types.gen";
+import { Database, Json } from "../../../../../types.gen";
 
 export interface IUnionSideBar {
   items: {

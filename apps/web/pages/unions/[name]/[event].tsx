@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { IUnion, IUnionEvent } from ".";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { Database } from "../../../../types.gen";
+import { Database } from "../../../../../types.gen";
 
 type Union = Database["public"]["Tables"]["unions"]["Row"];
 type UnionEvent = Database["public"]["Tables"]["unionevents"]["Row"];
