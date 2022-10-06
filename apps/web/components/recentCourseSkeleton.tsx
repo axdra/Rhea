@@ -22,7 +22,7 @@ const WeatherWidget: FC<IRecentCourseSkeletonProps> = (props) => {
     }
     return (
         <>
-       <div className={` rounded-xl  ${animation}  px-5 py-4 h-24 justify-center flex flex-col bg-neutral-400  dark:bg-neutral-800   dark:hover:text-black  duration-300`}>
+       <div className={` rounded-xl  ${animation}  px-5 py-4 h-24 justify-center flex flex-col bg-neutral-100  dark:bg-neutral-800   dark:hover:text-black  duration-300`}>
                 
               </div>
               
