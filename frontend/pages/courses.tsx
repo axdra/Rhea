@@ -19,7 +19,7 @@ type Props = {
 const Courses: NextPage<Props> = ({ courses }) => {
   const { t } = useTranslation();
   const router = useRouter();
-  const [recentCourses, setRecentCourses] = useState([]);
+  const [recentCourses, setRecentCourses] = useState<Course[]>([]);
   useEffect(()=>{
     fetch('/api/recentCourses').then(data=>{
       data.json().then(json=>{
