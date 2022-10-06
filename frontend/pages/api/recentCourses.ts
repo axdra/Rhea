@@ -9,9 +9,14 @@ export default async function handler(
 ) {
     
  const data = await supabase.from('calendars').select('*, courses(*)').not('last_cache', 'is', null)
-const courses = (data.data?.map(cal=>{
+let courses = (data.data?.map(cal=>{
         return cal.courses
 }))
+courses = courses?.filter((value, index, self) =>
+  index === self.findIndex((t) => (
+    t.code === value.code 
+  ))
+)
     res.status(200).json(courses)
     }
     
