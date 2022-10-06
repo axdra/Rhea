@@ -2,7 +2,13 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build",
+      "$NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA",
+      "$NEXT_PUBLIC_SUPABASE_URL",
+      "$NEXT_PUBLIC_SUPABASE_ANON_KEY",
+      "$NEXT_PUBLIC_MAPBOX_TOKEN",
+      "$NEXT_PUBLIC_PROD_URL",
+      "$SUPABASE_SECRET_KEY"],
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {
