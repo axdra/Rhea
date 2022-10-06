@@ -9,7 +9,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import RoomInformation from "../components/map/roomInformation";
-import { Bookings, Bookings } from "./api/map/rooms";
+import { Bookings } from "./api/map/rooms";
 
 let MapRef: any = null;
 let GeoRef: any = null;
