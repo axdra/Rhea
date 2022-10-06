@@ -177,7 +177,9 @@ const Union: NextPage<Props> = ({ union, unionPage, events }) => {
     </div>
   );
 };
+//For some reason this breaks Vercel build atm after migration to turbo repo
 
+/* 
 export const getServerSideProps: GetServerSideProps<Props> = async ({
   locale,
   query,
@@ -205,6 +207,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
       ...(await serverSideTranslations(locale as string, ["common"])),
     },
   };
-};
+}; */
 
 export default Union;
