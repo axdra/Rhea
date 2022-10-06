@@ -21,10 +21,11 @@ export default async function handler(
     const events: any[] = []
     const supabase = createClient(supabaseUrl, supabaseAnonKey)
     const user = await supabase.auth.getUser(req.headers.authorization);
-    const userCalendars = await supabase.from('personalcalendar').select().eq('user_id', user.data.user?.id);
+    const userCalendars = await supabase.from('personalcalendar').select('*, calendars(*)').eq('user_id', user.data.user?.id);
     const promises: any[] = []
     userCalendars?.data?.forEach((cal: any) => {
-                promises.push(getSchema(cal.calendar))
+
+                promises.push(getSchema(cal.calendars.code))
         })
     Promise.all(promises).then((values) => {
         values.forEach((value: any) => {

@@ -74,5 +74,7 @@
     "description": "Description",
     "cover-image": "Cover image",
     "update": "Update",
-    "recentSearched": "Last searched courses"
+    "recentSearched": "Last searched courses",
+    "newUnionTitle": "Create new union",
+    "newUnionText": "Request to create a new union!"
 }

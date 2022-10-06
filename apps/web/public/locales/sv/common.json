@@ -74,6 +74,8 @@
     "description": "Beskrivning",
     "cover-image": "Omslagsbild",
     "update": "Uppdatera",
-    "recentSearched": "Senaste sökta kurserna"
+    "recentSearched": "Senaste sökta kurserna",
+    "newUnionTitle":"Skapa en förening",
+    "newUnionText":"Ansök att skapa en förening"
 
 }
