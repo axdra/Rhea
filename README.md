@@ -1,67 +1,73 @@
-<p align="center">
-<img  src="https://user-images.githubusercontent.com/54435884/193166567-1bebb12d-a2ed-4dad-b5d0-2f2115a6718c.jpg"/>
-</p>
+# Turborepo starter
 
-<a href="https://hosted.weblate.org/engage/rhea/">
-<img src="https://hosted.weblate.org/widgets/rhea/-/svg-badge.svg" alt="Translation status" />
-</a>
+This is an official Yarn v1 starter turborepo.
 
-Help to translate on [Weblate](https://hosted.weblate.org/engage/rhea/.)!
+## What's inside?
 
-This is a project thats goal is to create a platform for actually use [KronoX](https://kronox.se/) Schedule. The goal is also to extend the functionality. This includes:
-- Subscribing to a Schedule
-- Creating a personal Schedule 
-- Maps of campuses
-- Platfrom for student unions to create events
-- Support more then MDU
+This turborepo uses [Yarn](https://classic.yarnpkg.com/) as a package manager. It includes the following packages/apps:
 
-## Development environment
-### Information
-This project is using the following frameworks/technologies:
-- Next.js
-- React.js
-- TypeScript
-- Tailwind CSS
-- Supabase
-- Mapbox
+### Apps and Packages
 
-### Setup
-#### Prerequisites
+- `docs`: a [Next.js](https://nextjs.org) app
+- `web`: another [Next.js](https://nextjs.org) app
+- `ui`: a stub React component library shared by both `web` and `docs` applications
+- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
-##### For frontend
-- Node (tested on 16.15.1)
-- Yarn/NPM
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-##### For backend (This will hopefully be removed soon)
-- Python (tested on 3.10)
+### Utilities
 
-#### Supabase
-This project is using [Supabase](https://supabase.com/) for it's users and database. This is a platform that is a open source alternative to Google Firebase.
+This turborepo has some additional tools already setup for you:
 
-##### Project Setup
-Firstly create a project, this can be a free project named anything.
-After that you need to initialize the database, this is done using the SQL queries located [here](https://github.com/axdra/Rhea/blob/next/backend/DB.sql). This is done by going to: "SQL Editor" tab in supabase in the project. 
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
 
-When this is done you should have some empty tables created. 
+### Build
 
-Now it's time to populate the db. This is right now done by running two scripts located in backend. The first script to run is [this](https://github.com/axdra/Rhea/blob/next/backend/calendar/courses_scraper.py). This script is kinda "complicated" to run. You need to have a selenium webdriver for this. It's documented how to run it in the file, you need to have --supabase-url and --supabase-secret-key cli options when running. 
-
-Then you need to run the other init script found [here](https://github.com/axdra/Rhea/blob/next/backend/calendar/courses_scraper.py). This is ran in the same way. 
-
-If you want the rooms to work correctly you will need to run the rooms extractor script found in backend/map too.
-
-#### Frontend development
-If you don't want to do all this bootstrap work to get a dev enviroment up, you can just contact me and i can give you access to my dev enviroment.
-
-For this to work correctly you will need to create a .env.local file in the "frontend" root directory. This file needs to include:
+To build all apps and packages, run the following command:
 
 ```
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-NEXT_PUBLIC_MAPBOX_TOKEN=
-SUPABASE_SECRET_KEY=
+cd my-turborepo
+yarn run build
 ```
-#### User Auth
-If you want to have the functionality of user auth you will need to configure that in the Supabase console. 
 
+### Develop
 
+To develop all apps and packages, run the following command:
+
+```
+cd my-turborepo
+yarn run dev
+```
+
+### Remote Caching
+
+Turborepo can use a technique known as [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+
+```
+cd my-turborepo
+npx turbo login
+```
+
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
+
+```
+npx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Pipelines](https://turborepo.org/docs/core-concepts/pipelines)
+- [Caching](https://turborepo.org/docs/core-concepts/caching)
+- [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching)
+- [Scoped Tasks](https://turborepo.org/docs/core-concepts/scopes)
+- [Configuration Options](https://turborepo.org/docs/reference/configuration)
+- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
