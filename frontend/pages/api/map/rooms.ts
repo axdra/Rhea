@@ -21,7 +21,7 @@ export default function handler(
     res: NextApiResponse<any>
 ) {
 	res.status(501)
-	retur
+	return
     const urls = ["https://webbschema.mdu.se/ajax/ajax_resursbokning.jsp?op=hamtaBokningar&datum=22-10-06&flik=FLIK_0001",
     "https://webbschema.mdu.se/ajax/ajax_resursbokning.jsp?op=hamtaBokningar&datum=22-10-07&flik=FLIK_0001",
     "https://webbschema.mdu.se/ajax/ajax_resursbokning.jsp?op=hamtaBokningar&datum=22-10-10&flik=FLIK_0001",
