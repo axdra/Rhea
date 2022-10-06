@@ -3,6 +3,7 @@ import { useTranslation } from "next-i18next";
 import { useUser, useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react';
 import React, { FC, Fragment, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import Button from "./Button";
 
 interface ISignInModalProps {
     isOpen: boolean;
@@ -75,7 +76,7 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
                             leaveTo="opacity-0 scale-95"
 
                         >
-                            <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-black dark:text-white dark:border dark:border-white">
+                            <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle transition-all dark:bg-black dark:text-white dark:border dark:border-white border-black border-2">
                                 <Dialog.Title
                                     as="h3"
                                     className="text-lg font-medium leading-6 text-gray-900 dark:text-white"
@@ -89,9 +90,9 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
                                     <div className="flex justify-center gap-4">
 
                                         {/* <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer"><FaApple className="h-6 w-6" /></div> */}
-                                        <div className="h-16 w-16 bg-black dark:border-white dark:border dark:hover:text-black dark:hover:bg-white transition-colors duration-300 text-white flex justify-center items-center rounded-2xl cursor-pointer" onClick={signInWithGoogle}><h1><FaGoogle className="h-6 w-6" /></h1></div>
+                                        <Button className="h-16 w-16 justify-center items-center flex"  buttonStyle="outlined" onClick={signInWithGoogle}><h1><FaGoogle className="h-6 w-6" /></h1></Button>
                                         {/* <div className="h-16 w-16 bg-black text-white flex justify-center items-center rounded-2xl cursor-pointer"><h1><FaMicrosoft className="h-6 w-6" /></h1></div> */}
-                                        <div className="h-16 w-16 bg-black dark:border-white dark:border dark:hover:text-black dark:hover:bg-white transition-colors duration-300 text-white flex justify-center items-center rounded-2xl cursor-pointer" onClick={signInWithGithub} ><h1><FaGithub className="h-6 w-6" /></h1></div>
+                                        <Button className="h-16 w-16 justify-center items-center flex" buttonStyle="outlined" onClick={signInWithGithub} ><h1><FaGithub className="h-6 w-6" /></h1></Button>
                                     </div>
 
                                     <div className="h-px bg-gray-300 dark:bg-gray-700/50 my-5 w-24 mx-auto" />
