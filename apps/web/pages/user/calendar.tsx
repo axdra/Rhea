@@ -9,7 +9,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Database } from "../../../types.gen";
+import { Database } from "../../../../types.gen";
 import getSchema from "../../utils/getSchema";
 
 //if in dev mode, use local api
