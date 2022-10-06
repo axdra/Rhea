@@ -32,6 +32,8 @@ export default function handler(
     res: NextApiResponse<any>
 ) {
 	
+    res.status(501).json({message:"Not implemented yet!"})
+    return;
     const url =(date:string) => `https://webbschema.mdu.se/ajax/ajax_resursbokning.jsp?op=hamtaBokningar&datum=${date}&flik=FLIK_0001`
     
     const results: any[] = [];
@@ -46,6 +48,7 @@ export default function handler(
             }
         }).then(result=>{
         result.text().then((data) => {
+            console.log(data)
             const Rooms:Room[] = [];
             const cal = parse(data)
             const rows = cal.querySelectorAll('tr')
