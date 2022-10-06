@@ -284,7 +284,7 @@ const MapView: NextPage = () => {
                 </div>
                 {selectedRoom && selectedRoom.features &&
                     <div className="md:absolute fixed w-screen h-screen md:left-auto left-0 top-16    md:w-1/3 md:h-full md:min-w-[24rem] md:max-w-3xl   md:right-12 flex md:py-10   md:top-0 z-0">
-                            <div className="w-full flex-1 bg-white md:rounded-xl md:border-2 md:border-black  pointer-events-auto"><RoomInformation roomName={selectedRoom.features[0].properties.name} />
+                            <div className="w-full flex-1 bg-white md:rounded-xl md:border-2 md:border-black  pointer-events-auto dark:bg-black md:dark:border-white dark:border-white dark:text-white"><RoomInformation roomName={selectedRoom.features[0].properties.name} />
                             </div>
                     </div>
                     }
