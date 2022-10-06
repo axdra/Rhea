@@ -8,6 +8,8 @@
       "$NEXT_PUBLIC_SUPABASE_ANON_KEY",
       "$NEXT_PUBLIC_MAPBOX_TOKEN",
       "$NEXT_PUBLIC_PROD_URL",
+      "$NODE_ENV",
+      "$KRONOX_COOKIE",
       "$SUPABASE_SECRET_KEY"],
       "outputs": ["dist/**", ".next/**"]
     },
