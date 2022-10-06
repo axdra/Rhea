@@ -14,12 +14,19 @@ type Course = Database["public"]["Tables"]["courses"]["Row"];
 
 type Props = {
   courses?: Course[];
-  recentCourses?: Course[];
 };
 
-const Courses: NextPage<Props> = ({ courses,recentCourses }) => {
+const Courses: NextPage<Props> = ({ courses }) => {
   const { t } = useTranslation();
   const router = useRouter();
+  const [recentCourses, setRecentCourses] = useState([]);
+  useEffect(()=>{
+    fetch('/api/recentCourses').then(data=>{
+      data.json().then(json=>{
+        setRecentCourses(json)
+      })
+    })
+  }, [setRecentCourses])
 
   const query = router.query.q as string;
   const [search, setSearch] = useState(query ?? "");
@@ -35,13 +42,13 @@ const Courses: NextPage<Props> = ({ courses,recentCourses }) => {
   useEffect(debouncedHandler, [debouncedValue])
 
   return (
-    <div className="container mx-auto md:mt-12 mt-4 md:px-24 px-8 py-10 shadow-md rounded-lg mb-24 flex-1 dark:text-white ">
+    <div className="container mx-auto md:mt-12 mt-4 md:px-24 px-8 py-10 rounded-lg mb-24 flex-1 dark:text-white ">
       <input
         autoComplete="off"
         value={search}
         placeholder={t('search')}
         onChange={(e) => setSearch(e.target.value)}
-        className=" form-input w-full md:w-auto rounded-xl shadow-sm border-2 border-black dark:border-white dark:bg-black bg-white text-black dark:text-white"
+        className=" form-input w-full md:w-auto rounded-xl border-2 border-black dark:border-white dark:bg-black bg-white text-black dark:text-white"
       />
 
      
@@ -70,7 +77,7 @@ const Courses: NextPage<Props> = ({ courses,recentCourses }) => {
             <Link
               key={course.code}
               href={`/course/${course.code}`}
-              className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-xl dark:bg-black dark:border-white dark:hover:bg-orange-700 border-slate-200 bg-orange-50/20 py-5 px-4 shadow-sm sm:gap-2 hover:bg-gray-50 hover:shadow transition-all duration-300"
+              className="decoration-black dark:decoration-white hover:dark:decoration-black border-2 hover:decoration-white flex sm:flex-row gap-6 flex-col  justify-between  rounded-xl dark:bg-black dark:border-white dark:hover:bg-white dark:hover:text-black border-black  py-5 px-4  sm:gap-2 hover:bg-black hover:text-white  transition-all duration-300"
             >
               <div>
                 <h2>
@@ -79,7 +86,7 @@ const Courses: NextPage<Props> = ({ courses,recentCourses }) => {
                     textToHighlight={course.name}
                     highlightTag="span"
                     highlightClassName={
-                      "underline decoration-2 decoration-orange-500"
+                      "underline decoration-2  "
                     }
                   />
                 </h2>
@@ -89,13 +96,13 @@ const Courses: NextPage<Props> = ({ courses,recentCourses }) => {
                     textToHighlight={course.code ?? ""}
                     highlightTag="span"
                     highlightClassName={
-                      "underline decoration-2 decoration-orange-500"
+                      "underline decoration-2  "
                     }
                   />
                 </h3>
               </div>
               <div>
-                <div className="text-orange-500 dark:text-orange-400 hover:text-orange-600 py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-orange-700 dark:border ">
+                <div className="hidden md:block text-black dark:text-white hover:text-white hover:bg-black py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap dark:hover:text-black dark:bg-black dark:border-white dark:hover:bg-white dark:border ">
                   {t("goToCourse")}
                 </div>
               </div>
@@ -110,16 +117,7 @@ const Courses: NextPage<Props> = ({ courses,recentCourses }) => {
 export async function getServerSideProps(ctx: GetServerSidePropsContext): Promise<GetServerSidePropsResult<Props>> {
   const q = ctx.query.q as string;
 
- /*  const data = await createServerSupabaseClient<Database>(ctx).from('courses').select('*, calendars(*)')
-  let latestsCourses = data.data?.filter(c =>{
-    const cals = (c.calendars as any[]).filter(cal => {
-      if(cal.last_cache){
-      return true
-    }})
-    if(cals.length > 0){
-      return true
-    }
-  }) */
+
   const { data: courses } = await createServerSupabaseClient<Database>(ctx).rpc(
     "search_courses",
     { keyword: q }
@@ -128,7 +126,6 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext): Promis
   return {
     props: {
       courses: (courses as Course[]) ?? [],
-      recentCourses:  [], 
       ...(await serverSideTranslations(ctx.locale as string, ["common"])),
       // Will be passed to the page component as props
     },

@@ -1,7 +1,10 @@
+import dayjs from "dayjs";
 import { FC } from "react";
+import { Bookings } from "../../pages/api/map/rooms";
 
 interface IRoomInformationProps {
     roomName: string;
+    bookings?: Bookings;
 
 }
 
@@ -12,67 +15,35 @@ enum BookingStatus {
     BookedByUser = "BookedByUser"
 }
 
-const BookingInformation = [
-    {
-        startTime: "08:15",
-        endTime: "10:00",
-        status: BookingStatus.Passed,
-        booker: "ods23003",
 
-
-
-    },
-    {
-        startTime: "10:15",
-        endTime: "12:00",
-        status: BookingStatus.Booked,
-        booker: "ods23003",
-    },
-    {
-        startTime: "12:15",
-        endTime: "14:00",
-        status: BookingStatus.Free,
-    },
-    {
-        startTime: "14:15",
-        endTime: "16:00",
-        status: BookingStatus.Free,
-    },
-    {
-        startTime: "16:15",
-        endTime: "18:00",
-        status: BookingStatus.BookedByUser,
-    },
-    {
-        startTime: "18:15",
-        endTime: "20:00",
-        status: BookingStatus.Free,
-    },
-
-]
 const RoomInformation: FC<IRoomInformationProps> = (props) => {
-    console.log(props);
+    const bookings = props.bookings?.days.find(day=> dayjs(day.date).isSame(new Date(),'day' ))?.rooms.find(room=>room.name.toLowerCase() === props.roomName?.toLowerCase())
+    console.log(props.bookings)
     return (
         <div className="p-5 flex flex-col h-full gap-10">
             <h1 className="text-4xl font-medium ">{props.roomName}</h1>
             <div className="flex flex-col  flex-1 gap-10">
-                {BookingInformation.map((booking, index) => {
-                    return (
+                {bookings?.timeSlots.map((booking, index) => {
+
+                        return (
                         <div key={index} className={`
                         flex-1 rounded-xl flex px-4 
-                        ${booking.status === BookingStatus.Free && " bg-green-50 border-green-400 hover:bg-green-400 hover:text-green-50 text-green-500 dark:bg-green-500/50 dark:hover:bg-green-500/60 dark:hover:text-green-500  border-2 cursor-pointer"} 
-                        ${booking.status === BookingStatus.Booked && "bg-red-50 border-red-400 hover:bg-red-400 hover:text-red-50 text-red-500 dark:bg-red-500/50 dark:hover:bg-red-500/60 dark:hover:text-red-500  border-2 cursor-not-allowed"} 
-                        ${booking.status === BookingStatus.Passed && "bg-neutral-50 border-neutral-400 hover:bg-neutral-400 hover:text-neutral-50 text-neutral-500 dark:bg-neutral-500/50 dark:hover:bg-neutral-500/60 dark:hover:text-neutral-500  border-2"} 
-                        ${booking.status === BookingStatus.BookedByUser && "bg-neutral-50 border-blue-400 hover:bg-blue-400 hover:text-blue-50 text-blue-500 dark:bg-blue-500/50 dark:hover:bg-blue-500/60 dark:hover:text-blue-500 border-2"} 
+                        ${booking.booker === undefined && new Date(booking.start_time).getTime()  > new Date().getTime() && " bg-green-50 border-green-400 hover:bg-green-400 hover:text-green-50 text-green-500 dark:bg-green-500/50 dark:hover:bg-green-500/60 dark:hover:text-green-500  border-2 cursor-pointer"} 
+                        ${(booking.booker?.length ?? 0) > 0 && "bg-red-50 border-red-400 hover:bg-red-400 hover:text-red-50 text-red-500 dark:bg-red-500/50 dark:hover:bg-red-500/60 dark:hover:text-red-500  border-2 cursor-not-allowed"} 
+                        ${new Date(booking.end_time).getTime()  < new Date().getTime() && "bg-neutral-50 border-neutral-400 hover:bg-neutral-400 hover:text-neutral-50 text-neutral-500 dark:bg-neutral-500/50 dark:hover:bg-neutral-500/60 dark:hover:text-neutral-500  border-2"} 
+                        ${false  && "bg-neutral-50 border-blue-400 hover:bg-blue-400 hover:text-blue-50 text-blue-500 dark:bg-blue-500/50 dark:hover:bg-blue-500/60 dark:hover:text-blue-500 border-2"} 
                         
                         `}>
                             <div className="flex flex-col  items-center flex-1 justify-center">
 
                                 <div className="flex justify-between w-full">
-                                    <h1 className="font-medium">{booking.status}</h1>
+                                    <h1 className="font-medium line-clamp-1">{booking.reason}</h1>
 
                                     <time className="font-medium">
-                                        {booking.startTime}
+                                        {new Date(booking.start_time).toLocaleTimeString('sv-SE',{
+                                            hour:'2-digit',
+                                            minute:'2-digit'
+                                        })}
                                     </time>
                                 </div>
                                 <div className="flex justify-between w-full">
@@ -80,7 +51,10 @@ const RoomInformation: FC<IRoomInformationProps> = (props) => {
                                         {booking.booker}
                                     </div>
                                     <time className="font-medium">
-                                        {booking.endTime}
+                                        {new Date(booking.end_time).toLocaleTimeString('sv-SE',{
+                                            hour:'2-digit',
+                                            minute:'2-digit'
+                                        })}
                                     </time>
                                 </div>
 

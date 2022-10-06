@@ -3,36 +3,43 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../../utils/supabaseClient'
 
 import { parse } from 'node-html-parser';
-
-
-interface Room {
-    timeSlots:{
-        start_time:  string;
-        end_time: string;
-        booker?: string;
-        reason?: string;
-    }[],
-    name:string,
-    description:string
+export interface TimeSlot {
+    start_time: Date;
+    end_time: Date;
+    booker?: string;
+    reason?: string;
 }
+
+export interface Room {
+    timeSlots: TimeSlot[];
+    name: string;
+    description: string;
+}
+
+export interface Day {
+    rooms: Room[];
+    date: Date;
+}
+
+export interface Bookings {
+    days: Day[];
+}
+
+
 
 export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<any>
 ) {
-	res.status(501).json({ error: 'disabled endpoint' })
-	return
-    const urls = ["https://webbschema.mdu.se/ajax/ajax_resursbokning.jsp?op=hamtaBokningar&datum=22-10-06&flik=FLIK_0001",
-    "https://webbschema.mdu.se/ajax/ajax_resursbokning.jsp?op=hamtaBokningar&datum=22-10-07&flik=FLIK_0001",
-    "https://webbschema.mdu.se/ajax/ajax_resursbokning.jsp?op=hamtaBokningar&datum=22-10-10&flik=FLIK_0001",
-    "https://webbschema.mdu.se/ajax/ajax_resursbokning.jsp?op=hamtaBokningar&datum=22-10-11&flik=FLIK_0001",
-    "https://webbschema.mdu.se/ajax/ajax_resursbokning.jsp?op=hamtaBokningar&datum=22-10-12&flik=FLIK_0001",
-    "https://webbschema.mdu.se/ajax/ajax_resursbokning.jsp?op=hamtaBokningar&datum=22-10-12&flik=FLIK_0001",
-    ]
+	
+    const url =(date:string) => `https://webbschema.mdu.se/ajax/ajax_resursbokning.jsp?op=hamtaBokningar&datum=${date}&flik=FLIK_0001`
+    
     const results: any[] = [];
     const reqs:any[] = []
-    urls.forEach(url => {
-   reqs.push(fetch(url,
+    for (let index = 0; index < 7; index++) {
+        let date = new Date();
+        date.setDate(new Date().getDate() + index )
+   reqs.push(fetch(url(date.toISOString().split('T')[0].slice(2)),
         {
             headers:{
                 Cookie: process.env.KRONOX_COOKIE ?? ''
@@ -51,8 +58,9 @@ export default function handler(
                         const start_time = element.innerText.split('-')[0].trim();
                         const end_time = element.innerText.split('-')[1].trim();
                         timeSlots.push({
-                            start_time: start_time,
-                            end_time: end_time
+                            start_time: new Date(date.getFullYear(), date.getMonth(), date.getDate(), parseInt(start_time.split(':')[0]), parseInt(start_time.split(':')[1]) ) ,
+                            end_time: new Date(date.getFullYear(), date.getMonth(), date.getDate(), parseInt(end_time.split(':')[0]), parseInt(end_time.split(':')[1]) ) ,
+
                         })
                         
                     }
@@ -86,12 +94,14 @@ export default function handler(
                 Rooms.push(room)
 
             }
-        results.push(Rooms)
+        results.push({rooms:Rooms,date:date})
 
         })
     }))
-});
-Promise.all(reqs).then(ress=>{
-    res.status(200).json(results);
-})
+}
+
+    Promise.all(reqs).then(ress=>{
+
+        res.status(200).json({days: results});
+    })
 }

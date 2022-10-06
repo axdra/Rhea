@@ -7,6 +7,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
+import Button from "../../components/Button";
+import LinkButton from "../../components/LinkButton";
 import SignInModal from "../../components/signInModal";
 
 const UserIndex: NextPage = () => {
@@ -32,8 +34,8 @@ const UserIndex: NextPage = () => {
     </div>
     return (
         <div className="h-full flex flex-col justify-center items-center flex-1 dark:text-white">
-            <div className="px-4 py-5 md:rounded-lg md:shadow-lg md:py-20 md:px-12 dark:md:border dark:md:border-white">
-                <h1 className="mb-2 text-lg text-orange-500 font-medium">{t('user')}</h1>
+            <div className="px-4 py-5 rounded-xl border-0 md:border-2 dark:border-white border-black md:py-20 md:px-12 dark:md:border dark:md:border-white">
+                <h1 className="mb-2 text-lg  font-medium">{t('user')}</h1>
             <h2>{t('provider')}: {user?.app_metadata.provider}</h2>
                 <h2>{t('email')}: {user?.email}</h2>
                 <h2>{t('userCreationDate')}: {new Date(user?.created_at!).toLocaleDateString('sv-SE',{
@@ -41,12 +43,16 @@ const UserIndex: NextPage = () => {
                 month: "long",
                 day: "numeric",
             })}</h2>
-                <div className="flex flex-col gap-2">
-                    <Link
-                        href="/user/calendar"
-                        className="bg-orange-500 text-white rounded-full shadow-lg px-4 py-2 mt-4 text-center">{t('personalCalendar')}</Link>
-                    <button className="bg-red-500 text-white rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => setShowDeleteUserModal(true)}>{t('deleteMyAccount')}</button>
-                    <button className="bg-white text-red-500 rounded-full shadow-lg px-4 py-2 mt-4 dark:bg-black dark:border-white dark:border dark:hover:bg-white transition-colors " onClick={() => signOut()}>{t('signOut')}</button>
+                <div className="flex flex-col gap-2 mt-5">
+                   <LinkButton buttonStyle="outlined" href={'/user/calendar'} >
+                    {t('personalCalendar')}
+                   </LinkButton>
+                   <Button buttonStyle="outlined" onClick={() => setShowDeleteUserModal(true)} className="border-red-500 text-red-500 hover:bg-red-500 dark:hover:bg-red-500/40 dark:hover:text-red-500 dark:text-red-500">
+                   {t('deleteMyAccount')}
+                   </Button>
+                   <Button buttonStyle="filled" onClick={() => signOut()} >
+                   {t('signOut')}
+                   </Button>
                 
                 </div><h2 className="mt-5 text-gray-300">User ID: {user?.id}</h2>
 
