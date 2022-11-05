@@ -81,15 +81,15 @@ const Calendar: NextPage<Props> = ({ course, calendar, events }) => {
           {events?.length !== 0 && (
             <div className="flex gap-5 ">
               <div
-                className="flex py-2 px-4 gap-2 items-center  justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-orange-700 dark:border"
+                className="flex py-2 px-4 gap-2 items-center  justify-center hover:bg-gray-100 rounded-lg hover:text-white cursor-pointer hover:font-bold transition-colors  dark:bg-black dark:border-white dark:hover:bg-white dark:hover:text-black dark:border"
                 onClick={subscribeToSchedule}
               >
                 <p>{t("addToCalendar")}</p>
-                <CalendarIcon className="h-8 w-8 text-orange-500" />
+                <CalendarIcon className="h-8 w-8 " />
               </div>
               {user && (
                 <div
-                  className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-orange-100 rounded-lg hover:text-orange-500 cursor-pointer hover:font-bold transition-colors dark:hover:text-white dark:bg-black dark:border-white dark:hover:bg-orange-700 dark:border"
+                  className="flex py-2 px-4 gap-2 items-center justify-center hover:bg-gray-100 rounded-lg hover:text-white cursor-pointer hover:font-bold transition-colors  dark:bg-black dark:border-white  dark:hover:text-black  dark:hover:bg-white dark:border"
                   onClick={
                     subscribed ? navigateToMyCalendar : addToPersonalCalendar
                   }
@@ -99,7 +99,7 @@ const Calendar: NextPage<Props> = ({ course, calendar, events }) => {
                   ) : (
                     <p> {t("addToPersonalCalendar")}</p>
                   )}
-                  <UserIcon className="h-8 w-8 text-orange-500" />
+                  <UserIcon className="h-8 w-8 " />
                 </div>
               )}
             </div>

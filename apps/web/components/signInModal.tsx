@@ -103,7 +103,7 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
                                             <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" type={'password'} placeholder="Password" autoComplete="off" className="form-input dark:bg-slate-800 dark:text-white block w-full transition ease-in-out duration-150 rounded-full" />
                                         </div>
                                         <div className="mt-4 space-y-2">
-                                            <button onClick={signInWithEmail} className="rounded-full py-2 px-6 bg-orange-500 text-white shadow cursor-pointer hover:bg-orange-600 transition-colors w-full text-center">Sign In</button>
+                                            <button onClick={signInWithEmail} className="rounded-full py-2 px-6 bg-white text-white shadow cursor-pointer hover:bg-white transition-colors w-full text-center">Sign In</button>
                                             <button onClick={signUpWithEmail} className="rounded-full py-2 px-6 bg-gray-500 text-white shadow cursor-pointer hover:bg-gray-600 transition-colors w-full text-center">Sign Up</button>
                                         </div>
                                     </div>

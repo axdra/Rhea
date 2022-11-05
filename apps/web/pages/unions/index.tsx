@@ -22,7 +22,7 @@ const UnionsList: NextPage<Props & WithTranslation> = ({ unions }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 flex-wrap max-w-5xl w-full gap-5 px-4">
       <Link
               href={`/unions/new`}
-              className="flex flex-col justify-center items-center gap-2 p-4 hover:invert dark:bg-black dark:border dark:border-white bg-white  rounded-md overflow-hidden transition-all duration-300 group border-black border-2"
+              className="flex flex-col justify-center items-center gap-2 p-4 hover:invert  dark:bg-black dark:border dark:border-white bg-white  rounded-md overflow-hidden transition-all duration-1000 group border-black border-2"
             >
               <div
                 className="w-full flex justify-center items-center py-2 relative overflow-hidden rounded-xl dark:bg-white bg-black  "
@@ -68,7 +68,7 @@ const UnionsList: NextPage<Props & WithTranslation> = ({ unions }) => {
 
 
               </div>
-              <h1 className="text-bold text-xl  text-black z-10">
+              <h1 className="text-bold text-xl  text-black z-10 dark:text-white">
                 {union.name}
               </h1>
               <div className="flex gap-2 flex-col text-center px-4  pt-2 h-24">

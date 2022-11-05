@@ -11,7 +11,7 @@ const Footer: FC = () => {
                                 <div className="flex items-center justify-center flex-1">
                                  <Link
                                      href={'/about'}
-                                     className="text-orange-500 hover:underline hover:text-orange-600 transition-colors">{t('about')}</Link>
+                                     className="text-white-500 hover:underline transition-colors">{t('about')}</Link>
                                 </div>
 
         </div>
