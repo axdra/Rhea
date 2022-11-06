@@ -10,6 +10,8 @@
       "$NEXT_PUBLIC_PROD_URL",
       "$NODE_ENV",
       "$KRONOX_COOKIE",
+      "$KRONOX_USERNAME",
+      "$KRONOX_PASSWORD",
       "$SUPABASE_SECRET_KEY"],
       "outputs": ["dist/**", ".next/**"]
     },
