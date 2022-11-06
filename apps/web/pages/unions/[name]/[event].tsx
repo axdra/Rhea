@@ -25,10 +25,10 @@ const Union: NextPage<Props> = ({ union, event }) => {
 
   if (!event) {
     return (
-      <div className="h-full flex flex-col flex-1 items-center justify-center text-orange-500">
+      <div className="h-full flex flex-col flex-1 items-center justify-center text-black">
         <h1 className="text-4xl font-bold">Event not found</h1>
         <Link href={`/unions/${union?.name}`}>
-          <a className="text-orange-500 hover:text-orange-600">
+          <a className="text-black-500 ">
             Go back to {union?.name}
           </a>
         </Link>

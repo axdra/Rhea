@@ -1,10 +1,7 @@
 import Link from "next/link";
 import { FC, useState } from "react";
-import SearchBar from "./searchBar";
-import { FaApple, FaMicrosoft, FaGithub, FaGoogle } from "react-icons/fa";
-import { Bars3Icon, MapIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon } from "@heroicons/react/24/solid";
 import SignInModal from "./signInModal";
-import UserProfileDropDown from "./userProfileDropDown";
 import { useTranslation } from "next-i18next";
 import Button from "./Button";
 import LinkButton from "./LinkButton";

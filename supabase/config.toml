@@ -59,7 +59,7 @@ enable_confirmations = false
 [auth.external.github]
 enabled = true
 client_id = "ed88b9193c6b929f1952"
-secret = "2e35857bbffe2018253959b84efe456360c9097b"
+secret = "100f5cb6515bd4745b16b465bf8797953ffa9942"
 # Overrides the default auth provider URL. Used to support self-hosted gitlab, single-tenant Azure,
 # or any other third-party OIDC providers.
 url = ""

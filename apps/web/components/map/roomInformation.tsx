@@ -17,7 +17,7 @@ enum BookingStatus {
 
 
 const RoomInformation: FC<IRoomInformationProps> = (props) => {
-    const bookings = props.bookings?.days.find(day=> dayjs(day.date).isSame(new Date(),'day' ))?.rooms.find(room=>room.name.toLowerCase() === props.roomName?.toLowerCase())
+    const bookings = props.bookings?.days?.find(day=> dayjs(day.date).isSame(new Date(),'day' ))?.rooms.find(room=>room.name.toLowerCase() === props.roomName?.toLowerCase())
     console.log(props.bookings)
     return (
         <div className="p-5 flex flex-col h-full gap-10">
