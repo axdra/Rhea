@@ -1,6 +1,6 @@
 import { useTranslation } from "next-i18next";
 
-const Greet = (name: string, t:any,done:boolean) => {
+const Greet = (name: string, t:any,done:boolean = false) => {
     const timeOfDay = new Date().getHours();
     if (timeOfDay < 12 && timeOfDay > 4) {
         return t("goodMorning", { name: name });

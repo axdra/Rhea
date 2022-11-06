@@ -37,16 +37,16 @@ const Home: NextPage<PageProps> = ({ issues,weather_code, temp }) => {
               t
             )}
             </h1>
-            <WeatherWidget weather_code={weather_code} temp={temp} />
+            {weather_code && <WeatherWidget weather_code={"clearsky"} temp={temp} />}
           </div>
           <div className="grid 2xl:grid-cols-5 sm:grid-cols-2 grid-cols-1  w-full flex-1 gap-5">
-            <div className="col-span-1 border-black border-2 bg-white dark:text-white dark:bg-black dark:border-white h-96 rounded-xl flex flex-col">
+            <div className="col-span-1 dark:shadow-glow border-black border-2 bg-white dark:text-white dark:bg-black dark:border-white h-96 rounded-xl flex flex-col">
               <TodaysSchedule />
             </div>
-            <div className="col-span-1 border-black border-2 bg-white dark:text-white dark:bg-black dark:border-white h-96 rounded-xl flex flex-col">
+            <div className="col-span-1  dark:shadow-glow border-black border-2 bg-white dark:text-white dark:bg-black dark:border-white h-96 rounded-xl flex flex-col">
               <BookedRooms />
             </div>
-            <div className="2xl:col-span-3 sm:col-span-2 col-span-1 border-black border-2 bg-white dark:text-white dark:bg-black dark:border-white h-96 rounded-xl"></div>
+            <div className="2xl:col-span-3  dark:shadow-glow sm:col-span-2 col-span-1 border-black border-2 bg-white dark:text-white dark:bg-black dark:border-white h-96 rounded-xl"></div>
           </div>
         </div>
       </div>

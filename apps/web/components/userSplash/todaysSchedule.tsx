@@ -1,7 +1,10 @@
 import { useSessionContext } from "@supabase/auth-helpers-react";
 import { useUser } from "@supabase/ui/dist/cjs/components/Auth/UserContext";
 import { useTranslation } from "next-i18next";
+import Link from "next/link";
 import { FC, useEffect, useState } from "react";
+import Button from "../Button";
+import LinkButton from "../LinkButton";
 
 
 const TodaysSchedule: FC = () => {
@@ -26,13 +29,13 @@ const TodaysSchedule: FC = () => {
             });
         });
     }, [user]);
-    return <div className="px-4 py-2 flex flex-col flex-1" >
+    return <div className="px-4 py-2 pb-6 flex flex-col flex-1" >
         <h1 className='text-2xl font-medium'>{t('todaysSchedule')}</h1>
         <div className='flex flex-col gap-2 flex-1'>
             {schedule.filter((x:any) => new Date(x.end_time) > new Date()).length > 0 ?
                 schedule.sort((z:any, y:any) => { return (new Date(z.start_time).getTime() - new Date(y.start_time).getTime()) }).filter((x:any) => new Date(x.end_time) > new Date()).map((item: any) => {
-                        return (
-                            <div key={item.id} className='flex flex-row gap-2 bg-neutral-50 dark:bg-neutral-900 px-3 py-3 w-full rounded-xl'>
+                    return (
+                            <Link key={item.id} className='flex flex-row gap-2 bg-neutral-50 dark:bg-neutral-900 px-3 py-3 w-full rounded-xl' href={"/event/".concat(item.id)}>
                                 <div className='flex flex-col gap-2 w-full'>
                                     <div className='grid grid-cols-4 gap-2 w-full'>
                                         <div className='flex flex-col col-span-3'>
@@ -52,7 +55,7 @@ const TodaysSchedule: FC = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         )
                     })
                 
@@ -62,8 +65,11 @@ const TodaysSchedule: FC = () => {
                 </div>
 
             }
+            
                     </div>
-
+                    <LinkButton buttonStyle="ghost"  href={"/user/calendar"} >
+                    {t('viewCalendar')}
+                    </LinkButton>
     </div>
 
 };
