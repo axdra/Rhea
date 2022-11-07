@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { getRooms } from "../../utils/src/rooms";
 import { IKronoxBookingRoom } from "../../utils/src/types/booking";
 
-const rooms: NextPage = () => { 
+const Rooms: NextPage = () => { 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { t } = useTranslation();
     const { supabaseClient } = useSessionContext();
@@ -115,4 +115,4 @@ export async function getStaticProps({ locale }: any) {
         },
     };
 }
-export default rooms;
+export default Rooms;
