@@ -5,7 +5,7 @@ import { IKronoxBookingRoom, IKronoxTimeSlot } from "./types/booking"
 export const GetUserBookings = async (token: string, location: string, date:string ): Promise<IKronoxBookingRoom[]> => {
     const response = await fetch(endpoint + "minaresursbokningar.jsp?" + new URLSearchParams({
             flik: location,
-            datum: date
+            datum:  date
         }) , {
         headers: {
                 cookie: `JSESSIONID=${token}`,
@@ -16,8 +16,13 @@ export const GetUserBookings = async (token: string, location: string, date:stri
     const doc = parse(data)
     let rooms = doc.querySelectorAll("[id*='post']")
     
-    console.log(rooms.length)
-    const roomList: IKronoxBookingRoom[] = []
+  
+    const roomList: any[] =   rooms.map(room=>{
+        return {
+            bookingId: room.getAttribute("id")
+        }
+
+    })
     return new Promise((resolve, reject) => {
         resolve(roomList)
     })

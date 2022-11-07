@@ -12,7 +12,7 @@ export default async function handler(
         username: process.env.KRONOX_USERNAME ?? "",
         password: process.env.KRONOX_PASSWORD ?? "",
     }).then(async (user) => {
-        const schema = await GetUserBookings(user.token,"FLIK_0001","22-11-03");
+        const schema = await GetUserBookings(user.token,"FLIK_0001","22-11-07");
         res.status(200).json({ lol:schema, user: user })
     }
     ).catch((err) => {

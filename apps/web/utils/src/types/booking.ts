@@ -8,8 +8,8 @@ export interface IKronoxBookingRoom{
 
 export interface IKronoxTimeSlot{
     slotNumber: number;
-    startTime: Date;
-    endTime: Date;
+    startTime: string;
+    endTime: string;
     isBookable: boolean;
     bookedBy?: string;
     bookingReason?: string;

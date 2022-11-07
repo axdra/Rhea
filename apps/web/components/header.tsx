@@ -16,25 +16,25 @@ const Header: FC = () => {
   return (
     <>
       <SignInModal isOpen={showSignInModal} setIsOpen={setShowSignInModal} />
-      <nav className="sticky top-0 dark:bg-black dark:text-white border-b border-b-neutral-100 dark:shadow-none bg-white h-16  justify-between items-center px-10 w-screen z-10 flex  ">
+      <nav className="sticky top-0 z-20 dark:bg-black dark:text-white border-b border-b-neutral-100 dark:shadow-none bg-white h-16  justify-between items-center px-10 w-screen flex  ">
         <div className="flex">
           <Link href="/" className="text-3xl font-medium select-none mr-16">
             Rhea.
           </Link>
           <div className="w-px bg-black/25 my-1 dark:bg-white/50  hidden lg:flex   " />
           <div className=" items-center gap-8 ml-16 hidden lg:flex">
-          <Link href={"/unions"} className="font-medium hover:underline focus:underline select-none">
-            {t("unions")}
-          </Link>
-          <Link href={"/map"} className="font-medium hover:underline focus:underline select-none">
-            {t("map")}
-          </Link>
-          <Link href={"/courses"} className="font-medium hover:underline focus:underline select-none">
-            {t("schedule")}
-          </Link>
-          <Link href={"/about"} className="font-medium hover:underline focus:underline select-none">
-            {t("about")}
-          </Link>
+            <Link href={"/unions"} className="font-medium hover:underline focus:underline select-none">
+              {t("unions")}
+            </Link>
+            <Link href={"/map"} className="font-medium hover:underline focus:underline select-none">
+              {t("map")}
+            </Link>
+            <Link href={"/courses"} className="font-medium hover:underline focus:underline select-none">
+              {t("schedule")}
+            </Link>
+            <Link href={"/about"} className="font-medium hover:underline focus:underline select-none">
+              {t("about")}
+            </Link>
           </div>
         </div>
         <div className=" hidden lg:flex gap-4">
@@ -43,14 +43,14 @@ const Header: FC = () => {
           </LinkButton>
           {user ? <LinkButton buttonStyle="outlined" href="/user" >
             {t("profile")}
-          </LinkButton> :(
-              <Button onClick={() => setShowSignInModal(true)} buttonStyle="filled"  >
-            {t("signIn")}
+          </LinkButton> : (
+            <Button onClick={() => setShowSignInModal(true)} buttonStyle="filled"  >
+              {t("signIn")}
             </Button>
-        )    }
+          )}
         </div>
         <div className="flex lg:hidden hover:bg-black hover:text-white rounded-xl px-2 py-2 cursor-pointer duration-300">
-          <Bars3Icon onClick={()=>setShowSmallScreenMenu(true)}  className="h-8 w-8 " />
+          <Bars3Icon onClick={() => setShowSmallScreenMenu(true)} className="h-8 w-8 " />
         </div>
       </nav>
       <Transition.Root show={showSmallScreenMenu} className="md:hidden flex" >
@@ -63,7 +63,7 @@ const Header: FC = () => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
           as="div"
-          onClick={()=>setShowSmallScreenMenu(false)}
+          onClick={() => setShowSmallScreenMenu(false)}
         >
           <div className="fixed inset-0 bg-black/25 z-10" />
         </Transition.Child>
@@ -77,42 +77,48 @@ const Header: FC = () => {
           as="div"
           className="fixed w-full ease-in-out bg-white dark:bg-black dark:text-white z-50 top-0 "
         >
-            <div className="flex flex-col h-full">
+          <div className="flex flex-col h-full">
             <div className="flex flex-col justify-between h-full">
-              
-                <div className="flex flex-col gap-4 p-4">
+
+              <div className="flex flex-col gap-4 p-4">
                 <Link href="/" className="text-3xl font-medium select-none mr-16">
                   Rhea.
                 </Link>
-                  <Link onClick={()=>setShowSmallScreenMenu(false)} href={"/unions"} className="font-medium hover:underline focus:underline select-none">
-                    {t("unions")}
-                  </Link>
-                  <Link onClick={()=>setShowSmallScreenMenu(false)} href={"/map"} className="font-medium hover:underline focus:underline select-none">
-                    {t("map")}
-                  </Link>
-                  <Link onClick={()=>setShowSmallScreenMenu(false)} href={"/courses"} className="font-medium hover:underline focus:underline select-none">
-                    {t("schedule")}
-                  </Link>
+                <Link onClick={() => setShowSmallScreenMenu(false)} href={"/unions"} className="font-medium hover:underline focus:underline select-none">
+                  {t("unions")}
+                </Link>
+                <Link onClick={() => setShowSmallScreenMenu(false)} href={"/map"} className="font-medium hover:underline focus:underline select-none">
+                  {t("map")}
+                </Link>
+                <Link onClick={() => setShowSmallScreenMenu(false)} href={"/courses"} className="font-medium hover:underline focus:underline select-none">
+                  {t("schedule")}
+                </Link>
 
-                  <Link onClick={()=>setShowSmallScreenMenu(false)} href={"/about"} className="font-medium hover:underline focus:underline select-none">
-                    {t("about")}
-                  </Link>
-                </div>
-                <div className="flex  gap-4 p-4">
-                  <LinkButton onClick={() => {
-                    setShowSmallScreenMenu(false)
-                  }}
+                <Link onClick={() => setShowSmallScreenMenu(false)} href={"/about"} className="font-medium hover:underline focus:underline select-none">
+                  {t("about")}
+                </Link>
+              </div>
+              <div className="flex  gap-4 p-4">
+                <LinkButton onClick={() => {
+                  setShowSmallScreenMenu(false)
+                }}
                   className="flex-1 text-center" buttonStyle="outlined" href="/courses" >
-                    {t("findCourses")}
-                  </LinkButton>
-                  <Button onClick={() => {
-                    setShowSmallScreenMenu(false)
-                    setShowSignInModal(true)}} buttonStyle="filled" className="flex-1 text-center"  >
+                  {t("findCourses")}
+                </LinkButton>
+                {user ? <LinkButton className="flex-1" onClick={()=>setShowSmallScreenMenu(false)} buttonStyle="outlined" href="/user" >
+                  {t("profile")}
+                </LinkButton> : (
+                  <Button className="flex-1" onClick={() => {
+                    
+                    setShowSignInModal(true);
+                    setShowSmallScreenMenu(false);
+                  }} buttonStyle="filled"  >
                     {t("signIn")}
                   </Button>
-                </div>
+                )}
               </div>
             </div>
+          </div>
         </Transition.Child>
 
       </Transition.Root>
