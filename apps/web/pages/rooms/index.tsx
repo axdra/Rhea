@@ -7,13 +7,17 @@ import { IKronoxUserAuthResponse } from "../../utils/src/types/user";
 import { useEffect, useState } from "react";
 import { getRooms } from "../../utils/src/rooms";
 import { IKronoxBookingRoom } from "../../utils/src/types/booking";
+import Button from "../../components/Button";
 
 const Rooms: NextPage = () => { 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { t } = useTranslation();
     const { supabaseClient } = useSessionContext();
+
+    const [selectedDay, setSelectedDay] = useState(0);
+
     const [user, setUser] = useState<IKronoxUserAuthResponse>();
-    const [rooms, setRooms] = useState<IKronoxBookingRoom[]>([]);
+    const [days, setDays] = useState<IKronoxBookingRoom[][]>([]);
     const login = (username:string,password:string) => {
         
         supabaseClient.auth.getSession().then((session) => {
@@ -49,20 +53,29 @@ const Rooms: NextPage = () => {
         const password = target.password.value;
         login(username,password);
     }
+
+
     useEffect(() => {
         if(user){
-       
-        fetch('/api/rooms/getRooms?'+ new URLSearchParams({
-            'flik': "FLIK_0001",
-            'datum': "22-11-07",
-            'session': encodeURI(user?.token) ?? ""
-        })).then((data) => {
-            data.json().then((data) => {
-                setRooms(data);
-            })
+            const requests = [];
+            for (let index = 0; index < 8; index++) {
+                const date = new Date().setDate(new Date().getDate() + index);
+                console.log(new Date(date).getFullYear().toString().slice(-2) + "-" + (new Date(date).getMonth() + 1).toString().padStart(2, '0') + "-" + new Date(date).getDate().toString().padStart(2, '0'));
+                requests.push( fetch('/api/rooms/getRooms?'+ new URLSearchParams({
+                    'flik': "FLIK_0001",
+                    'datum': new Date(date).getFullYear().toString().slice(-2) + "-" + (new Date(date).getMonth() + 1).toString().padStart(2, '0') + "-" + new Date(date).getDate().toString().padStart(2, '0'),
+                    'session': encodeURI(user?.token) ?? ""
+                })));
+            }
+            Promise.all(requests).then((data) => {
+                Promise.all(data.map((d) => d.json())).then((data) => {
+                    setDays(data);
+                })
+            }
+            );
+
         }
-        );
-        }
+
     }, [user]);
 
     return (
@@ -74,9 +87,9 @@ const Rooms: NextPage = () => {
                     </div>
                     {
                         <table className="flex flex-col gap-2 ">
-                            {rooms.map((room) => {
+                            {days[selectedDay].map((room) => {
                                 return (
-                                    <tr className="w-full flex-1 flex flex-row gap-2">
+                                    <tr className="w-full flex-1 grid grid-cols-7gap-2">
                                         <td className="px-4 py-2  ">{room.id}</td>
                                         {room.timeSlots.map((timeSlot) => {
                                             return (
@@ -89,10 +102,11 @@ const Rooms: NextPage = () => {
                                         
                                     </tr>
                                 )
-                            })}
+                            })} 
                             
                         </table>
                     }
+                    <Button buttonStyle="ghost" onClick={()=>setSelectedDay(selectedDay+1)}/>
                     </div>)
                     : (<div className='flex flex-col gap-2'>
                        <form className="text-black" onSubmit={handleLoginForm}>
@@ -108,6 +122,7 @@ const Rooms: NextPage = () => {
     );
 }
 export async function getStaticProps({ locale }: any) {
+    
     return {
         props: {
             ...(await serverSideTranslations(locale, ['common'])),

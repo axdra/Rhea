@@ -6,7 +6,7 @@ export const updateKronoxSession = async (session: string, user_token:string) =>
     const supabase = createClient(supabaseUrl, supabaseKey)
     supabase.auth.getUser(user_token).then(data => {
         if (data.data.user?.aud === 'authenticated') {
-            supabase.from('kronox_users').update({kronox_session: session}).eq('user',data.data.user.id ).then(data => {});
+            supabase.from('kronox_users').update({kronox_session: session, last_poll: new Date()}).eq('user',data.data.user.id ).then(data => {});
             supabase.from('kronox_users').insert({kronox_session: session, user: data.data.user.id}).then(data => {
             })
         
