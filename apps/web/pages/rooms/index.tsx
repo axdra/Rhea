@@ -87,6 +87,9 @@ const Rooms: NextPage = () => {
                     </div>
                     {
                         <table className="flex flex-col gap-2 ">
+                            {
+                                days.length > 0 &&<>
+                            
                             {days[selectedDay].map((room) => {
                                 return (
                                     <tr className="w-full flex-1 grid grid-cols-7gap-2">
@@ -103,6 +106,8 @@ const Rooms: NextPage = () => {
                                     </tr>
                                 )
                             })} 
+                            </>
+                        }
                             
                         </table>
                     }
