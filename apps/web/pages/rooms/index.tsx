@@ -106,7 +106,9 @@ const Rooms: NextPage = () => {
                             
                         </table>
                     }
-                    <Button buttonStyle="ghost" onClick={()=>setSelectedDay(selectedDay+1)}/>
+                    <Button buttonStyle="ghost" onClick={()=>setSelectedDay(selectedDay+1)}>
+                        Next Page
+                    </Button>
                     </div>)
                     : (<div className='flex flex-col gap-2'>
                        <form className="text-black" onSubmit={handleLoginForm}>
