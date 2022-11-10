@@ -5,19 +5,29 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useSessionContext } from "@supabase/auth-helpers-react";
 import { IKronoxUserAuthResponse } from "../../utils/src/types/user";
 import { useEffect, useState } from "react";
-import { getRooms } from "../../utils/src/rooms";
+import { bookRoom, getRooms } from "../../utils/src/rooms";
 import { IKronoxBookingRoom } from "../../utils/src/types/booking";
 import Button from "../../components/Button";
+import TimeSlotSelector from "../../components/rooms/timeslotselector";
+import TimeView from "../../components/rooms/timeview";
+import { Transition } from "@headlessui/react";
 
 const Rooms: NextPage = () => { 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { t } = useTranslation();
     const { supabaseClient } = useSessionContext();
 
-    const [selectedDay, setSelectedDay] = useState(0);
-
+    const [selectedDay, setSelectedDay] = useState<number | null>(null);
+    const [selectedTime, setSelectedTime] = useState<number | null>(null);
     const [user, setUser] = useState<IKronoxUserAuthResponse>();
     const [days, setDays] = useState<IKronoxBookingRoom[][]>([]);
+    const [timeslotDays, setTimeslotDays] = useState<boolean[][]>([]);
+    const [bookedRoom, setBookedRoom] = useState<string | null>(null);
+
+    useEffect(() => {
+        setTimeout(()=>setBookedRoom(null), 2500);
+    }, [bookedRoom])
+
     const login = (username:string,password:string) => {
         
         supabaseClient.auth.getSession().then((session) => {
@@ -60,7 +70,6 @@ const Rooms: NextPage = () => {
             const requests = [];
             for (let index = 0; index < 8; index++) {
                 const date = new Date().setDate(new Date().getDate() + index);
-                console.log(new Date(date).getFullYear().toString().slice(-2) + "-" + (new Date(date).getMonth() + 1).toString().padStart(2, '0') + "-" + new Date(date).getDate().toString().padStart(2, '0'));
                 requests.push( fetch('/api/rooms/getRooms?'+ new URLSearchParams({
                     'flik': "FLIK_0001",
                     'datum': new Date(date).getFullYear().toString().slice(-2) + "-" + (new Date(date).getMonth() + 1).toString().padStart(2, '0') + "-" + new Date(date).getDate().toString().padStart(2, '0'),
@@ -78,54 +87,124 @@ const Rooms: NextPage = () => {
 
     }, [user]);
 
-    return (
-        <div className="h-full flex w-full flex-col justify-center items-center flex-1 dark:text-white">
-          { user ? (<div className='flex flex-col gap-2'>
-                    <div className='flex flex-row gap-2'>
-                        <div className='font-medium'>{t('name')}</div>
-                        <div className=''>{user.name}</div>
-                    </div>
-                    {
-                        <table className="flex flex-col gap-2 ">
-                            {
-                                days.length > 0 &&<>
+    useEffect(() => {
+        if(days.length > 0){
+            const timeslotDays = [];
+            for (let index = 0; index < days.length; index++) {
+                const day = days[index];
+                const timeslotDay = [];
+                for (let index = 0; index < day.length; index++) {
+                    const room = day[index];
+                    for (let index = 0; index < room.timeSlots.length; index++) {
+                        const timeslot = room.timeSlots[index];
+                        if(timeslot.isBookable){
+                            if(timeslotDay[index] === undefined || timeslotDay[index] === false){
+                            timeslotDay[index] = true;
+                            }
                             
-                            {days[selectedDay].map((room) => {
-                                return (
-                                    <tr className="w-full flex-1 grid grid-cols-7gap-2">
-                                        <td className="px-4 py-2  ">{room.id}</td>
-                                        {room.timeSlots.map((timeSlot) => {
-                                            return (
-                                                <td className={`px-3 flex-1 py-2 text-center ${timeSlot.isBookable ? "bg-green-500/10 text-green-500" : 'bg-red-500/10 text-red-500'}`}>
-                                                   {timeSlot.isBookable ? "Ledig" : timeSlot.bookedBy}
-                                                </td>
-                                            )
-                                        })}
-                                        
-                                        
-                                    </tr>
-                                )
-                            })} 
-                            </>
+                        }else{
+                            if(timeslotDay[index] !== true){
+                                timeslotDay[index] = false;
+                            }
                         }
-                            
-                        </table>
                     }
-                    <Button buttonStyle="ghost" onClick={()=>setSelectedDay(selectedDay+1)}>
-                        Next Page
-                    </Button>
-                    </div>)
-                    : (<div className='flex flex-col gap-2'>
-                       <form className="text-black" onSubmit={handleLoginForm}>
+                }
+                timeslotDays.push(timeslotDay);
+            }
+            setTimeslotDays(timeslotDays);
+        }
+    }, [days]);
 
-                        <input type={"text"} name="username" ></input>
-                        <input type={"password"} name="password"></input>
-                        <button type="submit">{t('login')}</button>
-                       </form>
-                        </div>)
-                    
+
+
+
+    return (
+        <>
+        <Transition
+        show={bookedRoom !== null}
+        enter="transition-opacity duration-100"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-100"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+        >
+            <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+                <div className="bg-white rounded-lg p-4">
+                    <h1 className="text-2xl font-bold">{t("booked")}</h1>
+                    <p>{bookedRoom}</p>
+                </div>
+            </div>
+        </Transition>
+
+        
+        <div className="h-full flex w-full flex-col justify-center items-center flex-1 dark:text-white">
+          {
+            selectedDay === null && selectedTime === null && timeslotDays.length > 0 && days.length > 0 && user &&
+            <TimeSlotSelector days={timeslotDays} onSelected={
+                (day, time) => {
+                    setSelectedDay(day);
+                    setSelectedTime(time);
+                }
+          } />}
+          {
+                selectedDay !== null && selectedTime !== null &&
+                <>
+                <Button onClick={() => {
+                    setSelectedDay(null);
+                    setSelectedTime(null);
+                }}
+                buttonStyle="ghost"
+                >Back</Button>
+                <TimeView day={days[selectedDay]} timeSlot={selectedTime} bookRoom={(room)=>{
+                     const date = new Date().setDate(new Date().getDate() + selectedDay);
+                     const dateString =new Date(date).getFullYear().toString().slice(-2) + "-" + (new Date(date).getMonth() + 1).toString().padStart(2, '0') + "-" + new Date(date).getDate().toString().padStart(2, '0');
+                        if(user){
+                            console.log(user)
+                        fetch('/api/rooms/bookRoom?'+ new URLSearchParams({
+                            'flik': "FLIK_0001",
+                            'datum': dateString,
+                            'session': encodeURI(user?.token) ?? "" ,
+                            'room': room,
+                            'timeSlot': selectedTime.toString()
+                        })).then((data) => {
+                          if(data.ok){
+                            setBookedRoom(room);
+                          }
+
+
+
+                        }
+                        );
+                    }
+
+
+
+
+                }}  />
+                </>
           }
+          {
+            user === undefined &&
+          <form onSubmit={handleLoginForm} className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1">
+                <label className="text-sm" htmlFor="username">Username</label>
+            <input type="text" name="username"   className="dark:bg-black dark:border-white dark:text-white rounded-lg dark:placeholder:text-white/50" placeholder="Kronox Username"/>
+            
+            </div>
+            <div className="flex flex-col gap-1">
+                <label className="text-sm" htmlFor="password">Password</label>
+            <input type="password" name="password"  className="dark:bg-black dark:border-white dark:text-white rounded-lg dark:placeholder:text-white/50" placeholder="Kronox Password"/>
+          
+            </div>  
+            
+            <input type="submit" value="Sign In" className="mt-2 select-none bg-white border-black border-2 px-6 py-2 text-black rounded-xl hover:bg-black hover:text-white dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black dark:border-white cursor-pointer" />
+            </form>
+          }
+
         </div>
+        </>
+        
     );
 }
 export async function getStaticProps({ locale }: any) {

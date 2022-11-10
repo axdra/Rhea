@@ -57,3 +57,51 @@ export const getRooms = async (session: string, location:string, date:string):Pr
 
         
 }
+
+interface IRoomBookingResponse {
+    room: string;
+    ok: boolean;
+}
+
+
+export const bookRoom = async (session: string, location:string, date:string, roomId:string, timeSlot: number):Promise<IRoomBookingResponse> => {
+    return fetch(`${endpoint}ajax/ajax_resursbokning.jsp?${
+        new URLSearchParams({
+            op: 'boka',
+            datum: date,
+            flik: location,
+            id: roomId,
+            intervall: timeSlot.toString(),
+            typ: 'RESURSER_LOKALER',
+            moment: "Booked via Rhea"
+    })}`, {
+        headers: {
+            'Cookie': `JSESSIONID=${session}`,
+        }
+    }).then(res => {
+       return res.text().then(data => {
+            if(data.includes("OK")){
+                return {
+                    room: roomId,
+                    ok: true
+                }
+            }
+            else{
+                return {
+                    room: roomId,
+                    ok: false
+                }
+            }
+        })
+    }).catch(err => {
+        return {
+            room: roomId,
+            ok: false
+        }
+    }
+    )
+    
+  
+    
+
+}
