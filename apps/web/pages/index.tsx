@@ -41,7 +41,7 @@ const Home: NextPage<PageProps> = ({ issues,weather_code, temp }) => {
           </div>
           <div className="relative w-full">
        
-          <div className="grid 2xl:grid-cols-5 sm:grid-cols-2 grid-cols-1  w-full flex-1 gap-5 z-10 absolute top-0 ">
+          <div className="grid 2xl:grid-cols-5 sm:grid-cols-2 grid-cols-1  w-full flex-1 gap-5 z-10 absolute top-0 opacity-50">
           <div className="col-span-1 dark:shadow-glow  h-96 rounded-xl flex flex-col"/>
           <div className="col-span-1 dark:shadow-glow  h-96 rounded-xl flex flex-col"/>
           <div className="2xl:col-span-3   sm:col-span-2 col-span-1 dark:shadow-glow  h-96 rounded-xl flex flex-col"/>
@@ -57,23 +57,7 @@ const Home: NextPage<PageProps> = ({ issues,weather_code, temp }) => {
               <BookedRooms />
             </div>
             <div className="2xl:col-span-3   sm:col-span-2 col-span-1 border-black border-2 bg-white dark:text-white dark:bg-black dark:border-white h-96 rounded-xl">
-              <div className="inline">
-                <WeatherWidget weather_code={"clearsky"} temp={temp} />
-              </div>
-              <div className="inline">
-              <WeatherWidget weather_code={"cloudy"} temp={temp} />
-              </div>
-              <WeatherWidget weather_code={"fog"} temp={temp} />
-              <div className="inline">
-              <WeatherWidget weather_code={"rain"} temp={temp} />
-              </div>
-              <WeatherWidget weather_code={"snow"} temp={temp} />
-              <div className="inline">
-              <WeatherWidget weather_code={"sleet"} temp={temp} />
-              </div>
-              <div className="inline">
-              <WeatherWidget weather_code={"rainandthunder"} temp={temp} />
-              </div>
+             
             </div>
 
           </div>

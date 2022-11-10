@@ -6395,6 +6395,11 @@ orderedmap@^1.1.0:
   resolved "https://registry.yarnpkg.com/orderedmap/-/orderedmap-1.1.8.tgz#9652b2584f721c1032fa04cb60d442b3d4aa097c"
   integrity sha512-eWEYOAggZZpZbJ9CTsqAKOTxlbBHdHZ8pzcfEvNTxGrjQ/m+Q25nSWUiMlT9MTbgpB6FOiBDKqsgJ2FlLDVNaw==
 
+orderedmap@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/orderedmap/-/orderedmap-2.1.0.tgz#819457082fa3a06abd316d83a281a1ca467437cd"
+  integrity sha512-/pIFexOm6S70EPdznemIz3BQZoJ4VTFrhqzu0ACBqBgeLsLxq8e6Jim63ImIfwW/zAD1AlXpRMlOv3aghmo4dA==
+
 outline-icons@^1.38.1:
   version "1.45.2"
   resolved "https://registry.yarnpkg.com/outline-icons/-/outline-icons-1.45.2.tgz#7249b26af6b58db6a0ba601a5ad5043d18e2841d"
@@ -6743,12 +6748,19 @@ prosemirror-markdown@^1.5.2:
     markdown-it "^13.0.1"
     prosemirror-model "^1.0.0"
 
-prosemirror-model@1.16.0, prosemirror-model@^1.0.0, prosemirror-model@^1.1.0, prosemirror-model@^1.13.3, prosemirror-model@^1.16.0, prosemirror-model@^1.18.1, prosemirror-model@^1.8.1:
+prosemirror-model@^1.0.0, prosemirror-model@^1.1.0, prosemirror-model@^1.13.3, prosemirror-model@^1.16.0, prosemirror-model@^1.8.1:
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/prosemirror-model/-/prosemirror-model-1.16.0.tgz#b10269d8e2d4715adf4b526bdc9c40abf07bee79"
   integrity sha512-EheF1nX6gR9C/l76wGfqWujE3hc/ZgohzeFWLROOLEZtAm3qDCzju390XM65J/GQyqA1Y7ZesYOGHfVmdanm0w==
   dependencies:
     orderedmap "^1.1.0"
+
+prosemirror-model@^1.18.1:
+  version "1.18.1"
+  resolved "https://registry.yarnpkg.com/prosemirror-model/-/prosemirror-model-1.18.1.tgz#1d5d6b6de7b983ee67a479dc607165fdef3935bd"
+  integrity sha512-IxSVBKAEMjD7s3n8cgtwMlxAXZrC7Mlag7zYsAKDndAqnDScvSmp/UdnRTV/B33lTCVU3CCm7dyAn/rVVD0mcw==
+  dependencies:
+    orderedmap "^2.0.0"
 
 prosemirror-paste-rules@^2.0.0:
   version "2.0.0"
