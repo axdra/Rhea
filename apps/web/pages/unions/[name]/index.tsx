@@ -116,44 +116,24 @@ const Union: NextPage<Props> = ({ union, unionPage, events }) => {
               <Link
                 key={event.id}
                 href={`/unions/${union?.name.toLowerCase()}/${event.url_slug}`}
-                className="aspect-square w-full shadow-lg relative overflow-hidden rounded-lg transition-all hover:shadow-lg group"
+                className="aspect-square w-full shadow-lg  overflow-hidden rounded-xl transition-all hover:shadow-lg group dark:bg-black dark:border-white border-2 flex-col justify-center flex  items-center no-prose "
               >
                 <img
-                  className="absolute  w-full  aspect-square object-cover top-0 mt-0"
+                  className="    object-cover rounded-lg h-1/2 aspect-square group-hover:scale-110 transition-all duration-300 " 
                   src={event.cover_image ?? ""}
                   alt={event.title ?? ""}
                 />
-                <div className="absolute top-2 left-2  bg-white text-black rounded px-2 py-1 group-hover:-top-24 transition-all duration-700 ease-in-out  ">
-                  <div>
-                    {event?.start_time &&
-                      new Date(event?.start_time).toLocaleDateString()}
-                  </div>
-
-                  <div>
-                    {event?.start_time &&
-                      new Date(event.start_time).toLocaleTimeString("sv-SE", {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                  </div>
-                </div>
-                <div className="top-2 right-2 absolute group-hover:-top-24 transition-all duration-700 ease-in-out ">
-                  {(event?.cost ?? 0) > 0 ? (
-                    <div className=" text-green-600 px-3  border-2  rounded-full border-green-400 bg-green-200 ">
-                      {event.cost} kr
-                    </div>
-                  ) : (
-                    <div className="text-green-600 px-3  border-2  rounded-full border-green-400 bg-green-200 ">
-                      {t("free")}
-                    </div>
+                <div className=" h-1/2 flex flex-col justify-start ">
+                  {event.title && (
+                    <h3 className="text-center text-lg font-bold mt-0 no-underline">
+                      {event.title}
+                    </h3>
                   )}
-                </div>
-                <div className="absolute bottom-0 w-full bg-black bg-opacity-70 px-2 py-3 h-2/5 group-hover:h-full transition-all duration-500 ease-in-out ">
-                  <h3 className="text-white mt-0 mb-1">{event.title}</h3>
-                  <p className="text-white mb-1 line-clamp-2">
-                    {event.short_description}
-                  </p>
-                </div>
+                  {event.short_description && (
+                    <p className="text-center text-sm no-underline">{event.short_description}</p>
+                  )}
+
+            </div>
               </Link>
             );
           })}

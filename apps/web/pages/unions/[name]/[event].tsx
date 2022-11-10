@@ -130,30 +130,28 @@ const Union: NextPage<Props> = ({ union, event }) => {
   );
 };
 //For some reason this breaks Vercel build atm after migration to turbo repo
-/* export const getServerSideProps: GetServerSideProps<Props> = async ({
-  locale,
-  query,
-}: GetServerSidePropsContext) => {
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+
   const supabaseClient = createBrowserSupabaseClient<Database>();
 
   const { data: union } = await supabaseClient
     .from("unions")
     .select("*")
-    .ilike("name", query.name as string)
+    .ilike("name", ctx.query.name as string)
     .single();
   const { data: event } = await supabaseClient
     .from("unionevents")
     .select("*")
-    .ilike("url_slug", query.event as string)
+    .ilike("url_slug", ctx.query.event as string)
     .single();
 
   return {
     props: {
       union,
       event,
-      ...(await serverSideTranslations(locale as string, ["common"])),
+      ...(await serverSideTranslations(ctx.locale as string, ["common"])),
     },
   };
 };
- */
+
 export default Union;
