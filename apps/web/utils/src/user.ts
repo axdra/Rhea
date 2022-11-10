@@ -59,3 +59,42 @@ export const KronoxPoll = (token: string): Promise<boolean> => {
         }
     })
 }
+
+export const GetValidKronoxSession = async (session: string ): Promise<IKronoxUserAuthResponse> => {
+    
+    
+    return new Promise(async (resolve, reject) => { 
+        const req = await fetch(`${endpoint}ajax/ajax_session.jsp?op=poll`, {
+            headers: {
+                cookie: `JSESSIONID=${session}`,
+            },
+        });
+        const pollR = await req.text();
+        if (pollR !== "OK") {
+
+            reject("Session expired");
+
+        }
+        const res = await fetch(`${endpoint}start.jsp`, {
+        headers: {
+            cookie: `JSESSIONID=${session}`,
+        },
+    })
+    const responseText = await res.text()
+    const doc = parse(responseText)
+    const name = doc.querySelector("body > div.main > div.pagediv > div > div:nth-child(2) > p:nth-child(1) > b")?.text.replace("Hej",'').replace("!",'').trim();
+    const username = doc.querySelector("#topnav > span")?.text.split("[")[1].split("]")[0];
+    
+
+    if (res.status == 200 && name && username) {
+        resolve({
+            username: username,
+            name: name,
+            token: session,
+        });
+    }
+    else {
+        reject("Failed to login");
+    }
+    })
+}

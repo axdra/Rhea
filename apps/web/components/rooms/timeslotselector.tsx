@@ -61,10 +61,10 @@ const TimeSlotSelector: FC<ITimeSlotSelectorProps> = (props) => {
             </div>
             {props.days.map((day, indexDay) => {
                 return (
-                    <div key={indexDay} className="flex flex-col gap-2" >
+                    <div key={indexDay} className="flex flex-col gap-2 justify-end" >
                         {day.map((timeslot, indexTimeSlot) => {
                             return (
-                                <div key={indexTimeSlot} onClick={()=>props.onSelected(indexDay,indexTimeSlot)} className={`${timeslot ?"bg-green-500/20 text-green-500 border-green-500 hover:bg-green-500 hover:text-green-900" :"bg-orange-500/20 text-orange-500 border-orange-500 hover:bg-orange-500 hover:text-orange-900"}  aspect-square text-center flex justify-center items-center border transition-colors cursor-pointer `}>
+                                <div key={indexTimeSlot} onClick={()=>{if(timeslot)props.onSelected(indexDay,indexTimeSlot)}} className={`${timeslot ?" bg-green-500/20 text-green-500 border-green-500 hover:bg-green-500 hover:text-green-900  cursor-pointer" :"bg-orange-500/20 text-orange-500 border-orange-500 hover:bg-orange-500 hover:text-orange-900 cursor-not-allowed"}  aspect-square text-center flex justify-center items-center border transition-colors select-none `}>
                                     {timeslot ? "Free" : "Fully Booked"}
 
                                 </div>

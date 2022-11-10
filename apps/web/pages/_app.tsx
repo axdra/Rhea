@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import { Database } from '../../../types.gen';
 import Layout from '../components/layout';
+import { RheaUserContext } from '../context/usercontext';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <SessionContextProvider
       supabaseClient={supabaseClient}
     >
+      <RheaUserContext>
       <Layout>
         <Head>
           <meta name="apple-mobile-web-app-status-bar" content="#fff" />
@@ -26,6 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         <Component {...pageProps} />
       </Layout>
+      </RheaUserContext>
     </SessionContextProvider>
   )
 }

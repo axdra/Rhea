@@ -1,4 +1,4 @@
-import { SunIcon } from "@heroicons/react/24/outline";
+import { BoltIcon, CloudIcon, SunIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 
 interface IIconProps {
@@ -62,17 +62,19 @@ const WeatherIcon = (props: IIconProps) => {
             case "sun":
                 return <SunIcon className="w-6 h-6 dark:text-white " strokeWidth={2} />
             case "clouds":
-                return
+                return <CloudIcon className="w-6 h-6 dark:text-white " strokeWidth={2} />
+                
             case "fog":
-                return
+                return <CloudIcon className="w-6 h-6 dark:text-white " strokeWidth={2} />
             case "rain":
-                return
+                return <CloudIcon className="w-6 h-6 dark:text-white " strokeWidth={2} />
+
             case "thunder":
-                return 
+                return <BoltIcon className="w-6 h-6 dark:text-white " strokeWidth={2} />
             case "sleet":
-                return 
+                return <CloudIcon className="w-6 h-6 dark:text-white " strokeWidth={2} />
             case "snow":
-                return 
+                return <CloudIcon className="w-6 h-6 dark:text-white " strokeWidth={2} />
             default:
                 return 
         }

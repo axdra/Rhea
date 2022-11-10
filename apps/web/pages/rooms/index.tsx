@@ -11,15 +11,16 @@ import Button from "../../components/Button";
 import TimeSlotSelector from "../../components/rooms/timeslotselector";
 import TimeView from "../../components/rooms/timeview";
 import { Transition } from "@headlessui/react";
+import { useUserContext } from "../../context/usercontext";
 
 const Rooms: NextPage = () => { 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { t } = useTranslation();
     const { supabaseClient } = useSessionContext();
-
+    const {getKSession, setKSession} = useUserContext();
     const [selectedDay, setSelectedDay] = useState<number | null>(null);
     const [selectedTime, setSelectedTime] = useState<number | null>(null);
-    const [user, setUser] = useState<IKronoxUserAuthResponse>();
+    const [user, setUser] = useState<IKronoxUserAuthResponse | null>();
     const [days, setDays] = useState<IKronoxBookingRoom[][]>([]);
     const [timeslotDays, setTimeslotDays] = useState<boolean[][]>([]);
     const [bookedRoom, setBookedRoom] = useState<string | null>(null);
@@ -27,6 +28,19 @@ const Rooms: NextPage = () => {
     useEffect(() => {
         setTimeout(()=>setBookedRoom(null), 2500);
     }, [bookedRoom])
+
+    useEffect(() => {
+         getKSession().then((session:IKronoxUserAuthResponse) => {
+        console.log(session)
+        if(session) {
+            setUser(session)
+        }
+    }).catch((err:any) => {
+        console.log(err)
+        setUser(null);
+    })
+    }, [])
+
 
     const login = (username:string,password:string) => {
         
@@ -48,6 +62,7 @@ const Rooms: NextPage = () => {
             ).then((data) => {
                 data.json().then((data) => {
                     setUser(data);
+                    setKSession(data.token);
                 })
             }
             );
