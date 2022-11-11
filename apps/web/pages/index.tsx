@@ -1,8 +1,9 @@
 import { createServerSupabaseClient, withPageAuth } from "@supabase/auth-helpers-nextjs";
-import { useUser } from "@supabase/auth-helpers-react";
-import type { GetServerSideProps, NextPage } from "next";
+import { SupabaseClient, useUser } from "@supabase/auth-helpers-react";
+import type { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { Database } from "../../../types.gen";
 import CallToAction from "../components/splash/callToAction";
 import Mock from "../components/splash/mock";
 import BookedRooms from "../components/userSplash/bookedRooms";
@@ -14,11 +15,11 @@ type PageProps = {
   issues: any[] | null;
   weather_code: number;
   temp: number;
+  user: any;
 };
 
-const Home: NextPage<PageProps> = ({ issues,weather_code, temp }) => {
+const Home: NextPage<PageProps> = ({ issues,weather_code, temp,user }) => {
   const { t } = useTranslation();
-  const user = useUser();
 
   if (user) {
     return (
@@ -28,7 +29,7 @@ const Home: NextPage<PageProps> = ({ issues,weather_code, temp }) => {
           <h1 className="text-5xl font-medium break-words dark:text-white ">
             {Greet(
               user
-                .email!.split("@")[0]
+                .email?.split("@")[0]
                 .split(".")
                 .map((x) => {
                   return x[0].toUpperCase() + x.slice(1);
@@ -79,21 +80,27 @@ const Home: NextPage<PageProps> = ({ issues,weather_code, temp }) => {
 
 
 
-export const getServerSideProps: GetServerSideProps<PageProps> =
-  async ({ locale, ...context }) => {
+export const getServerSideProps = withPageAuth({
+  async getServerSideProps(
+    context: GetServerSidePropsContext,
+    supabaseClient: SupabaseClient<Database>,
+    
+  ) {
     const { data: issues } = await createServerSupabaseClient(context).from("issues").select("*");
-    const { data }  = await createServerSupabaseClient(context).from("weather").select("*").match({ location: "mdu" }).single();
-    console.log(data);
+    const { data: user } = await supabaseClient.auth.getUser();
+    const { data } = await createServerSupabaseClient(context).from("weather").select("*").match({ location: "mdu" }).single();
     const temp = data?.temp || 0;
     const weather_code = data?.weather_code || "clearsky";
-  return {
-    props: {
-      issues: issues ?? null,
-      temp,
-      weather_code,
-      ...(await serverSideTranslations(locale as string, ['common'])),
-    },
-  };
-};
+    return {
+      props: {
+        issues: issues ?? null,
+        temp,
+        weather_code,
+        user: user.user ?? null,
+        ...(await serverSideTranslations(context.locale as string, ["common"])),
+      },
+    };
+  }
+});
 
 export default Home;

@@ -95,7 +95,7 @@ const TimeSlotSelector: FC<ITimeSlotSelectorProps> = (props) => {
                     <div key={indexDay} className="flex flex-col gap-2 justify-end" >
                         {day.map((timeslot, indexTimeSlot) => {
                             return (
-                                <div key={indexTimeSlot} onClick={() => { if (timeslot) props.onSelected(indexDay, indexTimeSlot) }} className={`${getTimeSlotColors(timeslot, 35)}   aspect-square text-center flex justify-center items-center border transition-colors select-none `}>
+                                <div key={indexTimeSlot} onClick={() => { if (timeslot) props.onSelected(indexDay, indexTimeSlot) }} className={`${getTimeSlotColors(timeslot, 35)}   aspect-square text-center flex justify-center items-center border-2 rounded-lg font-medium hover:font-bold transition-colors select-none `}>
                                     {timeslot ? "Free" : "Full"}
 
                                 </div>
@@ -147,7 +147,7 @@ const TimeSlotSelector: FC<ITimeSlotSelectorProps> = (props) => {
                     <div  className="flex flex-col gap-2 justify-end col-span-2" >
                         {props.days[currentDay].map((timeslot, indexTimeSlot) => {
                             return (
-                                <div key={indexTimeSlot} onClick={() => { if (timeslot) props.onSelected(currentDay, indexTimeSlot) }} className={`${getTimeSlotColors(timeslot, 35)}   h-24 text-center flex justify-center items-center border transition-colors select-none `}>
+                                <div key={indexTimeSlot} onClick={() => { if (timeslot) props.onSelected(currentDay, indexTimeSlot) }} className={`${getTimeSlotColors(timeslot, 35)}   h-24 text-center flex justify-center items-center  transition-colors select-none `}>
                                     {timeslot ? "Free" : "Full"}
 
                                 </div>
