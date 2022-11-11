@@ -144,7 +144,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     .select("*")
     .ilike("url_slug", ctx.query.event as string)
     .single();
-
+  
   return {
     props: {
       union,

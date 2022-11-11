@@ -83,7 +83,7 @@ const Union: NextPage<Props> = ({ union, unionPage, events }) => {
             <Link
               href="/unions/[name]/edit"
               as={`/unions/${union?.name.toLowerCase()}/edit`}
-              className="no-underline rounded-md px-6 py-1 border hover:opacity-80"
+              className="no-underline rounded-md px-6 py-1 border-2 hover:opacity-80"
               style={{
                 backgroundColor: union?.color + "30",
                 borderColor: union?.color ?? "",
@@ -94,13 +94,28 @@ const Union: NextPage<Props> = ({ union, unionPage, events }) => {
           )}
         </div>
         <p>{union?.description}</p>
+        <div className="w-64 sm:hidden block  ">
+          <h2 className="text-lg text-bold">{t("unionSidebar")}</h2>
+          {(
+            sidebar?.items as {
+              name: string;
+              url: string;
+            }[]
+          )?.map((page) => {
+            return (
+              <Link key={page.name} href={`${page.url}`}>
+                <h3>{page.name}</h3>
+              </Link>
+            );
+          })}
+        </div>
         <div className="flex items-center gap-4 mb-10 mt-10">
           <h2 className="mb-0 mt-0">{t("unionEvents")}</h2>
           {isAdmin && (
             <Link
               href="/unions/[name]/new-event"
               as={`/unions/${union?.name.toLowerCase()}/new-event`}
-              className="no-underline rounded-md px-6 py-1 border  hover:opacity-80"
+              className="no-underline rounded-md px-6 py-1 border-2  hover:opacity-80"
               style={{
                 backgroundColor: union?.color + "30",
                 borderColor: union?.color ?? "",
@@ -116,22 +131,48 @@ const Union: NextPage<Props> = ({ union, unionPage, events }) => {
               <Link
                 key={event.id}
                 href={`/unions/${union?.name.toLowerCase()}/${event.url_slug}`}
-                className="aspect-square w-full shadow-lg  overflow-hidden rounded-xl transition-all hover:shadow-lg group dark:bg-black dark:border-white border-2 flex-col justify-center flex  items-center no-prose "
+                className="aspect-square w-full shadow-lg  overflow-hidden rounded-xl transition-all hover:shadow-lg group dark:bg-black dark:border-white border-2 flex-col justify-center flex  items-center no-prose p-5 relative no-underline"
               >
+                {event.cover_image ? (
                 <img
-                  className="    object-cover rounded-lg h-1/2 aspect-square group-hover:scale-110 transition-all duration-300 " 
+                  className=" object-cover relative object-cover rounded-lg h-1/2 group-hover:h-full w-full group-hover:delay-300 group-hover:scale-105 transition-all duration-300 mt-0 mb-0" 
                   src={event.cover_image ?? ""}
                   alt={event.title ?? ""}
                 />
-                <div className=" h-1/2 flex flex-col justify-start ">
+                ) : (
+                    <div className="relative object-cover rounded-lg h-1/2 group-hover:h-full w-full group-hover:delay-300 group-hover:scale-105 transition-all duration-300 mt-0 mb-0" style={{
+                      backgroundColor: union?.color + "ff",
+                    }}></div>
+                    
+                )}
+
+                <div className="absolute bottom-0 left-0 right-0 bg-white h-full dark:bg-black bg-opacity-90 dark:bg-opacity-90 p-5 group-hover:opacity-100 opacity-0 group-hover:delay-500 group-hover:duration-300 delay-[0s] duration-75 flex justify-center items-center ">
+           
+                  <p>Go to event</p>
+                </div>
+
+                
+                <div className=" h-1/2 flex flex-col justify-start w-full group-hover:h-0 duration-300 group-hover:delay-[0s] delay-300 group-hover:opacity-0 opacity-100  ">
                   {event.title && (
-                    <h3 className="text-center text-lg font-bold mt-0 no-underline">
+                    <h3 className=" text-lg font-bold mt-2 ">
                       {event.title}
                     </h3>
                   )}
                   {event.short_description && (
-                    <p className="text-center text-sm no-underline">{event.short_description}</p>
+                    <p className=" text-sm ">{event.short_description}</p>
                   )}
+                  <div>
+                    {event?.start_time &&
+                      new Date(event?.start_time).toLocaleDateString()}
+                  </div>
+
+                  <div>
+                    {event?.start_time &&
+                      new Date(event.start_time).toLocaleTimeString("sv-SE", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                  </div>
 
             </div>
               </Link>
@@ -139,7 +180,7 @@ const Union: NextPage<Props> = ({ union, unionPage, events }) => {
           })}
         </div>
       </div>
-      <div className="w-64">
+      <div className="w-64 sm:block hidden  ">
         <h2 className="text-lg text-bold">{t("unionSidebar")}</h2>
         {(
           sidebar?.items as {
@@ -175,8 +216,12 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     .select("*")
     .eq("id", union?.id)
     .single();
-  const events = union?.unionevents as UnionEvent[]
-
+  let events = union?.unionevents as UnionEvent[]
+  events = events.filter((event) => {
+    return new Date(event.end_time!) > new Date();
+  }).sort((a, b) => {
+    return new Date(a.start_time!).getTime() - new Date(b.start_time!).getTime();
+  });
  
   return {
     props: {

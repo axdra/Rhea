@@ -1,9 +1,9 @@
 import { FC, HTMLProps } from "react";
-import WeatherIcon from "./weatherIcon";
+import WeatherIcon, { WeatherLookup } from "./weatherIcon";
 
 interface IWeatherWidgetProps extends HTMLProps<HTMLDivElement> {
     temp: number;
-    weather_code: string;
+    weather_code: keyof typeof WeatherLookup;
 }
 
 const WeatherWidget: FC<IWeatherWidgetProps> = (props: IWeatherWidgetProps) => {
