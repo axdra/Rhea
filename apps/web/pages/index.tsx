@@ -22,7 +22,7 @@ const Home: NextPage<PageProps> = ({ issues,weather_code, temp }) => {
 
   if (user) {
     return (
-      <div className="flex justify-center pt-24 flex-1 bg-splash dark:bg-splash-dark pb-20  ">
+      <div className="flex justify-center pt-24 flex-1 bg-splash dark:bg-splash-dark  pb-20  ">
         <div className="max-w-[100rem] w-full flex  px-10 flex-col gap-10 ">
     <div className="flex justify-between items-center">
           <h1 className="text-5xl font-medium break-words dark:text-white ">

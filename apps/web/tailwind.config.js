@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       backgroundImage: theme => ({
         'splash': "url('/images/bg.jpg')",
-        'splash-dark': "url('/images/bg-dark.jpg')",
+        'splash-dark': "url('/images/bg-dark-t.jpg')",
       })
       ,
       boxShadow: {
