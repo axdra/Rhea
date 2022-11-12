@@ -8,18 +8,23 @@ export const GetUserBookings = async (token: string, location: string, date:stri
             datum:  date
         }) , {
         headers: {
-                cookie: `JSESSIONID=${token}`,
+                cookie: `JSESSIONID=${encodeURI(token)}`,
         },
     })
+    
     
     const data = await response.text()
     const doc = parse(data)
     let rooms = doc.querySelectorAll("[id*='post']")
     
-  
+    
     const roomList: any[] =   rooms.map(room=>{
         return {
-            bookingId: room.getAttribute("id")
+            bookingId: room.getAttribute("id"),
+            name: room.querySelector("div > b")?.text.split(',')[1].trim(),
+            date: room.querySelector("div > a")?.text,
+            startTime: room.querySelector("div")?.text.split(' ')[1].split('-')[0].trim(),
+
         }
 
     })
