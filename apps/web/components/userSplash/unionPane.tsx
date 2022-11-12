@@ -16,7 +16,7 @@ const UnionPane: FC<IUnionPaneProps> = (props) => {
                 return <div className="w-1/4 rounded-lg dark:bg-neutral-900/20  h-full p-4 border-2 dark:border-white/20 justify-between flex flex-col  relative group cursor-pointer">
                     <div>
                     <div className="mb-4">
-                    <h1 className="text-lg font-bold">{event.title}</h1>
+                    <h1 className="text-lg font-bold line-clamp-1">{event.title}</h1>
                             <h2 className="text-sm mb-2 "
                                 style={{
                                     color: event.union.color
