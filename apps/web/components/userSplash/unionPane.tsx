@@ -29,7 +29,7 @@ const UnionPane: FC<IUnionPaneProps> = (props) => {
                         }
                     </div>
               
-                        <p className="text-sm ">{event.short_description}</p>
+                        <p className="text-sm line-clamp-2">{event.short_description}</p>
                  
                     <div className="flex justify-between text-sm">
                         <div>
