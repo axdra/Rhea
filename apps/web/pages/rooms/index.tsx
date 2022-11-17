@@ -20,9 +20,10 @@ const Rooms: NextPage = () => {
     const {getKSession, setKSession} = useUserContext();
     const [selectedDay, setSelectedDay] = useState<number | null>(null);
     const [selectedTime, setSelectedTime] = useState<number | null>(null);
-    const [user, setUser] = useState<IKronoxUserAuthResponse | null>();
+    const [user, setUser] = useState<IKronoxUserAuthResponse | null>(null);
     const [days, setDays] = useState<IKronoxBookingRoom[][]>([]);
-    const [timeslotDays, setTimeslotDays] = useState<boolean[][]>([]);
+    const [failedToLogin, setFailedToLogin] = useState(false);
+    const [timeslotDays, setTimeslotDays] = useState<number[][]>([]);
     const [bookedRoom, setBookedRoom] = useState<string | null>(null);
 
     useEffect(() => {
@@ -31,8 +32,7 @@ const Rooms: NextPage = () => {
 
     useEffect(() => {
          getKSession().then((session:IKronoxUserAuthResponse) => {
-        console.log(session)
-        if(session) {
+        if(!Object.keys(session).includes('error')) {
             setUser(session)
         }
     }).catch((err:any) => {
@@ -60,12 +60,19 @@ const Rooms: NextPage = () => {
                     
                 }
             ).then((data) => {
+                if(data.status === 200) {
                 data.json().then((data) => {
                     setUser(data);
                     setKSession(data.token);
                 })
-            }
-            );
+                    
+                }
+                else {
+                    setUser(null);
+                    setFailedToLogin(true);
+                }
+            })
+            
         });
     }
     const handleLoginForm = (e: React.FormEvent<HTMLFormElement>) => {
@@ -107,19 +114,24 @@ const Rooms: NextPage = () => {
             const timeslotDays = [];
             for (let index = 0; index < days.length; index++) {
                 const day = days[index];
-                const timeslotDay = [];
+                const timeslotDay:number[] = [];
                 for (let index = 0; index < day.length; index++) {
                     const room = day[index];
                     for (let index = 0; index < room.timeSlots.length; index++) {
                         const timeslot = room.timeSlots[index];
                         if(timeslot.isBookable){
-                            if(timeslotDay[index] === undefined || timeslotDay[index] === false){
-                            timeslotDay[index] = true;
+                            if (timeslotDay[index] === undefined) {
+                                timeslotDay[index] = 1;
+                            
                             }
+                            else {
+                                timeslotDay[index] += 1;
+                            }
+
                             
                         }else{
-                            if(timeslotDay[index] !== true){
-                                timeslotDay[index] = false;
+                            if (timeslotDay[index] === undefined){
+                                timeslotDay[index] = 0;
                             }
                         }
                     }
@@ -200,16 +212,16 @@ const Rooms: NextPage = () => {
                 </>
           }
           {
-            user === undefined &&
+            user === null &&
           <form onSubmit={handleLoginForm} className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
                 <label className="text-sm" htmlFor="username">Username</label>
-            <input type="text" name="username"   className="dark:bg-black dark:border-white dark:text-white rounded-lg dark:placeholder:text-white/50" placeholder="Kronox Username"/>
+                                <input type="text" name="username" onChange={()=>setFailedToLogin(false)} className={`${failedToLogin && "border-red-500 dark:border-red-500 dark:placeholder:text-red-500/100"} duration-300 transition-all dark:bg-black dark:border-white dark:text-white rounded-lg dark:placeholder:text-white/50  border-2 `} placeholder="Kronox Username"/>
             
             </div>
             <div className="flex flex-col gap-1">
                 <label className="text-sm" htmlFor="password">Password</label>
-            <input type="password" name="password"  className="dark:bg-black dark:border-white dark:text-white rounded-lg dark:placeholder:text-white/50" placeholder="Kronox Password"/>
+                                <input type="password" name="password" onChange={()=>setFailedToLogin(false)} className={`${failedToLogin && "border-red-500 dark:border-red-500 dark:placeholder:text-red-500/100"} duration-300 transition-all dark:bg-black dark:border-white dark:text-white rounded-lg dark:placeholder:text-white/50  border-2 `} placeholder="Kronox Password"/>
           
             </div>  
             

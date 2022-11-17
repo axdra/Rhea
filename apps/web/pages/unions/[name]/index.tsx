@@ -83,7 +83,7 @@ const Union: NextPage<Props> = ({ union, unionPage, events }) => {
             <Link
               href="/unions/[name]/edit"
               as={`/unions/${union?.name.toLowerCase()}/edit`}
-              className="no-underline rounded-md px-6 py-1 border hover:opacity-80"
+              className="no-underline rounded-md px-6 py-1 border-2 hover:opacity-80"
               style={{
                 backgroundColor: union?.color + "30",
                 borderColor: union?.color ?? "",
@@ -94,13 +94,28 @@ const Union: NextPage<Props> = ({ union, unionPage, events }) => {
           )}
         </div>
         <p>{union?.description}</p>
+        <div className="w-64 sm:hidden block  ">
+          <h2 className="text-lg text-bold">{t("unionSidebar")}</h2>
+          {(
+            sidebar?.items as {
+              name: string;
+              url: string;
+            }[]
+          )?.map((page) => {
+            return (
+              <Link key={page.name} href={`${page.url}`}>
+                <h3>{page.name}</h3>
+              </Link>
+            );
+          })}
+        </div>
         <div className="flex items-center gap-4 mb-10 mt-10">
           <h2 className="mb-0 mt-0">{t("unionEvents")}</h2>
           {isAdmin && (
             <Link
               href="/unions/[name]/new-event"
               as={`/unions/${union?.name.toLowerCase()}/new-event`}
-              className="no-underline rounded-md px-6 py-1 border  hover:opacity-80"
+              className="no-underline rounded-md px-6 py-1 border-2  hover:opacity-80"
               style={{
                 backgroundColor: union?.color + "30",
                 borderColor: union?.color ?? "",
@@ -116,14 +131,36 @@ const Union: NextPage<Props> = ({ union, unionPage, events }) => {
               <Link
                 key={event.id}
                 href={`/unions/${union?.name.toLowerCase()}/${event.url_slug}`}
-                className="aspect-square w-full shadow-lg relative overflow-hidden rounded-lg transition-all hover:shadow-lg group"
+                className="aspect-square w-full shadow-lg  overflow-hidden rounded-xl transition-all hover:shadow-lg group dark:bg-black dark:border-white border-2 flex-col justify-center flex  items-center no-prose p-5 relative no-underline"
               >
+                {event.cover_image ? (
                 <img
-                  className="absolute  w-full  aspect-square object-cover top-0 mt-0"
+                  className=" object-cover relative object-cover rounded-lg h-1/2 group-hover:h-full w-full group-hover:delay-300 group-hover:scale-105 transition-all duration-300 mt-0 mb-0" 
                   src={event.cover_image ?? ""}
                   alt={event.title ?? ""}
                 />
-                <div className="absolute top-2 left-2  bg-white text-black rounded px-2 py-1 group-hover:-top-24 transition-all duration-700 ease-in-out  ">
+                ) : (
+                    <div className="relative object-cover rounded-lg h-1/2 group-hover:h-full w-full group-hover:delay-300 group-hover:scale-105 transition-all duration-300 mt-0 mb-0" style={{
+                      backgroundColor: union?.color + "ff",
+                    }}></div>
+                    
+                )}
+
+                <div className="absolute bottom-0 left-0 right-0 bg-white h-full dark:bg-black bg-opacity-90 dark:bg-opacity-90 p-5 group-hover:opacity-100 opacity-0 group-hover:delay-500 group-hover:duration-300 delay-[0s] duration-75 flex justify-center items-center ">
+           
+                  <p>Go to event</p>
+                </div>
+
+                
+                <div className=" h-1/2 flex flex-col justify-start w-full group-hover:h-0 duration-300 group-hover:delay-[0s] delay-300 group-hover:opacity-0 opacity-100  ">
+                  {event.title && (
+                    <h3 className=" text-lg font-bold mt-2 ">
+                      {event.title}
+                    </h3>
+                  )}
+                  {event.short_description && (
+                    <p className=" text-sm ">{event.short_description}</p>
+                  )}
                   <div>
                     {event?.start_time &&
                       new Date(event?.start_time).toLocaleDateString()}
@@ -136,30 +173,14 @@ const Union: NextPage<Props> = ({ union, unionPage, events }) => {
                         minute: "2-digit",
                       })}
                   </div>
-                </div>
-                <div className="top-2 right-2 absolute group-hover:-top-24 transition-all duration-700 ease-in-out ">
-                  {(event?.cost ?? 0) > 0 ? (
-                    <div className=" text-green-600 px-3  border-2  rounded-full border-green-400 bg-green-200 ">
-                      {event.cost} kr
-                    </div>
-                  ) : (
-                    <div className="text-green-600 px-3  border-2  rounded-full border-green-400 bg-green-200 ">
-                      {t("free")}
-                    </div>
-                  )}
-                </div>
-                <div className="absolute bottom-0 w-full bg-black bg-opacity-70 px-2 py-3 h-2/5 group-hover:h-full transition-all duration-500 ease-in-out ">
-                  <h3 className="text-white mt-0 mb-1">{event.title}</h3>
-                  <p className="text-white mb-1 line-clamp-2">
-                    {event.short_description}
-                  </p>
-                </div>
+
+            </div>
               </Link>
             );
           })}
         </div>
       </div>
-      <div className="w-64">
+      <div className="w-64 sm:block hidden  ">
         <h2 className="text-lg text-bold">{t("unionSidebar")}</h2>
         {(
           sidebar?.items as {
@@ -179,34 +200,37 @@ const Union: NextPage<Props> = ({ union, unionPage, events }) => {
 };
 //For some reason this breaks Vercel build atm after migration to turbo repo
 
-/* 
-export const getServerSideProps: GetServerSideProps<Props> = async ({
-  locale,
-  query,
-}: GetServerSidePropsContext) => {
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+
   const supabaseClient = createBrowserSupabaseClient<Database>();
+  const name = ctx.query.name as string;
 
   const { data: union } = await supabaseClient
     .from("unions")
     .select("*, unionevents(*)")
-    .ilike("name", query.name as string)
+    .ilike("name", name as string)
     .single();
   const { data: unionPage } = await supabaseClient
     .from("unionpage")
     .select("*")
     .eq("id", union?.id)
     .single();
-  const events = union?.unionevents as UnionEvent[]
-
+  let events = union?.unionevents as UnionEvent[]
+  events = events.filter((event) => {
+    return new Date(event.end_time!) > new Date();
+  }).sort((a, b) => {
+    return new Date(a.start_time!).getTime() - new Date(b.start_time!).getTime();
+  });
  
   return {
     props: {
       union,
       unionPage: unionPage ,
       events,
-      ...(await serverSideTranslations(locale as string, ["common"])),
+      ...(await serverSideTranslations(ctx.locale as string, ["common"])),
     },
   };
-}; */
+}; 
 
 export default Union;

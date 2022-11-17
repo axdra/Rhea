@@ -6,7 +6,7 @@ interface IIconProps {
 }
 
 
-const WeatherLookup = {
+export const WeatherLookup = {
 "clearsky":"sun",
 "cloudy":"clouds",
 "fair":"sun",

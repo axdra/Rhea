@@ -2,26 +2,27 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import getSchema from '../../utils/getSchema';
 import { GetUserBookings } from '../../utils/src/bookings';
+import { decryptKronoxSession, encryptKronoxSession } from '../../utils/src/crypto';
 import {KronoxLogin, KronoxPoll} from '../../utils/src/user'
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<any>
 ) {
-    KronoxLogin({
-        username: process.env.KRONOX_USERNAME ?? "",
-        password: process.env.KRONOX_PASSWORD ?? "",
-    }).then(async (user) => {
-        const schema = await GetUserBookings(user.token,"FLIK_0001","22-11-07");
-        res.status(200).json({ lol:schema, user: user })
-    }
-    ).catch((err) => {
-        res.status(500).json(err)
+    //time how long it takes to run the function
+    const start = Date.now();
+    const toEncrypt = "SbIXFQLen-6kgA2XMw4rbFX8ZN_gsPxmOuIiFpou.kronoxprod";
+    const encrypted = encryptKronoxSession(toEncrypt);
+    const decrypted = decryptKronoxSession(encrypted);
+    //end time
+    const end = Date.now();
+    //get the time it took to run the function
+    const time = end - start;
+    console.log("Time to run: " + time + "ms");
+    res.status(200).json({ encrypted, decrypted })
 
-    }
         
         
-    )
 
     
 }

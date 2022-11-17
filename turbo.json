@@ -12,7 +12,9 @@
       "$KRONOX_COOKIE",
       "$KRONOX_USERNAME",
       "$KRONOX_PASSWORD",
-      "$SUPABASE_SECRET_KEY"],
+      "$SUPABASE_SECRET_KEY",
+      "$ENCRYPTION_KEY",
+      "$PUBLIC_ENCRYPTION_KEY"],
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {

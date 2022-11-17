@@ -1,10 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
-import { User } from "@supabase/supabase-js";
 import { NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
 import Button from "../../components/Button";
