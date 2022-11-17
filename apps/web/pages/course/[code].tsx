@@ -36,14 +36,14 @@ const Course: NextPage<Props> = ({ course, calendars }) => {
           <Link
             key={calendar.code}
             href={`/calendar/${calendar.code}`}
-            className="flex sm:flex-row gap-6 flex-col items-center justify-between border rounded-xl dark:bg-black dark:border-white dark:hover:bg-white dark:hover:text-black border-gray-200 bg-black/20 py-5 px-4 shadow-sm sm:gap-2 hover:bg-gray-50 hover:shadow transition-all duration-300"
+            className="bg-white flex sm:flex-row gap-6 flex-col  items-center justify-between border rounded-xl dark:bg-black dark:border-white dark:hover:bg-white dark:hover:text-black border-gray-200 dark-bg-black/20 py-5 px-4 shadow-sm sm:gap-2 hover:bg-gray-50 hover:shadow transition-all duration-300 bg-opacity-100"
           >
             <div>
               <h2>{calendar.name}</h2>
               <h3 className="font-medium">{calendar.code}</h3>
             </div>
             <div>
-              <div className="text-black hover:text-white py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap dark:border  dark:bg-black dark:border-white dark:hover:bg-white dark:text-white  hover:dark:text-black">
+              <div className="text-black hover:bg-gray-200 duration-300  py-2 px-5 bg-white shadow rounded-xl  whitespace-nowrap dark:border  dark:bg-black dark:border-white dark:hover:bg-white dark:text-white  hover:dark:text-black">
                 {t("goToCalendar")}
               </div>
             </div>
