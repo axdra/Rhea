@@ -51,6 +51,8 @@ export const KronoxPoll = (token: string): Promise<boolean> => {
             },
         });
         const res = await req.text();
+        console.log(req.status);
+        console.log(req.statusText);
         if (res === "OK") {
             resolve(true);
         }

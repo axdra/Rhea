@@ -15,7 +15,6 @@ export const getRooms = async (session: string, location:string, date:string):Pr
     })
     const data = await response.text(); 
     const doc = parse(data);
-    console.log(data)
     const rooms:IKronoxBookingRoom[] = [];
     const roomElements = doc.querySelectorAll('tr').slice(1);
     roomElements.forEach(roomElement => {

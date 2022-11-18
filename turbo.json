@@ -14,6 +14,7 @@
       "$KRONOX_PASSWORD",
       "$SUPABASE_SECRET_KEY",
       "$ENCRYPTION_KEY",
+      "$UTILS_AUTH",
       "$PUBLIC_ENCRYPTION_KEY"],
       "outputs": ["dist/**", ".next/**"]
     },
