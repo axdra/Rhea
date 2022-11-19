@@ -76,5 +76,7 @@
     "update": "Update",
     "recentSearched": "Last searched courses",
     "newUnionTitle": "Create new union",
-    "newUnionText": "Request to create a new union!"
+    "newUnionText": "Request to create a new union!",
+    "contact": "Contact",
+    "contactText": "For any inquiries, please contact us here"
 }

@@ -9,15 +9,15 @@ const fourOFour: NextPage = () => {
     const { t } = useTranslation();
     return (
     <>
-        <div className="h-full flex flex-col justify-center items-center flex-1 px-4 text-center gap-1 dark:text-white fixed w-screen">
-                <h1 className="text-[25vw]">Rhea.</h1>
-                <a href="#about" className="z-10">
-                    <ChevronDownIcon className="h-8 w-8 animate-bounce" />
-                </a>
-        </div>
-            <div className="fixed top-0 max-h-screen w-screen z-0 overflow-y-auto px-4">
-                <a href="#about" className="h-screen z-0 block" />
-                <div id="about"  className="min-h-screen bg-white z-20 md:pt-16 dark:bg-black dark:text-white flex justify-center">
+
+            <div className=" z-0   px-4 flex flex-col">
+                <div className="h-full flex-1 flex flex-col justify-center items-center  min-h-[calc(100vh-4rem)] px-4 text-center gap-1 dark:text-white  ">
+                    <h1 className="md:text-[20vw] text-[25vw] transition-all duration-300">Rhea.</h1>
+                    <a href="#about" className="z-10">
+                        <ChevronDownIcon className="h-8 w-8 animate-bounce" />
+                    </a>
+                </div>
+                <div id="about"  className="min-h-screen bg-white  px-10 mb-20 z-20 md:pt-16 dark:bg-black dark:text-white flex justify-center items-center -scroll-m-20 ">
                     <div  className="flex flex-col  max-w-7xl w-full mt-32 prose dark:prose-invert">
                         <h1  >{t('about')}</h1>
                         <p>{t('aboutText')}</p>
@@ -41,6 +41,10 @@ const fourOFour: NextPage = () => {
                                 </li>
                             </ul>
                             
+                        </section>
+                        <section>
+                            <h2>{t('contact')}</h2>
+                            <a href="mailto:axel.draws@outlook.com?subject=Rhea">{t('contactText')}</a>
                         </section>
                         <section>
                             <p className="text-sm text-neutral-500">{t('disclaimer')}</p>
