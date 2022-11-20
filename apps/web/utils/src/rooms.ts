@@ -2,7 +2,28 @@ import parse from "node-html-parser";
 import { endpoint, startTimeLookup } from "./constants";
 import { IKronoxBookingRoom, IKronoxTimeSlot } from "./types/booking";
 
-export const getRooms = async (session: string, location:string, date:string):Promise<IKronoxBookingRoom[]> => {
+
+
+export const getBookableRooms = async (session: string, location: string): Promise<String[]> => {
+     const response = await fetch(`${endpoint}ajax/ajax_resursbokning.jsp?${
+        new URLSearchParams({
+            op: 'hamtaBokningar',
+            flik: location,
+            datum:'00-00-00'
+    })}`, {
+        headers: {
+            'Cookie': `JSESSIONID=${session}`,
+        }
+     })
+        const data = await response.text(); 
+    const doc = parse(data);
+    const rooms = doc.querySelectorAll('.grupprum-kolumn > b').map((e) => e.innerText);
+    return rooms;
+}
+    
+
+
+export const getRoomBookings = async (session: string, location:string, date:string):Promise<IKronoxBookingRoom[]> => {
     const response = await fetch(`${endpoint}ajax/ajax_resursbokning.jsp?${
         new URLSearchParams({
             op: 'hamtaBokningar',
@@ -99,8 +120,4 @@ export const bookRoom = async (session: string, location:string, date:string, ro
         }
     }
     )
-    
-  
-    
-
 }

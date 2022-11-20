@@ -4,7 +4,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { FaGithubSquare } from "react-icons/fa";
 
-const fourOFour: NextPage = () => {
+const About: NextPage = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { t } = useTranslation();
     return (
@@ -25,12 +25,12 @@ const fourOFour: NextPage = () => {
                             <h2>{t('contributors')}</h2>
                             <ul className="list-none">
                                 <li>
-                                    <a href="https://axeldraws.com" target="_blank" rel="noreferrer">
+                                    <a href="https://axeldraws.com" target="_blank" rel="noreferrer noopener">
                                         Axel Draws
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://atholin.se" target="_blank" rel="noreferrer">
+                                    <a href="https://atholin.se" target="_blank" rel="noreferrer noopener">
                                         Alexander Andersson Tholin
                                     </a>
                                 </li>
@@ -69,4 +69,4 @@ export async function getStaticProps({ locale }: any) {
         },
     };
 }
-export default fourOFour;
+export default About;

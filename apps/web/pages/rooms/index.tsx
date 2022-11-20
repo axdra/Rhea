@@ -5,13 +5,14 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useSessionContext } from "@supabase/auth-helpers-react";
 import { IKronoxUserAuthResponse } from "../../utils/src/types/user";
 import { useEffect, useState } from "react";
-import { bookRoom, getRooms } from "../../utils/src/rooms";
+import { bookRoom, getRoomBookings } from "../../utils/src/rooms";
 import { IKronoxBookingRoom } from "../../utils/src/types/booking";
 import Button from "../../components/Button";
 import TimeSlotSelector from "../../components/rooms/timeslotselector";
 import TimeView from "../../components/rooms/timeview";
 import { Transition } from "@headlessui/react";
 import { useUserContext } from "../../context/usercontext";
+import RoomList from "../../components/rooms/roomlist";
 
 const Rooms: NextPage = () => { 
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -25,7 +26,8 @@ const Rooms: NextPage = () => {
     const [failedToLogin, setFailedToLogin] = useState(false);
     const [timeslotDays, setTimeslotDays] = useState<number[][]>([]);
     const [bookedRoom, setBookedRoom] = useState<string | null>(null);
-
+    const [bookableRooms, setBookableRooms] = useState<string[]>([]);
+    const [showRooms, setShowRooms] = useState(false);
     useEffect(() => {
         setTimeout(()=>setBookedRoom(null), 2500);
     }, [bookedRoom])
@@ -88,7 +90,17 @@ const Rooms: NextPage = () => {
 
 
     useEffect(() => {
-        if(user){
+        if (user) {
+            fetch('/api/rooms/getBookableRooms?' + new URLSearchParams({
+                'session': encodeURI(user.token),
+                'flik':'FLIK_0001'
+            })).then((data) => {
+                data.json().then((data) => {
+                    setBookableRooms(data);
+                })
+            })
+
+
             const requests = [];
             for (let index = 0; index < 8; index++) {
                 const date = new Date().setDate(new Date().getDate() + index);
@@ -163,17 +175,27 @@ const Rooms: NextPage = () => {
                 </div>
             </div>
         </Transition>
-
-        
         <div className="h-full flex w-full flex-col justify-center items-center flex-1 dark:text-white">
           {
-            selectedDay === null && selectedTime === null && timeslotDays.length > 0 && days.length > 0 && user &&
+                    selectedDay === null && selectedTime === null && timeslotDays.length > 0 && days.length > 0 && user &&
+                    <>
+                        <div className="max-w-xl w-full flex  flex-col items-center justify-center ">
+                        <div className="self-start " >
+                            <Button className="mb-10" onClick={() => setShowRooms(!showRooms)} buttonStyle={"outlined"}>{showRooms ? t('times') :t("rooms")}</Button>
+                            </div>
+                            <div className="w-full">
+                            {showRooms && <RoomList rooms={bookableRooms} />}
+                            </div>
+                        </div>{ !showRooms &&
             <TimeSlotSelector days={timeslotDays} onSelected={
                 (day, time) => {
                     setSelectedDay(day);
                     setSelectedTime(time);
                 }
-          } />}
+                                
+                            } />}</>}
+          
+            
           {
                 selectedDay !== null && selectedTime !== null &&
                 <>
