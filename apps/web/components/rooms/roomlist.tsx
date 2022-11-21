@@ -9,7 +9,7 @@ interface IRoomListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement
 
 const RoomList: FC<IRoomListProps> = (props) => {
     const { rooms } = props;
-    const [currentRoom, setCurrentRoom] = useState();
+    const [currentRoom, setCurrentRoom] = useState("");
     if (currentRoom) {
         return (
             <div>
