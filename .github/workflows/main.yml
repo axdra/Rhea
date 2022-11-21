@@ -7,6 +7,8 @@ jobs:
 
       - name: Check out repository code
         uses: actions/checkout@v3
+      - run: ls
+      - run: ls ../
       - run: yarn
       - run: yarn test
 
