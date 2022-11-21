@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const { i18n } = require('./next-i18next.config');
+const withTM = require("next-transpile-modules")(["ui","kronox-adapter"]);
 
 const rewrites = () => ([
   {
@@ -18,4 +19,4 @@ const nextConfig = {
   rewrites
 }
 
-module.exports = nextConfig
+module.exports = withTM(nextConfig)

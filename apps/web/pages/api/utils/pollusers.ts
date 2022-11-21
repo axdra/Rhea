@@ -1,8 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { decryptKronoxSession } from '../../../utils/src/crypto';
+import { decryptKronoxSession } from 'kronox-adapter';
 import { createClient } from '@supabase/supabase-js';
-import { KronoxPoll } from '../../../utils/src/user';
+import { KronoxPoll } from 'kronox-adapter';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseAnonKey = process.env.SUPABASE_SECRET_KEY

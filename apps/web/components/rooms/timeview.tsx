@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IKronoxBookingRoom } from "../../utils/src/types/booking";
+import { IKronoxBookingRoom } from "kronox-adapter";
 
 export interface ITimeViewProps  {
     day: IKronoxBookingRoom[];

@@ -1,4 +1,4 @@
-import {  privateDecrypt, publicEncrypt } from "crypto";
+import {  privateDecrypt, publicEncrypt,generateKeyPairSync } from "crypto";
 
 export const encryptKronoxSession = (session: string): string => {
     if (process.env.PUBLIC_ENCRYPTION_KEY == undefined)
@@ -23,4 +23,19 @@ export const decryptKronoxSession = (session: string): string => {
 
     return decrypted.toString('utf8');
     
+}
+
+export const generatesha256KeyPairs = ()=>{
+    const keyPair = generateKeyPairSync('rsa', {
+        modulusLength: 4096,
+        publicKeyEncoding: {
+            type: 'pkcs1',
+            format: 'pem'
+        },
+        privateKeyEncoding: {
+            type: 'pkcs1',
+            format: 'pem'
+        }
+    });
+    return keyPair;
 }

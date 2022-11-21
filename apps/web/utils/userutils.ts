@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { encryptKronoxSession } from "./src/crypto";
+import { encryptKronoxSession } from "kronox-adapter";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseKey = process.env.SUPABASE_SECRET_KEY || "";
 
@@ -12,7 +12,6 @@ export const updateKronoxSession = async (session: string, user_token:string) =>
             supabase.from('kronox_users').update({kronox_session: encryptedSession, last_poll: new Date()}).eq('user',data.data.user.id ).then(data => {});
             supabase.from('kronox_users').insert({kronox_session: encryptedSession, user: data.data.user.id}).then(data => {
             })
-        
         }     
     })
 }

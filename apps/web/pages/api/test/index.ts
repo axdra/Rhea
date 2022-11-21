@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { decryptKronoxSession, encryptKronoxSession } from '../../../utils/src/crypto';
+import { decryptKronoxSession, encryptKronoxSession } from 'kronox-adapter';
 
 export default async function handler(
     req: NextApiRequest,

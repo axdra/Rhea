@@ -1,8 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import getSchema from '../../../utils/getSchema';
-import { GetUserBookings } from '../../../utils/src/bookings';
-import {GetValidKronoxSession, KronoxLogin, KronoxPoll} from '../../../utils/src/user'
+import { GetUserBookings } from 'kronox-adapter';
+import {GetValidKronoxSession, KronoxLogin, KronoxPoll} from 'kronox-adapter'
 import { updateKronoxSession } from '../../../utils/userutils';
 
 export default async function handler(

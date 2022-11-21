@@ -1,4 +1,5 @@
-export interface IKronoxRoom{
+
+export interface IKronoxBookingRoom{
     id: string;
     timeSlots: IKronoxTimeSlot[];
     date: string;
@@ -7,12 +8,11 @@ export interface IKronoxRoom{
 
 export interface IKronoxTimeSlot{
     slotNumber: number;
-    startTime: Date;
-    endTime: Date;
+    startTime: string;
+    endTime: string;
     isBookable: boolean;
     bookedBy?: string;
     bookingReason?: string;
     bookingId?: string;
 }
-
 
