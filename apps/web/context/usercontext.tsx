@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { IKronoxUserAuthResponse } from '../utils/src/types/user';
+import { IKronoxUserAuthResponse } from 'kronox-adapter';
 
 interface IUserContext {
     getKSession: any;

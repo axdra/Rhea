@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "yarn test:e2e",
+    "test:e2e": "playwright test --browser=all"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.6",
@@ -25,6 +27,7 @@
     "dayjs": "^1.11.5",
     "discord.js": "^14.5.0",
     "ics": "^2.40.0",
+    "kronox-adapter": "*",
     "lodash.debounce": "^4.0.8",
     "map-gl-indoor": "^0.5.0",
     "mapbox-gl": "^2.10.0",
@@ -42,10 +45,10 @@
     "react-markdown": "^8.0.3",
     "remirror": "^2.0.9",
     "rich-markdown-editor": "^11.21.3",
-    "styled-components": "^5.3.5",
-    "kronox-adapter":"*"
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.28.0",
     "@types/node": "18.7.14",
     "@types/react": "18.0.18",
     "@types/react-dom": "18.0.6",

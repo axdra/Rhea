@@ -31,7 +31,9 @@ type Props = {
 
 const Schema: React.FC<Props> = ({ events }) => {
   const { t } = useTranslation();
-
+const time = new Intl.RelativeTimeFormat("sv-SE", {
+  numeric: "auto",
+});
   let currWeek = 0;
   let firstWeek = true;
   return (
