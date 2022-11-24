@@ -18,3 +18,30 @@ export const endTimeLookup = [
     "18:00",
     "20:00",
 ]
+
+
+export const organizations =[
+    "MDU",
+    "HB",
+    "HIG",
+    "HKR",
+    "HV",
+    "KONSTFACK",
+    "LTU",
+    "MAU",
+    "SH",
+    "ORU"
+]
+
+export const organizationURL = {
+    "MDU": "webbschema.mdu.se",
+    "HB": "schema.hb.se",
+    "HIG": "kronox.hig.se",
+    "HKR": "schema.hkr.se",
+    "HV": "schema.hv.se",
+    "KONSTFACK": "kronox.konstfack.se",
+    "LTU": "tenta.ltu.se",
+    "MAU": "schema.mau.se",
+    "SH": "kronox.sh.se",
+    "ORU": "schema.oru.se"
+}
