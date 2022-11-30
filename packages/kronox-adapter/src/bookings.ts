@@ -1,8 +1,10 @@
 import parse from "node-html-parser"
-import { endpoint } from "./constants"
+import {  organizationURL } from "./constants"
 import { IKronoxBookingRoom, IKronoxTimeSlot } from "./types/booking"
 
-export const GetUserBookings = async (token: string, location: string, date:string ): Promise<IKronoxBookingRoom[]> => {
+export const GetUserBookings = async (token: string, location: string, date:string, org:(keyof typeof organizationURL) = "MDU" ): Promise<IKronoxBookingRoom[]> => {
+    
+    const endpoint = `https://${organizationURL[org]}/`;
     const response = await fetch(endpoint + "minaresursbokningar.jsp?" + new URLSearchParams({
             flik: location,
             datum:  date

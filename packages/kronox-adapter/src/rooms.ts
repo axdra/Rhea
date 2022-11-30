@@ -1,11 +1,13 @@
 import parse from "node-html-parser";
-import { endpoint, startTimeLookup } from "./constants";
+import {  organizationURL, startTimeLookup } from "./constants";
 import { IKronoxBookingRoom, IKronoxTimeSlot } from "./types/booking";
 
 
 
-export const getBookableRooms = async (session: string, location: string): Promise<String[]> => {
-     const response = await fetch(`${endpoint}ajax/ajax_resursbokning.jsp?${
+export const getBookableRooms = async (session: string, location: string, org:(keyof typeof organizationURL) ): Promise<String[]> => {
+    const endpoint = `https://${organizationURL[org]}/`;
+    
+    const response = await fetch(`${endpoint}ajax/ajax_resursbokning.jsp?${
         new URLSearchParams({
             op: 'hamtaBokningar',
             flik: location,
@@ -23,7 +25,9 @@ export const getBookableRooms = async (session: string, location: string): Promi
     
 
 
-export const getRoomBookings = async (session: string, location:string, date:string):Promise<IKronoxBookingRoom[]> => {
+export const getRoomBookings = async (session: string, location:string, date:string, org:(keyof typeof organizationURL)):Promise<IKronoxBookingRoom[]> => {
+    const endpoint = `https://${organizationURL[org]}/`;
+    
     const response = await fetch(`${endpoint}ajax/ajax_resursbokning.jsp?${
         new URLSearchParams({
             op: 'hamtaBokningar',
@@ -84,7 +88,9 @@ interface IRoomBookingResponse {
 }
 
 
-export const bookRoom = async (session: string, location:string, date:string, roomId:string, timeSlot: number):Promise<IRoomBookingResponse> => {
+export const bookRoom = async (session: string, location:string, date:string, roomId:string, timeSlot: number, org:(keyof typeof organizationURL)):Promise<IRoomBookingResponse> => {
+    const endpoint = `https://${organizationURL[org]}/`;
+    
     return fetch(`${endpoint}ajax/ajax_resursbokning.jsp?${
         new URLSearchParams({
             op: 'boka',
