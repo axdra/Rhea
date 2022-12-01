@@ -2,21 +2,25 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build",
-      "$NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA",
-      "$NEXT_PUBLIC_SUPABASE_URL",
-      "$NEXT_PUBLIC_SUPABASE_ANON_KEY",
-      "$NEXT_PUBLIC_MAPBOX_TOKEN",
-      "$NEXT_PUBLIC_PROD_URL",
-      "$NODE_ENV",
-      "$KRONOX_COOKIE",
-      "$KRONOX_USERNAME",
-      "$KRONOX_PASSWORD",
-      "$SUPABASE_SECRET_KEY",
-      "$ENCRYPTION_KEY",
-      "$UTILS_AUTH",
-      "$PUBLIC_ENCRYPTION_KEY"],
-      "outputs": ["dist/**", ".next/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        ".next/**"
+      ],
+      "env": [
+        "NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+        "NEXT_PUBLIC_MAPBOX_TOKEN",
+        "NEXT_PUBLIC_PROD_URL",
+        "NODE_ENV",
+        "SUPABASE_SECRET_KEY",
+        "ENCRYPTION_KEY",
+        "UTILS_AUTH",
+        "PUBLIC_ENCRYPTION_KEY"
+      ]
     },
     "lint": {
       "outputs": []
@@ -24,7 +28,7 @@
     "dev": {
       "cache": false
     },
-     "test": {
+    "test": {
       "outputs": []
     }
   }
