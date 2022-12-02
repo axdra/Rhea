@@ -37,6 +37,11 @@ export default async function handler(
                 booking.day = booking.day + 1
             }
             let day = new Date().getDay();
+            console.log({
+                day,
+                bookingDay: booking.day
+            })
+
             if(day === booking.day){
                 
                 const date = new Date();
