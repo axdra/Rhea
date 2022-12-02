@@ -7,7 +7,7 @@ export default async function handler(
     res: NextApiResponse<any>
 ) {
     const {session, flik, datum, room, timeSlot} = req.query;
-    const booking = await bookRoom(session as string, flik as string,datum as string,room as string, Number.parseInt(timeSlot as string));
+    const booking = await bookRoom(session as string, flik as string,datum as string,room as string, Number.parseInt(timeSlot as string), "MDU");
     console.log(booking);
     if(booking.ok){
         res.status(200).json(booking)

@@ -4,7 +4,6 @@ import { Bars3Icon } from "@heroicons/react/24/solid";
 import SignInModal from "./signInModal";
 import { useTranslation } from "next-i18next";
 import Button from "./Button";
-import LinkButton from "./LinkButton";
 import { Transition } from "@headlessui/react";
 import { useUser } from "@supabase/auth-helpers-react";
 
@@ -32,18 +31,21 @@ const Header: FC = () => {
             <Link href={"/courses"} className="font-medium hover:underline focus:underline select-none">
               {t("schedule")}
             </Link>
+            <Link href={"/rooms"} className="font-medium hover:underline focus:underline select-none">
+              {t("rooms")}
+            </Link>
             <Link href={"/about"} className="font-medium hover:underline focus:underline select-none">
               {t("about")}
             </Link>
           </div>
         </div>
         <div className=" hidden lg:flex gap-4">
-          <LinkButton buttonStyle="outlined" href="/courses" >
+          <Button buttonType="link" buttonStyle="outlined" href="/courses" >
             {t("findCourses")}
-          </LinkButton>
-          {user ? <LinkButton buttonStyle="outlined" href="/user" >
+          </Button>
+          {user ? <Button buttonType="link" buttonStyle="outlined" href="/user" >
             {t("profile")}
-          </LinkButton> : (
+          </Button> : (
             <Button onClick={() => setShowSignInModal(true)} buttonStyle="filled"  >
               {t("signIn")}
             </Button>
@@ -94,20 +96,23 @@ const Header: FC = () => {
                   {t("schedule")}
                 </Link>
 
+                <Link onClick={() => setShowSmallScreenMenu(false)} href={"/rooms"} className="font-medium hover:underline focus:underline select-none">
+                  {t("rooms")}
+                </Link>
                 <Link onClick={() => setShowSmallScreenMenu(false)} href={"/about"} className="font-medium hover:underline focus:underline select-none">
                   {t("about")}
                 </Link>
               </div>
               <div className="flex  gap-4 p-4">
-                <LinkButton onClick={() => {
+                <Button buttonType="link" onClick={() => {
                   setShowSmallScreenMenu(false)
                 }}
                   className="flex-1 text-center" buttonStyle="outlined" href="/courses" >
                   {t("findCourses")}
-                </LinkButton>
-                {user ? <LinkButton className="flex-1" onClick={()=>setShowSmallScreenMenu(false)} buttonStyle="outlined" href="/user" >
+                </Button>
+                {user ? <Button buttonType="link" className="flex-1" onClick={()=>setShowSmallScreenMenu(false)} buttonStyle="outlined" href="/user" >
                   {t("profile")}
-                </LinkButton> : (
+                </Button> : (
                   <Button className="flex-1" onClick={() => {
                     
                     setShowSignInModal(true);

@@ -6,7 +6,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
 import Button from "../../components/Button";
-import LinkButton from "../../components/LinkButton";
 import SignInModal from "../../components/signInModal";
 
 const UserIndex: NextPage = () => {
@@ -42,9 +41,9 @@ const UserIndex: NextPage = () => {
                 day: "numeric",
             })}</h2>
                 <div className="flex flex-col gap-2 mt-5">
-                   <LinkButton buttonStyle="outlined" href={'/user/calendar'} >
+                   <Button buttonType="link" buttonStyle="outlined" href={'/user/calendar'} >
                     {t('personalCalendar')}
-                   </LinkButton>
+                   </Button>
                    <Button buttonStyle="outlined" onClick={() => setShowDeleteUserModal(true)} className="border-red-500 text-red-500 hover:bg-red-500 dark:hover:bg-red-500/40 dark:hover:text-red-500 dark:text-red-500">
                    {t('deleteMyAccount')}
                    </Button>

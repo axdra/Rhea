@@ -99,12 +99,13 @@ const SignInModal: FC<ISignInModalProps> = ({ isOpen, setIsOpen }) => {
                                    {!process.env.NEXT_PUBLIC_PROD_URL && <> <h2 className="text-center mb-3">Or sign in via email</h2>
                                     <div>
                                         <div className="space-y-2">
-                                            <input value={email} onChange={(e) => setEmail(e.target.value)} id="email" type={'email'} placeholder="Email" autoComplete="off" className="form-input dark:bg-slate-800 dark:text-white block w-full transition ease-in-out duration-150 rounded-full" />
-                                            <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" type={'password'} placeholder="Password" autoComplete="off" className="form-input dark:bg-slate-800 dark:text-white block w-full transition ease-in-out duration-150 rounded-full" />
+                                            <input value={email} onChange={(e) => setEmail(e.target.value)} id="email" type={'email'} placeholder="Email" autoComplete="off" className="form-input  w-full dark:bg-black dark:border-white border-2 border-black bg-white text-black  rounded-xl dark:text-white" />
+                                            <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" type={'password'} placeholder="Password" autoComplete="off" className="form-input  w-full dark:bg-black dark:border-white border-2 border-black bg-white text-black  rounded-xl dark:text-white" />
                                         </div>
                                         <div className="mt-4 space-y-2">
-                                            <button onClick={signInWithEmail} className="rounded-full py-2 px-6 bg-white text-white shadow cursor-pointer hover:bg-white transition-colors w-full text-center">Sign In</button>
-                                            <button onClick={signUpWithEmail} className="rounded-full py-2 px-6 bg-gray-500 text-white shadow cursor-pointer hover:bg-gray-600 transition-colors w-full text-center">Sign Up</button>
+                                        <Button className="w-full" buttonStyle="ghost" onClick={signUpWithEmail}>Sign up</Button>
+
+                                            <Button className="w-full" buttonStyle="filled" onClick={signInWithEmail}>Sign in</Button>
                                         </div>
                                     </div>
                                     </>}

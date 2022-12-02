@@ -57,7 +57,9 @@ const TimeSlotSelector: FC<ITimeSlotSelectorProps> = (props) => {
                     <label className="text-center">
                         {new Date(new Date().getTime() + 86400000 * 3).toLocaleDateString('sv-SE', { weekday: 'long' })}
                     </label>
+                    <label className="text-center">
                     {new Date(new Date().getTime() + 86400000 * 4).toLocaleDateString('sv-SE', { weekday: 'long' })}
+                    </label>
                     <label className="text-center">
                         {new Date(new Date().getTime() + 86400000 * 5).toLocaleDateString('sv-SE', { weekday: 'long' })}
                     </label>
@@ -67,7 +69,7 @@ const TimeSlotSelector: FC<ITimeSlotSelectorProps> = (props) => {
                     <label className="text-center">
                         {new Date(new Date().getTime() + 86400000 * 7).toLocaleDateString('sv-SE', { weekday: 'long' })}
                     </label>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 justify-between">
                         <label className="aspect-square flex justify-center items-center text-center">
                             08:15
                             10:00
@@ -98,7 +100,7 @@ const TimeSlotSelector: FC<ITimeSlotSelectorProps> = (props) => {
                             <div key={indexDay} className="flex flex-col gap-2 justify-end" >
                                 {day.map((timeslot, indexTimeSlot) => {
                                     return (
-                                        <div key={indexTimeSlot} onClick={() => { if (timeslot) props.onSelected(indexDay, indexTimeSlot) }} className={`${getTimeSlotColors(timeslot, 35)}   aspect-square text-center flex justify-center items-center border-2 rounded-lg font-medium hover:font-bold transition-colors select-none `}>
+                                        <div key={indexTimeSlot} onClick={() => { if (timeslot > 0) props.onSelected(indexDay, indexTimeSlot) }} className={`${getTimeSlotColors(timeslot, 35)}   aspect-square text-center flex justify-center items-center border-2 rounded-lg font-medium hover:font-bold transition-colors select-none `}>
                                             {timeslot ? (timeslot<0 ?"":"Free") : "Full"}
                                         </div>
                                     )

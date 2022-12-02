@@ -7,7 +7,7 @@ export default async function handler(
     res: NextApiResponse<any>
 ) {
     const {session, flik} = req.query;
-    const rooms = await getBookableRooms(session as string, flik as string);
+    const rooms = await getBookableRooms(session as string, flik as string,"MDU");
     res.status(200).json(rooms);
 
         

@@ -5,6 +5,7 @@ import { IKronoxBookingRoom, IKronoxTimeSlot } from "./types/booking";
 
 
 export const getBookableRooms = async (session: string, location: string, org:(keyof typeof organizationURL) ): Promise<String[]> => {
+    
     const endpoint = `https://${organizationURL[org]}/`;
     
     const response = await fetch(`${endpoint}ajax/ajax_resursbokning.jsp?${
@@ -90,7 +91,15 @@ interface IRoomBookingResponse {
 
 export const bookRoom = async (session: string, location:string, date:string, roomId:string, timeSlot: number, org:(keyof typeof organizationURL)):Promise<IRoomBookingResponse> => {
     const endpoint = `https://${organizationURL[org]}/`;
-    
+    console.log(`Booking room ${ new URLSearchParams({
+        op: 'boka',
+        datum: date,
+        flik: location,
+        id: roomId,
+        intervall: timeSlot.toString(),
+        typ: 'RESURSER_LOKALER',
+        moment: "Booked via Rhea"
+})}`)
     return fetch(`${endpoint}ajax/ajax_resursbokning.jsp?${
         new URLSearchParams({
             op: 'boka',

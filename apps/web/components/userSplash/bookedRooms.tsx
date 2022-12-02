@@ -3,7 +3,7 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import { useUserContext } from "../../context/usercontext";
-import LinkButton from "../LinkButton";
+import Button from "../Button";
 const api = process.env.NODE_ENV === "development" ? "http://localhost:3000/api" : "/api";
 
 
@@ -39,7 +39,7 @@ const BookedRooms: FC = () => {
     return <div className="px-4 py-2  pb-6 flex flex-col flex-1" >
         <h1 className='text-2xl font-medium'>{t('bookedRooms')}</h1>
         <div className='flex flex-col flex-1 items-center gap-2 pt-2'>
-            { bookedRooms && bookedRooms.length === 0 &&  t('noBookedRooms') }
+            { bookedRooms && bookedRooms.length === 0 &&  <div className="flex h-full justify-center items-center">{t('noBookedRooms')}</div> }
             {
                 bookedRooms?.map((room) => {
                     return <div className='flex  justify-between px-4 py-2 items-center rounded-lg dark:bg-neutral-900/20 w-full border-2 dark:border-white/20'>
@@ -55,9 +55,9 @@ const BookedRooms: FC = () => {
                 })
             }
         </div>
-        <LinkButton buttonStyle="ghost"  href={"/rooms"} >
+        <Button buttonType="link" buttonStyle="ghost"  href={"/rooms"} >
                     {t('manageBookings')}
-                    </LinkButton>
+                    </Button>
     </div>
 
 };

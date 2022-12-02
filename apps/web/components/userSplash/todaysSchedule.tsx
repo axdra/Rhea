@@ -4,7 +4,6 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import Button from "../Button";
-import LinkButton from "../LinkButton";
 
 
 const TodaysSchedule: FC = () => {
@@ -67,9 +66,9 @@ const TodaysSchedule: FC = () => {
             }
             
                     </div>
-                    <LinkButton buttonStyle="ghost"  href={"/user/calendar"} >
+                    <Button buttonType="link" buttonStyle="ghost"  href={"/user/calendar"} >
                     {t('viewCalendar')}
-                    </LinkButton>
+                    </Button>
     </div>
 
 };

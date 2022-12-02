@@ -1,10 +1,7 @@
 import { FC, HTMLProps } from "react";
-import Footer from "./footer";
 import Header from "./header";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 interface ILayoutProps extends HTMLProps<FC> {
-    hideFooter?: boolean;
 }
 
 
@@ -13,11 +10,11 @@ const Layout: FC<ILayoutProps> = (props) => {
     return (
         <div className="overflow-x-hidden dark:bg-black">
             <div className="flex flex-col h-full    selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black layout-container">
-        <Header />
+                <Header />
                 {children}
 
             </div>
-        
+
         </div>
     );
 }

@@ -15,7 +15,6 @@ import {
   useSupabaseClient,
 } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/router";
-import LoadingButton from "../../../components/LoadingButton";
 import { useState } from "react";
 
 type Union = Database["public"]["Tables"]["unions"]["Row"];
@@ -127,9 +126,7 @@ const Edit: NextPage<Props> = ({ union }) => {
             </div>
           </div>
           <div className="bg-gray-50 dark:bg-slate-900 px-4 py-3 text-right sm:px-6">
-            <LoadingButton loading={loading} type="submit" buttonStyle="filled">
-              Update
-            </LoadingButton>
+       
           </div>
         </div>
       </form>

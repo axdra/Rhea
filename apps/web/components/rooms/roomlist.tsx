@@ -1,5 +1,4 @@
 import { DetailedHTMLProps, FC, HTMLAttributes, useState } from "react";
-import { useUserContext } from "../../context/usercontext";
 import { IKronoxRoom } from "kronox-adapter";
 
 interface IRoomListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {

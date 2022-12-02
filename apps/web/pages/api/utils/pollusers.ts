@@ -16,7 +16,11 @@ export default async function handler(
 
 
 
-
+    if(auth !== authKey)
+    {
+        res.status(401).json("Unauthorized")
+        return;
+    }
     const supabase = createClient(supabaseUrl as string, supabaseAnonKey as string);
     let userID = "";
     const user = await supabase.auth.getUser(req.headers.authorization)
@@ -28,9 +32,17 @@ export default async function handler(
         const sessions = data.data.map((session: any) => {
             return decryptKronoxSession(session.kronox_session)
         })
+
         sessions.forEach((session: string) => {
             KronoxPoll(session)
         });
+        data.data.forEach((session: any) => {
+            console.log(session.kronox_session)
+            supabase.from('kronox_users').update({ last_poll: new Date() }).ilike('kronox_session', session.kronox_session).then((data: any) => {
+                console.log(data)
+            }
+            )
+        })
         res.status(200).json(`Polled ${sessions.length} users`)
     }
 

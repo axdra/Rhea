@@ -1,7 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { FC, useState } from "react";
 import Button from "../Button";
-import LinkButton from "../LinkButton";
 import SignInModal from "../signInModal";
 
 const CallToAction: FC = () => {
@@ -31,9 +30,9 @@ const CallToAction: FC = () => {
                 
             </p>
             <div className="flex gap-4 mt-8">
-                <LinkButton  buttonStyle="outlined" href="/courses" >
+                <Button buttonType="link"  buttonStyle="outlined" href="/courses" >
                     {t("findCourses")}
-                </LinkButton>
+                </Button>
                 <Button  onClick={()=>setSignInModalOpen(true)} buttonStyle="filled"  >
                     {t("signIn")}
                 </Button>
