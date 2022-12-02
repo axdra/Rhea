@@ -29,7 +29,13 @@ export default async function handler(
         )
         bookings.forEach(async (booking: any) => {
             const session = decryptKronoxSession(booking.kronox_user.kronox_session)
-           
+            //get session day monday as start convert to sunday as day 0
+            if(booking.day === 6){
+                booking.day = 0
+            }else
+            {
+                booking.day = booking.day + 1
+            }
             let day = new Date().getDay();
             if(day === booking.day){
                 
