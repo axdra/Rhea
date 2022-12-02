@@ -42,7 +42,7 @@ export default function handler(
    reqs.push(fetch(url(date.toISOString().split('T')[0].slice(2)),
         {
             headers:{
-                Cookie: process.env.KRONOX_COOKIE ?? ''
+                Cookie:  ''
             }
         }).then(result=>{
         result.text().then((data) => {
