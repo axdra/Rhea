@@ -22,12 +22,12 @@ export default async function handler(
     const supabase = createClient(supabaseUrl as string, supabaseSecretKey as string);
 
     supabase.from('kronox_future_room_bookings').select('kronox_user(*), roomid, location, timeslot, day').then((data: any) => {
+        console.log(data)
     
         const bookings = data.data.map((booking: any) => {
             return booking
         }
         )
-        console.log(bookings)
         bookings.forEach(async (booking: any) => {
             const session = decryptKronoxSession(booking.kronox_user.kronox_session)
             //get session day monday as start convert to sunday as day 0
