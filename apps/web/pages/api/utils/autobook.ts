@@ -46,7 +46,7 @@ export default async function handler(
                 date.setDate(date.getDate() + 7);
                 const dateString =new Date(date).getFullYear().toString().slice(-2) + "-" + (new Date(date).getMonth() + 1).toString().padStart(2, '0') + "-" + new Date(date).getDate().toString().padStart(2, '0');
 
-                const bookingRes = await bookRoom(session, booking.location, dateString ,booking.roomid,  booking.day, "MDU")
+                const bookingRes = await bookRoom(session, booking.location, dateString ,booking.roomid,  booking.timeslot, "MDU")
             }  
 
         }   
