@@ -62,7 +62,7 @@ const Courses: NextPage<Props> = ({ courses }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 flex-wrap">
           {
         recentCourses.length ===0 && Array.from(Array(14).keys()).map((i)=>{
-              return <RecentCourseSkeleton index={i}/>
+          return <RecentCourseSkeleton index={i} key={ i} />
             })
           }
         {recentCourses?.map(e=>{

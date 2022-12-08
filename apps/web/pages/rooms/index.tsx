@@ -6,16 +6,20 @@ import RoomList from "../../components/rooms/roomlist";
 import { useUserContext } from "../../context/usercontext";
 
 const Rooms:NextPage = () => {
-    const {getKSession, setKSession} = useUserContext();
+    const { getKSession, setKSession } = useUserContext();
     const [user, setUser] = useState<IKronoxUserAuthResponse | null>(null);
     const [bookableRooms, setBookableRooms] = useState<string[]>([]);
     useEffect(() => {
-        getKSession().then((session:IKronoxUserAuthResponse) => {
-       if(!Object.keys(session).includes('error')) {
+        getKSession(true, (user: IKronoxUserAuthResponse) => {
+            setUser(user);
+         
+        }).then((session: IKronoxUserAuthResponse) => {
+            console.debug(session);
+            if (!Object.keys(session).includes('error')) {
            setUser(session)
        }
-   }).catch((err:any) => {
-       console.log(err)
+        }).catch((err: any) => {
+            console.log(err)
        setUser(null);
    })
    }, [])

@@ -63,7 +63,7 @@ const UnionsList: NextPage<Props & WithTranslation> = ({ unions }) => {
                     className="h-40 w-64   object-contain group-hover:scale-105 transition-all duration-300"
                   />
                 ) : (
-                  <div className="h-40 w-64 bg-black"></div>
+                  <div className="h-40 w-64 bg-transparent"></div>
                 )}
 
 
@@ -85,7 +85,8 @@ const UnionsList: NextPage<Props & WithTranslation> = ({ unions }) => {
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const { data } = await createServerSupabaseClient(ctx)
     .from("unions")
-    .select("*");
+    .select("*")
+    .eq('active', true)
   return {
     props: {
       unions: data,

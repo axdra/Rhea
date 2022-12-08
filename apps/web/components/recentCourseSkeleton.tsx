@@ -5,7 +5,7 @@ import { FC, HTMLProps } from "react";
 interface IRecentCourseSkeletonProps {
     index: number;
 }
-const WeatherWidget: FC<IRecentCourseSkeletonProps> = (props) => {
+const RecentCourseSkeleton: FC<IRecentCourseSkeletonProps> = (props) => {
     let animation = '';
     if ((props.index + Math.floor(props.index / 4)) % 4 === 0) {
         animation = "animate-[pulse_1.5s_ease-in-out_infinite_0s]"
@@ -22,4 +22,4 @@ const WeatherWidget: FC<IRecentCourseSkeletonProps> = (props) => {
     }
     return (<div className={` rounded-xl  ${animation}  px-5 py-4 h-24 justify-center flex flex-col bg-neutral-100  dark:bg-neutral-800   dark:hover:text-black  duration-300`}/>    );
 }
-export default WeatherWidget;
+export default RecentCourseSkeleton;

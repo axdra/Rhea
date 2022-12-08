@@ -15,7 +15,7 @@ const UserIndex: NextPage = () => {
     const router = useRouter();
     const { t } = useTranslation();
     const [showDeleteUserModal, setShowDeleteUserModal] = useState(false);
-    const { getKSession, signOutKronox } = useUserContext();
+    const { getKSession, signOutKronox, clearKSession } = useUserContext();
     const [selectedPane, setSelectedPane] = useState<"profile" | "security" | "notifications" | "help">("profile");
     const [unionNotifications, setUnionNotifications] = useState(false);
     const [signOutInProgress, setSignOutInProgress] = useState(false);
@@ -27,6 +27,7 @@ const UserIndex: NextPage = () => {
         setSignOutInProgress(true);
         const { error } = await supabaseClient.auth.signOut();
         if (error) console.error(error);
+        clearKSession();
         if (!error) {
             router.push("/");
         }

@@ -16,11 +16,13 @@ export default async function handler(
         res.status(401).json({error: "No auth header"})
         return;
     }
+    
     GetValidKronoxSession(auth).then(async (user) => {
         res.status(200).json(user)
     }).catch(async (err) => {
         res.status(401).json({error: err})
     }
     )
+    
     
 }

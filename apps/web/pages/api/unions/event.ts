@@ -1,7 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { createClient } from '@supabase/supabase-js';
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../../../utils/supabaseClient'
 
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseAnonKey = process.env.SUPABASE_SECRET_KEY
 
 export default function handler(
     req: NextApiRequest,
@@ -9,6 +11,8 @@ export default function handler(
 ) {
     //parse the query string
     const { eventName, unionName  }  = req.query;
+  
+    const supabase = createClient(supabaseUrl as string, supabaseAnonKey as string);
 
     if (!eventName || !unionName && typeof(eventName) === typeof(String) && typeof(unionName) ===  typeof(String)) {
         res.status(400).json({ error: 'Missing event name or union name' })
