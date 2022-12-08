@@ -19,7 +19,9 @@
         "SUPABASE_SECRET_KEY",
         "ENCRYPTION_KEY",
         "UTILS_AUTH",
-        "PUBLIC_ENCRYPTION_KEY"
+        "PUBLIC_ENCRYPTION_KEY",
+        "EMAIL",
+        "EMAIL_PASSWORD"
       ]
     },
     "lint": {
