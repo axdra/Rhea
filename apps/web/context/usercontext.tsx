@@ -4,12 +4,14 @@ import { IKronoxUserAuthResponse } from 'kronox-adapter';
 interface IUserContext {
     getKSession: any;
     setKSession: any;
+    signOutKronox: any;
 
 }
 
 const UserContext = createContext< IUserContext>({
     getKSession: null,
-    setKSession: null
+    setKSession: null,
+    signOutKronox: null
 });
 
 export function RheaUserContext({ children }:any) {
@@ -20,6 +22,11 @@ export function RheaUserContext({ children }:any) {
             setKSession(session);
         }
     }, []);
+
+    const signOutKronox = () => {
+        window.localStorage.removeItem('kronox_session');
+        setKSession(null);
+    }
 
     useEffect(() => {
         if (kSession) {
@@ -58,7 +65,8 @@ export function RheaUserContext({ children }:any) {
   return (
     <UserContext.Provider value={{
         getKSession,
-        setKSession,
+          setKSession,
+        signOutKronox
     }}>
       {children}
     </UserContext.Provider>

@@ -1,5 +1,7 @@
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Switch, Transition } from "@headlessui/react";
+import { ArrowLeftOnRectangleIcon, BellIcon, LockClosedIcon, QuestionMarkCircleIcon, UserIcon } from "@heroicons/react/24/solid";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
+import { IKronoxUserAuthResponse } from "kronox-adapter";
 import { NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -7,12 +9,17 @@ import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
 import Button from "../../components/Button";
 import SignInModal from "../../components/signInModal";
+import { useUserContext } from "../../context/usercontext";
 
 const UserIndex: NextPage = () => {
     const router = useRouter();
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const [showDeleteUserModal, setShowDeleteUserModal] = useState(false);
+    const { getKSession, signOutKronox } = useUserContext();
+    const [selectedPane, setSelectedPane] = useState<"profile" | "security" | "notifications" | "help">("profile");
+    const [unionNotifications, setUnionNotifications] = useState(false);
     const [signOutInProgress, setSignOutInProgress] = useState(false);
+    const [kronoxSession, setKronoxSession] = useState<IKronoxUserAuthResponse | null>(null);
     const supabaseClient = useSupabaseClient()
     const user = useUser()
 
@@ -25,98 +32,195 @@ const UserIndex: NextPage = () => {
         }
 
     };
+    useEffect(() => {
+        getKSession().then((session: IKronoxUserAuthResponse) => {
+            setKronoxSession(session);
+            if((session as any).error) {
+                setKronoxSession(null);
+            }
+
+        })
+    }, [])
+
 
     if (user === null && !signOutInProgress) return <div>
-        <SignInModal isOpen setIsOpen={()=>router.push('/')}/>
+        <SignInModal isOpen setIsOpen={() => router.push('/')} />
     </div>
     return (
-        <div className="h-full flex flex-col justify-center items-center flex-1 dark:text-white">
-            <div className="px-4 py-5 rounded-xl border-0 md:border-2 dark:border-white border-black md:py-20 md:px-12 dark:md:border dark:md:border-white">
-                <h1 className="mb-2 text-lg  font-medium">{t('user')}</h1>
-            <h2>{t('provider')}: {user?.app_metadata.provider}</h2>
-                <h2>{t('email')}: {user?.email}</h2>
-                <h2>{t('userCreationDate')}: {new Date(user?.created_at!).toLocaleDateString('sv-SE',{
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-            })}</h2>
-                <div className="flex flex-col gap-2 mt-5">
-                   <Button buttonType="link" buttonStyle="outlined" href={'/user/calendar'} >
-                    {t('personalCalendar')}
-                   </Button>
-                   <Button buttonStyle="outlined" onClick={() => setShowDeleteUserModal(true)} className="border-red-500 text-red-500 hover:bg-red-500 dark:hover:bg-red-500/40 dark:hover:text-red-500 dark:text-red-500">
-                   {t('deleteMyAccount')}
-                   </Button>
-                   <Button buttonStyle="filled" onClick={() => signOut()} >
-                   {t('signOut')}
-                   </Button>
-                
-                </div><h2 className="mt-5 text-gray-300">User ID: {user?.id}</h2>
+        <div className="h-full flex flex-col justify-center items-center flex-1 dark:text-white px-20 py-10 ">
+            <div className="flex-1 w-full flex">
 
-            </div>
-            <Transition appear show={showDeleteUserModal} as={Fragment}>
-                <Dialog as="div" className="relative z-10" onClose={setShowDeleteUserModal} >
-                    <Transition.Child
-                        as={Fragment}
-                        enter="ease-out duration-300"
-                        enterFrom="opacity-0"
-                        enterTo="opacity-100"
-                        leave="ease-in duration-200"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0"
-                    >
-                        <div className="fixed inset-0 bg-black bg-opacity-25" />
-                    </Transition.Child>
+                <aside className="flex flex-col justify-between px-10 py-5 border-r-white border-r-2 mt-10 mb-10 ">
+                    <div className="flex flex-col gap-10">
+                        <div>
+                            <h1 className="text-3xl font-bold">
+                                Settings
+                            </h1>
+                        </div>
+                        <div className="flex flex-col items-center gap-2">
+                            <Button onClick={() => setSelectedPane("profile")} buttonStyle={selectedPane === "profile" ? "outlined" : "filled"} className={`w-full flex items-center gap-3 rounded-none `}>
+                                <UserIcon className="w-5  text-blue-500" />
 
-                    <div className="fixed inset-0 overflow-y-auto">
-                        <div className="flex min-h-full items-center justify-center p-4 text-center">
-                            <Transition.Child
-                                as={Fragment}
-                                enter="ease-out duration-300"
-                                enterFrom="opacity-0 scale-95"
-                                enterTo="opacity-100 scale-100"
-                                leave="ease-in duration-200"
-                                leaveFrom="opacity-100 scale-100"
-                                leaveTo="opacity-0 scale-95"
+                                Profile
 
-                            >
-                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                                    <Dialog.Title
-                                        as="h3"
-                                        className="text-lg font-medium leading-6 text-red-500"
-                                    >
-                                        {t('deleteMyAccount')}
-                                    </Dialog.Title>
+                            </Button>
+                            <Button onClick={() => setSelectedPane("security")} buttonStyle={selectedPane === "security" ? "outlined" : "filled"} className={`w-full flex items-center gap-3 rounded-none `}>
+                                <LockClosedIcon className="w-5 text-green-500" />
 
+                                Security
 
-                                    <div className="mt-2">
-                                        {/* <h2 className="text-center mb-3 text-gray-700">Sign in via a provider</h2> */}
-                                        <div className="flex flex-col gap-3">
-                                            <p>
-                                                {t('deleteMyAccountMessage1')}
+                            </Button>
+                            <Button onClick={() => setSelectedPane("notifications")} buttonStyle={selectedPane === "notifications" ? "outlined" : "filled"} className={`w-full flex items-center gap-3 rounded-none `}>
+                                <BellIcon className="w-5 text-red-500" />
 
-                                            </p>
-                                            <p>
-                                                {t('deleteMyAccountMessage2')}
-                                            </p>
-                                        </div>
-                                        <div className="flex justify-end gap-4">
-                                            <button className="bg-red-500 text-white rounded-full shadow-lg px-4 py-2 mt-4" >
-                                                {t('deleteMyAccount')}
+                                Notifications
 
-                                            </button>
-                                            <button className="bg-white text-black rounded-full shadow-lg px-4 py-2 mt-4" onClick={() => setShowDeleteUserModal(false)}>
-                                                {t('cancel')}
-                                            </button>
-                                        </div>
+                            </Button>
+                            <Button onClick={() => setSelectedPane("help")} buttonStyle={selectedPane === "help" ? "outlined" : "filled"} className={`w-full flex items-center gap-3 rounded-none `}>
+                                <QuestionMarkCircleIcon className="w-5 text-yellow-500" />
 
-                                    </div>
-                                </Dialog.Panel>
-                            </Transition.Child>
+                                Help
+
+                            </Button>
+
                         </div>
                     </div>
-                </Dialog>
-            </Transition>
+                    <div>
+                        <Button onClick={signOut} buttonStyle="outlined" className="w-full flex items-center gap-3 rounded-none">
+                            <ArrowLeftOnRectangleIcon className="w-5" />
+                            Sign Out
+
+                        </Button>
+
+                    </div>
+                </aside>
+                <div className="flex-1 w-full flex justify-center items-center px-10 py-16">
+                    {
+                        selectedPane === "profile" &&
+                        <div className="w-full h-full " >
+                                <h1 className="text-2xl mb-10">Profile</h1>
+                                <main className="flex flex-col gap-4 ">
+                                    <div className="flex flex-col">
+                                        <label htmlFor="name">Name</label>
+                                        <div>
+                                            <input type="text" name="name" id="name" />
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <label>Email</label>
+                                        <label>
+                                            {user?.email}
+                                        </label>
+                                    </div>
+                                    <div className="flex flex-col" >
+                                        <label>Signed in via</label>
+                                        <label>
+                                            {user?.app_metadata.provider}
+                                        </label>
+
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <label>
+                                            User ID
+                                        </label>
+                                        <label className="opacity-40">
+                                            {user?.id}
+                                        </label>
+                                    </div>
+                                    <div>
+                                    <Button buttonStyle="outlined"> 
+                                        Save
+                                    </Button>
+                                    </div>
+                                </main>
+                        </div>
+                    }
+                    {
+                        selectedPane === "security" &&
+                        <div className="w-full h-full " >
+                                <h1 className="text-2xl mb-10">Security</h1>
+                                <main className="flex flex-col gap-4 "><div>
+                                <Button onClick={() => setShowDeleteUserModal(true)} buttonStyle="outlined" className=" items-center gap-3 rounded-none dark:text-red-500 text-red-500 dark:border-red-500 dark:hover:bg-red-500 hover:bg-red-500 border-red-500 ">
+                                    Delete Account
+                                    </Button>
+                                    
+                                    
+                                </div>
+                                    <div className="flex flex-col  mt-10">
+                                        <h2 className="text-2xl">Kronox</h2>
+                                      { kronoxSession ?  <div className="flex flex-col gap-2 ">
+                                            <label>Kronox Session</label>
+                                            <label className="opacity-40">
+                                                {kronoxSession?.token}
+                                            </label>
+                                            <label>
+                                                Kronox Username
+                                            </label>
+                                            <label className="opacity-40">
+                                                {kronoxSession?.username}
+                                            </label>
+                                            <label>
+                                                Kronox Name
+                                            </label>
+                                            <label className="opacity-40 mb-4">
+                                                {kronoxSession?.name}
+                                            </label>
+                <div>
+                                                <Button buttonStyle="outlined" onClick={() => {
+                                                    signOutKronox();
+                                                    setKronoxSession(null);
+                                                }} className=" items-center gap-3 rounded-none dark:text-red-500 text-red-500 dark:border-red-500 dark:hover:bg-red-500 hover:bg-red-500 border-red-500 ">
+                                                Sign Out From Kronox
+                                                </Button>
+                                                </div>
+                                        </div>
+                                            : <label>
+                                                No Kronox Session
+                                        </label>    
+                                        }
+                                    </div>
+                                </main>
+                        </div>
+                    }
+                    {
+                        selectedPane === "notifications" &&
+                        <div className="w-full h-full " >
+                                <h1 className="text-2xl mb-10">Notifications</h1>
+                                <main className="flex flex-col gap-4 "><div className="flex gap-4">
+                                    <label htmlFor="unionNotifications">Union Events</label>
+                                    <Switch
+                                        id="unionNotifications"
+                                        checked={unionNotifications}
+                                        onChange={setUnionNotifications}
+                                        className={`${unionNotifications ? 'dark:bg-white bg-black ' : 'dark:bg-black bg-white border-black dark:border-white border-2'
+                                            } relative inline-flex h-7 w-11 items-center`}
+                                    >
+                                        <span className="sr-only">Enable notifications</span>
+                                        <span
+                                            className={`${unionNotifications ? 'translate-x-6 dark:bg-black bg-white' : 'translate-x-1  dark:bg-white bg-black'
+                                                } inline-block h-4 w-4 transform  transition`}
+                                        />
+                                    </Switch>
+                                </div>
+                                </main>
+                        </div>
+                    }
+                    {
+                        selectedPane === "help" &&
+                        <div className="w-full h-full " >
+                                <h1 className="text-2xl mb-10">Help</h1>
+                                <main className="flex flex-col gap-4 "><div>
+                                    <p>
+                                        Find help on <a className="underline" href="https://github.com/axdra/Rhea/issues">github</a>
+                                    </p>
+                                </div>
+                                </main>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
         </div>
     );
 }

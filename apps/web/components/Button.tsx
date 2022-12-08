@@ -14,7 +14,7 @@ const Button: FC<PropsWithChildren<Props>> = (props) => {
     const { buttonStyle, href, buttonType, loading, disabled, ...rest } = props
     let className = "";
     if (buttonStyle === 'filled') {
-        className = " select-none bg-black border-black border-2 px-6 py-2 text-white rounded-xl dark:bg-white dark:border-white dark:text-black ";
+        className = " select-none bg-black border-black border-2 px-6 py-2 text-white rounded-xl dark:bg-white dark:border-white dark:text-black dark:hover:bg-black dark:hover:text-white hover:bg-white hover:text-black duration-200  ";
     } else if (buttonStyle === 'outlined') {
         className = " select-none bg-white border-black border-2 px-6 py-2 text-black rounded-xl hover:bg-black hover:text-white dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black dark:border-white";
     } else if (buttonStyle === 'ghost') {
@@ -29,6 +29,6 @@ const Button: FC<PropsWithChildren<Props>> = (props) => {
             {rest.children}
         </Link>
     }
-    return <button {...rest} className={`cursor-pointer ${className} ${rest.className}`} >{rest.children}</button>
+    return <button {...rest} className={` cursor-pointer ${className}  ${rest.className}`} >{rest.children}</button>
 }
 export default Button;
