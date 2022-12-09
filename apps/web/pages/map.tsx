@@ -6,7 +6,7 @@ import CampusMap from "../components/map/campusMap";
 const MapView: NextPage = () => {
 
     return (
-        <div className="flex-1 flex flex-col relative h-full">
+        <div className=" h-full flex-1 flex flex-col">
             <CampusMap/>
         </div>
     );

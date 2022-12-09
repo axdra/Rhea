@@ -1,5 +1,5 @@
 import { GeolocateControl, Layer, Map, MapboxMap, MapRef, NavigationControl, Source } from "react-map-gl";
-import { FC, useCallback, useRef } from "react";
+import { FC, useCallback, useEffect, useRef } from "react";
 import LevelSelector from "./levelSelector";
 
 interface ICampusMapsProps {
@@ -9,13 +9,15 @@ interface ICampusMapsProps {
     initialCampus?: string;
     showLevelSelector?: boolean;
     showSearch?: boolean;
+    interactable?: boolean;
 }    
 
 const CampusMap: FC<ICampusMapsProps> = (props) => {
     props = {
         ...props,
         showLevelSelector: props.showLevelSelector ?? true,
-        showSearch: props.showSearch ?? true
+        showSearch: props.showSearch ?? true,
+        interactable: props.interactable ?? true
     }
     const geojson = {
         type: 'FeatureCollection',
@@ -26,6 +28,16 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
                         ] } }
         ]
     };
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!containerRef.current) return;
+        new ResizeObserver(() => {
+            if (!mapRef.current) return;
+            mapRef.current.resize();
+            console.log("resize");
+        }).observe(containerRef.current)
+    }, [containerRef]);
 
     const layerStyle = {
         id: 'point',
@@ -58,7 +70,8 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
         );
         
     }, []);
-    return <>
+    
+    return <div ref={containerRef} className=" flex-1 flex flex-col h-full min-h-full"  >
         <Map
             ref={mapRef}
             initialViewState={{
@@ -66,11 +79,12 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
                 longitude: 16.5407,
                 zoom: 17
             }}
+            interactive={props.interactable}
             onLoad={onMapLoad}
             mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
-            style={{ width: "100%", flexGrow: 1 }}
+            style={{ width: "100%", height: "100%",flexGrow:1 }}
             attributionControl={false}
-            
+            onResize={() => console.log("RESIZE MAP")}
             mapStyle="mapbox://styles/axdra/cl9sim33d001914nx1ern5miz"
         >
             {/*add rectangle at middle*/}
@@ -90,7 +104,7 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
                 }
             </div>
           </Map>
-    </>
+    </div>
  };
 
 export default CampusMap;

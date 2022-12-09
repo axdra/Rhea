@@ -44,3 +44,18 @@ export const deleteKronoxSession = async (user_token: string) => {
         }     
     })
 }
+
+export const scrubUserData = async (user_token: string) => {
+    const supabase = createClient(supabaseUrl, supabaseKey)
+    const user = await  supabase.auth.getUser(user_token);
+        if (user.data.user?.aud === 'authenticated') {
+            await supabase.from('kronox_users').delete().eq('user', user.data.user.id);
+            await supabase.from('personalcalendars').delete().eq('user_id', user.data.user.id);
+            await supabase.from('requested_deletion').insert({ user_id: user.data.user.id, requested: new Date() });
+            const deletion = await supabase.auth.admin.deleteUser(user.data.user.id) //FIXME: This is not working, should delete the user but throws a AuthApiError: User not allowed
+            console.log(deletion)
+
+    }
+
+  
+}

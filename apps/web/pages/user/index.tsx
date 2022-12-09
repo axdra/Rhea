@@ -33,6 +33,25 @@ const UserIndex: NextPage = () => {
         }
 
     };
+
+    const deleteAccount = async () => {
+        const session = await supabaseClient.auth.getSession();
+        if (session) {
+            const res = await fetch("/api/user/requestdeleteaccount", {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${session.data.session?.access_token}`
+                },
+            });
+            if (res.status === 200) {
+                setShowDeleteUserModal(false);
+                signOut();
+            }
+
+        }
+    };
+
     useEffect(() => {
         getKSession().then((session: IKronoxUserAuthResponse) => {
             setKronoxSession(session);
@@ -48,6 +67,7 @@ const UserIndex: NextPage = () => {
         <SignInModal isOpen setIsOpen={() => router.push('/')} />
     </div>
     return (
+        <>
         <div className="h-full flex flex-col justify-center items-center flex-1 dark:text-white px-20 py-10 ">
             <div className="flex-1 w-full flex">
 
@@ -222,7 +242,67 @@ const UserIndex: NextPage = () => {
                 </div>
             </div>
 
-        </div>
+            </div>
+
+
+
+
+            <Transition appear show={showDeleteUserModal} as={Fragment}>
+                <Dialog as="div" className="relative z-50" onClose={setShowDeleteUserModal} >
+                    <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0"
+                        enterTo="opacity-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100"
+                        leaveTo="opacity-0"
+                    >
+                        <div className="fixed inset-0 bg-black bg-opacity-25" />
+                    </Transition.Child>
+
+                    <div className="fixed inset-0 overflow-y-auto">
+                        <div className="flex min-h-full items-center justify-center p-4 text-center">
+                            <Transition.Child
+                                as={Fragment}
+                                enter="ease-out duration-300"
+                                enterFrom="opacity-0 scale-95"
+                                enterTo="opacity-100 scale-100"
+                                leave="ease-in duration-200"
+                                leaveFrom="opacity-100 scale-100"
+                                leaveTo="opacity-0 scale-95"
+
+                            >
+                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle transition-all dark:bg-black dark:text-white dark:border dark:border-white border-black border-2">
+                                    <Dialog.Title
+                                        as="h3"
+                                        className="text-lg font-medium leading-6 text-red-500 "
+                                    >
+                                        {t('deleteUserModalTitle')}
+                                    </Dialog.Title>
+
+
+                                    <div className="mt-2 text-gray-700 dark:text-gray-100">
+                                    
+                                        <p >
+                                            {t('deleteUserModalText')}
+                                        </p>
+                                        <Button buttonStyle="outlined" onClick={() => {
+                                            setShowDeleteUserModal(false);
+                                            deleteAccount();
+                                        }} className=" items-center gap-3 rounded-none dark:text-red-500 text-red-500 dark:border-red-500 dark:hover:bg-red-500 hover:bg-red-500 border-red-500 ">
+                                            {t('deleteUserModalButton')}
+                                        </Button>
+
+                                    </div>
+                                </Dialog.Panel>
+                            </Transition.Child>
+                        </div>
+                    </div>
+                </Dialog>
+            </Transition>
+
+            </>
     );
 }
 export async function getStaticProps({ locale }: any) {
