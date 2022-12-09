@@ -37,13 +37,11 @@ export default async function handler(
             KronoxPoll(session)
         });
         data.data.forEach((session: any) => {
-            console.log(session.kronox_session)
             supabase.from('kronox_users').update({ last_poll: new Date() }).ilike('kronox_session', session.kronox_session).then((data: any) => {
-                console.log(data)
             }
             )
         })
-        res.status(200).json(`Polled ${sessions.length} users`)
+        res.status(200).send(`Polled ${sessions.length} users`)
     }
 
     )

@@ -60,7 +60,7 @@ const Home: NextPage<PageProps> = ({ issues, weather_code, temp,events }) => {
                 
                 <BookedRooms />
               </div>
-              <div className="2xl:col-span-3   sm:col-span-2 col-span-1 border-black border-2 bg-white dark:text-white dark:bg-black dark:border-white h-96 rounded-xl">
+              <div className="2xl:col-span-3   sm:col-span-2 col-span-1 border-black border-2 bg-white dark:text-white dark:bg-black dark:border-white md:h-96 rounded-xl">
                   <UnionPane events={events || []}/>
               </div>
 
