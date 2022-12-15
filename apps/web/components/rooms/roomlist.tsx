@@ -1,24 +1,60 @@
 import { DetailedHTMLProps, FC, HTMLAttributes, useState } from "react";
 import { IKronoxRoom } from "kronox-adapter";
+import Button from "../Button";
 
 interface IRoomListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    rooms: IKronoxRoom[] | string[];
-    onRoomClick?: (name:string) => void;
+    rooms: any;
+    bookableRooms: IKronoxRoom[] | string[];
+    onRoomClick?: (name: string) => void;
+    
 }
 
 
 const RoomList: FC<IRoomListProps> = (props) => {
-    const { rooms } = props;
-
+    const { bookableRooms, rooms } = props;
+    
     return (
-        <div {...props} className={`flex flex-wrap max-w-lg gap-2 ${props.className}`}>
-            {rooms.map((room) => {
+        <div  className={`flex flex-wrap max-w-2xl w-full gap-2 text-white  mt-20 mb-20  ${props.className?? ''}`}>
+            <table className="table-fixed w-full">
+                <thead>
+                    <tr>
+                        <th className="text-left">
+                            Namn
+                        </th>
+                        <th className="text-left">
+                            Kapacitet
+                        </th>
+                        <th className="text-left">
+                            Typ
+                        </th>
+                        <th>
+                            
+                        </th>
+                    </tr>
+                    
+                </thead>
+                <tbody className="w-full ">
+                {rooms.map((room: any) => {
                 return (
-                    <div onClick={() => props.onRoomClick!((typeof room === "string") ? room : room.id)} className="  dark:bg-white/20 flex-1 min-w-[4.5rem] dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black bg-black/20 text-black border-black cursor-pointer    aspect-square text-center flex justify-center items-center border-2 rounded-lg font-medium hover:font-bold transition-colors select-none">
-                        {typeof room === "string" ? room : room.id}
-                    </div>
+                    <tr className="w-full ">
+                        <td className="py-2">
+                            {room.name}
+                        </td>
+                        <td >
+                           {room.capacity}
+                        </td>
+                        <td >
+                            {room.room_type}
+                        </td>
+                        <td >
+                            {bookableRooms.includes(room.name) && <Button buttonStyle="link" className="text-green-500" onClick={() => props.onRoomClick?.(room.name)}>Boka</Button>}
+                        </td>
+
+                    </tr>    
                 );
-            })}
+                })}
+                </tbody>
+            </table>
         </div>
     )
 

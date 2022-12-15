@@ -9,6 +9,7 @@ import ReactMarkdown from "react-markdown";
 import { IUnion, IUnionEvent } from ".";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "../../../../../types.gen";
+import { useUser } from "@supabase/auth-helpers-react";
 
 type Union = Database["public"]["Tables"]["unions"]["Row"];
 type UnionEvent = Database["public"]["Tables"]["unionevents"]["Row"];
@@ -19,9 +20,10 @@ type Props = {
 };
 
 const Union: NextPage<Props> = ({ union, event }) => {
-  const [going, setGoing] = useState(false);
-  const [interested, setInterested] = useState(false);
+  const [going, setGoing] = useState(event?.going as unknown as boolean ?? false);
+  const [interested, setInterested] = useState(event?.interested as unknown as boolean ?? false);
   const { t } = useTranslation();
+
 
   if (!event) {
     return (
@@ -115,8 +117,9 @@ const Union: NextPage<Props> = ({ union, event }) => {
               >
                 {t("interested")}
               </div>
+
               <div
-                className={`text-center flex-1 border select-none border-blue-500 bg-blue-500/10  rounded-md px-4 py-2 text-blue-900 dark:text-blue-500 font-bold hover:bg-blue-500/50 transition-all cursor-pointer duration-500 ${going && "bg-blue-500 text-white/100 dark:text-white/100"
+                className={`text-center flex-1 border select-none border-blue-500 bg-blue-500/10  rounded-md px-4 py-2 text-blue-900 dark:text-blue-500 font-bold hover:bg-blue-500/50 transition-all cursor-pointer duration-500 ${going && "bg-blue-500 dark:bg-blue-500 dark:text-blue-900  text-white/100"
                   }`}
                 onClick={() => setGoing(!going)}
               >
@@ -131,8 +134,9 @@ const Union: NextPage<Props> = ({ union, event }) => {
 };
 //For some reason this breaks Vercel build atm after migration to turbo repo
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-
   const supabaseClient = createBrowserSupabaseClient<Database>();
+  const user = await supabaseClient.auth.getUser((JSON.parse(ctx.req.cookies['supabase-auth-token'] as any) as any).access_token);
+
 
   const { data: union } = await supabaseClient
     .from("unions")
@@ -141,14 +145,23 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     .single();
   const { data: event } = await supabaseClient
     .from("unionevents")
-    .select("*")
+    .select("cover_image, title, description, start_time, end_time, coordinates, location, cost, going, interested")
     .ilike("url_slug", ctx.query.event as string)
     .single();
+    console.table(event)
   
   return {
     props: {
-      union,
-      event,
+      union: {
+
+        ...union,
+
+      },
+      event: {
+        ...event,
+        interested: event?.interested?.includes(user.data.user?.id as string),
+        going: event?.going?.includes(user.data.user?.id as string),
+      },
       ...(await serverSideTranslations(ctx.locale as string, ["common"])),
     },
   };

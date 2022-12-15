@@ -153,8 +153,8 @@ const AutoBooking:NextPage = () => {
                     [0,1,2,3,4,5,6].map((day) => {
                         return <div className="flex flex-col gap-2 justify-between">
                             {[0,1,2,3,4,5].map((timeslot) => {
-                                if(futureBookings){
-                                const booking = futureBookings.filter((booking) => {
+                                if(futureBookings.length){
+                                const booking = futureBookings?.filter((booking) => {
                                     return booking.day == day && booking.timeslot == timeslot;
                                 })
                                 

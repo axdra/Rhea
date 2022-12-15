@@ -1,11 +1,13 @@
 import { IKronoxUserAuthResponse } from "kronox-adapter";
-import { NextPage } from "next";
+import { GetServerSidePropsContext, NextPage } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { useEffect, useState } from "react";
 import RoomList from "../../components/rooms/roomlist";
 import { useUserContext } from "../../context/usercontext";
+import { supabase } from "../../utils/supabaseClient";
 
-const Rooms:NextPage = () => {
+const Rooms:NextPage = (props:any) => {
     const { getKSession, setKSession } = useUserContext();
     const [user, setUser] = useState<IKronoxUserAuthResponse | null>(null);
     const [bookableRooms, setBookableRooms] = useState<string[]>([]);
@@ -40,9 +42,21 @@ const Rooms:NextPage = () => {
     }
 
 
-        return <RoomList rooms={bookableRooms} onRoomClick={(name)=>navigateToRoom(name)} />
+    return <div className=" flex justify-center"><RoomList bookableRooms={bookableRooms} onRoomClick={(name) => navigateToRoom(name)} rooms={props.rooms} /></div>
     
 }
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+
+
+    console.log(ctx.query.name);
+    const { data } = await supabase.from("rooms").select("*")
+    return {
+        props: {
+            ...(await serverSideTranslations(ctx.locale as string, ["common"])),
+            rooms: data
+        }
+    };
+};
 export default Rooms;
 
   

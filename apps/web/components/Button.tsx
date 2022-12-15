@@ -21,7 +21,7 @@ const Button: FC<PropsWithChildren<Props>> = (props) => {
         className = "text-center select-none bg-neutral-100 px-6 py-2 text-black rounded-xl dark:bg-neutral-900 dark:text-white ";
 
     } else if (buttonStyle === 'link') {
-        className = " select-none text-black hover:underline";
+        className = "select-none text-black hover:underline";
     }
 
     if (props.buttonType === "link") {
