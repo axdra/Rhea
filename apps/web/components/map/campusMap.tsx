@@ -24,7 +24,7 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
     }
     const [selectedRoom, setSelectedRoom] = useState<string | undefined>(props.initialRoom ?? "Kappa");
     const [selectedLevel, setSelectedLevel] = useState<string | undefined>(props.initialFloor ?? "0");
-  const geojson = `
+  const geojson = `{
         "type": "FeatureCollection",
         "features": [
               {
