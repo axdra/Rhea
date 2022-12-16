@@ -6362,7 +6362,7 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
     useEffect(() => {
         if (!mapRef.current) return;
         if (selectedRoom) {
-            const bbox = (JSON.parse(geojson) as any).features.find(f => f.properties?.name === selectedRoom)?.geometry?.coordinates[0];
+            const bbox = (JSON.parse(geojson) as any).features.find((f:any) => f.properties?.name === selectedRoom)?.geometry?.coordinates[0];
             if (bbox) {
                 const bounds = new mapboxgl.LngLatBounds();
                 bbox.forEach((coord: any) => {
