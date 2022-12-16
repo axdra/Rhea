@@ -24,7 +24,7 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
     }
     const [selectedRoom, setSelectedRoom] = useState<string | undefined>(props.initialRoom ?? "Kappa");
     const [selectedLevel, setSelectedLevel] = useState<string | undefined>(props.initialFloor ?? "0");
-    const geojson = {
+  const geojson = `
         "type": "FeatureCollection",
         "features": [
               {
@@ -6345,7 +6345,7 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
       }
     }
         ]
-    }
+    }`;
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -6458,7 +6458,7 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
             mapStyle="mapbox://styles/axdra/cl9sim33d001914nx1ern5miz"
         >
             {/*add rectangle at middle*/}
-            <Source id="my-data" type="geojson" data={geojson as any}>
+            <Source id="my-data" type="geojson" data={JSON.parse(geojson) as any}>
                 <Layer {...roomLineStyle as any} filter={[
                     "==",
                     ["get", "level"],
