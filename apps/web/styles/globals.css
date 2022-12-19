@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.layout-container{
+    min-height: 100vh;
+    
+}
+
+@supports  (-webkit-touch-callout: none){
+    .layout-container{
+        min-height: -webkit-fill-available;
+
+        
+    }
+    @media (max-width:640px){
+        .layout-container{
+        min-height: -webkit-fill-available;
+
+        
+    }
+    }
+}
+.mapboxgl-ctrl-logo{
+   opacity: 0.2;
+   filter: invert();
+   -webkit-filter: invert();
+   -moz-filter: invert();
+   -ms-filter: invert();
+   -o-filter: invert();
+}
+
+*{
+    scroll-behavior: smooth;
+   
+}
