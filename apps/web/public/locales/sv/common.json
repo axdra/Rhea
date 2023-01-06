@@ -79,6 +79,8 @@
     "newUnionText":"Ansök att skapa en förening",
     "viewCalendar": "Visa kalender",
     "contact":"Kontakt",
-    "contactText":"För eventuella frågor, vänligen kontakta oss här "
+    "contactText":"För eventuella frågor, vänligen kontakta oss här ",
+    "rooms": "Rum",
+    "manageBookings": "Hantera bokningar"
 
 }

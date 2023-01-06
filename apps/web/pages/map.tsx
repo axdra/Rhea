@@ -7,7 +7,7 @@ const MapView: NextPage = () => {
 
     return (
         <div className=" h-full flex-1 flex flex-col">
-            <CampusMap/>
+            <CampusMap showRoomInformation={true}/>
         </div>
     );
     

@@ -13,6 +13,7 @@ interface ICampusMapsProps {
     showLevelSelector?: boolean;
     showSearch?: boolean;
     interactable?: boolean;
+    showRoomInformation?: boolean;
 }    
 
 const CampusMap: FC<ICampusMapsProps> = (props) => {
@@ -24,6 +25,7 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
     }
     const [selectedRoom, setSelectedRoom] = useState<string | undefined>(props.initialRoom ?? "Kappa");
     const [selectedLevel, setSelectedLevel] = useState<string | undefined>(props.initialFloor ?? "0");
+    const [mapLoaded, setMapLoaded] = useState<boolean>(false);
   const geojson = `{
         "type": "FeatureCollection",
         "features": [
@@ -6362,7 +6364,8 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
     useEffect(() => {
         if (!mapRef.current) return;
         if (selectedRoom) {
-            const bbox = (JSON.parse(geojson) as any).features.find((f:any) => f.properties?.name === selectedRoom)?.geometry?.coordinates[0];
+            const selectedRoomData = (JSON.parse(geojson) as any).features.find((f:any) => f.properties?.name === selectedRoom);
+            const bbox = selectedRoomData?.geometry?.coordinates[0];
             if (bbox) {
                 const bounds = new mapboxgl.LngLatBounds();
                 bbox.forEach((coord: any) => {
@@ -6373,10 +6376,12 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
                     maxZoom: 18,
                     duration: 1000
                 });
+                setSelectedLevel(selectedRoomData.properties.level);
             }
+
         }
 
-    }, [selectedRoom]);
+    }, [selectedRoom,mapLoaded]);
 
     const roomStyle = {
         id: 'roomFill',
@@ -6438,7 +6443,7 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
 
         }
         );
-        
+        setMapLoaded(true);
     }, []);
     
     return <div ref={containerRef} className=" flex-1 flex flex-col h-full min-h-full"  >
@@ -6506,7 +6511,7 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
 
             </div>
             <Transition
-                show={selectedRoom !== ''}
+                show={(selectedRoom !== '' && props.showRoomInformation) ? true : false}
                 enter="transition-opacity duration-300"
                 enterFrom="opacity-0"
                 enterTo="opacity-100"

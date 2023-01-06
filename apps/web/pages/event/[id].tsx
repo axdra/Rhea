@@ -4,6 +4,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { Database } from "../../../../types.gen";
+import CampusMap from "../../components/map/campusMap";
 
 type Event = Database["public"]["Tables"]["events"]["Row"];
 
@@ -13,41 +14,57 @@ type Props = {
 
 const Event: NextPage<Props> = ({ event }) => {
   const { t } = useTranslation();
+  
+  const className=event?.location ?"md:grid-cols-2 grid-cols-1" : "grid-cols-1"
+  return <div className={`w-full h-full flex-1 pt-20 md:pt-0 grid gap-20 md:gap-4 ${className}`}>
+  <div className="col-span-1 text-black dark:text-white flex flex-col justify-center items-center ">
 
-  return (
-    <div className="max-w-6xl  w-full mx-auto md:mt-12 mt-4 md:px-24 px-4 py-10 shadow rounded-lg mb-24 flex-1 flex flex-col  dark:text-white text-black  ">
-      <h1 className="text-4xl font-medium mb-5 xl:w-[72rem] transition-all  ">
-        {event?.name}
-      </h1>
-        <h2>
-            {event?.parent_calendar}
-        </h2>
-      <Link href={'/map?q='.concat(event?.location ||'')}>
-        {event?.location}
-      </Link>
-      <h3>
+    <div className="text-3xl text-center">
+    {event?.name}
+      
+    </div>
+    <div className="w-full">
+      <div className="text-2xl text-center">
+      {event?.parent_calendar}
+      </div>
+      <div className="text-xl text-center">
+      {event?.location}
+      </div>
+      <div className="text-sm text-center">
+      {event?.teacher?.split(' ').join(', ')}
+      </div>
+      <h3 className="text-center">
         {new Date(event?.start_time ||'').toLocaleDateString("sv-SE", {
             weekday: "long",
             month: "long",
             day: "numeric",
         })}
       </h3>
-        <h3>
+        <h3 className="text-center">
             {new Date(event?.start_time ||'').toLocaleTimeString("sv-SE", {
                 hour: "numeric",
                 minute: "numeric",
             })}
-        </h3>
-        <h3>
+       {" - "} 
             {new Date(event?.end_time ||'').toLocaleTimeString("sv-SE", {
                 hour: "numeric",
                 minute: "numeric",
             })}
         </h3>
         
-      
+       
     </div>
-  );
+     
+
+    </div>
+  {
+    event?.location &&
+  <CampusMap interactable={false} showLevelSelector={false} showSearch={false} initialRoom={event?.location} />
+
+}
+</div>
+
+
 };
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {

@@ -3,8 +3,12 @@ import { FC, useState } from "react";
 export interface ITimeSlotSelectorProps {
     days: number[][];
     onSelected: (day: number, timeslot: number) => void;
+    notAvailableLabel?: string;
+    availableLabel?: string;
+    roomCount?: number;
 }
 const getTimeSlotColors = (available: number, max: number) => {
+    
 
     const colors0 = "bg-green-500/20 text-green-500 border-green-500 hover:bg-green-500 hover:text-green-900 cursor-pointer";
 
@@ -37,6 +41,10 @@ const getTimeSlotColors = (available: number, max: number) => {
 }
 
 const TimeSlotSelector: FC<ITimeSlotSelectorProps> = (props) => {
+    console.table(props.days);
+    const availableLabel = props.availableLabel ?? "Free";
+    const notAvailableLabel = props.notAvailableLabel ?? "Full";
+    const roomCount = props.roomCount ?? 35;
     const [currentDay, setCurrentDay] = useState(0);
     return (
         <>
@@ -100,8 +108,8 @@ const TimeSlotSelector: FC<ITimeSlotSelectorProps> = (props) => {
                             <div key={indexDay} className="flex flex-col gap-2 justify-end" >
                                 {day.map((timeslot, indexTimeSlot) => {
                                     return (
-                                        <div key={indexTimeSlot} onClick={() => { if (timeslot > 0) props.onSelected(indexDay, indexTimeSlot) }} className={`${getTimeSlotColors(timeslot, 35)}   aspect-square text-center flex justify-center items-center border-2 rounded-lg font-medium hover:font-bold transition-colors select-none `}>
-                                            {timeslot ? (timeslot<0 ?"":"Free") : "Full"}
+                                        <div key={indexTimeSlot} onClick={() => { if (timeslot > 0) props.onSelected(indexDay, indexTimeSlot) }} className={`${getTimeSlotColors(timeslot, roomCount)}   aspect-square text-center flex justify-center items-center border-2 rounded-lg font-medium hover:font-bold transition-colors select-none `}>
+                                            {timeslot ? (timeslot<0 ?"":availableLabel) : notAvailableLabel}
                                         </div>
                                     )
                                 })}
@@ -151,8 +159,8 @@ const TimeSlotSelector: FC<ITimeSlotSelectorProps> = (props) => {
                     <div className="flex flex-col gap-2 justify-end col-span-2" >
                         {props.days[currentDay].map((timeslot, indexTimeSlot) => {
                             return (
-                                <div key={indexTimeSlot} onClick={() => { if (timeslot>0) props.onSelected(currentDay, indexTimeSlot) }} className={`${getTimeSlotColors(timeslot, 35)}   h-24 text-center flex justify-center items-center  transition-colors select-none `}>
-                                    {timeslot>0 ? "Free" : "Full"}
+                                <div key={indexTimeSlot} onClick={() => { if (timeslot>0) props.onSelected(currentDay, indexTimeSlot) }} className={`${getTimeSlotColors(timeslot, roomCount)}   h-24 text-center flex justify-center items-center  transition-colors select-none `}>
+                                    {timeslot>0 ? availableLabel : notAvailableLabel}
                                     
                                 </div>
                             )

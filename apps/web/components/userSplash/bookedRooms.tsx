@@ -30,7 +30,7 @@ const BookedRooms: FC = () => {
                     },
                 }
             ).then(res => res.json()).then(data => {
-                setBookedRooms(data);
+                setBookedRooms(data.splice(0, 3));
             }
             ).catch()
         }
