@@ -4,6 +4,8 @@ import LevelSelector from "./levelSelector";
 import mapboxgl from "mapbox-gl";
 import RoomInformation from "./roomInformation";
 import { Transition } from "@headlessui/react";
+import { IKronoxUserAuthResponse } from "kronox-adapter";
+import { useUserContext } from "../../context/usercontext";
 
 interface ICampusMapsProps {
     initialRoom?: string;
@@ -23,9 +25,41 @@ const CampusMap: FC<ICampusMapsProps> = (props) => {
         showSearch: props.showSearch ?? true,
         interactable: props.interactable ?? true
     }
-    const [selectedRoom, setSelectedRoom] = useState<string | undefined>(props.initialRoom ?? "Kappa");
+    const [selectedRoom, setSelectedRoom] = useState<string | undefined>(props.initialRoom ?? "");
     const [selectedLevel, setSelectedLevel] = useState<string | undefined>(props.initialFloor ?? "0");
+    const [bookableRooms, setBookableRooms] = useState<string[]>([]);
+
     const [mapLoaded, setMapLoaded] = useState<boolean>(false);
+
+
+    const { getKSession, setKSession } = useUserContext();
+    const [user, setUser] = useState<IKronoxUserAuthResponse | null>(null);
+  useEffect(() => {
+        getKSession(true, (user: IKronoxUserAuthResponse) => {
+            setUser(user);
+
+        }).then((session: IKronoxUserAuthResponse) => {
+            console.debug(session);
+            if (!Object.keys(session).includes('error')) {
+                setUser(session)
+            }
+        }).catch((err: any) => {
+            console.log(err)
+            setUser(null);
+        })
+    }, [])
+    useEffect(() => {
+        if (user) {
+            fetch('/api/rooms/getBookableRooms?' + new URLSearchParams({
+                'session': encodeURI(user.token),
+                'flik': 'FLIK_0001'
+            })).then((data) => {
+                data.json().then((data) => {
+                    setBookableRooms(data);
+                })
+            })
+        }
+    }, [user])
   const geojson = `{
         "type": "FeatureCollection",
         "features": [
