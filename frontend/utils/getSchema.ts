@@ -42,8 +42,8 @@ const updateSchemaCache = async (code: string): Promise<ISchema | undefined> => 
     if(events.length == 0){
         throw new Error("No new events in caching..");
     }
-    await supabase.from('events').delete().match({ parent_calendar: code })
-    await supabase.from('events').insert(events)
+    supabase.from('events').delete().match({ parent_calendar: code })
+    supabase.from('events').insert(events)
     await supabase.from('calendars').update({ last_cache: dayjs().format() }).match({ code: code })
     return {events:events,name:code}
         
