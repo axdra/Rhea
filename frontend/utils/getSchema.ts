@@ -15,7 +15,7 @@ const getEventFromIcalEvent = (event: any,parentCode:string): any => {
     const parsedEvent = {
         created_at: event.created,
         parent_calendar: parentCode,
-        name:  event.summary.split('Moment: ')[1].trim().replace(/&amp;/g, '&') || '',
+        name:  event.summary.split('Moment: ')[1].split("Aktivitetstyp")[0].trim().replace(/&amp;/g, '&') || '',
         room: event.location,
         location: event.location,
         last_update: event.lastmodified,
