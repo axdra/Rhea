@@ -100,8 +100,7 @@ function cleanDuplicateEvents(events: any[]): any[] {
         let filteredEvents = retEvents.filter(ev => {
             if (element.start_time == ev.start_time &&
                 element.name == ev.name &&
-                element.end_time == ev.end_time &&
-                element.teacher == ev.teacher)
+                element.end_time == ev.end_time)
                 return true;
             return false;
         });
