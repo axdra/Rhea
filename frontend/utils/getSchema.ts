@@ -10,7 +10,7 @@ interface ISchema {
 
 }
 
-const URLBase = "https://webbschema.mdu.se/setup/jsp/SchemaICAL.ics?startDatum=idag&intervallTyp=a&intervallAntal=1&sprak=SV&sokMedAND=true&forklaringar=true&resurser=k.";
+const URLBase = "https://webbschema.mdu.se/setup/jsp/SchemaICAL.ics?startDatum=2023-01-01&intervallTyp=a&intervallAntal=1&sprak=SV&sokMedAND=true&forklaringar=true&resurser=k.";
 const getEventFromIcalEvent = (event: any, parentCode: string): any => {
     const parsedEvent = {
         created_at: event.created,
