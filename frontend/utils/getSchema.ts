@@ -24,7 +24,7 @@ const getEventFromIcalEvent = (event: any, parentCode: string): any => {
         aid: "",
         teacher: event.summary.split('Sign:')[1]?.split("Moment: ")[0].trim(),
         group: "",
-        id: parentCode+event.uid
+        id: event.uid
 
     }
     return parsedEvent;
